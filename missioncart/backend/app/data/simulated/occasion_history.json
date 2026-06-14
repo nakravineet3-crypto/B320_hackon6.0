@@ -1,0 +1,5166 @@
+{
+  "U001": [
+    {
+      "mission_id": "M0001",
+      "user_id": "U001",
+      "occasion_type": "festival",
+      "occasion_label": "Diwali 2025",
+      "date": "2025-10-20",
+      "headcount": 8,
+      "budget_used": 4203,
+      "budget_max": 4623,
+      "coverage_score": "9/10",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_DIYA_001",
+          "title": "Earthen Diyas Pack of 50",
+          "category": "festival_lights",
+          "quantity_packs": 1,
+          "price_then": 146,
+          "price_now": 152,
+          "price_change": 6,
+          "still_available": false
+        },
+        {
+          "asin": "MC_FAIRY_001",
+          "title": "Fairy Lights 10m",
+          "category": "festival_lights",
+          "quantity_packs": 1,
+          "price_then": 308,
+          "price_now": 287,
+          "price_change": -21,
+          "still_available": true
+        },
+        {
+          "asin": "MC_RANGOLI_001",
+          "title": "Rangoli Colors Set",
+          "category": "decoration",
+          "quantity_packs": 1,
+          "price_then": 194,
+          "price_now": 208,
+          "price_change": 14,
+          "still_available": true
+        },
+        {
+          "asin": "MC_INCENSE_001",
+          "title": "Agarbatti Set",
+          "category": "pooja_items",
+          "quantity_packs": 1,
+          "price_then": 85,
+          "price_now": 95,
+          "price_change": 10,
+          "still_available": true
+        },
+        {
+          "asin": "MC_FESTIVAL_EXTRAS",
+          "title": "Diwali 2025",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 3470,
+          "price_now": 3389,
+          "price_change": -81,
+          "still_available": false
+        }
+      ],
+      "days_until_recurrence": 128,
+      "recurrence_date": "2026-10-20",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0002",
+      "user_id": "U001",
+      "occasion_type": "festival",
+      "occasion_label": "Pongal celebration supplies",
+      "date": "2026-01-14",
+      "headcount": 10,
+      "budget_used": 1847,
+      "budget_max": 2032,
+      "coverage_score": "9/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_DIYA_001",
+          "title": "Earthen Diyas Pack of 50",
+          "category": "festival_lights",
+          "quantity_packs": 1,
+          "price_then": 155,
+          "price_now": 160,
+          "price_change": 5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_FAIRY_001",
+          "title": "Fairy Lights 10m",
+          "category": "festival_lights",
+          "quantity_packs": 1,
+          "price_then": 296,
+          "price_now": 315,
+          "price_change": 19,
+          "still_available": true
+        },
+        {
+          "asin": "MC_RANGOLI_001",
+          "title": "Rangoli Colors Set",
+          "category": "decoration",
+          "quantity_packs": 1,
+          "price_then": 201,
+          "price_now": 196,
+          "price_change": -5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_INCENSE_001",
+          "title": "Agarbatti Set",
+          "category": "pooja_items",
+          "quantity_packs": 1,
+          "price_then": 86,
+          "price_now": 80,
+          "price_change": -6,
+          "still_available": true
+        },
+        {
+          "asin": "MC_FESTIVAL_EXTRAS",
+          "title": "Pongal celebration supplies",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 1109,
+          "price_now": 1195,
+          "price_change": 86,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 214,
+      "recurrence_date": "2027-01-14",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0003",
+      "user_id": "U001",
+      "occasion_type": "valentine_dinner",
+      "occasion_label": "Valentine dinner supplies",
+      "date": "2026-02-14",
+      "headcount": 2,
+      "budget_used": 892,
+      "budget_max": 981,
+      "coverage_score": "8/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 93,
+          "price_now": 83,
+          "price_change": -10,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 82,
+          "price_now": 78,
+          "price_change": -4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 62,
+          "price_now": 54,
+          "price_change": -8,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 308,
+          "price_now": 318,
+          "price_change": 10,
+          "still_available": true
+        },
+        {
+          "asin": "MC_VALENTINE_DINNER_EXTRAS",
+          "title": "Valentine dinner supplies",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 347,
+          "price_now": 371,
+          "price_change": 24,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 245,
+      "recurrence_date": "2027-02-14",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0004",
+      "user_id": "U001",
+      "occasion_type": "holi",
+      "occasion_label": "Holi celebration supplies",
+      "date": "2026-03-08",
+      "headcount": 12,
+      "budget_used": 1203,
+      "budget_max": 1323,
+      "coverage_score": "8/8",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 310,
+          "price_now": 271,
+          "price_change": -39,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 190,
+          "price_now": 197,
+          "price_change": 7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 203,
+          "price_now": 195,
+          "price_change": -8,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 267,
+      "recurrence_date": "2027-03-08",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0005",
+      "user_id": "U001",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Office team potluck",
+      "date": "2026-04-14",
+      "headcount": 18,
+      "budget_used": 743,
+      "budget_max": 817,
+      "coverage_score": "7/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 88,
+          "price_now": 95,
+          "price_change": 7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 82,
+          "price_now": 91,
+          "price_change": 9,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 61,
+          "price_now": 59,
+          "price_change": -2,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 310,
+          "price_now": 341,
+          "price_change": 31,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Office team potluck",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 32,
+          "price_now": 31,
+          "price_change": -1,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0006",
+      "user_id": "U001",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Mom birthday party",
+      "date": "2026-05-12",
+      "headcount": 12,
+      "budget_used": 3847,
+      "budget_max": 4232,
+      "coverage_score": "9/9",
+      "outcome_rating": 3,
+      "outcome_note": "Some items were missing or late",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 92,
+          "price_now": 95,
+          "price_change": 3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 77,
+          "price_now": 82,
+          "price_change": 5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 153,
+          "price_now": 147,
+          "price_change": -6,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 143,
+          "price_now": 149,
+          "price_change": 6,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 51,
+          "price_now": 54,
+          "price_change": 3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Mom birthday party",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 3178,
+          "price_now": 3441,
+          "price_change": 263,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 332,
+      "recurrence_date": "2027-05-12",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0007",
+      "user_id": "U001",
+      "occasion_type": "kids_school_farewell",
+      "occasion_label": "Kids school farewell party",
+      "date": "2026-06-01",
+      "headcount": 24,
+      "budget_used": 2103,
+      "budget_max": 2313,
+      "coverage_score": "9/10",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 92,
+          "price_now": 89,
+          "price_change": -3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 77,
+          "price_now": 87,
+          "price_change": 10,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 61,
+          "price_now": 65,
+          "price_change": 4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 298,
+          "price_now": 298,
+          "price_change": 0,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_SCHOOL_FAREWELL_EXTRAS",
+          "title": "Kids school farewell party",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 1406,
+          "price_now": 1466,
+          "price_change": 60,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 352,
+      "recurrence_date": "2027-06-01",
+      "recurrence_alert": null
+    }
+  ],
+  "U002": [
+    {
+      "mission_id": "M0008",
+      "user_id": "U002",
+      "occasion_type": "travel",
+      "occasion_label": "Coorg Trek",
+      "date": "2025-12-26",
+      "headcount": 4,
+      "budget_used": 4891,
+      "budget_max": 5380,
+      "coverage_score": "7/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_BACKPACK_001",
+          "title": "Trekking Backpack",
+          "category": "backpack",
+          "quantity_packs": 1,
+          "price_then": 1547,
+          "price_now": 1565,
+          "price_change": 18,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BOTTLE_001",
+          "title": "Insulated Water Bottle",
+          "category": "water_bottle",
+          "quantity_packs": 1,
+          "price_then": 494,
+          "price_now": 483,
+          "price_change": -11,
+          "still_available": true
+        },
+        {
+          "asin": "MC_FIRSTAID_001",
+          "title": "Travel First Aid Kit",
+          "category": "first_aid",
+          "quantity_packs": 1,
+          "price_then": 573,
+          "price_now": 549,
+          "price_change": -24,
+          "still_available": true
+        },
+        {
+          "asin": "MC_TRAVEL_EXTRAS",
+          "title": "Coorg Trek",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 2277,
+          "price_now": 2030,
+          "price_change": -247,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0009",
+      "user_id": "U002",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-02-08",
+      "headcount": 16,
+      "budget_used": 2985,
+      "budget_max": 3284,
+      "coverage_score": "9/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 91,
+          "price_now": 82,
+          "price_change": -9,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 80,
+          "price_now": 84,
+          "price_change": 4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 153,
+          "price_now": 148,
+          "price_change": -5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 145,
+          "price_now": 144,
+          "price_change": -1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 49,
+          "price_now": 50,
+          "price_change": 1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 2143,
+          "price_now": 2259,
+          "price_change": 116,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 239,
+      "recurrence_date": "2027-02-08",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0010",
+      "user_id": "U002",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-28",
+      "headcount": 11,
+      "budget_used": 1905,
+      "budget_max": 2096,
+      "coverage_score": "9/10",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 293,
+          "price_now": 317,
+          "price_change": 24,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 201,
+          "price_now": 189,
+          "price_change": -12,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 454,
+          "price_now": 386,
+          "price_change": -68,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 463,
+          "price_now": 494,
+          "price_change": 31,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 287,
+      "recurrence_date": "2027-03-28",
+      "recurrence_alert": null
+    }
+  ],
+  "U003": [
+    {
+      "mission_id": "M0011",
+      "user_id": "U003",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2025-12-27",
+      "headcount": 14,
+      "budget_used": 5196,
+      "budget_max": 5716,
+      "coverage_score": "9/9",
+      "outcome_rating": 3,
+      "outcome_note": "Some items were missing or late",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 87,
+          "price_now": 98,
+          "price_change": 11,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 80,
+          "price_now": 75,
+          "price_change": -5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 152,
+          "price_now": 157,
+          "price_change": 5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 153,
+          "price_now": 165,
+          "price_change": 12,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 47,
+          "price_now": 51,
+          "price_change": 4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 4525,
+          "price_now": 3847,
+          "price_change": -678,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 196,
+      "recurrence_date": "2026-12-27",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0012",
+      "user_id": "U003",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-12",
+      "headcount": 15,
+      "budget_used": 1428,
+      "budget_max": 1263,
+      "coverage_score": "8/9",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 290,
+          "price_now": 323,
+          "price_change": 33,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 194,
+          "price_now": 183,
+          "price_change": -11,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 460,
+          "price_now": 512,
+          "price_change": 52,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 271,
+      "recurrence_date": "2027-03-12",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0013",
+      "user_id": "U003",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Office Potluck",
+      "date": "2026-05-26",
+      "headcount": 11,
+      "budget_used": 1402,
+      "budget_max": 1542,
+      "coverage_score": "8/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 90,
+          "price_now": 99,
+          "price_change": 9,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 81,
+          "price_now": 82,
+          "price_change": 1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 57,
+          "price_now": 60,
+          "price_change": 3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 293,
+          "price_now": 264,
+          "price_change": -29,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Office Potluck",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 881,
+          "price_now": 909,
+          "price_change": 28,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U004": [
+    {
+      "mission_id": "M0014",
+      "user_id": "U004",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-31",
+      "headcount": 7,
+      "budget_used": 1934,
+      "budget_max": 2127,
+      "coverage_score": "9/10",
+      "outcome_rating": 3,
+      "outcome_note": "Some items were missing or late",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 294,
+          "price_now": 313,
+          "price_change": 19,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 201,
+          "price_now": 211,
+          "price_change": 10,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 433,
+          "price_now": 485,
+          "price_change": 52,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 1006,
+          "price_now": 930,
+          "price_change": -76,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 290,
+      "recurrence_date": "2027-03-31",
+      "recurrence_alert": null
+    }
+  ],
+  "U005": [
+    {
+      "mission_id": "M0015",
+      "user_id": "U005",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-01-03",
+      "headcount": 12,
+      "budget_used": 2577,
+      "budget_max": 2835,
+      "coverage_score": "9/10",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 86,
+          "price_now": 79,
+          "price_change": -7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 76,
+          "price_now": 66,
+          "price_change": -10,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 156,
+          "price_now": 143,
+          "price_change": -13,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 151,
+          "price_now": 167,
+          "price_change": 16,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 49,
+          "price_now": 45,
+          "price_change": -4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 1903,
+          "price_now": 1740,
+          "price_change": -163,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 203,
+      "recurrence_date": "2027-01-03",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0016",
+      "user_id": "U005",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-21",
+      "headcount": 12,
+      "budget_used": 1975,
+      "budget_max": 2172,
+      "coverage_score": "7/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 286,
+          "price_now": 293,
+          "price_change": 7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 206,
+          "price_now": 204,
+          "price_change": -2,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 449,
+          "price_now": 394,
+          "price_change": -55,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 542,
+          "price_now": 518,
+          "price_change": -24,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 280,
+      "recurrence_date": "2027-03-21",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0017",
+      "user_id": "U005",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Office Potluck",
+      "date": "2026-05-12",
+      "headcount": 23,
+      "budget_used": 992,
+      "budget_max": 1091,
+      "coverage_score": "8/8",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 86,
+          "price_now": 90,
+          "price_change": 4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 80,
+          "price_now": 70,
+          "price_change": -10,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 59,
+          "price_now": 56,
+          "price_change": -3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 295,
+          "price_now": 273,
+          "price_change": -22,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Office Potluck",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 306,
+          "price_now": 301,
+          "price_change": -5,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U006": [
+    {
+      "mission_id": "M0018",
+      "user_id": "U006",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-23",
+      "headcount": 10,
+      "budget_used": 1701,
+      "budget_max": 1871,
+      "coverage_score": "8/8",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 298,
+          "price_now": 331,
+          "price_change": 33,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 200,
+          "price_now": 218,
+          "price_change": 18,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 469,
+          "price_now": 412,
+          "price_change": -57,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 236,
+          "price_now": 239,
+          "price_change": 3,
+          "still_available": false
+        }
+      ],
+      "days_until_recurrence": 282,
+      "recurrence_date": "2027-03-23",
+      "recurrence_alert": null
+    }
+  ],
+  "U007": [
+    {
+      "mission_id": "M0019",
+      "user_id": "U007",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-23",
+      "headcount": 13,
+      "budget_used": 1435,
+      "budget_max": 946,
+      "coverage_score": "9/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 306,
+          "price_now": 275,
+          "price_change": -31,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 196,
+          "price_now": 179,
+          "price_change": -17,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 431,
+          "price_now": 374,
+          "price_change": -57,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 282,
+      "recurrence_date": "2027-03-23",
+      "recurrence_alert": null
+    }
+  ],
+  "U008": [
+    {
+      "mission_id": "M0020",
+      "user_id": "U008",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Team Lunch",
+      "date": "2026-01-28",
+      "headcount": 12,
+      "budget_used": 1200,
+      "budget_max": 1320,
+      "coverage_score": "9/10",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 93,
+          "price_now": 105,
+          "price_change": 12,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 81,
+          "price_now": 76,
+          "price_change": -5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 56,
+          "price_now": 60,
+          "price_change": 4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 303,
+          "price_now": 318,
+          "price_change": 15,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Team Lunch",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 667,
+          "price_now": 605,
+          "price_change": -62,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U009": [
+    {
+      "mission_id": "M0021",
+      "user_id": "U009",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-16",
+      "headcount": 10,
+      "budget_used": 1784,
+      "budget_max": 1962,
+      "coverage_score": "7/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 307,
+          "price_now": 267,
+          "price_change": -40,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 209,
+          "price_now": 181,
+          "price_change": -28,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 470,
+          "price_now": 529,
+          "price_change": 59,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 282,
+          "price_now": 245,
+          "price_change": -37,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 275,
+      "recurrence_date": "2027-03-16",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0022",
+      "user_id": "U009",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-03-22",
+      "headcount": 12,
+      "budget_used": 3487,
+      "budget_max": 3836,
+      "coverage_score": "9/9",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 89,
+          "price_now": 92,
+          "price_change": 3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 81,
+          "price_now": 75,
+          "price_change": -6,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 153,
+          "price_now": 171,
+          "price_change": 18,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 153,
+          "price_now": 157,
+          "price_change": 4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 51,
+          "price_now": 50,
+          "price_change": -1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 2807,
+          "price_now": 2826,
+          "price_change": 19,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 281,
+      "recurrence_date": "2027-03-22",
+      "recurrence_alert": null
+    }
+  ],
+  "U010": [
+    {
+      "mission_id": "M0023",
+      "user_id": "U010",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-01-07",
+      "headcount": 13,
+      "budget_used": 5492,
+      "budget_max": 6041,
+      "coverage_score": "9/9",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 93,
+          "price_now": 86,
+          "price_change": -7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 82,
+          "price_now": 86,
+          "price_change": 4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 153,
+          "price_now": 145,
+          "price_change": -8,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 149,
+          "price_now": 130,
+          "price_change": -19,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 47,
+          "price_now": 54,
+          "price_change": 7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 4815,
+          "price_now": 4199,
+          "price_change": -616,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 207,
+      "recurrence_date": "2027-01-07",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0024",
+      "user_id": "U010",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Office Potluck",
+      "date": "2026-01-24",
+      "headcount": 17,
+      "budget_used": 1009,
+      "budget_max": 1110,
+      "coverage_score": "9/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 91,
+          "price_now": 101,
+          "price_change": 10,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 78,
+          "price_now": 75,
+          "price_change": -3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 57,
+          "price_now": 63,
+          "price_change": 6,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 296,
+          "price_now": 306,
+          "price_change": 10,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Office Potluck",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 318,
+          "price_now": 333,
+          "price_change": 15,
+          "still_available": false
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0025",
+      "user_id": "U010",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-10",
+      "headcount": 12,
+      "budget_used": 1456,
+      "budget_max": 1425,
+      "coverage_score": "9/9",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 306,
+          "price_now": 346,
+          "price_change": 40,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 201,
+          "price_now": 224,
+          "price_change": 23,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 442,
+          "price_now": 494,
+          "price_change": 52,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 269,
+      "recurrence_date": "2027-03-10",
+      "recurrence_alert": null
+    }
+  ],
+  "U011": [
+    {
+      "mission_id": "M0026",
+      "user_id": "U011",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Team Lunch",
+      "date": "2026-04-28",
+      "headcount": 12,
+      "budget_used": 1200,
+      "budget_max": 1320,
+      "coverage_score": "7/8",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 92,
+          "price_now": 95,
+          "price_change": 3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 77,
+          "price_now": 70,
+          "price_change": -7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 61,
+          "price_now": 57,
+          "price_change": -4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 290,
+          "price_now": 325,
+          "price_change": 35,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Team Lunch",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 680,
+          "price_now": 597,
+          "price_change": -83,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U012": [
+    {
+      "mission_id": "M0027",
+      "user_id": "U012",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Team Lunch",
+      "date": "2026-04-28",
+      "headcount": 12,
+      "budget_used": 1200,
+      "budget_max": 1320,
+      "coverage_score": "7/8",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 86,
+          "price_now": 82,
+          "price_change": -4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 79,
+          "price_now": 90,
+          "price_change": 11,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 58,
+          "price_now": 57,
+          "price_change": -1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 294,
+          "price_now": 299,
+          "price_change": 5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Team Lunch",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 683,
+          "price_now": 774,
+          "price_change": 91,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U013": [
+    {
+      "mission_id": "M0028",
+      "user_id": "U013",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-17",
+      "headcount": 9,
+      "budget_used": 1997,
+      "budget_max": 2197,
+      "coverage_score": "8/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 309,
+          "price_now": 340,
+          "price_change": 31,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 194,
+          "price_now": 174,
+          "price_change": -20,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 451,
+          "price_now": 425,
+          "price_change": -26,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 540,
+          "price_now": 588,
+          "price_change": 48,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 276,
+      "recurrence_date": "2027-03-17",
+      "recurrence_alert": null
+    }
+  ],
+  "U014": [
+    {
+      "mission_id": "M0029",
+      "user_id": "U014",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-15",
+      "headcount": 5,
+      "budget_used": 1346,
+      "budget_max": 1481,
+      "coverage_score": "8/8",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 284,
+          "price_now": 300,
+          "price_change": 16,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 193,
+          "price_now": 185,
+          "price_change": -8,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 453,
+          "price_now": 504,
+          "price_change": 51,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 416,
+          "price_now": 447,
+          "price_change": 31,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 274,
+      "recurrence_date": "2027-03-15",
+      "recurrence_alert": null
+    }
+  ],
+  "U015": [
+    {
+      "mission_id": "M0030",
+      "user_id": "U015",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-16",
+      "headcount": 8,
+      "budget_used": 1311,
+      "budget_max": 1442,
+      "coverage_score": "8/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 295,
+          "price_now": 337,
+          "price_change": 42,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 190,
+          "price_now": 212,
+          "price_change": 22,
+          "still_available": false
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 456,
+          "price_now": 488,
+          "price_change": 32,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 370,
+          "price_now": 418,
+          "price_change": 48,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 275,
+      "recurrence_date": "2027-03-16",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0031",
+      "user_id": "U015",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Office Potluck",
+      "date": "2026-04-26",
+      "headcount": 13,
+      "budget_used": 1065,
+      "budget_max": 1172,
+      "coverage_score": "7/8",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 88,
+          "price_now": 82,
+          "price_change": -6,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 77,
+          "price_now": 68,
+          "price_change": -9,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 62,
+          "price_now": 69,
+          "price_change": 7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 301,
+          "price_now": 330,
+          "price_change": 29,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Office Potluck",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 537,
+          "price_now": 506,
+          "price_change": -31,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U016": [
+    {
+      "mission_id": "M0032",
+      "user_id": "U016",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-03-17",
+      "headcount": 13,
+      "budget_used": 2668,
+      "budget_max": 2935,
+      "coverage_score": "9/10",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 89,
+          "price_now": 93,
+          "price_change": 4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 76,
+          "price_now": 71,
+          "price_change": -5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 149,
+          "price_now": 161,
+          "price_change": 12,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 145,
+          "price_now": 145,
+          "price_change": 0,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 47,
+          "price_now": 52,
+          "price_change": 5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 2013,
+          "price_now": 1728,
+          "price_change": -285,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 276,
+      "recurrence_date": "2027-03-17",
+      "recurrence_alert": null
+    }
+  ],
+  "U017": [
+    {
+      "mission_id": "M0033",
+      "user_id": "U017",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-04-28",
+      "headcount": 18,
+      "budget_used": 2632,
+      "budget_max": 2895,
+      "coverage_score": "9/10",
+      "outcome_rating": 3,
+      "outcome_note": "Some items were missing or late",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 90,
+          "price_now": 102,
+          "price_change": 12,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 80,
+          "price_now": 71,
+          "price_change": -9,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 3,
+          "price_then": 146,
+          "price_now": 156,
+          "price_change": 10,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 143,
+          "price_now": 148,
+          "price_change": 5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 47,
+          "price_now": 45,
+          "price_change": -2,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 1664,
+          "price_now": 1542,
+          "price_change": -122,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 318,
+      "recurrence_date": "2027-04-28",
+      "recurrence_alert": null
+    }
+  ],
+  "U018": [
+    {
+      "mission_id": "M0034",
+      "user_id": "U018",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-05-04",
+      "headcount": 17,
+      "budget_used": 5307,
+      "budget_max": 5838,
+      "coverage_score": "9/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 91,
+          "price_now": 96,
+          "price_change": 5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 78,
+          "price_now": 84,
+          "price_change": 6,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 3,
+          "price_then": 149,
+          "price_now": 146,
+          "price_change": -3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 151,
+          "price_now": 170,
+          "price_change": 19,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 47,
+          "price_now": 49,
+          "price_change": 2,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 4324,
+          "price_now": 4843,
+          "price_change": 519,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 324,
+      "recurrence_date": "2027-05-04",
+      "recurrence_alert": null
+    }
+  ],
+  "U019": [
+    {
+      "mission_id": "M0035",
+      "user_id": "U019",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-19",
+      "headcount": 12,
+      "budget_used": 1501,
+      "budget_max": 1651,
+      "coverage_score": "9/10",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 307,
+          "price_now": 298,
+          "price_change": -9,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 204,
+          "price_now": 181,
+          "price_change": -23,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 460,
+          "price_now": 521,
+          "price_change": 61,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 19,
+          "price_now": 21,
+          "price_change": 2,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 278,
+      "recurrence_date": "2027-03-19",
+      "recurrence_alert": null
+    }
+  ],
+  "U020": [
+    {
+      "mission_id": "M0036",
+      "user_id": "U020",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-25",
+      "headcount": 11,
+      "budget_used": 1448,
+      "budget_max": 798,
+      "coverage_score": "8/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 312,
+          "price_now": 343,
+          "price_change": 31,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 192,
+          "price_now": 175,
+          "price_change": -17,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 440,
+          "price_now": 454,
+          "price_change": 14,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 284,
+      "recurrence_date": "2027-03-25",
+      "recurrence_alert": null
+    }
+  ],
+  "U021": [
+    {
+      "mission_id": "M0037",
+      "user_id": "U021",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-15",
+      "headcount": 7,
+      "budget_used": 1291,
+      "budget_max": 1420,
+      "coverage_score": "8/8",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 308,
+          "price_now": 309,
+          "price_change": 1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 208,
+          "price_now": 237,
+          "price_change": 29,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 446,
+          "price_now": 467,
+          "price_change": 21,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 329,
+          "price_now": 345,
+          "price_change": 16,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 274,
+      "recurrence_date": "2027-03-15",
+      "recurrence_alert": null
+    }
+  ],
+  "U022": [
+    {
+      "mission_id": "M0038",
+      "user_id": "U022",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Team Lunch",
+      "date": "2026-04-28",
+      "headcount": 12,
+      "budget_used": 1200,
+      "budget_max": 1320,
+      "coverage_score": "8/9",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 85,
+          "price_now": 89,
+          "price_change": 4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 81,
+          "price_now": 74,
+          "price_change": -7,
+          "still_available": false
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 61,
+          "price_now": 56,
+          "price_change": -5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 299,
+          "price_now": 330,
+          "price_change": 31,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Team Lunch",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 674,
+          "price_now": 657,
+          "price_change": -17,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U023": [
+    {
+      "mission_id": "M0039",
+      "user_id": "U023",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Team Lunch",
+      "date": "2026-04-28",
+      "headcount": 12,
+      "budget_used": 1200,
+      "budget_max": 1320,
+      "coverage_score": "7/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 86,
+          "price_now": 86,
+          "price_change": 0,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 81,
+          "price_now": 85,
+          "price_change": 4,
+          "still_available": false
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 57,
+          "price_now": 61,
+          "price_change": 4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 296,
+          "price_now": 261,
+          "price_change": -35,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Team Lunch",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 680,
+          "price_now": 614,
+          "price_change": -66,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U024": [
+    {
+      "mission_id": "M0040",
+      "user_id": "U024",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-04-05",
+      "headcount": 11,
+      "budget_used": 2556,
+      "budget_max": 2812,
+      "coverage_score": "9/10",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 86,
+          "price_now": 87,
+          "price_change": 1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 75,
+          "price_now": 66,
+          "price_change": -9,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 156,
+          "price_now": 154,
+          "price_change": -2,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 154,
+          "price_now": 157,
+          "price_change": 3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 48,
+          "price_now": 52,
+          "price_change": 4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 1881,
+          "price_now": 2059,
+          "price_change": 178,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 295,
+      "recurrence_date": "2027-04-05",
+      "recurrence_alert": null
+    }
+  ],
+  "U025": [
+    {
+      "mission_id": "M0041",
+      "user_id": "U025",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-19",
+      "headcount": 5,
+      "budget_used": 1563,
+      "budget_max": 1719,
+      "coverage_score": "8/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 312,
+          "price_now": 307,
+          "price_change": -5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 195,
+          "price_now": 216,
+          "price_change": 21,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 439,
+          "price_now": 472,
+          "price_change": 33,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 617,
+          "price_now": 576,
+          "price_change": -41,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 278,
+      "recurrence_date": "2027-03-19",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0042",
+      "user_id": "U025",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-04-18",
+      "headcount": 9,
+      "budget_used": 3928,
+      "budget_max": 4321,
+      "coverage_score": "8/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 92,
+          "price_now": 86,
+          "price_change": -6,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 78,
+          "price_now": 73,
+          "price_change": -5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 150,
+          "price_now": 142,
+          "price_change": -8,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 150,
+          "price_now": 134,
+          "price_change": -16,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 51,
+          "price_now": 54,
+          "price_change": 3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 3257,
+          "price_now": 2831,
+          "price_change": -426,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 308,
+      "recurrence_date": "2027-04-18",
+      "recurrence_alert": null
+    }
+  ],
+  "U026": [
+    {
+      "mission_id": "M0043",
+      "user_id": "U026",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-16",
+      "headcount": 10,
+      "budget_used": 1478,
+      "budget_max": 1307,
+      "coverage_score": "9/10",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 309,
+          "price_now": 268,
+          "price_change": -41,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 205,
+          "price_now": 198,
+          "price_change": -7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 450,
+          "price_now": 510,
+          "price_change": 60,
+          "still_available": false
+        }
+      ],
+      "days_until_recurrence": 275,
+      "recurrence_date": "2027-03-16",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0044",
+      "user_id": "U026",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Office Potluck",
+      "date": "2026-05-05",
+      "headcount": 24,
+      "budget_used": 676,
+      "budget_max": 689,
+      "coverage_score": "9/10",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 85,
+          "price_now": 82,
+          "price_change": -3,
+          "still_available": false
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 80,
+          "price_now": 76,
+          "price_change": -4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 59,
+          "price_now": 65,
+          "price_change": 6,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 287,
+          "price_now": 280,
+          "price_change": -7,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0045",
+      "user_id": "U026",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-05-15",
+      "headcount": 9,
+      "budget_used": 4871,
+      "budget_max": 5358,
+      "coverage_score": "9/10",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 85,
+          "price_now": 95,
+          "price_change": 10,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 76,
+          "price_now": 71,
+          "price_change": -5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 142,
+          "price_now": 137,
+          "price_change": -5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 146,
+          "price_now": 159,
+          "price_change": 13,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 51,
+          "price_now": 56,
+          "price_change": 5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 4229,
+          "price_now": 4839,
+          "price_change": 610,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 335,
+      "recurrence_date": "2027-05-15",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0046",
+      "user_id": "U026",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-06-02",
+      "headcount": 14,
+      "budget_used": 3707,
+      "budget_max": 4078,
+      "coverage_score": "9/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 88,
+          "price_now": 90,
+          "price_change": 2,
+          "still_available": false
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 80,
+          "price_now": 83,
+          "price_change": 3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 148,
+          "price_now": 146,
+          "price_change": -2,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 154,
+          "price_now": 148,
+          "price_change": -6,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 50,
+          "price_now": 47,
+          "price_change": -3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 3039,
+          "price_now": 2929,
+          "price_change": -110,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 353,
+      "recurrence_date": "2027-06-02",
+      "recurrence_alert": null
+    }
+  ],
+  "U027": [
+    {
+      "mission_id": "M0047",
+      "user_id": "U027",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-16",
+      "headcount": 12,
+      "budget_used": 1642,
+      "budget_max": 1806,
+      "coverage_score": "7/8",
+      "outcome_rating": 3,
+      "outcome_note": "Some items were missing or late",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 301,
+          "price_now": 331,
+          "price_change": 30,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 204,
+          "price_now": 219,
+          "price_change": 15,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 439,
+          "price_now": 499,
+          "price_change": 60,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 193,
+          "price_now": 168,
+          "price_change": -25,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 275,
+      "recurrence_date": "2027-03-16",
+      "recurrence_alert": null
+    }
+  ],
+  "U028": [
+    {
+      "mission_id": "M0048",
+      "user_id": "U028",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-21",
+      "headcount": 8,
+      "budget_used": 989,
+      "budget_max": 1088,
+      "coverage_score": "9/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 288,
+          "price_now": 327,
+          "price_change": 39,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 193,
+          "price_now": 165,
+          "price_change": -28,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 451,
+          "price_now": 400,
+          "price_change": -51,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 57,
+          "price_now": 58,
+          "price_change": 1,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 280,
+      "recurrence_date": "2027-03-21",
+      "recurrence_alert": null
+    }
+  ],
+  "U029": [
+    {
+      "mission_id": "M0049",
+      "user_id": "U029",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-31",
+      "headcount": 10,
+      "budget_used": 1468,
+      "budget_max": 1330,
+      "coverage_score": "7/8",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 298,
+          "price_now": 268,
+          "price_change": -30,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 203,
+          "price_now": 218,
+          "price_change": 15,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 466,
+          "price_now": 511,
+          "price_change": 45,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 290,
+      "recurrence_date": "2027-03-31",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0050",
+      "user_id": "U029",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-04-21",
+      "headcount": 13,
+      "budget_used": 5828,
+      "budget_max": 6411,
+      "coverage_score": "9/10",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 85,
+          "price_now": 96,
+          "price_change": 11,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 78,
+          "price_now": 88,
+          "price_change": 10,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 142,
+          "price_now": 161,
+          "price_change": 19,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 154,
+          "price_now": 158,
+          "price_change": 4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 48,
+          "price_now": 44,
+          "price_change": -4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 5179,
+          "price_now": 4871,
+          "price_change": -308,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 311,
+      "recurrence_date": "2027-04-21",
+      "recurrence_alert": null
+    }
+  ],
+  "U030": [
+    {
+      "mission_id": "M0051",
+      "user_id": "U030",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-16",
+      "headcount": 8,
+      "budget_used": 1992,
+      "budget_max": 2191,
+      "coverage_score": "9/9",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 299,
+          "price_now": 324,
+          "price_change": 25,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 203,
+          "price_now": 199,
+          "price_change": -4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 443,
+          "price_now": 444,
+          "price_change": 1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 1047,
+          "price_now": 1157,
+          "price_change": 110,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 275,
+      "recurrence_date": "2027-03-16",
+      "recurrence_alert": null
+    }
+  ],
+  "U031": [
+    {
+      "mission_id": "M0052",
+      "user_id": "U031",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-21",
+      "headcount": 10,
+      "budget_used": 1456,
+      "budget_max": 1203,
+      "coverage_score": "9/10",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 301,
+          "price_now": 313,
+          "price_change": 12,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 202,
+          "price_now": 215,
+          "price_change": 13,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 450,
+          "price_now": 482,
+          "price_change": 32,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 280,
+      "recurrence_date": "2027-03-21",
+      "recurrence_alert": null
+    }
+  ],
+  "U032": [
+    {
+      "mission_id": "M0053",
+      "user_id": "U032",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-03-22",
+      "headcount": 18,
+      "budget_used": 2555,
+      "budget_max": 2810,
+      "coverage_score": "8/9",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 89,
+          "price_now": 96,
+          "price_change": 7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 82,
+          "price_now": 90,
+          "price_change": 8,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 3,
+          "price_then": 146,
+          "price_now": 138,
+          "price_change": -8,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 153,
+          "price_now": 173,
+          "price_change": 20,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 48,
+          "price_now": 47,
+          "price_change": -1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 1574,
+          "price_now": 1607,
+          "price_change": 33,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 281,
+      "recurrence_date": "2027-03-22",
+      "recurrence_alert": null
+    }
+  ],
+  "U033": [
+    {
+      "mission_id": "M0054",
+      "user_id": "U033",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Team Lunch",
+      "date": "2026-04-28",
+      "headcount": 12,
+      "budget_used": 1200,
+      "budget_max": 1320,
+      "coverage_score": "8/9",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 88,
+          "price_now": 97,
+          "price_change": 9,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 81,
+          "price_now": 74,
+          "price_change": -7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 57,
+          "price_now": 54,
+          "price_change": -3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 294,
+          "price_now": 312,
+          "price_change": 18,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Team Lunch",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 680,
+          "price_now": 580,
+          "price_change": -100,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U034": [
+    {
+      "mission_id": "M0055",
+      "user_id": "U034",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-28",
+      "headcount": 13,
+      "budget_used": 1559,
+      "budget_max": 1715,
+      "coverage_score": "9/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 290,
+          "price_now": 289,
+          "price_change": -1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 207,
+          "price_now": 219,
+          "price_change": 12,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 435,
+          "price_now": 434,
+          "price_change": -1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 130,
+          "price_now": 114,
+          "price_change": -16,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 287,
+      "recurrence_date": "2027-03-28",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0056",
+      "user_id": "U034",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-03-29",
+      "headcount": 13,
+      "budget_used": 4255,
+      "budget_max": 4680,
+      "coverage_score": "8/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 93,
+          "price_now": 98,
+          "price_change": 5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 77,
+          "price_now": 78,
+          "price_change": 1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 145,
+          "price_now": 167,
+          "price_change": 22,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 156,
+          "price_now": 149,
+          "price_change": -7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 49,
+          "price_now": 46,
+          "price_change": -3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 3590,
+          "price_now": 3828,
+          "price_change": 238,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 288,
+      "recurrence_date": "2027-03-29",
+      "recurrence_alert": null
+    }
+  ],
+  "U035": [
+    {
+      "mission_id": "M0057",
+      "user_id": "U035",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Office Potluck",
+      "date": "2026-06-03",
+      "headcount": 12,
+      "budget_used": 1496,
+      "budget_max": 1646,
+      "coverage_score": "9/10",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 86,
+          "price_now": 78,
+          "price_change": -8,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 78,
+          "price_now": 73,
+          "price_change": -5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 61,
+          "price_now": 66,
+          "price_change": 5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 303,
+          "price_now": 347,
+          "price_change": 44,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Office Potluck",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 968,
+          "price_now": 909,
+          "price_change": -59,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U036": [
+    {
+      "mission_id": "M0058",
+      "user_id": "U036",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-03-31",
+      "headcount": 9,
+      "budget_used": 3746,
+      "budget_max": 4121,
+      "coverage_score": "9/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 87,
+          "price_now": 77,
+          "price_change": -10,
+          "still_available": false
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 80,
+          "price_now": 69,
+          "price_change": -11,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 153,
+          "price_now": 173,
+          "price_change": 20,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 147,
+          "price_now": 158,
+          "price_change": 11,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 50,
+          "price_now": 43,
+          "price_change": -7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 3076,
+          "price_now": 3056,
+          "price_change": -20,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 290,
+      "recurrence_date": "2027-03-31",
+      "recurrence_alert": null
+    }
+  ],
+  "U037": [
+    {
+      "mission_id": "M0059",
+      "user_id": "U037",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Team Lunch",
+      "date": "2026-04-28",
+      "headcount": 12,
+      "budget_used": 1200,
+      "budget_max": 1320,
+      "coverage_score": "7/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 87,
+          "price_now": 99,
+          "price_change": 12,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 77,
+          "price_now": 84,
+          "price_change": 7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 58,
+          "price_now": 51,
+          "price_change": -7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 301,
+          "price_now": 261,
+          "price_change": -40,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Team Lunch",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 677,
+          "price_now": 690,
+          "price_change": 13,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U038": [
+    {
+      "mission_id": "M0060",
+      "user_id": "U038",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-21",
+      "headcount": 10,
+      "budget_used": 1853,
+      "budget_max": 2038,
+      "coverage_score": "8/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 298,
+          "price_now": 303,
+          "price_change": 5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 206,
+          "price_now": 212,
+          "price_change": 6,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 433,
+          "price_now": 469,
+          "price_change": 36,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 412,
+          "price_now": 462,
+          "price_change": 50,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 280,
+      "recurrence_date": "2027-03-21",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0061",
+      "user_id": "U038",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Office Potluck",
+      "date": "2026-04-27",
+      "headcount": 25,
+      "budget_used": 1821,
+      "budget_max": 2003,
+      "coverage_score": "7/8",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 88,
+          "price_now": 83,
+          "price_change": -5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 79,
+          "price_now": 82,
+          "price_change": 3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 60,
+          "price_now": 68,
+          "price_change": 8,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 301,
+          "price_now": 275,
+          "price_change": -26,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Office Potluck",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 1126,
+          "price_now": 1010,
+          "price_change": -116,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U039": [
+    {
+      "mission_id": "M0062",
+      "user_id": "U039",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Team Lunch",
+      "date": "2026-04-28",
+      "headcount": 12,
+      "budget_used": 1200,
+      "budget_max": 1320,
+      "coverage_score": "9/10",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 88,
+          "price_now": 86,
+          "price_change": -2,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 75,
+          "price_now": 74,
+          "price_change": -1,
+          "still_available": false
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 57,
+          "price_now": 53,
+          "price_change": -4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 290,
+          "price_now": 321,
+          "price_change": 31,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Team Lunch",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 690,
+          "price_now": 635,
+          "price_change": -55,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U040": [
+    {
+      "mission_id": "M0063",
+      "user_id": "U040",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-05-29",
+      "headcount": 16,
+      "budget_used": 4711,
+      "budget_max": 5182,
+      "coverage_score": "7/8",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 92,
+          "price_now": 96,
+          "price_change": 4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 75,
+          "price_now": 73,
+          "price_change": -2,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 154,
+          "price_now": 161,
+          "price_change": 7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 142,
+          "price_now": 156,
+          "price_change": 14,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 48,
+          "price_now": 43,
+          "price_change": -5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 3879,
+          "price_now": 4169,
+          "price_change": 290,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 349,
+      "recurrence_date": "2027-05-29",
+      "recurrence_alert": null
+    }
+  ],
+  "U041": [
+    {
+      "mission_id": "M0064",
+      "user_id": "U041",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-25",
+      "headcount": 5,
+      "budget_used": 1176,
+      "budget_max": 1294,
+      "coverage_score": "9/10",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 307,
+          "price_now": 304,
+          "price_change": -3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 194,
+          "price_now": 188,
+          "price_change": -6,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 441,
+          "price_now": 446,
+          "price_change": 5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 234,
+          "price_now": 241,
+          "price_change": 7,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 284,
+      "recurrence_date": "2027-03-25",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0065",
+      "user_id": "U041",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Office Potluck",
+      "date": "2026-05-23",
+      "headcount": 25,
+      "budget_used": 928,
+      "budget_max": 1021,
+      "coverage_score": "8/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 89,
+          "price_now": 82,
+          "price_change": -7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 78,
+          "price_now": 89,
+          "price_change": 11,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 60,
+          "price_now": 61,
+          "price_change": 1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 294,
+          "price_now": 338,
+          "price_change": 44,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Office Potluck",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 240,
+          "price_now": 223,
+          "price_change": -17,
+          "still_available": false
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U042": [
+    {
+      "mission_id": "M0066",
+      "user_id": "U042",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Team Lunch",
+      "date": "2026-04-28",
+      "headcount": 12,
+      "budget_used": 1200,
+      "budget_max": 1320,
+      "coverage_score": "8/8",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 93,
+          "price_now": 94,
+          "price_change": 1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 78,
+          "price_now": 73,
+          "price_change": -5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 61,
+          "price_now": 60,
+          "price_change": -1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 304,
+          "price_now": 347,
+          "price_change": 43,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Team Lunch",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 664,
+          "price_now": 646,
+          "price_change": -18,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U043": [
+    {
+      "mission_id": "M0067",
+      "user_id": "U043",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-18",
+      "headcount": 8,
+      "budget_used": 1507,
+      "budget_max": 1658,
+      "coverage_score": "8/9",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 311,
+          "price_now": 295,
+          "price_change": -16,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 1,
+          "price_then": 202,
+          "price_now": 189,
+          "price_change": -13,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 464,
+          "price_now": 508,
+          "price_change": 44,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 530,
+          "price_now": 523,
+          "price_change": -7,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 277,
+      "recurrence_date": "2027-03-18",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0068",
+      "user_id": "U043",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-04-05",
+      "headcount": 20,
+      "budget_used": 3803,
+      "budget_max": 4183,
+      "coverage_score": "9/9",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 93,
+          "price_now": 103,
+          "price_change": 10,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 78,
+          "price_now": 66,
+          "price_change": -12,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 3,
+          "price_then": 146,
+          "price_now": 144,
+          "price_change": -2,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 146,
+          "price_now": 147,
+          "price_change": 1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 50,
+          "price_now": 50,
+          "price_change": 0,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 2827,
+          "price_now": 2447,
+          "price_change": -380,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 295,
+      "recurrence_date": "2027-04-05",
+      "recurrence_alert": null
+    }
+  ],
+  "U044": [
+    {
+      "mission_id": "M0069",
+      "user_id": "U044",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Team Lunch",
+      "date": "2026-04-28",
+      "headcount": 12,
+      "budget_used": 1200,
+      "budget_max": 1320,
+      "coverage_score": "7/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 88,
+          "price_now": 86,
+          "price_change": -2,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 80,
+          "price_now": 71,
+          "price_change": -9,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 60,
+          "price_now": 62,
+          "price_change": 2,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 288,
+          "price_now": 258,
+          "price_change": -30,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Team Lunch",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 684,
+          "price_now": 695,
+          "price_change": 11,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U045": [
+    {
+      "mission_id": "M0070",
+      "user_id": "U045",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-24",
+      "headcount": 15,
+      "budget_used": 1467,
+      "budget_max": 1181,
+      "coverage_score": "8/9",
+      "outcome_rating": 4,
+      "outcome_note": "Mostly good, minor quantity issues",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 310,
+          "price_now": 306,
+          "price_change": -4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 194,
+          "price_now": 213,
+          "price_change": 19,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 459,
+          "price_now": 489,
+          "price_change": 30,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 283,
+      "recurrence_date": "2027-03-24",
+      "recurrence_alert": null
+    }
+  ],
+  "U046": [
+    {
+      "mission_id": "M0071",
+      "user_id": "U046",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Team Lunch",
+      "date": "2026-04-28",
+      "headcount": 12,
+      "budget_used": 1200,
+      "budget_max": 1320,
+      "coverage_score": "9/10",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 93,
+          "price_now": 106,
+          "price_change": 13,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 77,
+          "price_now": 78,
+          "price_change": 1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 58,
+          "price_now": 65,
+          "price_change": 7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 288,
+          "price_now": 321,
+          "price_change": 33,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Team Lunch",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 684,
+          "price_now": 638,
+          "price_change": -46,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U047": [
+    {
+      "mission_id": "M0072",
+      "user_id": "U047",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Team Lunch",
+      "date": "2026-04-28",
+      "headcount": 12,
+      "budget_used": 1200,
+      "budget_max": 1320,
+      "coverage_score": "8/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 85,
+          "price_now": 79,
+          "price_change": -6,
+          "still_available": false
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 77,
+          "price_now": 82,
+          "price_change": 5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 59,
+          "price_now": 60,
+          "price_change": 1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 293,
+          "price_now": 325,
+          "price_change": 32,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Team Lunch",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 686,
+          "price_now": 683,
+          "price_change": -3,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U048": [
+    {
+      "mission_id": "M0073",
+      "user_id": "U048",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-05-08",
+      "headcount": 17,
+      "budget_used": 2585,
+      "budget_max": 2844,
+      "coverage_score": "8/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 89,
+          "price_now": 88,
+          "price_change": -1,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 79,
+          "price_now": 72,
+          "price_change": -7,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 3,
+          "price_then": 150,
+          "price_now": 153,
+          "price_change": 3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 156,
+          "price_now": 169,
+          "price_change": 13,
+          "still_available": false
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 47,
+          "price_now": 50,
+          "price_change": 3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 1596,
+          "price_now": 1745,
+          "price_change": 149,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 328,
+      "recurrence_date": "2027-05-08",
+      "recurrence_alert": null
+    }
+  ],
+  "U049": [
+    {
+      "mission_id": "M0074",
+      "user_id": "U049",
+      "occasion_type": "office_potluck",
+      "occasion_label": "Office Potluck",
+      "date": "2026-05-30",
+      "headcount": 16,
+      "budget_used": 1281,
+      "budget_max": 1409,
+      "coverage_score": "8/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": false,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 2,
+          "price_then": 93,
+          "price_now": 93,
+          "price_change": 0,
+          "still_available": false
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 2,
+          "price_then": 76,
+          "price_now": 76,
+          "price_change": 0,
+          "still_available": true
+        },
+        {
+          "asin": "MC_NAPKINS_001",
+          "title": "Paper Napkins 100pc",
+          "category": "napkins",
+          "quantity_packs": 1,
+          "price_then": 58,
+          "price_now": 64,
+          "price_change": 6,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "title": "Assorted Snacks",
+          "category": "snacks",
+          "quantity_packs": 1,
+          "price_then": 311,
+          "price_now": 305,
+          "price_change": -6,
+          "still_available": true
+        },
+        {
+          "asin": "MC_OFFICE_POTLUCK_EXTRAS",
+          "title": "Office Potluck",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 574,
+          "price_now": 567,
+          "price_change": -7,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": null,
+      "recurrence_date": null,
+      "recurrence_alert": null
+    }
+  ],
+  "U050": [
+    {
+      "mission_id": "M0075",
+      "user_id": "U050",
+      "occasion_type": "holi",
+      "occasion_label": "Holi",
+      "date": "2026-03-30",
+      "headcount": 14,
+      "budget_used": 1603,
+      "budget_max": 1763,
+      "coverage_score": "9/9",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_COLORS_001",
+          "title": "Holi Colors Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 301,
+          "price_now": 263,
+          "price_change": -38,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PICHKARI_001",
+          "title": "Water Gun Set",
+          "category": "holi_supplies",
+          "quantity_packs": 2,
+          "price_then": 198,
+          "price_now": 184,
+          "price_change": -14,
+          "still_available": true
+        },
+        {
+          "asin": "MC_SWEETS_001",
+          "title": "Festival Sweets Box",
+          "category": "sweets",
+          "quantity_packs": 1,
+          "price_then": 427,
+          "price_now": 414,
+          "price_change": -13,
+          "still_available": true
+        },
+        {
+          "asin": "MC_HOLI_EXTRAS",
+          "title": "Holi",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 178,
+          "price_now": 169,
+          "price_change": -9,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 289,
+      "recurrence_date": "2027-03-30",
+      "recurrence_alert": null
+    },
+    {
+      "mission_id": "M0076",
+      "user_id": "U050",
+      "occasion_type": "kids_birthday",
+      "occasion_label": "Kids Birthday",
+      "date": "2026-05-12",
+      "headcount": 10,
+      "budget_used": 2782,
+      "budget_max": 3060,
+      "coverage_score": "7/8",
+      "outcome_rating": 5,
+      "outcome_note": "Everything was perfect, will reorder the same items",
+      "repeat_next_year": true,
+      "items_ordered": [
+        {
+          "asin": "MC_PLATES_001",
+          "title": "Disposable Paper Plates 25pc",
+          "category": "plates",
+          "quantity_packs": 1,
+          "price_then": 86,
+          "price_now": 89,
+          "price_change": 3,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CUPS_001",
+          "title": "Disposable Cups 50pc",
+          "category": "cups",
+          "quantity_packs": 1,
+          "price_then": 77,
+          "price_now": 77,
+          "price_change": 0,
+          "still_available": true
+        },
+        {
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "quantity_packs": 2,
+          "price_then": 147,
+          "price_now": 152,
+          "price_change": 5,
+          "still_available": true
+        },
+        {
+          "asin": "MC_PUMP_001",
+          "title": "Hand Balloon Pump",
+          "category": "balloon_pump",
+          "quantity_packs": 1,
+          "price_then": 144,
+          "price_now": 152,
+          "price_change": 8,
+          "still_available": true
+        },
+        {
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles",
+          "category": "candles",
+          "quantity_packs": 1,
+          "price_then": 51,
+          "price_now": 47,
+          "price_change": -4,
+          "still_available": true
+        },
+        {
+          "asin": "MC_KIDS_BIRTHDAY_EXTRAS",
+          "title": "Kids Birthday",
+          "category": "occasion_extras",
+          "quantity_packs": 1,
+          "price_then": 2130,
+          "price_now": 2436,
+          "price_change": 306,
+          "still_available": true
+        }
+      ],
+      "days_until_recurrence": 332,
+      "recurrence_date": "2027-05-12",
+      "recurrence_alert": null
+    }
+  ]
+}

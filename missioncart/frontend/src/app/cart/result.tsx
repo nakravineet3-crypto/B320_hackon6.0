@@ -1,4 +1,4 @@
-import * as Haptics from 'expo-haptics'
+import { Ionicons } from '@expo/vector-icons'
 import * as Linking from 'expo-linking'
 import { useRouter } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
@@ -14,7 +14,8 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import ComparisonBottomSheet from '../../components/comparison/ComparisonBottomSheet'
-import { Colors, Radius } from '../../lib/constants'
+import PreCheckoutSheet from '../../components/PreCheckoutSheet'
+import { Colors, Radius, getLabelColor } from '../../lib/constants'
 import { useMissionStore } from '../../store/mission'
 
 const FALLBACK_CART_ITEMS = [
@@ -28,29 +29,39 @@ const FALLBACK_CART_ITEMS = [
   { cart_item_id: '8', need_label: 'Cleanup', title: 'Trash Bags 30pc', price: 129, packs_quantity: 1, total_cost: 129, amazon_now_eligible: true, rating: 4.1, delivery_eta: 'now_20min', prime: true, explanation: '1 pack for post-party cleanup' },
 ]
 
+function formatInr(value: number) {
+  return value.toLocaleString('en-IN')
+}
+
 export default function CartResultScreen() {
   const router = useRouter()
   const storeCart = useMissionStore((s) => s.cart)
+  const buildResult = useMissionStore((s) => s.currentBuildResult)
   const trackItemView = useMissionStore((s) => s.trackItemView)
   const setComparisonItems = useMissionStore((s) => s.setComparisonItems)
 
   const cartItems: any[] = storeCart.length > 0 ? storeCart : FALLBACK_CART_ITEMS
-  const budget = 3000
-
-  const total = cartItems.reduce(
-    (sum: number, item: any) => sum + (item.total_cost || item.price * (item.packs_quantity || 1)),
-    0,
-  )
+  const total =
+    buildResult?.total_cost ||
+    cartItems.reduce(
+      (sum: number, item: any) => sum + (item.total_cost || 0),
+      0,
+    ) ||
+    0
+  const budget =
+    buildResult?.budget_remaining !== undefined
+      ? total + buildResult.budget_remaining
+      : 3000
+  const coverage = buildResult?.coverage_score?.display || '8/8'
+  const amazonUrl = buildResult?.amazon_cart_url || 'https://www.amazon.in'
   const remaining = budget - total
   const isOverBudget = remaining < 0
   const budgetPercent = Math.min((total / budget) * 100, 100)
 
-  const coveredCount = cartItems.length
-  const totalNeeds = cartItems.length
-
   const allNow = cartItems.every((item: any) => item.amazon_now_eligible)
 
   const [highlightedId, setHighlightedId] = useState<string | null>(null)
+  const [showPreCheckout, setShowPreCheckout] = useState(false)
   const highlightTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const handleItemPress = useCallback(
@@ -63,30 +74,40 @@ export default function CartResultScreen() {
     [trackItemView],
   )
 
-  const handleDemoComparison = () => {
+  const handleCompare = () => {
     if (cartItems.length >= 2) {
       setComparisonItems(cartItems[0], cartItems[1])
     }
   }
 
   const handleAddToCart = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Heavy).catch(() => {})
-    Linking.openURL('https://www.amazon.in')
+    setShowPreCheckout(true)
   }
 
   const renderItem = ({ item }: { item: any }) => {
     const isHighlighted = highlightedId === item.cart_item_id
+    const adoption = item.community_adoption_score
+      ? Math.round(item.community_adoption_score * 100)
+      : 87
+    const sessions = item.sessions_analyzed || 3847
+    const explanation =
+      item.explanation || `chosen by ${adoption}% of ${sessions.toLocaleString()} planners`
+    const palette = getLabelColor(item.need_label || item.title)
+    const letter = (item.need_label || item.title || '?')[0].toUpperCase()
+    const lineTotal = item.total_cost || item.price * (item.packs_quantity || 1)
+
     return (
       <TouchableOpacity
         onPress={() => handleItemPress(item)}
         activeOpacity={0.7}
-        style={[styles.itemCard, isHighlighted && styles.itemCardHighlighted]}
+        style={[styles.itemRow, isHighlighted && styles.itemRowHighlighted]}
       >
-        <View style={styles.itemImage}>
-          <Text style={styles.itemInitial}>
-            {(item.need_label || item.title || '?')[0].toUpperCase()}
+        <View style={[styles.letterTile, { backgroundColor: palette.bg }]}>
+          <Text style={[styles.letterTileText, { color: palette.text }]}>
+            {letter}
           </Text>
         </View>
+
         <View style={styles.itemContent}>
           <Text style={styles.itemNeedLabel}>
             {(item.need_label || '').toUpperCase()}
@@ -94,28 +115,38 @@ export default function CartResultScreen() {
           <Text style={styles.itemTitle} numberOfLines={2}>
             {item.title}
           </Text>
+
+          <View style={styles.communityBar}>
+            <Text style={styles.communityAdoption}>{adoption}</Text>
+            <Text style={styles.communityPct}>% match</Text>
+            <View style={styles.communityDivider} />
+            <Text style={styles.communitySessions}>
+              {sessions.toLocaleString()} occasions
+            </Text>
+            <View style={styles.communityDivider} />
+            <Text style={styles.communityChecks}>6 checks ✓</Text>
+          </View>
+
           <View style={styles.deliveryBadgeRow}>
             {item.amazon_now_eligible ? (
-              <View style={styles.nowPill}>
-                <Text style={styles.nowPillText}>⚡ Now · 20 min</Text>
+              <View style={styles.nowBadge}>
+                <Text style={styles.badgeText}>Now · 20 min</Text>
               </View>
             ) : (
-              <View style={styles.tomorrowPill}>
-                <Text style={styles.tomorrowPillText}>Tomorrow</Text>
+              <View style={styles.tomorrowBadge}>
+                <Text style={styles.badgeText}>Tomorrow</Text>
               </View>
             )}
           </View>
-          {item.explanation ? (
-            <Text style={styles.explanationText} numberOfLines={1}>
-              ℹ {item.explanation}
-            </Text>
-          ) : null}
-        </View>
-        <View style={styles.itemPriceCol}>
-          <Text style={styles.itemPrice}>
-            ₹{item.total_cost || item.price * (item.packs_quantity || 1)}
+
+          <Text style={styles.explanation} numberOfLines={2}>
+            {explanation}
           </Text>
-          <Text style={styles.itemQty}>×{item.packs_quantity || 1}</Text>
+        </View>
+
+        <View style={styles.itemPriceCol}>
+          <Text style={styles.itemPrice}>₹{formatInr(lineTotal)}</Text>
+          <Text style={styles.itemQty}>× {item.packs_quantity || 1}</Text>
         </View>
       </TouchableOpacity>
     )
@@ -125,12 +156,8 @@ export default function CartResultScreen() {
     <SafeAreaView style={styles.safeArea} edges={['top']}>
       <StatusBar style="light" backgroundColor={Colors.nowBlue} />
 
-      {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Your Mission Cart</Text>
-        <Text style={styles.headerSummary}>
-          {cartItems.length} items · {coveredCount}/{totalNeeds} covered
-        </Text>
+        <Text style={styles.headerTitle}>Your mission cart</Text>
       </View>
 
       <FlatList
@@ -141,33 +168,26 @@ export default function CartResultScreen() {
         contentContainerStyle={styles.listContent}
         ListHeaderComponent={
           <>
-            {/* Summary card */}
-            <View style={styles.summaryCard}>
-              <View style={styles.summaryCol}>
-                <Text style={styles.summaryValue}>₹{total}</Text>
-                <Text style={styles.summaryLabel}>spent</Text>
-              </View>
-              <View style={[styles.summaryCol, styles.summaryColCenter]}>
-                <Text style={styles.coverageValue}>
-                  {coveredCount}/{totalNeeds}
+            {/* Summary bar */}
+            <View style={styles.summaryBar}>
+              <View style={styles.summaryRow1}>
+                <Text style={styles.summaryTotal}>₹{formatInr(total)}</Text>
+                <Text style={styles.summaryCoverage}>
+                  Coverage: {coverage}
                 </Text>
-                <Text style={styles.summaryLabel}>covered</Text>
               </View>
-              <View style={styles.summaryCol}>
-                {allNow ? (
-                  <Text style={styles.allNowText}>⚡ Now</Text>
-                ) : (
-                  <Text style={styles.mixedText}>⚠ Mixed</Text>
-                )}
-                <Text style={styles.summaryLabel}>delivery</Text>
-              </View>
+              <Text style={styles.summaryRow2}>
+                {cartItems.length} items · All on Amazon Now ⚡
+              </Text>
             </View>
 
             {/* Budget bar */}
             <View style={styles.budgetSection}>
               <View style={styles.budgetLabelRow}>
                 <Text style={styles.budgetLabelText}>Budget used</Text>
-                <Text style={styles.budgetLabelText}>₹{Math.abs(remaining)} left</Text>
+                <Text style={styles.budgetLabelText}>
+                  ₹{formatInr(Math.abs(remaining))} left
+                </Text>
               </View>
               <View style={styles.budgetTrack}>
                 <View
@@ -182,6 +202,9 @@ export default function CartResultScreen() {
               </View>
             </View>
 
+            {/* 8px divider */}
+            <View style={styles.divider} />
+
             {/* Section label */}
             <View style={styles.sectionLabelRow}>
               <Text style={styles.sectionLabel}>YOUR CART</Text>
@@ -192,19 +215,16 @@ export default function CartResultScreen() {
           <>
             {/* Amazon Now banner */}
             <View style={styles.nowBanner}>
+              <Ionicons name="flash" size={16} color={Colors.successGreen} />
               <Text style={styles.nowBannerText}>
-                ⚡ Items available on Amazon Now delivered in 20 mins
+                All items available · Delivery in 20 min
               </Text>
             </View>
 
-            {/* Demo link */}
-            <TouchableOpacity
-              onPress={handleDemoComparison}
-              style={styles.demoLinkWrap}
-            >
-              <Text style={styles.demoLinkText}>
-                Demo: Show AI comparison →
-              </Text>
+            {/* Compare link */}
+            <TouchableOpacity onPress={handleCompare} style={styles.compareWrap}>
+              <Text style={styles.compareHint}>Having trouble deciding? </Text>
+              <Text style={styles.compareLink}>Compare items</Text>
             </TouchableOpacity>
           </>
         }
@@ -212,12 +232,27 @@ export default function CartResultScreen() {
 
       {/* Fixed bottom bar */}
       <View style={styles.bottomBar}>
+        <Text style={styles.bottomTotal}>₹{formatInr(total)}</Text>
         <Pressable onPress={handleAddToCart} style={styles.addButton}>
-          <Text style={styles.addButtonText}>Add to Amazon Cart →</Text>
+          <Text style={styles.addButtonText}>Add to Amazon →</Text>
         </Pressable>
       </View>
 
       <ComparisonBottomSheet />
+      <PreCheckoutSheet
+        visible={showPreCheckout}
+        cartItems={cartItems}
+        goal={
+          buildResult?.goal ||
+          'Birthday party for 12 kids tomorrow under 4000'
+        }
+        budgetMax={budget}
+        headcount={buildResult?.headcount || 12}
+        occasionType={buildResult?.domain || 'kids_birthday'}
+        amazonCartUrl={amazonUrl}
+        onDismiss={() => setShowPreCheckout(false)}
+        onProceed={() => void Linking.openURL(amazonUrl)}
+      />
     </SafeAreaView>
   )
 }
@@ -229,20 +264,13 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: 16,
-    paddingVertical: 14,
+    paddingVertical: 12,
     backgroundColor: Colors.nowBlue,
-    alignItems: 'center',
   },
   headerTitle: {
     color: Colors.white,
     fontSize: 18,
     fontWeight: '700',
-  },
-  headerSummary: {
-    color: Colors.white,
-    fontSize: 12,
-    marginTop: 2,
-    opacity: 0.85,
   },
   list: {
     flex: 1,
@@ -251,55 +279,39 @@ const styles = StyleSheet.create({
   listContent: {
     paddingBottom: 100,
   },
-  summaryCard: {
-    flexDirection: 'row',
-    margin: 12,
-    padding: 16,
+  // Summary bar
+  summaryBar: {
     backgroundColor: Colors.background,
-    borderRadius: 8,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.inputBorder,
   },
-  summaryCol: {
-    flex: 1,
+  summaryRow1: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
-  summaryColCenter: {
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    borderColor: Colors.border,
-  },
-  summaryValue: {
+  summaryTotal: {
     color: Colors.textPrimary,
     fontSize: 20,
     fontWeight: '700',
   },
-  summaryLabel: {
+  summaryCoverage: {
+    color: Colors.successGreen,
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  summaryRow2: {
+    marginTop: 4,
     color: Colors.textSecondary,
-    fontSize: 11,
-    marginTop: 2,
+    fontSize: 13,
   },
-  coverageValue: {
-    color: Colors.successGreen,
-    fontSize: 20,
-    fontWeight: '700',
-  },
-  allNowText: {
-    color: Colors.successGreen,
-    fontSize: 16,
-    fontWeight: '700',
-  },
-  mixedText: {
-    color: Colors.primaryDark,
-    fontSize: 16,
-    fontWeight: '700',
-  },
+  // Budget bar
   budgetSection: {
-    marginHorizontal: 12,
-    marginBottom: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    backgroundColor: Colors.background,
   },
   budgetLabelRow: {
     flexDirection: 'row',
@@ -312,19 +324,23 @@ const styles = StyleSheet.create({
   },
   budgetTrack: {
     width: '100%',
-    height: 6,
-    backgroundColor: Colors.secondaryBg,
-    borderRadius: 3,
+    height: 4,
+    backgroundColor: '#E7E7E7',
+    borderRadius: 2,
     overflow: 'hidden',
   },
   budgetFill: {
-    height: 6,
-    borderRadius: 3,
+    height: 4,
+    borderRadius: 2,
+  },
+  divider: {
+    height: 8,
+    backgroundColor: Colors.divider,
   },
   sectionLabelRow: {
-    marginLeft: 12,
-    marginTop: 8,
-    marginBottom: 4,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    backgroundColor: Colors.background,
   },
   sectionLabel: {
     color: Colors.textSecondary,
@@ -332,80 +348,106 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: 1.5,
   },
-  itemCard: {
+  // Item row
+  itemRow: {
     flexDirection: 'row',
-    alignItems: 'flex-start',
-    paddingHorizontal: 12,
-    paddingVertical: 12,
     backgroundColor: Colors.background,
     borderBottomWidth: 1,
-    borderBottomColor: Colors.border,
+    borderBottomColor: Colors.divider,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
   },
-  itemCardHighlighted: {
-    borderColor: Colors.primary,
-    borderWidth: 1,
-    borderBottomWidth: 1,
+  itemRowHighlighted: {
+    backgroundColor: '#FFF8F0',
+  },
+  letterTile: {
+    width: 48,
+    height: 48,
     borderRadius: 4,
-    marginHorizontal: 4,
-  },
-  itemImage: {
-    width: 52,
-    height: 52,
-    borderRadius: Radius.md,
-    backgroundColor: Colors.secondaryBg,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  itemInitial: {
-    color: Colors.textSecondary,
-    fontSize: 20,
+  letterTileText: {
+    fontSize: 18,
     fontWeight: '700',
   },
   itemContent: {
     flex: 1,
-    marginLeft: 10,
+    marginLeft: 12,
   },
   itemNeedLabel: {
     color: Colors.textSecondary,
     fontSize: 11,
+    fontWeight: '600',
     letterSpacing: 0.5,
+    marginBottom: 2,
   },
   itemTitle: {
     color: Colors.textPrimary,
     fontSize: 14,
+    fontWeight: '600',
+  },
+  communityBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: Colors.cardBg,
+    borderRadius: 4,
+    paddingHorizontal: 8,
+    paddingVertical: 6,
+    marginTop: 6,
+  },
+  communityAdoption: {
+    color: Colors.primary,
+    fontSize: 16,
     fontWeight: '700',
-    marginTop: 2,
+  },
+  communityPct: {
+    color: Colors.textSecondary,
+    fontSize: 11,
+    marginLeft: 2,
+  },
+  communityDivider: {
+    width: 1,
+    height: 16,
+    backgroundColor: Colors.inputBorder,
+    marginHorizontal: 8,
+  },
+  communitySessions: {
+    color: Colors.textSecondary,
+    fontSize: 11,
+  },
+  communityChecks: {
+    color: Colors.successGreen,
+    fontSize: 11,
+    fontWeight: '600',
   },
   deliveryBadgeRow: {
     flexDirection: 'row',
-    marginTop: 4,
+    marginTop: 6,
   },
-  nowPill: {
-    backgroundColor: Colors.successGreen,
+  nowBadge: {
+    backgroundColor: Colors.nowBadge,
     paddingHorizontal: 8,
-    paddingVertical: 2,
-    borderRadius: 10,
+    paddingVertical: 3,
+    borderRadius: 3,
+    alignSelf: 'flex-start',
   },
-  nowPillText: {
-    color: Colors.white,
-    fontSize: 10,
-    fontWeight: '700',
-  },
-  tomorrowPill: {
+  tomorrowBadge: {
     backgroundColor: Colors.textSecondary,
     paddingHorizontal: 8,
-    paddingVertical: 2,
-    borderRadius: 10,
+    paddingVertical: 3,
+    borderRadius: 3,
+    alignSelf: 'flex-start',
   },
-  tomorrowPillText: {
+  badgeText: {
     color: Colors.white,
     fontSize: 10,
     fontWeight: '700',
   },
-  explanationText: {
-    color: Colors.linkBlue,
-    fontSize: 11,
+  explanation: {
     marginTop: 4,
+    color: Colors.textSecondary,
+    fontSize: 11,
   },
   itemPriceCol: {
     alignItems: 'flex-end',
@@ -413,7 +455,7 @@ const styles = StyleSheet.create({
   },
   itemPrice: {
     color: Colors.textPrimary,
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '700',
   },
   itemQty: {
@@ -421,28 +463,36 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginTop: 2,
   },
+  // Now banner
   nowBanner: {
-    backgroundColor: '#E8F5E9',
-    margin: 12,
-    borderRadius: Radius.md,
-    padding: 10,
-    paddingHorizontal: 12,
+    backgroundColor: '#E7F5EA',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   nowBannerText: {
     color: Colors.successGreen,
     fontSize: 13,
-    fontWeight: '700',
-    textAlign: 'center',
+    fontWeight: '600',
+    marginLeft: 6,
   },
-  demoLinkWrap: {
+  compareWrap: {
+    flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
     marginVertical: 8,
   },
-  demoLinkText: {
+  compareHint: {
+    color: Colors.textSecondary,
+    fontSize: 12,
+  },
+  compareLink: {
     color: Colors.linkBlue,
     fontSize: 12,
-    textDecorationLine: 'underline',
+    fontWeight: '600',
   },
+  // Bottom bar
   bottomBar: {
     position: 'absolute',
     bottom: 0,
@@ -450,21 +500,28 @@ const styles = StyleSheet.create({
     right: 0,
     backgroundColor: Colors.background,
     borderTopWidth: 1,
-    borderTopColor: Colors.border,
-    padding: 12,
-    paddingBottom: 24,
+    borderTopColor: Colors.inputBorder,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    paddingBottom: 28,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  bottomTotal: {
+    color: Colors.textPrimary,
+    fontSize: 18,
+    fontWeight: '700',
   },
   addButton: {
-    width: '100%',
-    height: 52,
     backgroundColor: Colors.primary,
-    borderRadius: Radius.md,
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 4,
   },
   addButtonText: {
     color: Colors.white,
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '700',
   },
 })

@@ -10,28 +10,24 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { Colors, Radius } from '../../lib/constants'
+import { Colors } from '../../lib/constants'
 
 interface QuickChip {
-  emoji: string
   label: string
   goal: string
 }
 
 const quickChips: QuickChip[] = [
   {
-    emoji: '🎂',
-    label: 'Birthday Party',
+    label: 'Birthday party',
     goal: 'Birthday party for 12 kids tomorrow under ₹4000',
   },
   {
-    emoji: '🏠',
-    label: 'New Flat Setup',
+    label: 'New flat setup',
     goal: 'New flat setup this weekend under ₹15000',
   },
   {
-    emoji: '✈️',
-    label: 'Road Trip',
+    label: 'Road trip',
     goal: 'Road trip for 4 people this weekend under ₹5000',
   },
 ]
@@ -68,13 +64,15 @@ export default function MissionsScreen() {
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.title}>🎯 What's your mission?</Text>
-        <Text style={styles.subtitle}>
-          Tell us your goal — we build the perfect cart
-        </Text>
+        <Text style={styles.title}>Missions</Text>
 
-        {/* Quick-start chips */}
-        <View style={styles.chipRow}>
+        {/* Quick start */}
+        <Text style={styles.quickStartLabel}>Quick start</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.chipRow}
+        >
           {quickChips.map((chip) => (
             <TouchableOpacity
               key={chip.label}
@@ -82,54 +80,57 @@ export default function MissionsScreen() {
               style={styles.chip}
               activeOpacity={0.7}
             >
-              <Text style={styles.chipText}>
-                {chip.emoji} {chip.label}
-              </Text>
+              <Text style={styles.chipText}>{chip.label}</Text>
             </TouchableOpacity>
           ))}
+        </ScrollView>
+
+        {/* Main input */}
+        <View style={styles.inputSection}>
+          <Text style={styles.inputLabel}>Describe your goal</Text>
+          <TextInput
+            value={goalText}
+            onChangeText={(text) => {
+              setGoalText(text)
+              if (showError) setShowError(false)
+            }}
+            onFocus={() => setGoalFocused(true)}
+            onBlur={() => setGoalFocused(false)}
+            placeholder="e.g. Birthday party for 20 people under ₹3000"
+            placeholderTextColor={Colors.placeholder}
+            style={[styles.goalInput, goalFocused && styles.goalInputFocused]}
+            multiline
+            textAlignVertical="top"
+            accessibilityLabel="Mission goal"
+          />
         </View>
 
-        {/* Goal input */}
-        <TextInput
-          value={goalText}
-          onChangeText={(text) => {
-            setGoalText(text)
-            if (showError) setShowError(false)
-          }}
-          onFocus={() => setGoalFocused(true)}
-          onBlur={() => setGoalFocused(false)}
-          placeholder="e.g. Birthday party for 20 people under ₹3000"
-          placeholderTextColor={Colors.textSecondary}
-          style={[styles.goalInput, goalFocused && styles.goalInputFocused]}
-          multiline
-          numberOfLines={3}
-          accessibilityLabel="Mission goal"
-        />
-
-        {/* Error text */}
         {showError && (
           <Text style={styles.errorText}>Please enter your goal first</Text>
         )}
 
         {/* Budget row */}
         <View style={styles.budgetRow}>
-          <Text style={styles.budgetPrefix}>₹</Text>
-          <TextInput
-            value={budgetText}
-            onChangeText={setBudgetText}
-            keyboardType="numeric"
-            style={styles.budgetInput}
-            accessibilityLabel="Budget amount"
-          />
+          <Text style={styles.budgetLabel}>Budget</Text>
+          <View style={styles.budgetInputWrap}>
+            <Text style={styles.budgetPrefix}>₹</Text>
+            <TextInput
+              value={budgetText}
+              onChangeText={setBudgetText}
+              keyboardType="numeric"
+              style={styles.budgetInput}
+              accessibilityLabel="Budget amount"
+            />
+          </View>
         </View>
 
-        {/* Plan button */}
+        {/* CTA */}
         <TouchableOpacity
           onPress={handlePlanMission}
           style={styles.planButton}
           activeOpacity={0.8}
         >
-          <Text style={styles.planButtonText}>Plan My Mission →</Text>
+          <Text style={styles.planButtonText}>Plan my cart</Text>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
@@ -146,86 +147,104 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   content: {
-    padding: 20,
     paddingBottom: 40,
   },
   title: {
     color: Colors.textPrimary,
     fontSize: 22,
     fontWeight: '700',
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 12,
   },
-  subtitle: {
+  quickStartLabel: {
     color: Colors.textSecondary,
-    fontSize: 14,
-    marginTop: 4,
+    fontSize: 12,
+    fontWeight: '600',
+    paddingHorizontal: 16,
+    marginBottom: 8,
   },
   chipRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: 16,
-    gap: 8,
+    paddingHorizontal: 16,
   },
   chip: {
-    borderWidth: 1.5,
-    borderColor: Colors.primary,
-    borderRadius: 20,
-    paddingHorizontal: 16,
+    backgroundColor: Colors.divider,
+    borderRadius: 4,
+    paddingHorizontal: 12,
     paddingVertical: 8,
+    marginRight: 8,
   },
   chipText: {
-    color: Colors.primary,
+    color: Colors.textPrimary,
     fontSize: 13,
+    fontWeight: '400',
+  },
+  inputSection: {
+    paddingHorizontal: 16,
+    marginTop: 16,
+  },
+  inputLabel: {
+    color: Colors.textPrimary,
+    fontSize: 14,
     fontWeight: '600',
+    marginBottom: 8,
   },
   goalInput: {
-    marginTop: 20,
-    minHeight: 80,
-    borderWidth: 1.5,
-    borderColor: Colors.border,
-    borderRadius: Radius.md,
-    padding: 12,
+    borderWidth: 1,
+    borderColor: Colors.inputBorder,
+    borderRadius: 4,
+    padding: 14,
     fontSize: 15,
     color: Colors.textPrimary,
-    textAlignVertical: 'top',
+    minHeight: 88,
   },
   goalInputFocused: {
-    borderColor: Colors.primary,
+    borderColor: Colors.inputBorderFocus,
   },
   errorText: {
     color: Colors.errorRed,
-    fontSize: 13,
-    marginTop: 8,
-    fontWeight: '600',
+    fontSize: 12,
+    marginTop: 4,
+    paddingHorizontal: 16,
   },
   budgetRow: {
+    marginHorizontal: 16,
+    marginTop: 12,
+    backgroundColor: Colors.cardBg,
+    borderRadius: 4,
+    padding: 12,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  budgetLabel: {
+    color: Colors.textSecondary,
+    fontSize: 13,
+  },
+  budgetInputWrap: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.border,
-    paddingBottom: 4,
   },
   budgetPrefix: {
-    color: Colors.textSecondary,
-    fontSize: 16,
-    marginRight: 4,
+    color: Colors.textPrimary,
+    fontSize: 14,
   },
   budgetInput: {
-    width: 100,
-    fontSize: 16,
-    color: Colors.textPrimary,
+    width: 80,
+    fontSize: 14,
     fontWeight: '600',
-    paddingVertical: 4,
-    paddingHorizontal: 8,
+    color: Colors.textPrimary,
+    textAlign: 'right',
+    paddingVertical: 0,
   },
   planButton: {
-    width: '100%',
+    marginHorizontal: 16,
+    marginTop: 20,
     height: 52,
     backgroundColor: Colors.primary,
-    borderRadius: Radius.md,
+    borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 24,
   },
   planButtonText: {
     color: Colors.white,

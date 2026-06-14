@@ -24,7 +24,7 @@ import Animated, {
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { api } from '../lib/api'
-import { Colors, Radius } from '../lib/constants'
+import { Colors, getLabelColor } from '../lib/constants'
 
 type FlagSeverity = 'red' | 'amber' | 'blue'
 
@@ -205,7 +205,20 @@ const MATH_EXPLANATIONS: Record<string, string> = {
   f4: 'Sponsored product — no child_safe certification. Blocked per MissionCart policy.',
 }
 
-function FlagCard({
+const FLAG_CONFIG: Record<
+  FlagSeverity,
+  { bar: string; icon: keyof typeof Ionicons.glyphMap; label: string }
+> = {
+  red: { bar: Colors.errorRed, icon: 'warning-outline', label: 'ISSUE' },
+  amber: { bar: Colors.primary, icon: 'swap-horizontal-outline', label: 'SWAPPING' },
+  blue: {
+    bar: Colors.linkBlue,
+    icon: 'shield-checkmark-outline',
+    label: 'SPONSORED BLOCKED',
+  },
+}
+
+function FlagRow({
   flag,
   isExpanded,
   onToggle,
@@ -214,86 +227,34 @@ function FlagCard({
   isExpanded: boolean
   onToggle: () => void
 }) {
-  const isRed = flag.severity === 'red'
-  const isAmber = flag.severity === 'amber'
-  const cardStyle = isRed
-    ? styles.redFlagCard
-    : isAmber
-      ? styles.amberFlagCard
-      : styles.blueFlagCard
-  const textStyle = isRed
-    ? styles.redFlagText
-    : isAmber
-      ? styles.amberFlagText
-      : styles.blueFlagText
-  const label = isRed
-    ? 'ISSUE FOUND'
-    : isAmber
-      ? 'SWAPPING'
-      : 'SPONSORED BLOCKED'
-  const fixText = isRed
-    ? 'Tap to fix →'
-    : isAmber
-      ? 'Finding Now-eligible replacement...'
-      : 'Protected from biased recommendation'
+  const cfg = FLAG_CONFIG[flag.severity]
 
   return (
     <TouchableOpacity onPress={onToggle} activeOpacity={0.8}>
-      <Animated.View
-        entering={FadeInDown.duration(400)}
-        style={[styles.flagCard, cardStyle]}
-      >
-        <View style={styles.flagIcon}>
-          <Ionicons
-            name={
-              flag.severity === 'blue'
-                ? 'shield-checkmark'
-                : flag.severity === 'amber'
-                  ? 'swap-horizontal'
-                  : 'warning'
-            }
-            size={21}
-            color={
-              flag.severity === 'blue'
-                ? Colors.sponsoredBlue
-                : flag.severity === 'amber'
-                  ? Colors.primaryDark
-                  : Colors.errorRed
-            }
-          />
-        </View>
+      <Animated.View entering={FadeInDown.duration(400)} style={styles.flagRow}>
+        <View style={[styles.flagBar, { backgroundColor: cfg.bar }]} />
+        <Ionicons
+          name={cfg.icon}
+          size={18}
+          color={cfg.bar}
+          style={styles.flagIcon}
+        />
         <View style={styles.flagContent}>
-          <Text
-            style={[
-              styles.flagLabel,
-              textStyle,
-              flag.severity === 'blue' && styles.blueFlagLabel,
-            ]}
-          >
-            {label}
-          </Text>
-          <Text style={[styles.flagMessage, textStyle]}>{flag.message}</Text>
-          <Text
-            style={[
-              styles.flagFixText,
-              textStyle,
-              isRed && styles.flagFixUnderline,
-            ]}
-          >
-            {fixText}
-          </Text>
+          <Text style={[styles.flagLabel, { color: cfg.bar }]}>{cfg.label}</Text>
+          <Text style={styles.flagMessage}>{flag.message}</Text>
           {isExpanded && MATH_EXPLANATIONS[flag.id] && (
             <View style={styles.mathContainer}>
-              <Text style={styles.mathText}>
-                📐 {MATH_EXPLANATIONS[flag.id]}
-              </Text>
+              <Text style={styles.mathText}>{MATH_EXPLANATIONS[flag.id]}</Text>
             </View>
           )}
         </View>
         {flag.severity === 'blue' && (
-          <View style={styles.trustCheck}>
-            <Ionicons name="checkmark" size={13} color={Colors.white} />
-          </View>
+          <Ionicons
+            name="checkmark-circle"
+            size={20}
+            color={Colors.linkBlue}
+            style={styles.flagRightIcon}
+          />
         )}
       </Animated.View>
     </TouchableOpacity>
@@ -386,145 +347,124 @@ export default function AuditScreen() {
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.cartSection}>
-          <View style={styles.cartSectionHeader}>
-            <Text style={styles.cartEyebrow}>YOUR CART</Text>
-            <Text style={styles.cartSummary}>4 items • ₹4,340</Text>
-          </View>
+        {/* ORIGINAL CART SECTION */}
+        <View style={styles.cartSectionHeader}>
+          <Text style={styles.cartEyebrow}>YOUR CART</Text>
+          <Text style={styles.cartSummary}>4 items · ₹4,340</Text>
+        </View>
 
-          <View style={styles.cartRows}>
-            {CART_PRODUCTS.map((product, index) => (
-              <View
-                key={product.id}
-                style={[
-                  styles.cartRow,
-                  index < CART_PRODUCTS.length - 1 && styles.cartRowDivider,
-                ]}
-              >
-                <View style={styles.productImage}>
-                  <Ionicons
-                    name="cube-outline"
-                    size={22}
-                    color={Colors.textSecondary}
-                  />
-                </View>
-                <View style={styles.productCopy}>
-                  <View style={styles.productNameRow}>
-                    <Text style={styles.productName}>{product.name}</Text>
-                    {product.sponsored && (
-                      <View style={styles.sponsoredPill}>
-                        <Text style={styles.sponsoredText}>Sponsored</Text>
-                      </View>
-                    )}
-                  </View>
-                  <Text style={styles.productQuantity}>
-                    Qty: {product.quantity}
-                  </Text>
-                </View>
-                <Text style={styles.productPrice}>₹{product.price}</Text>
+        {CART_PRODUCTS.map((product) => {
+          const palette = getLabelColor(product.name)
+          return (
+            <View key={product.id} style={styles.cartRow}>
+              <View style={[styles.letterTile, { backgroundColor: palette.bg }]}>
+                <Text style={[styles.letterTileText, { color: palette.text }]}>
+                  {product.name[0].toUpperCase()}
+                </Text>
               </View>
-            ))}
-          </View>
+              <View style={styles.cartRowCopy}>
+                <Text style={styles.productName}>{product.name}</Text>
+                <Text style={styles.productQuantity}>Qty: {product.quantity}</Text>
+              </View>
+              <View style={styles.cartRowRight}>
+                <Text style={styles.productPrice}>₹{product.price}</Text>
+                {product.sponsored && (
+                  <Text style={styles.sponsoredLabel}>Sponsored</Text>
+                )}
+              </View>
+            </View>
+          )
+        })}
 
-          <View style={styles.totalRow}>
-            <Text style={styles.totalText}>Total</Text>
-            <Text style={styles.totalText}>₹4,340</Text>
-          </View>
+        <View style={styles.totalRow}>
+          <Text style={styles.totalText}>Total</Text>
+          <Text style={styles.totalValue}>₹4,340</Text>
         </View>
 
         <View style={styles.sectionDivider} />
 
-        <View style={styles.auditSection}>
-          <View style={styles.auditHeaderRow}>
-            <Text style={styles.auditTitle}>🔍 MissionCart Audit</Text>
-            <Text style={styles.poweredText}>
-              Powered by <Text style={styles.bedrockText}>Bedrock</Text>
-            </Text>
-          </View>
-
-          {isChecking && (
-            <View style={styles.checkingRow}>
-              <PulseIndicator />
-              <Text style={styles.checkingText}>Checking your cart...</Text>
-            </View>
-          )}
-
-          <View style={styles.flagsList}>
-            {FLAGS.slice(0, visibleFlagCount).map((flag) => (
-              <FlagCard
-                key={flag.id}
-                flag={flag}
-                isExpanded={expandedFlag === flag.id}
-                onToggle={() =>
-                  setExpandedFlag((prev) =>
-                    prev === flag.id ? null : flag.id,
-                  )
-                }
-              />
-            ))}
-          </View>
-
-          {showRepair && (
-            <Animated.View
-              entering={FadeInDown.duration(400)}
-              style={styles.repairSection}
-            >
-              <Text style={styles.repairTitle}>✨ Repairing your cart</Text>
-              <View style={styles.progressTrack}>
-                <Animated.View style={[styles.progressFill, progressStyle]} />
-              </View>
-
-              {showPrice && (
-                <Animated.View
-                  entering={FadeInDown.duration(300)}
-                  style={styles.priceBlock}
-                >
-                  <View style={styles.priceRow}>
-                    <Text style={styles.oldPrice}>₹4,340</Text>
-                    <Text style={styles.newPrice}>₹3,850</Text>
-                  </View>
-                  <View style={styles.savingsPill}>
-                    <Text style={styles.savingsText}>You save ₹490</Text>
-                  </View>
-                </Animated.View>
-              )}
-
-              {showCoverage && (
-                <Animated.View
-                  entering={FadeInDown.duration(300)}
-                  style={styles.coverageBlock}
-                >
-                  <Text style={styles.coverageTitle}>Coverage: 9/9 ✓</Text>
-                  <Text style={styles.coverageSubtitle}>
-                    All items available on Amazon Now ⚡
-                  </Text>
-                </Animated.View>
-              )}
-
-              {showCta && (
-                <Animated.View
-                  entering={FadeInDown.duration(300)}
-                  style={styles.ctaBlock}
-                >
-                  <Pressable
-                    onPress={handleOrder}
-                    style={styles.orderButton}
-                    accessibilityRole="button"
-                  >
-                    <Text style={styles.orderButtonText}>
-                      Order Repaired Cart via Amazon Now ⚡
-                    </Text>
-                  </Pressable>
-                  {orderPlaced && (
-                    <Text style={styles.orderPlacedText}>
-                      ✓ Order placed! Arriving in 12 mins
-                    </Text>
-                  )}
-                </Animated.View>
-              )}
-            </Animated.View>
-          )}
+        {/* AUDIT RUNNING SECTION */}
+        <View style={styles.auditHeader}>
+          <Text style={styles.auditTitle}>MissionCart Audit</Text>
+          <Text style={styles.poweredRow}>
+            Powered by <Text style={styles.bedrockText}>Amazon Bedrock</Text>
+          </Text>
         </View>
+
+        {isChecking && (
+          <View style={styles.checkingRow}>
+            <PulseIndicator />
+            <Text style={styles.checkingText}>Checking your cart...</Text>
+          </View>
+        )}
+
+        <View style={styles.flagsList}>
+          {FLAGS.slice(0, visibleFlagCount).map((flag) => (
+            <FlagRow
+              key={flag.id}
+              flag={flag}
+              isExpanded={expandedFlag === flag.id}
+              onToggle={() =>
+                setExpandedFlag((prev) => (prev === flag.id ? null : flag.id))
+              }
+            />
+          ))}
+        </View>
+
+        {showRepair && (
+          <Animated.View entering={FadeInDown.duration(400)}>
+            <View style={styles.sectionDivider} />
+
+            <Text style={styles.repairTitle}>Repairing your cart</Text>
+            <View style={styles.progressTrack}>
+              <Animated.View style={[styles.progressFill, progressStyle]} />
+            </View>
+
+            {showPrice && (
+              <Animated.View entering={FadeInDown.duration(300)}>
+                <View style={styles.priceRow}>
+                  <Text style={styles.oldPrice}>₹4,340</Text>
+                  <Text style={styles.newPrice}>₹3,850</Text>
+                </View>
+                <View style={styles.savingsPill}>
+                  <Text style={styles.savingsText}>You save ₹490</Text>
+                </View>
+              </Animated.View>
+            )}
+
+            {showCoverage && (
+              <Animated.View
+                entering={FadeInDown.duration(300)}
+                style={styles.coverageRow}
+              >
+                <Ionicons
+                  name="checkmark-circle"
+                  size={16}
+                  color={Colors.successGreen}
+                />
+                <Text style={styles.coverageStrong}>Coverage: 9/9</Text>
+                <Text style={styles.coverageMuted}> · All items on Amazon Now</Text>
+              </Animated.View>
+            )}
+
+            {showCta && (
+              <Animated.View entering={FadeInDown.duration(300)}>
+                <Pressable
+                  onPress={handleOrder}
+                  style={styles.orderButton}
+                  accessibilityRole="button"
+                >
+                  <Text style={styles.orderButtonText}>Order repaired cart</Text>
+                </Pressable>
+                {orderPlaced && (
+                  <Text style={styles.orderPlacedText}>
+                    Order placed · Arriving in 12 mins
+                  </Text>
+                )}
+              </Animated.View>
+            )}
+          </Animated.View>
+        )}
       </ScrollView>
     </SafeAreaView>
   )
@@ -538,7 +478,7 @@ const styles = StyleSheet.create({
   header: {
     minHeight: 64,
     paddingHorizontal: 12,
-    paddingVertical: 9,
+    paddingVertical: 8,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.nowBlue,
@@ -546,7 +486,7 @@ const styles = StyleSheet.create({
   backButton: {
     width: 40,
     height: 40,
-    marginRight: 5,
+    marginRight: 4,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -570,18 +510,18 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   content: {
-    paddingBottom: 28,
+    paddingBottom: 32,
   },
-  cartSection: {
-    paddingTop: 13,
-    paddingHorizontal: 12,
-    backgroundColor: Colors.background,
-  },
+  // Cart section
   cartSectionHeader: {
-    paddingBottom: 7,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    backgroundColor: Colors.background,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.inputBorder,
   },
   cartEyebrow: {
     color: Colors.textSecondary,
@@ -595,47 +535,44 @@ const styles = StyleSheet.create({
     fontSize: 11,
     lineHeight: 14,
   },
-  cartRows: {
-    backgroundColor: Colors.background,
-  },
   cartRow: {
-    minHeight: 61,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.divider,
     flexDirection: 'row',
     alignItems: 'center',
   },
-  cartRowDivider: {
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.border,
-  },
-  productImage: {
-    width: 40,
-    height: 40,
-    marginRight: 10,
+  letterTile: {
+    width: 44,
+    height: 44,
+    borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.secondaryBg,
-    borderRadius: Radius.md,
   },
-  productCopy: {
+  letterTileText: {
+    fontSize: 18,
+    fontWeight: '700',
+  },
+  cartRowCopy: {
     flex: 1,
-    paddingRight: 8,
-  },
-  productNameRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    marginLeft: 12,
   },
   productName: {
-    flexShrink: 1,
     color: Colors.textPrimary,
     fontSize: 14,
     lineHeight: 18,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   productQuantity: {
-    marginTop: 3,
+    marginTop: 2,
     color: Colors.textSecondary,
     fontSize: 12,
     lineHeight: 15,
+  },
+  cartRowRight: {
+    alignItems: 'flex-end',
+    marginLeft: 8,
   },
   productPrice: {
     color: Colors.textPrimary,
@@ -643,27 +580,27 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     fontWeight: '700',
   },
-  sponsoredPill: {
-    marginLeft: 6,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    backgroundColor: Colors.secondaryBg,
-    borderRadius: 10,
-  },
-  sponsoredText: {
+  sponsoredLabel: {
+    marginTop: 2,
     color: Colors.textSecondary,
     fontSize: 10,
-    lineHeight: 12,
   },
   totalRow: {
-    minHeight: 48,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     borderTopWidth: 2,
-    borderTopColor: Colors.border,
+    borderTopColor: Colors.inputBorder,
   },
   totalText: {
+    color: Colors.textPrimary,
+    fontSize: 14,
+    lineHeight: 18,
+    fontWeight: '700',
+  },
+  totalValue: {
     color: Colors.textPrimary,
     fontSize: 16,
     lineHeight: 21,
@@ -672,18 +609,13 @@ const styles = StyleSheet.create({
   sectionDivider: {
     width: '100%',
     height: 8,
-    backgroundColor: Colors.secondaryBg,
+    backgroundColor: Colors.divider,
   },
-  auditSection: {
-    paddingTop: 15,
-    paddingBottom: 22,
-    backgroundColor: Colors.background,
-  },
-  auditHeaderRow: {
-    paddingHorizontal: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+  // Audit running
+  auditHeader: {
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 8,
   },
   auditTitle: {
     color: Colors.textPrimary,
@@ -691,25 +623,25 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     fontWeight: '700',
   },
-  poweredText: {
+  poweredRow: {
+    marginTop: 2,
     color: Colors.textSecondary,
     fontSize: 11,
     lineHeight: 15,
   },
   bedrockText: {
     color: Colors.primary,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   checkingRow: {
-    minHeight: 38,
-    marginHorizontal: 12,
-    marginTop: 8,
+    paddingHorizontal: 16,
+    marginBottom: 8,
     flexDirection: 'row',
     alignItems: 'center',
   },
   pulseDots: {
     width: 38,
-    marginRight: 7,
+    marginRight: 8,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -726,195 +658,144 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   flagsList: {
-    marginTop: 2,
+    marginTop: 0,
   },
-  flagCard: {
-    minHeight: 88,
-    marginHorizontal: 12,
-    marginVertical: 4,
-    padding: 12,
+  // Flag rows
+  flagRow: {
+    backgroundColor: Colors.background,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.divider,
+    paddingHorizontal: 16,
+    paddingVertical: 14,
     flexDirection: 'row',
     alignItems: 'flex-start',
-    borderLeftWidth: 4,
-    borderRadius: Radius.md,
   },
-  redFlagCard: {
-    backgroundColor: '#FFF5F5',
-    borderLeftColor: Colors.errorRed,
-  },
-  amberFlagCard: {
-    backgroundColor: '#FFFBF0',
-    borderLeftColor: Colors.primaryDark,
-  },
-  blueFlagCard: {
-    backgroundColor: Colors.trustBg,
-    borderLeftColor: Colors.sponsoredBlue,
+  flagBar: {
+    width: 3,
+    alignSelf: 'stretch',
+    marginRight: 12,
+    borderRadius: 2,
   },
   flagIcon: {
-    width: 30,
-    marginRight: 3,
-    paddingTop: 2,
+    marginRight: 10,
+    marginTop: 1,
   },
   flagContent: {
     flex: 1,
-    paddingRight: 7,
   },
   flagLabel: {
     fontSize: 10,
-    lineHeight: 13,
-    fontWeight: '800',
+    fontWeight: '700',
     letterSpacing: 1,
   },
   flagMessage: {
-    marginTop: 3,
-    fontSize: 14,
-    lineHeight: 18,
-    fontWeight: '700',
-  },
-  flagFixText: {
-    marginTop: 5,
-    fontSize: 12,
-    lineHeight: 16,
-  },
-  flagFixUnderline: {
-    textDecorationLine: 'underline',
-  },
-  redFlagText: {
-    color: Colors.errorRed,
-  },
-  amberFlagText: {
-    color: Colors.primaryDark,
-  },
-  blueFlagText: {
-    color: Colors.sponsoredBlue,
-  },
-  blueFlagLabel: {
-    letterSpacing: 1.5,
-  },
-  trustCheck: {
-    width: 20,
-    height: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.sponsoredBlue,
-    borderRadius: 10,
-  },
-  repairSection: {
-    marginHorizontal: 12,
-    marginTop: 12,
-    paddingTop: 14,
-    borderTopWidth: 1,
-    borderTopColor: Colors.border,
-  },
-  repairTitle: {
+    marginTop: 2,
     color: Colors.textPrimary,
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: '700',
-  },
-  progressTrack: {
-    width: '100%',
-    height: 6,
-    marginTop: 12,
-    overflow: 'hidden',
-    backgroundColor: Colors.secondaryBg,
-    borderRadius: 3,
-  },
-  progressFill: {
-    height: 6,
-    backgroundColor: Colors.primary,
-    borderRadius: 3,
-  },
-  priceBlock: {
-    marginTop: 17,
-    alignItems: 'flex-start',
-  },
-  priceRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 14,
-  },
-  oldPrice: {
-    color: Colors.textSecondary,
-    fontSize: 20,
-    lineHeight: 28,
-    textDecorationLine: 'line-through',
-  },
-  newPrice: {
-    color: Colors.successGreen,
-    fontSize: 28,
-    lineHeight: 34,
-    fontWeight: '800',
-  },
-  savingsPill: {
-    marginTop: 6,
-    paddingHorizontal: 8,
-    paddingVertical: 2,
-    backgroundColor: Colors.successGreen,
-    borderRadius: 10,
-  },
-  savingsText: {
-    color: Colors.white,
-    fontSize: 12,
-    lineHeight: 15,
-    fontWeight: '600',
-  },
-  coverageBlock: {
-    marginTop: 15,
-  },
-  coverageTitle: {
-    color: Colors.successGreen,
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: '700',
-  },
-  coverageSubtitle: {
-    marginTop: 3,
-    color: Colors.textSecondary,
-    fontSize: 13,
-    lineHeight: 18,
-  },
-  orderButton: {
-    width: '100%',
-    height: 52,
-    marginTop: 17,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.primary,
-    borderRadius: Radius.md,
-  },
-  ctaBlock: {
-    width: '100%',
-    paddingBottom: 4,
-  },
-  orderButtonText: {
-    color: Colors.white,
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: '700',
-    textAlign: 'center',
-  },
-  orderPlacedText: {
-    marginTop: 10,
-    color: Colors.successGreen,
     fontSize: 14,
-    lineHeight: 19,
     fontWeight: '600',
-    textAlign: 'center',
+  },
+  flagRightIcon: {
+    marginLeft: 8,
   },
   mathContainer: {
-    marginTop: 4,
-    paddingTop: 8,
-    paddingHorizontal: 12,
-    paddingBottom: 8,
-    backgroundColor: Colors.white,
-    borderTopWidth: 1,
-    borderTopColor: Colors.border,
+    marginTop: 8,
+    backgroundColor: Colors.cardBg,
     borderRadius: 4,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
   },
   mathText: {
     color: Colors.textSecondary,
     fontSize: 12,
     lineHeight: 18,
+  },
+  // Repair
+  repairTitle: {
+    color: Colors.textPrimary,
+    fontSize: 16,
+    fontWeight: '700',
+    paddingHorizontal: 16,
+    paddingTop: 16,
+  },
+  progressTrack: {
+    height: 4,
+    marginHorizontal: 16,
+    marginTop: 12,
+    overflow: 'hidden',
+    backgroundColor: '#E7E7E7',
+    borderRadius: 2,
+  },
+  progressFill: {
+    height: 4,
+    backgroundColor: Colors.primary,
+    borderRadius: 2,
+  },
+  priceRow: {
+    marginHorizontal: 16,
+    marginTop: 16,
+    flexDirection: 'row',
+    alignItems: 'baseline',
+    gap: 12,
+  },
+  oldPrice: {
+    color: Colors.textSecondary,
+    fontSize: 18,
+    textDecorationLine: 'line-through',
+  },
+  newPrice: {
+    color: Colors.successGreen,
+    fontSize: 28,
+    fontWeight: '700',
+  },
+  savingsPill: {
+    marginHorizontal: 16,
+    marginTop: 4,
+    backgroundColor: '#E7F5EA',
+    borderRadius: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    alignSelf: 'flex-start',
+  },
+  savingsText: {
+    color: Colors.successGreen,
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  coverageRow: {
+    paddingHorizontal: 16,
+    marginTop: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  coverageStrong: {
+    color: Colors.successGreen,
+    fontSize: 14,
+    fontWeight: '600',
+    marginLeft: 6,
+  },
+  coverageMuted: {
+    color: Colors.textSecondary,
+    fontSize: 14,
+  },
+  orderButton: {
+    height: 52,
+    margin: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.primary,
+    borderRadius: 4,
+  },
+  orderButtonText: {
+    color: Colors.white,
+    fontSize: 16,
+    fontWeight: '700',
+  },
+  orderPlacedText: {
+    marginTop: -4,
+    marginBottom: 12,
+    color: Colors.successGreen,
+    fontSize: 14,
+    fontWeight: '600',
+    textAlign: 'center',
   },
 })

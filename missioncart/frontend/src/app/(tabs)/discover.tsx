@@ -1,3 +1,5 @@
+import { Ionicons } from '@expo/vector-icons'
+import { useRouter } from 'expo-router'
 import { useState } from 'react'
 import {
   ScrollView,
@@ -8,18 +10,19 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { Colors, Radius } from '../../lib/constants'
+import { Colors, getLabelColor } from '../../lib/constants'
+
+type IoniconName = keyof typeof Ionicons.glyphMap
 
 interface IdentityGroup {
-  emoji: string
+  icon: IoniconName
   name: string
-  members: string
 }
 
 interface GoalTile {
-  emoji: string
   name: string
   members: string
+  accent: string
 }
 
 interface ProductItem {
@@ -31,17 +34,17 @@ interface ProductItem {
 }
 
 const IDENTITY_GROUPS: IdentityGroup[] = [
-  { emoji: '💪', name: 'Office Gym Dad', members: '12.4k members' },
-  { emoji: '📚', name: 'JEE Student', members: '8.9k members' },
-  { emoji: '✨', name: 'College Girl', members: '15.2k members' },
-  { emoji: '👨‍🍳', name: 'Home Chef', members: '6.7k members' },
+  { icon: 'barbell-outline', name: 'Office Gym Dad' },
+  { icon: 'book-outline', name: 'JEE Student' },
+  { icon: 'school-outline', name: 'College Girl' },
+  { icon: 'restaurant-outline', name: 'Home Chef' },
 ]
 
 const GOAL_TILES: GoalTile[] = [
-  { emoji: '🏕️', name: 'Trekking Essentials', members: '2,847 trekkers' },
-  { emoji: '🎉', name: 'Party Season', members: '5,102 planners' },
-  { emoji: '📚', name: 'JEE Prep', members: '3,891 students' },
-  { emoji: '👶', name: 'New Baby', members: '1,203 parents' },
+  { name: 'Trekking Essentials', members: '2,847 planners', accent: '#2E7D32' },
+  { name: 'Party Season', members: '5,102 planners', accent: '#FF6B00' },
+  { name: 'JEE Prep', members: '3,891 planners', accent: '#1565C0' },
+  { name: 'New Baby', members: '1,203 planners', accent: '#6B3FA0' },
 ]
 
 const PRODUCTS: ProductItem[] = [
@@ -53,16 +56,19 @@ const PRODUCTS: ProductItem[] = [
   { name: 'Wireless Earphones', price: 799, rating: 4.0, amazonNow: false, initial: 'W' },
 ]
 
+const DEMO_SCREENS = [
+  { label: 'Voice input', route: '/ppt/voice-input' },
+  { label: 'Photo scan', route: '/ppt/photo-input' },
+  { label: 'Share card', route: '/ppt/mission-share' },
+  { label: 'Seller dashboard', route: '/ppt/seller-dashboard' },
+] as const
+
 export default function DiscoverScreen() {
+  const router = useRouter()
   const [selectedGroup, setSelectedGroup] = useState<string | null>(null)
   const [selectedGoal, setSelectedGoal] = useState<string | null>(null)
 
   const showProducts = selectedGroup !== null || selectedGoal !== null
-  const productLabel = selectedGoal
-    ? `What ${GOAL_TILES.find((g) => g.name === selectedGoal)?.members || 'people'} actually bought`
-    : selectedGroup
-      ? `${selectedGroup} essentials`
-      : ''
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>
@@ -74,113 +80,142 @@ export default function DiscoverScreen() {
         {/* Header */}
         <Text style={styles.pageTitle}>Discover</Text>
 
-        {/* Identity Groups Section */}
-        <Text style={styles.sectionTitle}>Essentials for people like you</Text>
-        <Text style={styles.sectionSubtitle}>
-          What real people like you actually buy.{'\n'}Zero sponsored products.
-        </Text>
-
+        {/* Identity Groups */}
+        <Text style={styles.sectionTitle}>For people like you</Text>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.groupsScroll}
+          contentContainerStyle={styles.pillsScroll}
         >
-          {IDENTITY_GROUPS.map((group) => (
-            <TouchableOpacity
-              key={group.name}
-              onPress={() => {
-                setSelectedGroup(group.name)
-                setSelectedGoal(null)
-              }}
-              activeOpacity={0.7}
-              style={[
-                styles.groupCard,
-                selectedGroup === group.name && styles.groupCardSelected,
-              ]}
-            >
-              <Text style={styles.groupEmoji}>{group.emoji}</Text>
-              <Text style={styles.groupName}>{group.name}</Text>
-              <Text style={styles.groupMembers}>{group.members}</Text>
-              <View style={styles.noSponsoredPill}>
-                <Text style={styles.noSponsoredText}>No sponsored</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
+          {IDENTITY_GROUPS.map((group) => {
+            const isSelected = selectedGroup === group.name
+            return (
+              <TouchableOpacity
+                key={group.name}
+                onPress={() => {
+                  setSelectedGroup(group.name)
+                  setSelectedGoal(null)
+                }}
+                activeOpacity={0.7}
+                style={[styles.groupPill, isSelected && styles.groupPillSelected]}
+              >
+                <Ionicons
+                  name={group.icon}
+                  size={16}
+                  color={isSelected ? Colors.white : Colors.textPrimary}
+                />
+                <Text
+                  style={[
+                    styles.groupPillText,
+                    isSelected && styles.groupPillTextSelected,
+                  ]}
+                >
+                  {group.name}
+                </Text>
+              </TouchableOpacity>
+            )
+          })}
         </ScrollView>
+
+        {/* Trust badge */}
+        {showProducts && (
+          <View style={styles.trustBadge}>
+            <Ionicons
+              name="shield-checkmark"
+              size={14}
+              color={Colors.successGreen}
+            />
+            <Text style={styles.trustBadgeText}>
+              Zero sponsored products in this section
+            </Text>
+          </View>
+        )}
 
         {/* Product grid */}
         {showProducts && (
-          <View style={styles.productSection}>
-            <Text style={styles.productSectionTitle}>{productLabel}</Text>
-            <Text style={styles.productSectionSubtitle}>
-              Zero sponsored products · Curated by community
-            </Text>
-
-            {/* Trust badge */}
-            <View style={styles.trustBadge}>
-              <Text style={styles.trustBadgeText}>
-                🛡️ No sponsored products in this section
-              </Text>
-            </View>
-
-            {/* Product grid */}
-            <View style={styles.productGrid}>
-              {PRODUCTS.map((product) => (
+          <View style={styles.productGrid}>
+            {PRODUCTS.map((product) => {
+              const palette = getLabelColor(product.name)
+              return (
                 <View key={product.name} style={styles.productCard}>
-                  <View style={styles.productPlaceholder}>
-                    <Text style={styles.productInitial}>{product.initial}</Text>
+                  <View
+                    style={[styles.productPlaceholder, { backgroundColor: palette.bg }]}
+                  >
+                    <Text style={[styles.productInitial, { color: palette.text }]}>
+                      {product.initial}
+                    </Text>
                   </View>
                   <Text style={styles.productName} numberOfLines={2}>
                     {product.name}
                   </Text>
                   <Text style={styles.productPrice}>₹{product.price}</Text>
-                  <Text style={styles.productRating}>⭐ {product.rating}</Text>
-                  {product.amazonNow ? (
-                    <View style={styles.nowPill}>
-                      <Text style={styles.nowPillText}>Now ⚡</Text>
-                    </View>
-                  ) : (
-                    <View style={styles.tomorrowPill}>
-                      <Text style={styles.tomorrowPillText}>Tomorrow</Text>
+                  <View style={styles.ratingRow}>
+                    <Ionicons name="star" size={10} color={Colors.primary} />
+                    <Text style={styles.ratingText}>{product.rating}</Text>
+                  </View>
+                  {product.amazonNow && (
+                    <View style={styles.nowBadge}>
+                      <Text style={styles.nowBadgeText}>NOW</Text>
                     </View>
                   )}
                 </View>
-              ))}
-            </View>
+              )
+            })}
           </View>
         )}
 
         {/* Divider */}
         <View style={styles.divider} />
 
-        {/* Popular Goals Section */}
-        <Text style={styles.goalsTitle}>Popular Goals Right Now</Text>
-
+        {/* Popular Goals */}
+        <Text style={styles.goalsTitle}>Popular goals</Text>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.goalsScroll}
         >
-          {GOAL_TILES.map((goal) => (
-            <TouchableOpacity
-              key={goal.name}
-              onPress={() => {
-                setSelectedGoal(goal.name)
-                setSelectedGroup(null)
-              }}
-              activeOpacity={0.7}
-              style={[
-                styles.goalCard,
-                selectedGoal === goal.name && styles.goalCardSelected,
-              ]}
-            >
-              <Text style={styles.goalEmoji}>{goal.emoji}</Text>
-              <Text style={styles.goalName}>{goal.name}</Text>
-              <Text style={styles.goalMembers}>{goal.members}</Text>
-              <Text style={styles.goalNoSponsored}>Zero sponsored</Text>
-            </TouchableOpacity>
-          ))}
+          {GOAL_TILES.map((goal) => {
+            const isSelected = selectedGoal === goal.name
+            return (
+              <TouchableOpacity
+                key={goal.name}
+                onPress={() => {
+                  if (goal.name === 'Trekking Essentials') {
+                    router.push('/community/trekking')
+                    return
+                  }
+                  setSelectedGoal(goal.name)
+                  setSelectedGroup(null)
+                }}
+                activeOpacity={0.7}
+                style={[
+                  styles.goalCard,
+                  { borderLeftColor: goal.accent },
+                  isSelected && styles.goalCardSelected,
+                ]}
+              >
+                <Text style={styles.goalName}>{goal.name}</Text>
+                <Text style={styles.goalMembers}>{goal.members}</Text>
+                <Text style={styles.goalNoSponsored}>No sponsored</Text>
+              </TouchableOpacity>
+            )
+          })}
         </ScrollView>
+
+        <View style={styles.demoSection}>
+          <Text style={styles.demoSectionTitle}>Preview screens</Text>
+          <View style={styles.demoLinks}>
+            {DEMO_SCREENS.map((screen) => (
+              <TouchableOpacity
+                key={screen.route}
+                onPress={() => router.push(screen.route)}
+                accessibilityRole="button"
+              >
+                <Text style={styles.demoLinkText}>{screen.label}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   )
@@ -196,173 +231,125 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   content: {
-    paddingBottom: 20,
+    paddingBottom: 24,
   },
   pageTitle: {
     color: Colors.textPrimary,
     fontSize: 22,
     fontWeight: '700',
-    padding: 16,
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 16,
   },
   sectionTitle: {
     color: Colors.textPrimary,
     fontSize: 16,
     fontWeight: '700',
     paddingHorizontal: 16,
-    marginBottom: 8,
-  },
-  sectionSubtitle: {
-    color: Colors.textSecondary,
-    fontSize: 13,
-    paddingHorizontal: 16,
     marginBottom: 12,
   },
-  groupsScroll: {
-    paddingLeft: 16,
-    paddingRight: 6,
-  },
-  groupCard: {
-    width: 140,
-    marginRight: 10,
-    backgroundColor: Colors.background,
-    borderWidth: 1,
-    borderColor: Colors.border,
-    borderRadius: 8,
-    padding: 14,
-  },
-  groupCardSelected: {
-    borderColor: Colors.primary,
-    borderWidth: 2,
-  },
-  groupEmoji: {
-    fontSize: 28,
-  },
-  groupName: {
-    color: Colors.textPrimary,
-    fontSize: 14,
-    fontWeight: '700',
-    marginTop: 6,
-  },
-  groupMembers: {
-    color: Colors.textSecondary,
-    fontSize: 11,
-    marginTop: 2,
-  },
-  noSponsoredPill: {
-    backgroundColor: Colors.successGreen,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 8,
-    alignSelf: 'flex-start',
-    marginTop: 4,
-  },
-  noSponsoredText: {
-    color: Colors.white,
-    fontSize: 9,
-    fontWeight: '700',
-  },
-  productSection: {
+  pillsScroll: {
     paddingHorizontal: 16,
-    marginTop: 20,
   },
-  productSectionTitle: {
+  groupPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: Colors.inputBorder,
+    borderRadius: 20,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    marginRight: 8,
+  },
+  groupPillSelected: {
+    backgroundColor: Colors.primary,
+    borderColor: Colors.primary,
+  },
+  groupPillText: {
     color: Colors.textPrimary,
-    fontSize: 15,
-    fontWeight: '700',
+    fontSize: 13,
+    fontWeight: '400',
+    marginLeft: 6,
   },
-  productSectionSubtitle: {
-    color: Colors.textSecondary,
-    fontSize: 12,
-    marginBottom: 10,
-    marginTop: 2,
+  groupPillTextSelected: {
+    color: Colors.white,
+    fontWeight: '600',
   },
   trustBadge: {
-    backgroundColor: Colors.trustBg,
-    borderWidth: 1,
-    borderColor: Colors.primeBadge,
-    borderRadius: Radius.md,
-    padding: 8,
-    paddingHorizontal: 12,
-    marginBottom: 12,
+    paddingHorizontal: 16,
+    marginVertical: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   trustBadgeText: {
-    color: Colors.sponsoredBlue,
-    fontSize: 13,
+    color: Colors.successGreen,
+    fontSize: 12,
+    fontWeight: '600',
+    marginLeft: 6,
   },
   productGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginHorizontal: -4,
+    paddingHorizontal: 16,
   },
   productCard: {
     width: '47%',
     backgroundColor: Colors.background,
     borderWidth: 1,
-    borderColor: Colors.border,
-    borderRadius: Radius.md,
+    borderColor: Colors.inputBorder,
+    borderRadius: 4,
     padding: 10,
     margin: 4,
   },
   productPlaceholder: {
-    width: 60,
-    height: 60,
-    backgroundColor: Colors.secondaryBg,
-    borderRadius: Radius.md,
+    width: '100%',
+    height: 80,
+    borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
   },
   productInitial: {
-    color: Colors.textSecondary,
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: '700',
   },
   productName: {
     color: Colors.textPrimary,
     fontSize: 12,
-    fontWeight: '700',
-    marginTop: 6,
+    fontWeight: '600',
+    marginTop: 8,
   },
   productPrice: {
-    color: Colors.errorRed,
+    color: Colors.textPrimary,
     fontSize: 14,
     fontWeight: '700',
     marginTop: 4,
   },
-  productRating: {
+  ratingRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 4,
+  },
+  ratingText: {
     color: Colors.textSecondary,
     fontSize: 11,
-    marginTop: 2,
+    marginLeft: 2,
   },
-  nowPill: {
-    backgroundColor: Colors.successGreen,
+  nowBadge: {
+    backgroundColor: Colors.nowBadge,
     paddingHorizontal: 6,
     paddingVertical: 2,
-    borderRadius: 8,
+    borderRadius: 3,
     alignSelf: 'flex-start',
     marginTop: 4,
   },
-  nowPillText: {
+  nowBadgeText: {
     color: Colors.white,
-    fontSize: 10,
-    fontWeight: '700',
-  },
-  tomorrowPill: {
-    backgroundColor: Colors.textSecondary,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 8,
-    alignSelf: 'flex-start',
-    marginTop: 4,
-  },
-  tomorrowPillText: {
-    color: Colors.white,
-    fontSize: 10,
+    fontSize: 9,
     fontWeight: '700',
   },
   divider: {
-    width: '100%',
     height: 8,
-    backgroundColor: Colors.secondaryBg,
+    backgroundColor: Colors.divider,
     marginTop: 20,
   },
   goalsTitle: {
@@ -371,33 +358,28 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     paddingHorizontal: 16,
     paddingTop: 16,
-    paddingBottom: 8,
+    marginBottom: 12,
   },
   goalsScroll: {
-    paddingLeft: 16,
-    paddingRight: 6,
+    paddingHorizontal: 16,
   },
   goalCard: {
     width: 130,
     backgroundColor: Colors.background,
     borderWidth: 1,
-    borderColor: Colors.border,
-    borderRadius: 8,
+    borderColor: Colors.inputBorder,
+    borderRadius: 4,
+    borderLeftWidth: 3,
     padding: 12,
-    marginRight: 10,
+    marginRight: 8,
   },
   goalCardSelected: {
     borderColor: Colors.primary,
-    borderWidth: 2,
-  },
-  goalEmoji: {
-    fontSize: 24,
   },
   goalName: {
     color: Colors.textPrimary,
     fontSize: 13,
     fontWeight: '700',
-    marginTop: 4,
   },
   goalMembers: {
     color: Colors.textSecondary,
@@ -407,6 +389,30 @@ const styles = StyleSheet.create({
   goalNoSponsored: {
     color: Colors.successGreen,
     fontSize: 10,
-    marginTop: 4,
+    fontWeight: '600',
+    marginTop: 6,
+  },
+  demoSection: {
+    marginTop: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 20,
+    borderTopWidth: 1,
+    borderTopColor: '#F0F2F2',
+  },
+  demoSectionTitle: {
+    marginBottom: 8,
+    color: '#9AA0A6',
+    fontSize: 11,
+    fontWeight: '600',
+    letterSpacing: 1,
+  },
+  demoLinks: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  demoLinkText: {
+    color: '#007185',
+    fontSize: 12,
   },
 })

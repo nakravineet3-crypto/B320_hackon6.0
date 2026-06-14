@@ -24,4 +24,5 @@ export const demoAPI = {
   getScenarios: () => api.get('/api/demo/scenarios'),
   getOccasions: () => api.get('/api/demo/occasions'),
   getReorderAlerts: () => api.get('/api/demo/reorder-alerts'),
+  getUserProfile: () => api.get('/api/demo/user-profile'),
 }

@@ -1,0 +1,277 @@
+{
+  "kids_birthday": {
+    "total_sessions_analyzed": 3847,
+    "evidence_source": "demo_community_priors",
+    "is_computed_from_raw_sessions": false,
+    "evidence_note": "Adoption rates and quantities are informed priors derived from domain knowledge and public party planning guides. In production, these would be computed from Amazon purchase session data.",
+    "categories": {
+      "plates": {
+        "adoption_rate": 0.94,
+        "sessions_with_category": 3616,
+        "median_units_per_person": 2.1,
+        "p75_units_per_person": 2.4,
+        "p90_units_per_person": 2.8,
+        "quantity_signal": "2 plates per child, standard serving",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "cups": {
+        "adoption_rate": 0.91,
+        "sessions_with_category": 3501,
+        "median_units_per_person": 2.5,
+        "p75_units_per_person": 3.0,
+        "p90_units_per_person": 3.5,
+        "quantity_signal": "2-3 cups per child for drinks",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "balloon_set": {
+        "adoption_rate": 0.87,
+        "sessions_with_category": 3347,
+        "median_units_per_person": 3.2,
+        "p75_units_per_person": 4.0,
+        "p90_units_per_person": 5.0,
+        "quantity_signal": "3-4 balloons per child, 20% pop before use",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "balloon_pump": {
+        "adoption_rate": 0.83,
+        "sessions_with_category": 3193,
+        "median_units_per_person": 0.1,
+        "p75_units_per_person": 0.15,
+        "p90_units_per_person": 0.2,
+        "quantity_signal": "1 pump per occasion regardless of headcount",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "candles": {
+        "adoption_rate": 0.96,
+        "sessions_with_category": 3693,
+        "median_units_per_person": 0.1,
+        "p75_units_per_person": 0.15,
+        "p90_units_per_person": 0.2,
+        "quantity_signal": "1 pack candles per occasion",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "napkins": {
+        "adoption_rate": 0.78,
+        "sessions_with_category": 3000,
+        "median_units_per_person": 3.1,
+        "p75_units_per_person": 3.8,
+        "p90_units_per_person": 4.5,
+        "quantity_signal": "3 napkins per child",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "return_gifts": {
+        "adoption_rate": 0.71,
+        "sessions_with_category": 2731,
+        "median_units_per_person": 1.05,
+        "p75_units_per_person": 1.1,
+        "p90_units_per_person": 1.2,
+        "quantity_signal": "1 gift per child plus 5% buffer",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "streamers": {
+        "adoption_rate": 0.69,
+        "sessions_with_category": 2654,
+        "median_units_per_person": 0.3,
+        "p75_units_per_person": 0.4,
+        "p90_units_per_person": 0.5,
+        "quantity_signal": "1 streamer set per 3 children",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "trash_bags": {
+        "adoption_rate": 0.68,
+        "sessions_with_category": 2616,
+        "median_units_per_person": 0.08,
+        "p75_units_per_person": 0.1,
+        "p90_units_per_person": 0.15,
+        "quantity_signal": "1 pack per occasion for cleanup",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      }
+    },
+    "compatibility_pairs": [
+      {
+        "item_a": "balloon_set",
+        "item_b": "balloon_pump",
+        "co_purchase_rate": 0.83,
+        "signal": "Balloons require inflation \u2014 pump is a functional dependency",
+        "relationship": "requires",
+        "evidence_source": "domain_knowledge",
+        "is_computed_from_raw_sessions": false
+      },
+      {
+        "item_a": "plates",
+        "item_b": "cups",
+        "co_purchase_rate": 0.89,
+        "signal": "Food and drink serving are always paired",
+        "relationship": "complementary",
+        "evidence_source": "domain_knowledge",
+        "is_computed_from_raw_sessions": false
+      },
+      {
+        "item_a": "candles",
+        "item_b": "cake",
+        "co_purchase_rate": 0.91,
+        "signal": "Birthday candles require a cake",
+        "relationship": "complementary",
+        "evidence_source": "domain_knowledge",
+        "is_computed_from_raw_sessions": false
+      }
+    ]
+  },
+  "home_setup": {
+    "total_sessions_analyzed": 2103,
+    "evidence_source": "demo_community_priors",
+    "is_computed_from_raw_sessions": false,
+    "evidence_note": "Informed priors from home setup domain knowledge. Production system would compute from Amazon home setup purchase sessions.",
+    "categories": {
+      "mattress": {
+        "adoption_rate": 0.99,
+        "sessions_with_category": 2082,
+        "median_units_per_person": 1.0,
+        "p75_units_per_person": 1.0,
+        "p90_units_per_person": 1.0,
+        "quantity_signal": "1 mattress per person always",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "bedsheet": {
+        "adoption_rate": 0.97,
+        "sessions_with_category": 2040,
+        "median_units_per_person": 2.0,
+        "p75_units_per_person": 3.0,
+        "p90_units_per_person": 4.0,
+        "quantity_signal": "2 bedsheets per person for rotation",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "induction_cooktop": {
+        "adoption_rate": 0.88,
+        "sessions_with_category": 1851,
+        "median_units_per_person": 1.0,
+        "p75_units_per_person": 1.0,
+        "p90_units_per_person": 1.0,
+        "quantity_signal": "1 cooktop per household",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "induction_compatible_vessel": {
+        "adoption_rate": 0.84,
+        "sessions_with_category": 1767,
+        "median_units_per_person": 1.0,
+        "p75_units_per_person": 1.0,
+        "p90_units_per_person": 1.0,
+        "quantity_signal": "vessel set required with induction",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "water_purifier": {
+        "adoption_rate": 0.76,
+        "sessions_with_category": 1598,
+        "median_units_per_person": 1.0,
+        "p75_units_per_person": 1.0,
+        "p90_units_per_person": 1.0,
+        "quantity_signal": "1 purifier per household",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "led_bulb": {
+        "adoption_rate": 0.91,
+        "sessions_with_category": 1914,
+        "median_units_per_person": 4.0,
+        "p75_units_per_person": 6.0,
+        "p90_units_per_person": 8.0,
+        "quantity_signal": "4-6 bulbs per 1BHK average",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "extension_board": {
+        "adoption_rate": 0.85,
+        "sessions_with_category": 1788,
+        "median_units_per_person": 2.0,
+        "p75_units_per_person": 3.0,
+        "p90_units_per_person": 4.0,
+        "quantity_signal": "2 extension boards per flat",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "towels": {
+        "adoption_rate": 0.89,
+        "sessions_with_category": 1872,
+        "median_units_per_person": 3.0,
+        "p75_units_per_person": 4.0,
+        "p90_units_per_person": 5.0,
+        "quantity_signal": "3 towels per person standard",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      }
+    },
+    "compatibility_pairs": [
+      {
+        "item_a": "induction_cooktop",
+        "item_b": "induction_compatible_vessel",
+        "co_purchase_rate": 0.84,
+        "signal": "Induction cooktop requires induction-compatible vessels",
+        "relationship": "requires",
+        "evidence_source": "domain_knowledge",
+        "is_computed_from_raw_sessions": false
+      }
+    ]
+  },
+  "travel_prep": {
+    "total_sessions_analyzed": 1456,
+    "evidence_source": "demo_community_priors",
+    "is_computed_from_raw_sessions": false,
+    "evidence_note": "Informed priors from travel/trekking domain knowledge.",
+    "categories": {
+      "water_bottle": {
+        "adoption_rate": 0.93,
+        "sessions_with_category": 1354,
+        "median_units_per_person": 1.0,
+        "p75_units_per_person": 1.0,
+        "p90_units_per_person": 1.0,
+        "quantity_signal": "1 bottle per person always",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "first_aid": {
+        "adoption_rate": 0.81,
+        "sessions_with_category": 1180,
+        "median_units_per_person": 0.25,
+        "p75_units_per_person": 0.3,
+        "p90_units_per_person": 0.4,
+        "quantity_signal": "1 kit per 4 people",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "backpack": {
+        "adoption_rate": 0.89,
+        "sessions_with_category": 1297,
+        "median_units_per_person": 1.0,
+        "p75_units_per_person": 1.0,
+        "p90_units_per_person": 1.0,
+        "quantity_signal": "1 backpack per person",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      },
+      "trekking_socks": {
+        "adoption_rate": 0.74,
+        "sessions_with_category": 1078,
+        "median_units_per_person": 3.0,
+        "p75_units_per_person": 4.0,
+        "p90_units_per_person": 5.0,
+        "quantity_signal": "3-5 pairs per person per week",
+        "evidence_source": "demo_community_priors",
+        "is_computed_from_raw_sessions": false
+      }
+    },
+    "compatibility_pairs": []
+  }
+}

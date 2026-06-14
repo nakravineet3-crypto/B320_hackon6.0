@@ -1,0 +1,1002 @@
+[
+  {
+    "user_id": "U001",
+    "name": "Sneha Sharma",
+    "city": "Bangalore",
+    "pincode": "560001",
+    "identity_groups": [
+      "home_chef",
+      "new_parent"
+    ],
+    "household_size": 4,
+    "amazon_prime": true,
+    "preferred_language": "en",
+    "monthly_grocery_budget": 8000,
+    "created_at": "2024-01-15",
+    "demo_user": true,
+    "tier": 1,
+    "age_bracket": "28-35",
+    "occupation": "Software Engineer",
+    "occasions_per_year": 6
+  },
+  {
+    "user_id": "U002",
+    "name": "Arjun Mehta",
+    "city": "Mumbai",
+    "pincode": "400001",
+    "identity_groups": [
+      "office_gym_dad",
+      "weekend_trekker"
+    ],
+    "household_size": 3,
+    "amazon_prime": true,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 6000,
+    "created_at": "2024-03-20",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "32-40",
+    "occupation": "Marketing Manager",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U003",
+    "name": "Priya Nair",
+    "city": "Chennai",
+    "pincode": "600001",
+    "identity_groups": [
+      "jee_student",
+      "college_girl"
+    ],
+    "household_size": 1,
+    "amazon_prime": false,
+    "preferred_language": "en",
+    "monthly_grocery_budget": 3000,
+    "created_at": "2024-06-01",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "18-22",
+    "occupation": "Student",
+    "occasions_per_year": 3
+  },
+  {
+    "user_id": "U004",
+    "name": "Arjun Kurup",
+    "city": "Delhi",
+    "pincode": "110001",
+    "identity_groups": [
+      "new_parent",
+      "office_gym_dad"
+    ],
+    "household_size": 2,
+    "amazon_prime": false,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 4000,
+    "created_at": "2023-04-25",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "28-35",
+    "occupation": "Software Engineer",
+    "occasions_per_year": 2
+  },
+  {
+    "user_id": "U005",
+    "name": "Nisha Das",
+    "city": "Hyderabad",
+    "pincode": "500001",
+    "identity_groups": [
+      "college_girl",
+      "weekend_trekker"
+    ],
+    "household_size": 1,
+    "amazon_prime": false,
+    "preferred_language": "kn",
+    "monthly_grocery_budget": 10000,
+    "created_at": "2023-08-12",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "22-28",
+    "occupation": "Freelancer",
+    "occasions_per_year": 3
+  },
+  {
+    "user_id": "U006",
+    "name": "Saroja Rao",
+    "city": "Pune",
+    "pincode": "411001",
+    "identity_groups": [
+      "weekend_trekker",
+      "jee_student"
+    ],
+    "household_size": 3,
+    "amazon_prime": false,
+    "preferred_language": "en",
+    "monthly_grocery_budget": 4000,
+    "created_at": "2023-01-07",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "18-22",
+    "occupation": "Teacher",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U007",
+    "name": "Usha Bhat",
+    "city": "Kolkata",
+    "pincode": "700001",
+    "identity_groups": [
+      "home_chef",
+      "new_parent"
+    ],
+    "household_size": 4,
+    "amazon_prime": true,
+    "preferred_language": "ta",
+    "monthly_grocery_budget": 4000,
+    "created_at": "2023-12-19",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "28-35",
+    "occupation": "Freelancer",
+    "occasions_per_year": 6
+  },
+  {
+    "user_id": "U008",
+    "name": "Nandini Agarwal",
+    "city": "Ahmedabad",
+    "pincode": "380001",
+    "identity_groups": [
+      "office_gym_dad",
+      "weekend_trekker"
+    ],
+    "household_size": 1,
+    "amazon_prime": false,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 4000,
+    "created_at": "2024-01-06",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "45-55",
+    "occupation": "Teacher",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U009",
+    "name": "Madhuri Patil",
+    "city": "Jaipur",
+    "pincode": "302001",
+    "identity_groups": [
+      "jee_student",
+      "college_girl"
+    ],
+    "household_size": 3,
+    "amazon_prime": false,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 4000,
+    "created_at": "2024-04-09",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "35-45",
+    "occupation": "Doctor",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U010",
+    "name": "Pooja Srivastava",
+    "city": "Lucknow",
+    "pincode": "226001",
+    "identity_groups": [
+      "weekend_trekker",
+      "jee_student"
+    ],
+    "household_size": 3,
+    "amazon_prime": true,
+    "preferred_language": "kn",
+    "monthly_grocery_budget": 6000,
+    "created_at": "2023-09-08",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "35-45",
+    "occupation": "Software Engineer",
+    "occasions_per_year": 3
+  },
+  {
+    "user_id": "U011",
+    "name": "Swati Tiwari",
+    "city": "Kochi",
+    "pincode": "682001",
+    "identity_groups": [
+      "new_parent",
+      "office_gym_dad"
+    ],
+    "household_size": 1,
+    "amazon_prime": true,
+    "preferred_language": "ml",
+    "monthly_grocery_budget": 8000,
+    "created_at": "2023-02-02",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "22-28",
+    "occupation": "Accountant",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U012",
+    "name": "Aditya Bhat",
+    "city": "Indore",
+    "pincode": "452001",
+    "identity_groups": [
+      "jee_student",
+      "college_girl"
+    ],
+    "household_size": 2,
+    "amazon_prime": true,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 10000,
+    "created_at": "2024-04-14",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "45-55",
+    "occupation": "Marketing Manager",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U013",
+    "name": "Manoj Reddy",
+    "city": "Delhi",
+    "pincode": "110001",
+    "identity_groups": [
+      "home_chef",
+      "new_parent"
+    ],
+    "household_size": 5,
+    "amazon_prime": false,
+    "preferred_language": "en",
+    "monthly_grocery_budget": 10000,
+    "created_at": "2024-06-05",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "28-35",
+    "occupation": "Marketing Manager",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U014",
+    "name": "Rajesh Sharma",
+    "city": "Ahmedabad",
+    "pincode": "380001",
+    "identity_groups": [
+      "office_gym_dad",
+      "weekend_trekker"
+    ],
+    "household_size": 4,
+    "amazon_prime": true,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 8000,
+    "created_at": "2023-09-15",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "22-28",
+    "occupation": "Marketing Manager",
+    "occasions_per_year": 3
+  },
+  {
+    "user_id": "U015",
+    "name": "Rekha Menon",
+    "city": "Bangalore",
+    "pincode": "560001",
+    "identity_groups": [
+      "jee_student",
+      "college_girl"
+    ],
+    "household_size": 4,
+    "amazon_prime": false,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 6000,
+    "created_at": "2023-09-27",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "22-28",
+    "occupation": "Doctor",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U016",
+    "name": "Usha Kulkarni",
+    "city": "Jaipur",
+    "pincode": "302001",
+    "identity_groups": [
+      "office_gym_dad",
+      "home_chef"
+    ],
+    "household_size": 1,
+    "amazon_prime": true,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 6000,
+    "created_at": "2023-01-01",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "18-22",
+    "occupation": "Freelancer",
+    "occasions_per_year": 8
+  },
+  {
+    "user_id": "U017",
+    "name": "Ananya Menon",
+    "city": "Mumbai",
+    "pincode": "400001",
+    "identity_groups": [
+      "new_parent",
+      "home_chef"
+    ],
+    "household_size": 4,
+    "amazon_prime": false,
+    "preferred_language": "te",
+    "monthly_grocery_budget": 5000,
+    "created_at": "2024-05-12",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "22-28",
+    "occupation": "Freelancer",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U018",
+    "name": "Rakesh Desai",
+    "city": "Chennai",
+    "pincode": "600001",
+    "identity_groups": [
+      "weekend_trekker",
+      "jee_student"
+    ],
+    "household_size": 6,
+    "amazon_prime": true,
+    "preferred_language": "te",
+    "monthly_grocery_budget": 12000,
+    "created_at": "2023-07-25",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "22-28",
+    "occupation": "Business Owner",
+    "occasions_per_year": 2
+  },
+  {
+    "user_id": "U019",
+    "name": "Sanjay Pillai",
+    "city": "Bangalore",
+    "pincode": "560001",
+    "identity_groups": [
+      "home_chef",
+      "new_parent"
+    ],
+    "household_size": 1,
+    "amazon_prime": true,
+    "preferred_language": "en",
+    "monthly_grocery_budget": 4000,
+    "created_at": "2023-08-24",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "45-55",
+    "occupation": "Homemaker",
+    "occasions_per_year": 2
+  },
+  {
+    "user_id": "U020",
+    "name": "Jyoti Chatterjee",
+    "city": "Chennai",
+    "pincode": "600001",
+    "identity_groups": [
+      "home_chef",
+      "weekend_trekker"
+    ],
+    "household_size": 4,
+    "amazon_prime": true,
+    "preferred_language": "ml",
+    "monthly_grocery_budget": 12000,
+    "created_at": "2023-10-13",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "22-28",
+    "occupation": "Accountant",
+    "occasions_per_year": 6
+  },
+  {
+    "user_id": "U021",
+    "name": "Kavya Trivedi",
+    "city": "Chennai",
+    "pincode": "600001",
+    "identity_groups": [
+      "weekend_trekker",
+      "jee_student"
+    ],
+    "household_size": 3,
+    "amazon_prime": true,
+    "preferred_language": "en",
+    "monthly_grocery_budget": 4000,
+    "created_at": "2023-04-07",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "18-22",
+    "occupation": "Homemaker",
+    "occasions_per_year": 6
+  },
+  {
+    "user_id": "U022",
+    "name": "Divya Agarwal",
+    "city": "Mumbai",
+    "pincode": "400001",
+    "identity_groups": [
+      "new_parent",
+      "home_chef"
+    ],
+    "household_size": 3,
+    "amazon_prime": true,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 12000,
+    "created_at": "2023-09-12",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "22-28",
+    "occupation": "Teacher",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U023",
+    "name": "Rahul Shah",
+    "city": "Jaipur",
+    "pincode": "302001",
+    "identity_groups": [
+      "new_parent",
+      "home_chef"
+    ],
+    "household_size": 5,
+    "amazon_prime": true,
+    "preferred_language": "en",
+    "monthly_grocery_budget": 5000,
+    "created_at": "2023-04-11",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "28-35",
+    "occupation": "Accountant",
+    "occasions_per_year": 3
+  },
+  {
+    "user_id": "U024",
+    "name": "Pooja Shinde",
+    "city": "Kolkata",
+    "pincode": "700001",
+    "identity_groups": [
+      "home_chef",
+      "new_parent"
+    ],
+    "household_size": 6,
+    "amazon_prime": false,
+    "preferred_language": "te",
+    "monthly_grocery_budget": 7000,
+    "created_at": "2023-03-02",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "28-35",
+    "occupation": "Government Employee",
+    "occasions_per_year": 5
+  },
+  {
+    "user_id": "U025",
+    "name": "Divya Naik",
+    "city": "Ahmedabad",
+    "pincode": "380001",
+    "identity_groups": [
+      "home_chef",
+      "weekend_trekker"
+    ],
+    "household_size": 6,
+    "amazon_prime": true,
+    "preferred_language": "kn",
+    "monthly_grocery_budget": 3000,
+    "created_at": "2023-06-08",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "35-45",
+    "occupation": "Software Engineer",
+    "occasions_per_year": 2
+  },
+  {
+    "user_id": "U026",
+    "name": "Sunil Rao",
+    "city": "Ahmedabad",
+    "pincode": "380001",
+    "identity_groups": [
+      "home_chef",
+      "new_parent"
+    ],
+    "household_size": 6,
+    "amazon_prime": false,
+    "preferred_language": "en",
+    "monthly_grocery_budget": 4000,
+    "created_at": "2024-05-29",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "28-35",
+    "occupation": "Business Owner",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U027",
+    "name": "Sanjay Rajan",
+    "city": "Lucknow",
+    "pincode": "226001",
+    "identity_groups": [
+      "home_chef",
+      "new_parent"
+    ],
+    "household_size": 4,
+    "amazon_prime": true,
+    "preferred_language": "ml",
+    "monthly_grocery_budget": 8000,
+    "created_at": "2023-09-10",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "45-55",
+    "occupation": "Business Owner",
+    "occasions_per_year": 5
+  },
+  {
+    "user_id": "U028",
+    "name": "Shreya Tiwari",
+    "city": "Pune",
+    "pincode": "411001",
+    "identity_groups": [
+      "jee_student",
+      "college_girl"
+    ],
+    "household_size": 4,
+    "amazon_prime": false,
+    "preferred_language": "en",
+    "monthly_grocery_budget": 4000,
+    "created_at": "2023-09-02",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "18-22",
+    "occupation": "Freelancer",
+    "occasions_per_year": 10
+  },
+  {
+    "user_id": "U029",
+    "name": "Shweta Malhotra",
+    "city": "Mumbai",
+    "pincode": "400001",
+    "identity_groups": [
+      "new_parent",
+      "home_chef"
+    ],
+    "household_size": 3,
+    "amazon_prime": true,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 6000,
+    "created_at": "2023-03-17",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "28-35",
+    "occupation": "Doctor",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U030",
+    "name": "Praveen Shah",
+    "city": "Jaipur",
+    "pincode": "302001",
+    "identity_groups": [
+      "new_parent",
+      "home_chef"
+    ],
+    "household_size": 1,
+    "amazon_prime": true,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 4000,
+    "created_at": "2023-11-06",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "45-55",
+    "occupation": "Doctor",
+    "occasions_per_year": 3
+  },
+  {
+    "user_id": "U031",
+    "name": "Varun Naik",
+    "city": "Mumbai",
+    "pincode": "400001",
+    "identity_groups": [
+      "college_girl",
+      "weekend_trekker"
+    ],
+    "household_size": 2,
+    "amazon_prime": false,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 12000,
+    "created_at": "2023-06-09",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "22-28",
+    "occupation": "Software Engineer",
+    "occasions_per_year": 2
+  },
+  {
+    "user_id": "U032",
+    "name": "Priya Sharma",
+    "city": "Kolkata",
+    "pincode": "700001",
+    "identity_groups": [
+      "college_girl",
+      "home_chef"
+    ],
+    "household_size": 4,
+    "amazon_prime": true,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 5000,
+    "created_at": "2023-10-11",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "35-45",
+    "occupation": "Government Employee",
+    "occasions_per_year": 5
+  },
+  {
+    "user_id": "U033",
+    "name": "Rohan Iyer",
+    "city": "Jaipur",
+    "pincode": "302001",
+    "identity_groups": [
+      "jee_student",
+      "college_girl"
+    ],
+    "household_size": 4,
+    "amazon_prime": true,
+    "preferred_language": "ml",
+    "monthly_grocery_budget": 5000,
+    "created_at": "2023-01-10",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "28-35",
+    "occupation": "Software Engineer",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U034",
+    "name": "Saurabh Parikh",
+    "city": "Bangalore",
+    "pincode": "560001",
+    "identity_groups": [
+      "home_chef",
+      "weekend_trekker"
+    ],
+    "household_size": 4,
+    "amazon_prime": true,
+    "preferred_language": "kn",
+    "monthly_grocery_budget": 10000,
+    "created_at": "2024-01-02",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "55+",
+    "occupation": "Doctor",
+    "occasions_per_year": 8
+  },
+  {
+    "user_id": "U035",
+    "name": "Kiran Mishra",
+    "city": "Chennai",
+    "pincode": "600001",
+    "identity_groups": [
+      "home_chef",
+      "new_parent"
+    ],
+    "household_size": 2,
+    "amazon_prime": true,
+    "preferred_language": "ta",
+    "monthly_grocery_budget": 6000,
+    "created_at": "2023-06-16",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "22-28",
+    "occupation": "Teacher",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U036",
+    "name": "Nisha Agarwal",
+    "city": "Bangalore",
+    "pincode": "560001",
+    "identity_groups": [
+      "office_gym_dad",
+      "home_chef"
+    ],
+    "household_size": 3,
+    "amazon_prime": true,
+    "preferred_language": "en",
+    "monthly_grocery_budget": 6000,
+    "created_at": "2024-04-26",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "18-22",
+    "occupation": "Business Owner",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U037",
+    "name": "Mohan Hegde",
+    "city": "Hyderabad",
+    "pincode": "500001",
+    "identity_groups": [
+      "college_girl",
+      "home_chef"
+    ],
+    "household_size": 4,
+    "amazon_prime": true,
+    "preferred_language": "kn",
+    "monthly_grocery_budget": 8000,
+    "created_at": "2023-03-13",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "45-55",
+    "occupation": "Teacher",
+    "occasions_per_year": 6
+  },
+  {
+    "user_id": "U038",
+    "name": "Sanjay Bhat",
+    "city": "Hyderabad",
+    "pincode": "500001",
+    "identity_groups": [
+      "home_chef",
+      "new_parent"
+    ],
+    "household_size": 2,
+    "amazon_prime": true,
+    "preferred_language": "en",
+    "monthly_grocery_budget": 10000,
+    "created_at": "2023-07-02",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "35-45",
+    "occupation": "Government Employee",
+    "occasions_per_year": 3
+  },
+  {
+    "user_id": "U039",
+    "name": "Shreya Nair",
+    "city": "Lucknow",
+    "pincode": "226001",
+    "identity_groups": [
+      "weekend_trekker",
+      "jee_student"
+    ],
+    "household_size": 1,
+    "amazon_prime": true,
+    "preferred_language": "kn",
+    "monthly_grocery_budget": 6000,
+    "created_at": "2023-07-14",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "28-35",
+    "occupation": "Teacher",
+    "occasions_per_year": 8
+  },
+  {
+    "user_id": "U040",
+    "name": "Jyoti Singh",
+    "city": "Pune",
+    "pincode": "411001",
+    "identity_groups": [
+      "new_parent",
+      "office_gym_dad"
+    ],
+    "household_size": 4,
+    "amazon_prime": true,
+    "preferred_language": "en",
+    "monthly_grocery_budget": 10000,
+    "created_at": "2023-11-18",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "35-45",
+    "occupation": "Government Employee",
+    "occasions_per_year": 3
+  },
+  {
+    "user_id": "U041",
+    "name": "Dinesh Kurup",
+    "city": "Kolkata",
+    "pincode": "700001",
+    "identity_groups": [
+      "jee_student",
+      "college_girl"
+    ],
+    "household_size": 4,
+    "amazon_prime": false,
+    "preferred_language": "kn",
+    "monthly_grocery_budget": 3000,
+    "created_at": "2024-01-24",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "28-35",
+    "occupation": "Business Owner",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U042",
+    "name": "Vijay Dubey",
+    "city": "Lucknow",
+    "pincode": "226001",
+    "identity_groups": [
+      "office_gym_dad",
+      "home_chef"
+    ],
+    "household_size": 4,
+    "amazon_prime": true,
+    "preferred_language": "en",
+    "monthly_grocery_budget": 4000,
+    "created_at": "2023-11-26",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "22-28",
+    "occupation": "Freelancer",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U043",
+    "name": "Nisha Agarwal",
+    "city": "Chennai",
+    "pincode": "600001",
+    "identity_groups": [
+      "jee_student",
+      "college_girl"
+    ],
+    "household_size": 1,
+    "amazon_prime": false,
+    "preferred_language": "te",
+    "monthly_grocery_budget": 4000,
+    "created_at": "2023-11-14",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "28-35",
+    "occupation": "Freelancer",
+    "occasions_per_year": 3
+  },
+  {
+    "user_id": "U044",
+    "name": "Manoj Tiwari",
+    "city": "Indore",
+    "pincode": "452001",
+    "identity_groups": [
+      "home_chef",
+      "weekend_trekker"
+    ],
+    "household_size": 2,
+    "amazon_prime": true,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 10000,
+    "created_at": "2024-01-29",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "22-28",
+    "occupation": "Government Employee",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U045",
+    "name": "Rohan Srivastava",
+    "city": "Jaipur",
+    "pincode": "302001",
+    "identity_groups": [
+      "jee_student",
+      "college_girl"
+    ],
+    "household_size": 5,
+    "amazon_prime": true,
+    "preferred_language": "kn",
+    "monthly_grocery_budget": 8000,
+    "created_at": "2023-09-13",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "55+",
+    "occupation": "Accountant",
+    "occasions_per_year": 5
+  },
+  {
+    "user_id": "U046",
+    "name": "Ravi Krishnan",
+    "city": "Indore",
+    "pincode": "452001",
+    "identity_groups": [
+      "office_gym_dad",
+      "home_chef"
+    ],
+    "household_size": 5,
+    "amazon_prime": true,
+    "preferred_language": "te",
+    "monthly_grocery_budget": 12000,
+    "created_at": "2024-05-31",
+    "demo_user": false,
+    "tier": 2,
+    "age_bracket": "22-28",
+    "occupation": "Business Owner",
+    "occasions_per_year": 6
+  },
+  {
+    "user_id": "U047",
+    "name": "Manoj Choudhary",
+    "city": "Hyderabad",
+    "pincode": "500001",
+    "identity_groups": [
+      "home_chef",
+      "weekend_trekker"
+    ],
+    "household_size": 3,
+    "amazon_prime": false,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 6000,
+    "created_at": "2024-06-17",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "22-28",
+    "occupation": "Homemaker",
+    "occasions_per_year": 6
+  },
+  {
+    "user_id": "U048",
+    "name": "Aditya Pillai",
+    "city": "Mumbai",
+    "pincode": "400001",
+    "identity_groups": [
+      "weekend_trekker",
+      "jee_student"
+    ],
+    "household_size": 4,
+    "amazon_prime": true,
+    "preferred_language": "hi",
+    "monthly_grocery_budget": 10000,
+    "created_at": "2023-05-22",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "28-35",
+    "occupation": "Government Employee",
+    "occasions_per_year": 4
+  },
+  {
+    "user_id": "U049",
+    "name": "Lakshmi Shinde",
+    "city": "Bangalore",
+    "pincode": "560001",
+    "identity_groups": [
+      "college_girl",
+      "weekend_trekker"
+    ],
+    "household_size": 5,
+    "amazon_prime": false,
+    "preferred_language": "ml",
+    "monthly_grocery_budget": 10000,
+    "created_at": "2023-07-31",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "28-35",
+    "occupation": "Homemaker",
+    "occasions_per_year": 3
+  },
+  {
+    "user_id": "U050",
+    "name": "Shweta Kurup",
+    "city": "Kolkata",
+    "pincode": "700001",
+    "identity_groups": [
+      "new_parent",
+      "home_chef"
+    ],
+    "household_size": 4,
+    "amazon_prime": true,
+    "preferred_language": "te",
+    "monthly_grocery_budget": 6000,
+    "created_at": "2024-03-05",
+    "demo_user": false,
+    "tier": 1,
+    "age_bracket": "22-28",
+    "occupation": "Accountant",
+    "occasions_per_year": 2
+  }
+]

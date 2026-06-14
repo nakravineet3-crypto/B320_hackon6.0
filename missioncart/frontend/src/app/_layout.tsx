@@ -43,6 +43,23 @@ export default function RootLayout() {
           <Stack.Screen name="(tabs)" />
           <Stack.Screen name="audit" />
           <Stack.Screen name="cart" />
+          <Stack.Screen name="community" />
+          <Stack.Screen
+            name="ppt/voice-input"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ppt/photo-input"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ppt/mission-share"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ppt/seller-dashboard"
+            options={{ headerShown: false }}
+          />
         </Stack>
       </SafeAreaProvider>
     </GestureHandlerRootView>

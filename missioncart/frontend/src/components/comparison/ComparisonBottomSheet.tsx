@@ -1,13 +1,55 @@
+import { Ionicons } from '@expo/vector-icons'
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet'
 import * as Haptics from 'expo-haptics'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 
-import { Colors, Radius } from '../../lib/constants'
+import { Colors, getLabelColor } from '../../lib/constants'
 import { useMissionStore } from '../../store/mission'
 
-function getPickLabel(title: string): string {
-  return title.length > 10 ? title.slice(0, 10) : title
+function firstWords(title: string, count = 3): string {
+  return (title || '')
+    .split(/\s+/)
+    .slice(0, count)
+    .join(' ')
+}
+
+function ProductColumn({
+  item,
+  selected,
+}: {
+  item: any
+  selected: boolean
+}) {
+  const palette = getLabelColor(item.need_label || item.title)
+  const letter = (item.title || item.need_label || '?')[0].toUpperCase()
+
+  return (
+    <View style={[styles.column, selected && styles.columnSelected]}>
+      <View style={[styles.placeholder, { backgroundColor: palette.bg }]}>
+        <Text style={[styles.placeholderLetter, { color: palette.text }]}>
+          {letter}
+        </Text>
+      </View>
+      <Text style={styles.colTitle} numberOfLines={2}>
+        {item.title}
+      </Text>
+      <Text style={styles.colPrice}>₹{item.price || item.total_cost}</Text>
+      <View style={styles.colRatingRow}>
+        <Ionicons name="star" size={11} color={Colors.primary} />
+        <Text style={styles.colRating}> {item.rating || '4.0'}</Text>
+      </View>
+      {item.amazon_now_eligible ? (
+        <View style={styles.nowBadge}>
+          <Text style={styles.badgeText}>Now · 20 min</Text>
+        </View>
+      ) : (
+        <View style={styles.tomorrowBadge}>
+          <Text style={styles.badgeText}>Tomorrow</Text>
+        </View>
+      )}
+    </View>
+  )
 }
 
 export default function ComparisonBottomSheet() {
@@ -31,19 +73,15 @@ export default function ComparisonBottomSheet() {
     dismiss()
   }, [dismiss])
 
-  const handlePickA = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => {})
-    dismiss()
-  }
-
-  const handlePickB = () => {
+  const handlePick = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => {})
     dismiss()
   }
 
   if (!itemA || !itemB) return null
 
-  const insightText = `Option A has better ratings for the price. Option B ships faster on Amazon Now. Since your party is tomorrow, Option B wins.`
+  const insightText =
+    'Option A has better ratings for the price. Option B ships faster on Amazon Now. Since your party is tomorrow, the faster delivery wins.'
 
   return (
     <BottomSheet
@@ -58,84 +96,46 @@ export default function ComparisonBottomSheet() {
       <BottomSheetScrollView contentContainerStyle={styles.scrollContent}>
         {/* Header */}
         <View style={styles.headerSection}>
-          <Text style={styles.headerTitle}>
-            You keep switching between these
-          </Text>
+          <View style={styles.headerRow}>
+            <Text style={styles.headerTitle}>Compare</Text>
+            <Pressable onPress={dismiss} hitSlop={10} accessibilityRole="button">
+              <Ionicons name="close" size={20} color={Colors.textSecondary} />
+            </Pressable>
+          </View>
           <Text style={styles.headerSubtitle}>
-            Here's what's different for your goal
+            You switched between these{' '}
+            <Text style={styles.headerSubtitleAccent}>3 times</Text>
           </Text>
         </View>
 
-        {/* Two product cards */}
-        <View style={styles.cardsRow}>
-          <View style={styles.productCard}>
-            <View style={styles.cardPlaceholder}>
-              <Text style={styles.cardInitial}>
-                {(itemA.title || 'A')[0].toUpperCase()}
-              </Text>
-            </View>
-            <Text style={styles.cardTitle} numberOfLines={2}>
-              {itemA.title}
-            </Text>
-            <Text style={styles.cardPrice}>₹{itemA.price || itemA.total_cost}</Text>
-            <Text style={styles.cardRating}>⭐ {itemA.rating || '4.0'}</Text>
-            {itemA.amazon_now_eligible ? (
-              <View style={styles.cardNowPill}>
-                <Text style={styles.cardNowText}>⚡ Now</Text>
-              </View>
-            ) : (
-              <View style={styles.cardTomorrowPill}>
-                <Text style={styles.cardTomorrowText}>Tomorrow</Text>
-              </View>
-            )}
-          </View>
-
-          <View style={styles.vsCircle}>
-            <Text style={styles.vsText}>VS</Text>
-          </View>
-
-          <View style={styles.productCard}>
-            <View style={styles.cardPlaceholder}>
-              <Text style={styles.cardInitial}>
-                {(itemB.title || 'B')[0].toUpperCase()}
-              </Text>
-            </View>
-            <Text style={styles.cardTitle} numberOfLines={2}>
-              {itemB.title}
-            </Text>
-            <Text style={styles.cardPrice}>₹{itemB.price || itemB.total_cost}</Text>
-            <Text style={styles.cardRating}>⭐ {itemB.rating || '4.0'}</Text>
-            {itemB.amazon_now_eligible ? (
-              <View style={styles.cardNowPill}>
-                <Text style={styles.cardNowText}>⚡ Now</Text>
-              </View>
-            ) : (
-              <View style={styles.cardTomorrowPill}>
-                <Text style={styles.cardTomorrowText}>Tomorrow</Text>
-              </View>
-            )}
+        {/* Two product columns */}
+        <View style={styles.columnsRow}>
+          <ProductColumn item={itemA} selected />
+          <ProductColumn item={itemB} selected={false} />
+          <View style={styles.vsDivider}>
+            <Text style={styles.vsText}>vs</Text>
           </View>
         </View>
 
-        {/* AI Insight box */}
+        {/* AI insight */}
         <View style={styles.insightBox}>
           <View style={styles.insightHeader}>
-            <Text style={styles.insightAiLabel}>🤖 MissionCart AI</Text>
+            <Ionicons name="analytics-outline" size={14} color={Colors.primary} />
+            <Text style={styles.insightLabel}>MissionCart recommendation</Text>
           </View>
-          <Text style={styles.insightBold}>For a kids birthday party:</Text>
           <Text style={styles.insightText}>{insightText}</Text>
         </View>
 
-        {/* Two buttons */}
+        {/* Pick buttons */}
         <View style={styles.buttonsRow}>
-          <Pressable onPress={handlePickA} style={styles.pickButtonA}>
-            <Text style={styles.pickButtonAText}>
-              Pick {getPickLabel(itemA.title)}
+          <Pressable onPress={handlePick} style={styles.pickButtonPrimary}>
+            <Text style={styles.pickButtonPrimaryText}>
+              {firstWords(itemA.title)}
             </Text>
           </Pressable>
-          <Pressable onPress={handlePickB} style={styles.pickButtonB}>
-            <Text style={styles.pickButtonBText}>
-              Pick {getPickLabel(itemB.title)}
+          <Pressable onPress={handlePick} style={styles.pickButtonSecondary}>
+            <Text style={styles.pickButtonSecondaryText}>
+              {firstWords(itemB.title)}
             </Text>
           </Pressable>
         </View>
@@ -146,117 +146,138 @@ export default function ComparisonBottomSheet() {
 
 const styles = StyleSheet.create({
   sheetBg: {
-    borderRadius: 16,
+    backgroundColor: Colors.white,
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
   },
   handleIndicator: {
-    backgroundColor: Colors.border,
+    backgroundColor: Colors.inputBorder,
+    width: 40,
   },
   scrollContent: {
     paddingBottom: 32,
   },
   headerSection: {
-    padding: 16,
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.divider,
+  },
+  headerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   headerTitle: {
     color: Colors.textPrimary,
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '700',
   },
   headerSubtitle: {
+    marginTop: 4,
     color: Colors.textSecondary,
     fontSize: 13,
-    marginTop: 2,
   },
-  cardsRow: {
+  headerSubtitleAccent: {
+    color: Colors.primary,
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  columnsRow: {
     flexDirection: 'row',
     paddingHorizontal: 16,
-    gap: 8,
-    alignItems: 'center',
+    marginTop: 16,
+    gap: 12,
   },
-  productCard: {
+  column: {
     flex: 1,
-    borderWidth: 1.5,
-    borderColor: Colors.border,
-    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: Colors.inputBorder,
+    borderRadius: 4,
     padding: 10,
   },
-  cardPlaceholder: {
-    width: 60,
-    height: 60,
-    backgroundColor: Colors.secondaryBg,
-    borderRadius: Radius.md,
+  columnSelected: {
+    borderColor: Colors.primary,
+    borderWidth: 2,
+  },
+  placeholder: {
+    width: '100%',
+    height: 72,
+    borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  cardInitial: {
-    color: Colors.textSecondary,
-    fontSize: 24,
+  placeholderLetter: {
+    fontSize: 28,
     fontWeight: '700',
   },
-  cardTitle: {
+  colTitle: {
     color: Colors.textPrimary,
     fontSize: 13,
-    fontWeight: '700',
+    fontWeight: '600',
     marginTop: 8,
   },
-  cardPrice: {
-    color: Colors.errorRed,
-    fontSize: 18,
+  colPrice: {
+    color: Colors.textPrimary,
+    fontSize: 16,
     fontWeight: '700',
     marginTop: 4,
   },
-  cardRating: {
+  colRatingRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 4,
+  },
+  colRating: {
     color: Colors.textSecondary,
     fontSize: 12,
-    marginTop: 4,
   },
-  cardNowPill: {
-    backgroundColor: Colors.successGreen,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 8,
+  nowBadge: {
+    backgroundColor: Colors.nowBadge,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 3,
     alignSelf: 'flex-start',
     marginTop: 6,
   },
-  cardNowText: {
-    color: Colors.white,
-    fontSize: 10,
-    fontWeight: '700',
-  },
-  cardTomorrowPill: {
+  tomorrowBadge: {
     backgroundColor: Colors.textSecondary,
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 3,
     alignSelf: 'flex-start',
     marginTop: 6,
   },
-  cardTomorrowText: {
+  badgeText: {
     color: Colors.white,
     fontSize: 10,
     fontWeight: '700',
   },
-  vsCircle: {
+  vsDivider: {
+    position: 'absolute',
+    top: 36,
+    left: '50%',
+    marginLeft: -14,
     width: 28,
     height: 28,
     borderRadius: 14,
-    backgroundColor: Colors.secondaryBg,
+    backgroundColor: Colors.white,
+    borderWidth: 1,
+    borderColor: Colors.inputBorder,
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'absolute',
-    left: '50%',
-    marginLeft: -14,
-    zIndex: 1,
   },
   vsText: {
     color: Colors.textSecondary,
-    fontSize: 10,
+    fontSize: 11,
     fontWeight: '700',
   },
   insightBox: {
-    margin: 16,
-    borderRadius: 8,
-    backgroundColor: '#FFF3E0',
+    marginHorizontal: 16,
+    marginTop: 12,
+    backgroundColor: Colors.cardBg,
+    borderRadius: 4,
     borderLeftWidth: 3,
     borderLeftColor: Colors.primary,
     padding: 12,
@@ -264,54 +285,52 @@ const styles = StyleSheet.create({
   insightHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 6,
   },
-  insightAiLabel: {
+  insightLabel: {
     color: Colors.primary,
     fontSize: 11,
     fontWeight: '700',
-  },
-  insightBold: {
-    color: Colors.textPrimary,
-    fontSize: 13,
-    fontWeight: '700',
-    marginBottom: 4,
+    letterSpacing: 0.5,
+    marginLeft: 6,
   },
   insightText: {
+    marginTop: 6,
     color: Colors.textPrimary,
-    fontSize: 13,
+    fontSize: 14,
     lineHeight: 20,
   },
   buttonsRow: {
     flexDirection: 'row',
-    marginHorizontal: 16,
+    paddingHorizontal: 16,
+    marginTop: 12,
     gap: 8,
   },
-  pickButtonA: {
+  pickButtonPrimary: {
     flex: 1,
     height: 48,
+    borderRadius: 4,
     backgroundColor: Colors.primary,
-    borderRadius: Radius.md,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  pickButtonAText: {
+  pickButtonPrimaryText: {
     color: Colors.white,
     fontSize: 14,
     fontWeight: '700',
   },
-  pickButtonB: {
+  pickButtonSecondary: {
     flex: 1,
     height: 48,
-    borderWidth: 2,
-    borderColor: Colors.primary,
-    borderRadius: Radius.md,
+    borderRadius: 4,
+    backgroundColor: Colors.white,
+    borderWidth: 1.5,
+    borderColor: Colors.inputBorder,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  pickButtonBText: {
-    color: Colors.primary,
+  pickButtonSecondaryText: {
+    color: Colors.textPrimary,
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: '400',
   },
 })

@@ -1,0 +1,12 @@
+
+> frontend@1.0.0 web
+> expo start --web --clear --port 8081
+
+Starting project at D:\Projects\B320_hackon6.0\missioncart\frontend
+Using src/app as the root directory for Expo Router.
+Metro is running in CI mode, reloads are disabled. Remove CI=true to enable watch mode.
+Starting Metro Bundler
+warning: Bundler cache is empty, rebuilding (this may take a minute)
+Waiting on http://localhost:8081
+Logs for your project will appear below.
+tailwindcss(web) rebuilding... done

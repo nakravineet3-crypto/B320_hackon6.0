@@ -121,3 +121,14 @@ export interface OccasionCard {
   estimated_budget: number
   tap_action: string
 }
+
+export interface UpcomingRecurrence {
+  occasion_label: string
+  occasion_type: string
+  budget_used: number
+  headcount: number
+  coverage_score: string
+  days_until_recurrence: number
+  recurrence_date: string
+  recurrence_alert: string
+}

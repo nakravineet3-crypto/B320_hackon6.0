@@ -5,6 +5,7 @@ import type { CartItem, MissionBuildResult } from '../lib/types'
 interface MissionStore {
   cart: CartItem[]
   currentMission: MissionBuildResult | null
+  currentBuildResult: any | null
   isLoading: boolean
   comparisonVisible: boolean
   comparisonItemA: any | null
@@ -12,6 +13,7 @@ interface MissionStore {
   viewHistory: string[]
   setCart: (cart: CartItem[]) => void
   setMission: (mission: MissionBuildResult | null) => void
+  setBuildResult: (result: any) => void
   setLoading: (isLoading: boolean) => void
   clearMission: () => void
   trackItemView: (item: any) => void
@@ -22,6 +24,7 @@ interface MissionStore {
 export const useMissionStore = create<MissionStore>((set, get) => ({
   cart: [],
   currentMission: null,
+  currentBuildResult: null,
   isLoading: false,
   comparisonVisible: false,
   comparisonItemA: null,
@@ -29,11 +32,13 @@ export const useMissionStore = create<MissionStore>((set, get) => ({
   viewHistory: [],
   setCart: (cart) => set({ cart }),
   setMission: (currentMission) => set({ currentMission }),
+  setBuildResult: (currentBuildResult) => set({ currentBuildResult }),
   setLoading: (isLoading) => set({ isLoading }),
   clearMission: () =>
     set({
       cart: [],
       currentMission: null,
+      currentBuildResult: null,
       isLoading: false,
     }),
   trackItemView: (item) => {

@@ -13,56 +13,74 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { demoAPI } from '../../lib/api'
-import { Colors, Radius } from '../../lib/constants'
+import { Colors } from '../../lib/constants'
 import { scheduleTestNotification } from '../../lib/notifications'
-import type { OccasionCard } from '../../lib/types'
+import type { OccasionCard, UpcomingRecurrence } from '../../lib/types'
+
+type IoniconName = keyof typeof Ionicons.glyphMap
 
 interface Category {
   id: string
   label: string
-  emoji: string
+  icon: IoniconName
 }
 
-interface ReorderProduct {
-  id: string
-  name: string
-  quantity: string
-  price: number
+interface ReorderItem {
+  id?: string
+  asin?: string
+  item_name: string
+  quantity: number
+  unit: string
+  price_inr: number
+  amazon_now_eligible: boolean
 }
 
 const categories: Category[] = [
-  { id: 'beverages', label: 'Beverages', emoji: '🥤' },
-  { id: 'snacks', label: 'Snacks', emoji: '🍿' },
-  { id: 'ice-cream', label: 'Ice cream', emoji: '🍨' },
-  { id: 'bath-body', label: 'Bath & body', emoji: '🧴' },
-  { id: 'cleaners', label: 'Cleaners', emoji: '🧽' },
-  { id: 'grocery', label: 'Grocery', emoji: '🛒' },
-  { id: 'party', label: 'Party', emoji: '🎉' },
-  { id: 'health', label: 'Health', emoji: '🩹' },
+  { id: 'beverages', label: 'Beverages', icon: 'wine-outline' },
+  { id: 'snacks', label: 'Snacks', icon: 'fast-food-outline' },
+  { id: 'ice-cream', label: 'Ice cream', icon: 'ice-cream-outline' },
+  { id: 'bath-body', label: 'Bath & body', icon: 'sparkles-outline' },
+  { id: 'cleaners', label: 'Cleaners', icon: 'water-outline' },
+  { id: 'grocery', label: 'Grocery', icon: 'basket-outline' },
+  { id: 'party', label: 'Party', icon: 'balloon-outline' },
+  { id: 'health', label: 'Health', icon: 'medkit-outline' },
 ]
 
-const reorderProducts: ReorderProduct[] = [
+const fallbackReorderItems: ReorderItem[] = [
   {
-    id: 'tata-salt',
-    name: 'Tata Salt 1kg',
-    quantity: '2 packs',
-    price: 42,
+    item_name: 'Tata Salt 1kg',
+    quantity: 2,
+    unit: 'packs',
+    price_inr: 42,
+    amazon_now_eligible: true,
   },
   {
-    id: 'surf-excel',
-    name: 'Surf Excel 1kg',
-    quantity: '1 pack',
-    price: 189,
+    item_name: 'Surf Excel 1kg',
+    quantity: 1,
+    unit: 'pack',
+    price_inr: 189,
+    amazon_now_eligible: true,
   },
   {
-    id: 'parle-g',
-    name: 'Parle-G 800g',
-    quantity: '3 packs',
-    price: 105,
+    item_name: 'Parle-G 800g',
+    quantity: 3,
+    unit: 'packs',
+    price_inr: 105,
+    amazon_now_eligible: true,
   },
 ]
 
-const fallbackOccasions: OccasionCard[] = [
+const REORDER_TILE_COLORS = [
+  { bg: '#E8F5E9', text: '#2E7D32' },
+  { bg: '#E3F2FD', text: '#1565C0' },
+  { bg: '#FFF8E1', text: '#F57F17' },
+]
+
+interface FallbackOccasion extends OccasionCard {
+  accent: string
+}
+
+const fallbackOccasions: FallbackOccasion[] = [
   {
     id: 'diwali',
     title: 'Diwali',
@@ -71,6 +89,7 @@ const fallbackOccasions: OccasionCard[] = [
     category: 'festival',
     estimated_budget: 2400,
     tap_action: '/missions/diwali',
+    accent: '#FF6B00',
   },
   {
     id: 'moms-birthday',
@@ -80,6 +99,7 @@ const fallbackOccasions: OccasionCard[] = [
     category: 'birthday',
     estimated_budget: 1800,
     tap_action: '/missions/moms-birthday',
+    accent: '#007185',
   },
   {
     id: 'coorg-trek',
@@ -89,6 +109,7 @@ const fallbackOccasions: OccasionCard[] = [
     category: 'travel',
     estimated_budget: 3200,
     tap_action: '/missions/coorg-trek',
+    accent: '#2E7D32',
   },
   {
     id: 'office-potluck',
@@ -98,11 +119,18 @@ const fallbackOccasions: OccasionCard[] = [
     category: 'event',
     estimated_budget: 800,
     tap_action: '/missions/office-potluck',
+    accent: '#6B3FA0',
   },
 ]
 
+const ACCENTS = ['#FF6B00', '#007185', '#2E7D32', '#6B3FA0']
+
 function formatInr(value: number) {
   return value.toLocaleString('en-IN')
+}
+
+function truncate(text: string, max: number) {
+  return text.length > max ? `${text.slice(0, max - 1)}…` : text
 }
 
 export default function HomeScreen() {
@@ -110,19 +138,55 @@ export default function HomeScreen() {
   const successTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const [search, setSearch] = useState('')
   const [goal, setGoal] = useState('')
-  const [goalFocused, setGoalFocused] = useState(false)
   const [isApproving, setIsApproving] = useState(false)
-  const [showOrderStatus, setShowOrderStatus] = useState(false)
-  const [occasions, setOccasions] = useState<OccasionCard[]>(fallbackOccasions)
+  const [reorderItems, setReorderItems] =
+    useState<ReorderItem[]>(fallbackReorderItems)
+  const [occasions, setOccasions] = useState<FallbackOccasion[]>(fallbackOccasions)
+  const [upcomingRecurrence, setUpcomingRecurrence] =
+    useState<UpcomingRecurrence | null>(null)
+  const [isRecurrenceDismissed, setIsRecurrenceDismissed] = useState(false)
 
   useEffect(() => {
-    demoAPI.getOccasions().then((res) => {
-      if (res.data?.data && Array.isArray(res.data.data)) {
-        setOccasions(res.data.data)
-      }
-    }).catch(() => {
-      // Keep fallback occasions
-    })
+    demoAPI
+      .getOccasions()
+      .then((res) => {
+        if (res.data?.data && Array.isArray(res.data.data)) {
+          const mapped = res.data.data.map(
+            (o: OccasionCard, i: number): FallbackOccasion => ({
+              ...o,
+              accent: ACCENTS[i % ACCENTS.length],
+            }),
+          )
+          setOccasions(mapped)
+        }
+      })
+      .catch(() => {
+        // Keep fallback occasions
+      })
+
+    demoAPI
+      .getReorderAlerts()
+      .then((res) => {
+        const alerts = res.data?.data || res.data || []
+        if (Array.isArray(alerts) && alerts.length > 0) {
+          setReorderItems(alerts.slice(0, 3))
+        }
+      })
+      .catch(() => {
+        // Keep fallback reorder items.
+      })
+
+    demoAPI
+      .getUserProfile()
+      .then((res) => {
+        const recurrence = res.data?.data?.upcoming_recurrence
+        if (recurrence?.recurrence_alert) {
+          setUpcomingRecurrence(recurrence)
+        }
+      })
+      .catch(() => {
+        // The recurrence card is optional when profile data is unavailable.
+      })
   }, [])
 
   useEffect(
@@ -156,7 +220,6 @@ export default function HomeScreen() {
       // Haptics are unavailable on some browser and simulator environments.
     })
     setIsApproving(true)
-    setShowOrderStatus(true)
 
     if (successTimerRef.current) {
       clearTimeout(successTimerRef.current)
@@ -168,6 +231,20 @@ export default function HomeScreen() {
     openBuilding(goal.trim() || 'Birthday party for 20 people under ₹3000')
   }
 
+  const handleRebuildMission = () => {
+    if (!upcomingRecurrence) {
+      return
+    }
+
+    router.push({
+      pathname: '/cart/building',
+      params: {
+        goal: upcomingRecurrence.occasion_label,
+        budget: upcomingRecurrence.budget_used.toString(),
+      },
+    })
+  }
+
   return (
     <SafeAreaView style={styles.safeArea} edges={['top']}>
       <ScrollView
@@ -176,6 +253,7 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
       >
+        {/* SECTION 1.1 — HEADER */}
         <View style={styles.nowHeader}>
           <View style={styles.topHeaderRow}>
             <Pressable style={styles.headerIconButton} accessibilityRole="button">
@@ -189,7 +267,7 @@ export default function HomeScreen() {
             </View>
 
             <Pressable style={styles.headerIconButton} accessibilityRole="button">
-              <Ionicons name="close" size={27} color={Colors.white} />
+              <Ionicons name="cart-outline" size={26} color={Colors.white} />
             </Pressable>
           </View>
 
@@ -197,29 +275,30 @@ export default function HomeScreen() {
             <View style={styles.deliveryPill}>
               <Text style={styles.deliveryPillText}>⚡ 10 mins</Text>
             </View>
-            <Text style={styles.deliveryAddress}>Bangalore, 560001</Text>
+            <Text style={styles.deliveryAddress}>
+              {truncate('Bangalore, 560001', 20)}
+            </Text>
             <Ionicons name="chevron-down" size={16} color={Colors.white} />
           </Pressable>
         </View>
 
+        {/* SECTION 1.2 — SEARCH BAR */}
         <View style={styles.discoverySection}>
           <View style={styles.searchBar}>
-            <Ionicons
-              name="search"
-              size={21}
-              color={Colors.textSecondary}
-            />
+            <Ionicons name="search" size={21} color={Colors.textSecondary} />
             <TextInput
               value={search}
               onChangeText={setSearch}
               placeholder="Search for groceries, snacks..."
-              placeholderTextColor={Colors.textSecondary}
+              placeholderTextColor={Colors.placeholder}
               style={styles.searchInput}
               returnKeyType="search"
               accessibilityLabel="Search products"
             />
+            <Ionicons name="mic-outline" size={21} color={Colors.textSecondary} />
           </View>
 
+          {/* SECTION 1.3 — CATEGORY PILLS */}
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -232,8 +311,12 @@ export default function HomeScreen() {
                 style={styles.categoryItem}
                 accessibilityRole="button"
               >
-                <Text style={styles.categoryEmoji}>{category.emoji}</Text>
-                <Text style={styles.categoryLabel} numberOfLines={2}>
+                <Ionicons
+                  name={category.icon}
+                  size={28}
+                  color={Colors.textPrimary}
+                />
+                <Text style={styles.categoryLabel} numberOfLines={1}>
                   {category.label}
                 </Text>
               </Pressable>
@@ -241,43 +324,113 @@ export default function HomeScreen() {
           </ScrollView>
         </View>
 
+        {/* SECTION 1.4 — PROMOTIONAL BANNER */}
+        <View style={styles.banner}>
+          <View style={styles.bannerLeft}>
+            <Text style={styles.bannerBrand}>MissionCart</Text>
+            <Text style={styles.bannerHeadline}>Plan any occasion</Text>
+            <Text style={styles.bannerHeadline}>in under 60 seconds</Text>
+            <Pressable style={styles.bannerCta} accessibilityRole="button">
+              <Text style={styles.bannerCtaText}>Get started →</Text>
+            </Pressable>
+          </View>
+          <View style={styles.bannerRight}>
+            <View style={styles.bannerStatPill}>
+              <Text style={styles.bannerStatText}>3,847 occasions</Text>
+            </View>
+            <View style={styles.bannerStatPill}>
+              <Text style={styles.bannerStatText}>234 products</Text>
+            </View>
+            <View style={styles.bannerStatPill}>
+              <Text style={styles.bannerStatText}>94% accuracy</Text>
+            </View>
+          </View>
+        </View>
+
+        {/* SECTION 1.5 — BENEFIT PILLS ROW */}
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.benefitRow}
+        >
+          <View style={styles.benefitPill}>
+            <Ionicons name="flash-outline" size={20} color={Colors.primary} />
+            <View style={styles.benefitTextWrap}>
+              <Text style={styles.benefitTitle}>Fast Delivery</Text>
+              <Text style={styles.benefitSubtitle}>Above ₹149</Text>
+            </View>
+          </View>
+          <View style={styles.benefitPill}>
+            <Ionicons
+              name="shield-checkmark-outline"
+              size={20}
+              color={Colors.successGreen}
+            />
+            <View style={styles.benefitTextWrap}>
+              <Text style={styles.benefitTitle}>Zero Sponsored</Text>
+              <Text style={styles.benefitSubtitle}>In mission carts</Text>
+            </View>
+          </View>
+        </ScrollView>
+
+        {/* SECTION 1.6 — DIVIDER */}
+        <View style={styles.divider} />
+
+        {/* SECTION 1.7 — MORNING APPROVAL CARD */}
         <View style={styles.reorderCard}>
-          <Pressable onPress={handleApprove} style={styles.reorderTopBar}>
-            <Text style={styles.reorderTopTitle}>
-              ⚡ Your daily reorder is ready
-            </Text>
-            <Text style={styles.reorderTopAction}>Tap to approve →</Text>
-          </Pressable>
+          <View style={styles.reorderTopBar}>
+            <Text style={styles.reorderTopTitle}>Your daily reorder</Text>
+            <View style={styles.reorderReady}>
+              <Ionicons name="time-outline" size={16} color={Colors.white} />
+              <Text style={styles.reorderReadyText}>Ready now</Text>
+            </View>
+          </View>
 
           <View style={styles.reorderRows}>
-            {reorderProducts.map((product, index) => (
-              <View
-                key={product.id}
-                style={[
-                  styles.productRow,
-                  index < reorderProducts.length - 1 &&
-                    styles.productRowDivider,
-                ]}
-              >
-                <View style={styles.productImage}>
-                  <Ionicons
-                    name="cube-outline"
-                    size={22}
-                    color={Colors.textSecondary}
-                  />
-                </View>
-                <View style={styles.productCopy}>
-                  <Text style={styles.productName}>{product.name}</Text>
-                  <Text style={styles.productQuantity}>{product.quantity}</Text>
-                </View>
-                <View style={styles.productMeta}>
-                  <Text style={styles.productPrice}>₹{product.price}</Text>
-                  <View style={styles.nowPill}>
-                    <Text style={styles.nowPillText}>NOW</Text>
+            {reorderItems.map((item, index) => {
+              const tileColor =
+                REORDER_TILE_COLORS[index % REORDER_TILE_COLORS.length]
+              return (
+                <View
+                  key={item.id || item.asin || item.item_name}
+                  style={[
+                    styles.productRow,
+                    index < reorderItems.length - 1 &&
+                      styles.productRowDivider,
+                  ]}
+                >
+                  <View
+                    style={[
+                      styles.letterTile,
+                      { backgroundColor: tileColor.bg },
+                    ]}
+                  >
+                    <Text
+                      style={[
+                        styles.letterTileText,
+                        { color: tileColor.text },
+                      ]}
+                    >
+                      {item.item_name.charAt(0).toUpperCase()}
+                    </Text>
+                  </View>
+                  <View style={styles.productCopy}>
+                    <Text style={styles.productName}>{item.item_name}</Text>
+                    <Text style={styles.productQuantity}>
+                      {item.quantity} {item.unit}
+                    </Text>
+                  </View>
+                  <View style={styles.productMeta}>
+                    <Text style={styles.productPrice}>₹{item.price_inr}</Text>
+                    {item.amazon_now_eligible && (
+                      <View style={styles.nowPill}>
+                        <Text style={styles.nowPillText}>NOW</Text>
+                      </View>
+                    )}
                   </View>
                 </View>
-              </View>
-            ))}
+              )
+            })}
           </View>
 
           <View style={styles.reorderFooter}>
@@ -300,83 +453,100 @@ export default function HomeScreen() {
                 <Text style={styles.reviewButtonText}>Review</Text>
               </Pressable>
             </View>
-            {showOrderStatus && (
-              <Text style={styles.orderStatus}>
-                ⚡ Ordering via Amazon Now...
-              </Text>
-            )}
           </View>
         </View>
 
+        {/* SECTION 1.8 — DIVIDER */}
+        <View style={styles.divider} />
+
+        {upcomingRecurrence &&
+          upcomingRecurrence.recurrence_alert &&
+          !isRecurrenceDismissed && (
+            <View style={styles.recurrenceCard}>
+              <Text style={styles.recurrenceEyebrow}>Last year</Text>
+              <Text style={styles.recurrenceTitle}>
+                {upcomingRecurrence.occasion_label}
+              </Text>
+              <Text style={styles.recurrenceMeta}>
+                ₹{formatInr(upcomingRecurrence.budget_used)} ·{' '}
+                {upcomingRecurrence.headcount} guests ·{' '}
+                {upcomingRecurrence.coverage_score}
+              </Text>
+              <Text style={styles.recurrenceAlert}>
+                {upcomingRecurrence.recurrence_alert}
+              </Text>
+              <View style={styles.recurrenceActions}>
+                <Pressable
+                  onPress={handleRebuildMission}
+                  accessibilityRole="button"
+                  accessibilityLabel="Rebuild mission"
+                >
+                  <Text style={styles.recurrencePrimaryAction}>
+                    Rebuild mission
+                  </Text>
+                </Pressable>
+                <Pressable
+                  onPress={() => setIsRecurrenceDismissed(true)}
+                  accessibilityRole="button"
+                  accessibilityLabel="Dismiss recurrence"
+                >
+                  <Text style={styles.recurrenceDismissAction}>Dismiss</Text>
+                </Pressable>
+              </View>
+            </View>
+          )}
+
+        {/* SECTION 1.9 — MISSION INPUT SECTION */}
+        <Text style={styles.missionHeader}>What do you need?</Text>
+        <TextInput
+          value={goal}
+          onChangeText={setGoal}
+          placeholder="e.g. Birthday party for 20 people"
+          placeholderTextColor={Colors.placeholder}
+          style={styles.goalInput}
+          returnKeyType="done"
+          accessibilityLabel="Mission goal"
+        />
+        <View style={styles.budgetRow}>
+          <Text style={styles.budgetLabel}>Budget</Text>
+          <Pressable accessibilityRole="button">
+            <Text style={styles.budgetValue}>₹3,000</Text>
+          </Pressable>
+        </View>
         <Pressable
-          onPress={scheduleTestNotification}
-          style={styles.testNotifLink}
+          onPress={handleBuildCart}
+          style={styles.buildCartButton}
           accessibilityRole="button"
         >
-          <Text style={styles.testNotifText}>
-            Demo: Test morning notification (fires in 5s)
-          </Text>
+          <Text style={styles.buildCartText}>Build Cart</Text>
         </Pressable>
 
-        <View style={styles.missionSection}>
-          <Text style={styles.missionTitle}>
-            ✨ What's your mission today?
-          </Text>
-          <Text style={styles.missionSubtitle}>
-            Tell us your goal — we'll build the perfect cart
-          </Text>
-          <TextInput
-            value={goal}
-            onChangeText={setGoal}
-            onFocus={() => setGoalFocused(true)}
-            onBlur={() => setGoalFocused(false)}
-            placeholder="e.g. Birthday party for 20 people under ₹3000"
-            placeholderTextColor={Colors.textSecondary}
-            style={[
-              styles.goalInput,
-              goalFocused && styles.goalInputFocused,
-            ]}
-            returnKeyType="done"
-            accessibilityLabel="Mission goal"
-          />
-          <View style={styles.missionActions}>
-            <Pressable accessibilityRole="button">
-              <Text style={styles.budgetText}>Budget: ₹3,000</Text>
-            </Pressable>
-            <Pressable
-              onPress={handleBuildCart}
-              hitSlop={8}
-              accessibilityRole="button"
-            >
-              <Text style={styles.buildCartText}>Build Cart →</Text>
-            </Pressable>
-          </View>
-        </View>
+        {/* SECTION 1.10 — DIVIDER */}
+        <View style={styles.dividerSpaced} />
 
+        {/* SECTION 1.11 — CART AUDIT BANNER */}
         <Pressable
           onPress={() => router.push('/audit')}
           style={styles.auditBanner}
           accessibilityRole="button"
         >
-          <View style={styles.auditIcon}>
-            <Ionicons
-              name="shield-checkmark"
-              size={24}
-              color={Colors.sponsoredBlue}
-            />
-          </View>
           <View style={styles.auditCopy}>
-            <Text style={styles.auditTitle}>Cart Audit</Text>
-            <Text style={styles.auditSubtitle}>
-              We'll find what's wrong with your cart
-            </Text>
+            <Text style={styles.auditTitle}>Cart health check</Text>
+            <Text style={styles.auditSubtitle}>Find issues before checkout</Text>
           </View>
-          <Text style={styles.auditAction}>Try →</Text>
+          <View style={styles.auditAction}>
+            <Text style={styles.auditActionText}>Check now</Text>
+            <Ionicons name="chevron-forward" size={14} color={Colors.linkBlue} />
+          </View>
         </Pressable>
 
+        {/* SECTION 1.12 — DIVIDER */}
+        <View style={styles.divider} />
+
+        {/* SECTION 1.13 — COMING UP SECTION */}
         <View style={styles.comingSection}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Coming up ✨</Text>
+            <Text style={styles.sectionTitle}>Coming up</Text>
             <Pressable accessibilityRole="button">
               <Text style={styles.seeAllText}>See all</Text>
             </Pressable>
@@ -390,16 +560,13 @@ export default function HomeScreen() {
               <Pressable
                 key={occasion.id}
                 onPress={() => console.log('Plan occasion:', occasion.id)}
-                style={styles.occasionCard}
+                style={[styles.occasionCard, { borderLeftColor: occasion.accent }]}
                 accessibilityRole="button"
               >
-                <Text style={styles.occasionEmoji}>{occasion.emoji}</Text>
                 <Text style={styles.occasionTitle} numberOfLines={2}>
                   {occasion.title}
                 </Text>
-                <Text style={styles.occasionDays}>
-                  In {occasion.days_until} days
-                </Text>
+                <Text style={styles.occasionDays}>In {occasion.days_until} days</Text>
                 <Text style={styles.occasionBudget}>
                   ~₹{formatInr(occasion.estimated_budget)}
                 </Text>
@@ -407,6 +574,25 @@ export default function HomeScreen() {
               </Pressable>
             ))}
           </ScrollView>
+        </View>
+
+        <Pressable
+          onPress={scheduleTestNotification}
+          style={styles.testNotifLink}
+          accessibilityRole="button"
+        >
+          <Text style={styles.testNotifText}>Test morning notification</Text>
+        </Pressable>
+
+        {/* SECTION 1.14 — BOTTOM PERSISTENT BAR */}
+        <View style={styles.persistentBar}>
+          <View style={styles.persistentLeft}>
+            <Ionicons name="bag-outline" size={20} color={Colors.textSecondary} />
+            <Text style={styles.persistentItems}>0 items</Text>
+          </View>
+          <Text style={styles.persistentHint}>
+            Add items worth ₹149 for free delivery
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -427,7 +613,7 @@ const styles = StyleSheet.create({
   },
   nowHeader: {
     paddingHorizontal: 12,
-    paddingTop: 7,
+    paddingTop: 8,
     paddingBottom: 12,
     backgroundColor: Colors.nowBlue,
   },
@@ -449,7 +635,7 @@ const styles = StyleSheet.create({
   },
   amazonLogoText: {
     color: Colors.white,
-    fontSize: 21,
+    fontSize: 22,
     lineHeight: 26,
     fontWeight: '400',
     letterSpacing: -0.5,
@@ -462,124 +648,199 @@ const styles = StyleSheet.create({
   },
   nowLogoText: {
     color: Colors.white,
-    fontSize: 21,
+    fontSize: 22,
     lineHeight: 26,
-    fontWeight: '800',
+    fontWeight: '700',
     letterSpacing: -0.5,
   },
   deliveryRow: {
     alignSelf: 'center',
-    marginTop: 5,
+    marginTop: 4,
     flexDirection: 'row',
     alignItems: 'center',
   },
   deliveryPill: {
-    paddingHorizontal: 9,
-    paddingVertical: 5,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
     backgroundColor: Colors.deliveryYellow,
-    borderRadius: 14,
+    borderRadius: 4,
   },
   deliveryPillText: {
     color: Colors.textPrimary,
     fontSize: 12,
-    lineHeight: 15,
-    fontWeight: '800',
+    lineHeight: 16,
+    fontWeight: '700',
   },
   deliveryAddress: {
     marginLeft: 8,
-    marginRight: 3,
+    marginRight: 4,
     color: Colors.white,
     fontSize: 13,
     lineHeight: 18,
     fontWeight: '600',
   },
   discoverySection: {
-    paddingTop: 10,
+    paddingTop: 12,
     paddingBottom: 8,
     backgroundColor: Colors.background,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.border,
   },
   searchBar: {
     height: 44,
-    marginHorizontal: 12,
-    paddingHorizontal: 11,
+    marginHorizontal: 16,
+    paddingHorizontal: 12,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: Colors.background,
     borderWidth: 1,
-    borderColor: Colors.border,
-    borderRadius: Radius.md,
+    borderColor: Colors.inputBorder,
+    borderRadius: 4,
   },
   searchInput: {
     flex: 1,
     height: 42,
-    marginLeft: 8,
+    marginHorizontal: 8,
     paddingVertical: 0,
     color: Colors.textPrimary,
     fontSize: 14,
   },
   categoryList: {
-    paddingHorizontal: 7,
-    paddingTop: 11,
+    paddingHorizontal: 12,
+    paddingTop: 12,
   },
   categoryItem: {
     width: 72,
-    minHeight: 64,
     alignItems: 'center',
   },
-  categoryEmoji: {
-    fontSize: 36,
-    lineHeight: 40,
-  },
   categoryLabel: {
-    marginTop: 3,
+    marginTop: 4,
     color: Colors.textPrimary,
-    fontSize: 10,
-    lineHeight: 13,
+    fontSize: 11,
+    lineHeight: 14,
+    fontWeight: '400',
     textAlign: 'center',
   },
-  reorderCard: {
-    marginHorizontal: 12,
+  // Banner
+  banner: {
+    marginHorizontal: 0,
+    height: 140,
+    flexDirection: 'row',
+    padding: 16,
+    backgroundColor: Colors.bannerGreen,
+  },
+  bannerLeft: {
+    flex: 0.6,
+    justifyContent: 'center',
+  },
+  bannerBrand: {
+    color: Colors.deliveryYellow,
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 1.5,
+    marginBottom: 4,
+  },
+  bannerHeadline: {
+    color: Colors.white,
+    fontSize: 20,
+    fontWeight: '700',
+    lineHeight: 24,
+  },
+  bannerCta: {
     marginTop: 12,
-    overflow: 'hidden',
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.deliveryYellow,
+    paddingVertical: 6,
+    paddingHorizontal: 14,
+    borderRadius: 4,
+    alignSelf: 'flex-start',
+  },
+  bannerCtaText: {
+    color: Colors.textPrimary,
+    fontWeight: '700',
+    fontSize: 13,
+  },
+  bannerRight: {
+    flex: 0.4,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bannerStatPill: {
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    borderRadius: 4,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    marginBottom: 4,
+  },
+  bannerStatText: {
+    color: Colors.white,
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  // Benefit pills
+  benefitRow: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+  },
+  benefitPill: {
+    width: 160,
+    flexDirection: 'row',
+    alignItems: 'center',
     borderWidth: 1,
     borderColor: Colors.border,
-    borderRadius: 8,
-    shadowColor: Colors.textPrimary,
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.12,
-    shadowRadius: 3,
-    elevation: 2,
+    borderRadius: 4,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    marginRight: 8,
+  },
+  benefitTextWrap: {
+    marginLeft: 8,
+  },
+  benefitTitle: {
+    color: Colors.textPrimary,
+    fontSize: 13,
+    fontWeight: '700',
+  },
+  benefitSubtitle: {
+    color: Colors.textSecondary,
+    fontSize: 11,
+  },
+  // Dividers
+  divider: {
+    height: 8,
+    backgroundColor: Colors.divider,
+  },
+  dividerSpaced: {
+    height: 8,
+    backgroundColor: Colors.divider,
+  },
+  // Reorder card
+  reorderCard: {
+    overflow: 'hidden',
+    backgroundColor: Colors.background,
   },
   reorderTopBar: {
-    minHeight: 38,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: Colors.primary,
   },
   reorderTopTitle: {
-    flexShrink: 1,
     color: Colors.white,
-    fontSize: 13,
+    fontSize: 14,
     lineHeight: 18,
     fontWeight: '700',
   },
-  reorderTopAction: {
-    marginLeft: 8,
+  reorderReady: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  reorderReadyText: {
+    marginLeft: 4,
     color: Colors.white,
-    fontSize: 12,
-    lineHeight: 16,
+    fontSize: 11,
   },
   reorderRows: {
-    paddingHorizontal: 12,
+    paddingHorizontal: 16,
   },
   productRow: {
     minHeight: 64,
@@ -588,16 +849,19 @@ const styles = StyleSheet.create({
   },
   productRowDivider: {
     borderBottomWidth: 1,
-    borderBottomColor: Colors.border,
+    borderBottomColor: Colors.divider,
   },
-  productImage: {
-    width: 40,
-    height: 40,
-    marginRight: 10,
+  letterTile: {
+    width: 36,
+    height: 36,
+    marginRight: 12,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.secondaryBg,
-    borderRadius: Radius.md,
+    borderRadius: 4,
+  },
+  letterTileText: {
+    fontSize: 18,
+    fontWeight: '700',
   },
   productCopy: {
     flex: 1,
@@ -606,10 +870,10 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
     fontSize: 14,
     lineHeight: 18,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   productQuantity: {
-    marginTop: 3,
+    marginTop: 2,
     color: Colors.textSecondary,
     fontSize: 12,
     lineHeight: 15,
@@ -627,129 +891,165 @@ const styles = StyleSheet.create({
     marginTop: 4,
     paddingHorizontal: 6,
     paddingVertical: 2,
-    backgroundColor: Colors.successGreen,
-    borderRadius: 10,
+    backgroundColor: Colors.nowBadge,
+    borderRadius: 3,
   },
   nowPillText: {
     color: Colors.white,
-    fontSize: 10,
+    fontSize: 9,
     lineHeight: 12,
-    fontWeight: '800',
+    fontWeight: '700',
   },
   reorderFooter: {
-    paddingHorizontal: 12,
+    paddingHorizontal: 16,
     paddingTop: 12,
-    paddingBottom: 10,
-    borderTopWidth: 1,
-    borderTopColor: Colors.border,
+    paddingBottom: 12,
   },
   actionButtons: {
     flexDirection: 'row',
-    gap: 9,
+    gap: 8,
   },
   approveButton: {
     flex: 1,
-    height: 44,
+    height: 48,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.primary,
-    borderRadius: Radius.md,
+    borderRadius: 4,
   },
   approveButtonSuccess: {
     backgroundColor: Colors.successGreen,
   },
   approveButtonText: {
     color: Colors.white,
-    fontSize: 14,
+    fontSize: 15,
     lineHeight: 18,
     fontWeight: '700',
   },
   reviewButton: {
     flex: 1,
-    height: 44,
+    height: 48,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.background,
     borderWidth: 1,
-    borderColor: Colors.primary,
-    borderRadius: Radius.md,
+    borderColor: Colors.inputBorder,
+    borderRadius: 4,
   },
   reviewButtonText: {
-    color: Colors.primary,
-    fontSize: 14,
-    lineHeight: 18,
-    fontWeight: '700',
-  },
-  orderStatus: {
-    marginTop: 9,
-    color: Colors.successGreen,
-    fontSize: 13,
-    lineHeight: 17,
-    fontWeight: '600',
-    textAlign: 'center',
-  },
-  missionSection: {
-    marginTop: 16,
-    paddingHorizontal: 12,
-  },
-  missionTitle: {
     color: Colors.textPrimary,
     fontSize: 15,
-    lineHeight: 20,
+    lineHeight: 18,
+    fontWeight: '400',
+  },
+  // Occasion recurrence
+  recurrenceCard: {
+    marginHorizontal: 16,
+    marginTop: 12,
+    padding: 12,
+    backgroundColor: Colors.white,
+    borderWidth: 1,
+    borderColor: '#D5D9D9',
+    borderLeftWidth: 4,
+    borderLeftColor: '#FF9900',
+    borderRadius: 4,
+  },
+  recurrenceEyebrow: {
+    color: '#565959',
+    fontSize: 11,
+    fontWeight: '600',
+    letterSpacing: 0.5,
+    textTransform: 'uppercase',
+  },
+  recurrenceTitle: {
+    marginTop: 6,
+    color: '#0F1111',
+    fontSize: 15,
     fontWeight: '700',
   },
-  missionSubtitle: {
+  recurrenceMeta: {
     marginTop: 2,
-    color: Colors.textSecondary,
+    color: '#565959',
     fontSize: 12,
-    lineHeight: 16,
+  },
+  recurrenceAlert: {
+    marginTop: 6,
+    color: '#FF9900',
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  recurrenceActions: {
+    marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  recurrencePrimaryAction: {
+    color: '#007185',
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  recurrenceDismissAction: {
+    marginLeft: 16,
+    color: '#565959',
+    fontSize: 13,
+  },
+  // Mission input
+  missionHeader: {
+    color: Colors.textPrimary,
+    fontSize: 16,
+    fontWeight: '700',
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 8,
   },
   goalInput: {
-    height: 48,
-    marginTop: 9,
+    height: 52,
+    marginHorizontal: 16,
     paddingHorizontal: 12,
     color: Colors.textPrimary,
     fontSize: 14,
     backgroundColor: Colors.background,
-    borderWidth: 1.5,
-    borderColor: Colors.border,
-    borderRadius: Radius.md,
+    borderWidth: 1,
+    borderColor: Colors.inputBorder,
+    borderRadius: 4,
   },
-  goalInputFocused: {
-    borderColor: Colors.primary,
-  },
-  missionActions: {
-    minHeight: 38,
+  budgetRow: {
+    marginHorizontal: 16,
+    marginTop: 8,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  budgetText: {
+  budgetLabel: {
     color: Colors.textSecondary,
-    fontSize: 12,
-    lineHeight: 16,
+    fontSize: 13,
+  },
+  budgetValue: {
+    color: Colors.linkBlue,
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  buildCartButton: {
+    marginHorizontal: 16,
+    marginTop: 12,
+    height: 48,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.primary,
+    borderRadius: 4,
   },
   buildCartText: {
-    color: Colors.primary,
-    fontSize: 13,
-    lineHeight: 18,
+    color: Colors.white,
+    fontSize: 15,
     fontWeight: '700',
   },
+  // Audit banner
   auditBanner: {
-    minHeight: 68,
-    marginHorizontal: 12,
-    marginTop: 9,
-    padding: 12,
+    backgroundColor: Colors.divider,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: Colors.trustBg,
-    borderWidth: 1,
-    borderColor: Colors.primeBadge,
-    borderRadius: Radius.md,
-  },
-  auditIcon: {
-    width: 35,
-    alignItems: 'flex-start',
   },
   auditCopy: {
     flex: 1,
@@ -757,27 +1057,29 @@ const styles = StyleSheet.create({
   auditTitle: {
     color: Colors.textPrimary,
     fontSize: 14,
-    lineHeight: 18,
     fontWeight: '700',
   },
   auditSubtitle: {
     marginTop: 2,
     color: Colors.textSecondary,
     fontSize: 12,
-    lineHeight: 16,
   },
   auditAction: {
-    marginLeft: 8,
-    color: Colors.primary,
-    fontSize: 13,
-    lineHeight: 18,
-    fontWeight: '700',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
+  auditActionText: {
+    color: Colors.linkBlue,
+    fontSize: 13,
+    fontWeight: '600',
+    marginRight: 2,
+  },
+  // Coming up
   comingSection: {
-    marginTop: 17,
+    paddingTop: 16,
   },
   sectionHeader: {
-    paddingHorizontal: 12,
+    paddingHorizontal: 16,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -794,40 +1096,34 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   occasionList: {
-    paddingLeft: 12,
-    paddingRight: 4,
-    paddingTop: 10,
+    paddingLeft: 16,
+    paddingRight: 8,
+    paddingTop: 12,
   },
   occasionCard: {
     width: 160,
-    minHeight: 158,
     marginRight: 8,
     padding: 12,
     backgroundColor: Colors.background,
     borderWidth: 1,
-    borderColor: Colors.border,
-    borderRadius: 8,
-  },
-  occasionEmoji: {
-    fontSize: 28,
-    lineHeight: 34,
+    borderColor: Colors.inputBorder,
+    borderRadius: 4,
+    borderLeftWidth: 3,
   },
   occasionTitle: {
-    minHeight: 36,
-    marginTop: 5,
     color: Colors.textPrimary,
     fontSize: 14,
     lineHeight: 18,
     fontWeight: '700',
   },
   occasionDays: {
-    marginTop: 3,
+    marginTop: 2,
     color: Colors.textSecondary,
     fontSize: 12,
     lineHeight: 16,
   },
   occasionBudget: {
-    marginTop: 3,
+    marginTop: 4,
     color: Colors.successGreen,
     fontSize: 12,
     lineHeight: 16,
@@ -835,19 +1131,43 @@ const styles = StyleSheet.create({
   },
   planText: {
     marginTop: 8,
-    color: Colors.primary,
+    color: Colors.linkBlue,
     fontSize: 12,
     lineHeight: 16,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   testNotifLink: {
     alignSelf: 'center',
-    marginTop: 4,
+    marginTop: 16,
     marginBottom: 8,
   },
   testNotifText: {
     color: Colors.linkBlue,
     fontSize: 11,
-    textDecorationLine: 'underline',
+  },
+  // Persistent bar
+  persistentBar: {
+    height: 52,
+    marginTop: 8,
+    backgroundColor: Colors.background,
+    borderTopWidth: 1,
+    borderTopColor: Colors.inputBorder,
+    paddingHorizontal: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  persistentLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  persistentItems: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+    marginLeft: 8,
+  },
+  persistentHint: {
+    fontSize: 12,
+    color: Colors.textSecondary,
   },
 })
