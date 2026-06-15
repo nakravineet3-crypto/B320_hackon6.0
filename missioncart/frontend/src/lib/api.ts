@@ -33,42 +33,44 @@ export const catalogAPI = {
 }
 
 export const hiveAPI = {
-  getDemo: () => api.get('/api/hive/demo'),
+  getDemo: () => api.get('/api/quorum/demo'),
 
   vote: (cartId: string, itemId: string, userId: string, value: 1 | -1) =>
-    api.post(`/api/hive/cart/${cartId}/vote`, null, {
+    api.post(`/api/quorum/cart/${cartId}/vote`, null, {
       params: { item_id: itemId, user_id: userId, value },
     }),
 
   optimize: (cartId: string) =>
-    api.post(`/api/hive/cart/${cartId}/optimize`),
+    api.post(`/api/quorum/cart/${cartId}/optimize`),
 
   getSplit: (cartId: string, method: string = 'equal') =>
-    api.get(`/api/hive/cart/${cartId}/split`, { params: { method } }),
+    api.get(`/api/quorum/cart/${cartId}/split`, { params: { method } }),
 
-  addItem: (
-    cartId: string,
-    asin: string,
-    title: string,
-    category: string,
-    price: number,
-    quantity: number,
-    addedBy: string = 'U001',
-    note?: string,
-  ) =>
-    api.post(`/api/hive/cart/${cartId}/add-item`, null, {
-      params: { asin, title, category, price, quantity, added_by: addedBy, note },
-    }),
+  addItem: (cartId: string, item: any) =>
+    api.post(`/api/quorum/cart/${cartId}/add-item`, item),
+
+  removeItem: (cartId: string, itemId: string) =>
+    api.delete(`/api/quorum/cart/${cartId}/item/${itemId}`),
 
   placeOrder: (cartId: string, splitMethod: string = 'equal') =>
-    api.post(`/api/hive/cart/${cartId}/place-order`, null, {
+    api.post(`/api/quorum/cart/${cartId}/place-order`, null, {
       params: { split_method: splitMethod },
     }),
 
   getMessages: (hiveId: string, since?: string) =>
-    api.get(`/api/hive/messages/${hiveId}`, {
+    api.get(`/api/quorum/messages/${hiveId}`, {
       params: since ? { since } : {},
     }),
+
+  sendMessage: (hiveId: string, userId: string, content: string) =>
+    api.post('/api/quorum/messages/send', {
+      hive_id: hiveId,
+      user_id: userId,
+      content,
+    }),
+
+  updateBudget: (hiveId: string, budget: number) =>
+    api.post(`/api/quorum/hive/${hiveId}/budget`, { budget_cap: budget }),
 }
 
 export const searchAPI = {

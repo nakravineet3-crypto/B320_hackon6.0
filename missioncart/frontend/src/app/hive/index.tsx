@@ -9,6 +9,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native'
@@ -31,6 +32,7 @@ export default function HiveScreen() {
   const [optimizing, setOptimizing] = useState(false)
   const [showOptimizeSheet, setShowOptimizeSheet] = useState(false)
   const [optimizeResult, setOptimizeResult] = useState<any>(null)
+  const [chatText, setChatText] = useState('')
 
   useEffect(() => {
     hiveAPI.getDemo().then((res) => {
@@ -151,27 +153,69 @@ export default function HiveScreen() {
   )
 
   const renderChatTab = () => (
-    <FlatList
-      data={[...messages].reverse()}
-      keyExtractor={(m: any) => m.msg_id}
-      inverted
-      contentContainerStyle={{ padding: 12 }}
-      renderItem={({ item: m }) => {
-        if (m.type === 'system') return (
-          <View style={styles.sysMsg}><Text style={styles.sysMsgText}>{m.text}</Text></View>
-        )
-        return (
-          <View style={styles.chatRow}>
-            <View style={[styles.chatAvatar, { backgroundColor: m.color }]}><Text style={styles.chatAvatarText}>{m.letter}</Text></View>
-            <View style={styles.chatBubble}>
-              <Text style={styles.chatName}>{m.name}</Text>
-              <Text style={styles.chatText}>{m.text}</Text>
-              <Text style={styles.chatTime}>{m.timestamp}</Text>
+    <View style={{ flex: 1 }}>
+      <FlatList
+        data={messages}
+        keyExtractor={(m: any) => m.message_id}
+        contentContainerStyle={{ padding: 12, paddingBottom: 80 }}
+        renderItem={({ item: m }) => {
+          if (m.type === 'system') return (
+            <View style={styles.sysMsg}><Text style={styles.sysMsgText}>{m.content}</Text></View>
+          )
+          const isMe = m.user_id === 'U001'
+          return (
+            <View style={[styles.chatRow, isMe && { flexDirection: 'row-reverse' }]}>
+              <View style={[styles.chatAvatar, { backgroundColor: m.avatar_color || '#565959' }]}>
+                <Text style={styles.chatAvatarText}>{m.avatar_letter || '?'}</Text>
+              </View>
+              <View style={[styles.chatBubble, isMe && { marginLeft: 0, marginRight: 8, backgroundColor: '#FF9900', borderColor: '#FF9900' }]}>
+                <Text style={[styles.chatName, isMe && { color: '#FFFFFF99' }]}>{m.display_name || 'Unknown'}</Text>
+                <Text style={[styles.chatText, isMe && { color: '#FFFFFF' }]}>{m.content}</Text>
+              </View>
             </View>
-          </View>
-        )
-      }}
-    />
+          )
+        }}
+      />
+      <View style={styles.chatInputBar}>
+        <View style={styles.chatInputContainer}>
+          <TextInput
+            style={styles.chatInput}
+            value={chatText}
+            onChangeText={setChatText}
+            placeholder="Message Birthday Party Squad..."
+            placeholderTextColor="#9AA0A6"
+            multiline
+          />
+        </View>
+        <TouchableOpacity
+          style={[styles.chatSendBtn, { backgroundColor: chatText.trim() ? '#FF9900' : '#D5D9D9' }]}
+          disabled={!chatText.trim()}
+          onPress={async () => {
+            if (!chatText.trim()) return
+            const text = chatText.trim()
+            setChatText('')
+            const optimistic = {
+              message_id: Date.now().toString(),
+              hive_id: 'HIVE_BIRTHDAY_001',
+              cart_id: null,
+              user_id: 'U001',
+              type: 'text',
+              content: text,
+              display_name: 'Sneha',
+              avatar_color: '#FF9900',
+              avatar_letter: 'S',
+              created_at: new Date().toISOString(),
+            }
+            setMessages((prev) => [...prev, optimistic])
+            try {
+              await hiveAPI.sendMessage('HIVE_BIRTHDAY_001', 'U001', text)
+            } catch {}
+          }}
+        >
+          <Ionicons name="send" size={18} color="#FFFFFF" />
+        </TouchableOpacity>
+      </View>
+    </View>
   )
 
   const renderBudgetTab = () => (
@@ -203,15 +247,15 @@ export default function HiveScreen() {
         <TouchableOpacity style={[styles.splitPill, splitMethod === 'equal' && styles.splitPillActive]} onPress={() => handleSplitMethodChange('equal')}>
           <Text style={[styles.splitPillText, splitMethod === 'equal' && styles.splitPillTextActive]}>Equal split</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.splitPill, splitMethod === 'by_contribution' && styles.splitPillActive]} onPress={() => handleSplitMethodChange('by_contribution')}>
-          <Text style={[styles.splitPillText, splitMethod === 'by_contribution' && styles.splitPillTextActive]}>By contribution</Text>
+        <TouchableOpacity style={[styles.splitPill, splitMethod === 'proportional' && styles.splitPillActive]} onPress={() => handleSplitMethodChange('proportional')}>
+          <Text style={[styles.splitPillText, splitMethod === 'proportional' && styles.splitPillTextActive]}>By contribution</Text>
         </TouchableOpacity>
       </View>
-      {(splitPreview?.splits || []).map((s: any) => (
+      {(splitPreview?.shares || []).map((s: any) => (
         <View key={s.user_id} style={styles.splitCard}>
-          <View style={[styles.splitAvatar, { backgroundColor: s.color }]}><Text style={styles.splitAvatarText}>{s.letter}</Text></View>
+          <View style={[styles.splitAvatar, { backgroundColor: s.avatar_color }]}><Text style={styles.splitAvatarText}>{s.avatar_letter}</Text></View>
           <View style={styles.splitInfo}>
-            <Text style={styles.splitName}>{s.name}</Text>
+            <Text style={styles.splitName}>{s.display_name}</Text>
             <Text style={styles.splitAmount}>₹{Math.round(s.amount)}</Text>
             <Text style={styles.splitLabel}>to pay</Text>
           </View>
@@ -412,4 +456,9 @@ const styles = StyleSheet.create({
   actionSaved: { color: Colors.successGreen, fontSize: 14, fontWeight: '700' },
   gotItBtn: { backgroundColor: Colors.primary, height: 48, borderRadius: 4, alignItems: 'center', justifyContent: 'center', marginTop: 16 },
   gotItText: { color: Colors.white, fontSize: 15, fontWeight: '700' },
+  // Chat input
+  chatInputBar: { position: 'absolute', bottom: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'flex-end', padding: 12, paddingBottom: 24, backgroundColor: Colors.background, borderTopWidth: 1, borderTopColor: '#F0F2F2' },
+  chatInputContainer: { flex: 1, backgroundColor: '#F7F8F8', borderRadius: 20, paddingHorizontal: 16, paddingVertical: 8 },
+  chatInput: { fontSize: 14, color: '#0F1111', maxHeight: 100, paddingVertical: 4 },
+  chatSendBtn: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center', marginLeft: 8 },
 })

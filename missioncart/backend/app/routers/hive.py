@@ -1,267 +1,414 @@
-"""Amazon Hives — collaborative group shopping cart with voting and optimization."""
 from fastapi import APIRouter
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import Optional
 from uuid import uuid4
-import time
+from datetime import datetime
+from app.services.hive_engine import (
+    load_hive_data, save_hive_data,
+    get_cart_total, get_vote_score,
+    run_optimizer, calculate_split,
+    get_member_map,
+)
 
 router = APIRouter()
 
-# ── DEMO DATA ─────────────────────────────────────────────────────────────────
 
-MEMBERS = [
-    {"user_id": "U001", "name": "Sneha", "letter": "S", "color": "#FF9900"},
-    {"user_id": "U002", "name": "Riya", "letter": "R", "color": "#007185"},
-    {"user_id": "U003", "name": "Arjun", "letter": "A", "color": "#007600"},
-    {"user_id": "U004", "name": "Karan", "letter": "K", "color": "#CC0C39"},
-]
+# ── Request models ─────────────────────────────────────────
 
-CART_ITEMS = [
-    {"item_id": "HI001", "asin": "B0PARTY001", "title": "Disposable Paper Plates 25pc", "category": "plates", "price": 89, "quantity": 2, "added_by": "U001", "added_by_name": "Sneha", "added_by_letter": "S", "added_by_color": "#FF9900", "note": "For cake + snacks", "votes": [{"user_id": "U001", "value": 1}, {"user_id": "U002", "value": 1}, {"user_id": "U003", "value": 1}], "vote_score": 3, "status": "approved"},
-    {"item_id": "HI002", "asin": "B0PARTY013", "title": "Multicolor Balloon Set 50pc", "category": "balloon_set", "price": 199, "quantity": 2, "added_by": "U002", "added_by_name": "Riya", "added_by_letter": "R", "added_by_color": "#007185", "note": "Big balloons for entrance", "votes": [{"user_id": "U001", "value": 1}, {"user_id": "U002", "value": 1}, {"user_id": "U004", "value": 1}], "vote_score": 3, "status": "approved"},
-    {"item_id": "HI003", "asin": "B0PARTY019", "title": "Balloon Hand Pump", "category": "balloon_pump", "price": 99, "quantity": 1, "added_by": "U002", "added_by_name": "Riya", "added_by_letter": "R", "added_by_color": "#007185", "note": "", "votes": [{"user_id": "U002", "value": 1}, {"user_id": "U003", "value": 1}], "vote_score": 2, "status": "approved"},
-    {"item_id": "HI004", "asin": "B0PARTY033", "title": "Return Gift Bags 12pc", "category": "return_gifts", "price": 179, "quantity": 2, "added_by": "U003", "added_by_name": "Arjun", "added_by_letter": "A", "added_by_color": "#007600", "note": "One per kid", "votes": [{"user_id": "U001", "value": 1}, {"user_id": "U003", "value": 1}, {"user_id": "U004", "value": 1}], "vote_score": 3, "status": "approved"},
-    {"item_id": "HI005", "asin": "B0JUICE001", "title": "Real Juice Party Pack 6×200ml", "category": "beverages", "price": 180, "quantity": 3, "added_by": "U002", "added_by_name": "Riya", "added_by_letter": "R", "added_by_color": "#007185", "note": "Kids love mango!", "votes": [{"user_id": "U002", "value": 1}, {"user_id": "U001", "value": 1}], "vote_score": 2, "status": "approved"},
-    {"item_id": "HI006", "asin": "B0CAKE001", "title": "Premium Chocolate Cake 1kg", "category": "cake", "price": 899, "quantity": 1, "added_by": "U004", "added_by_name": "Karan", "added_by_letter": "K", "added_by_color": "#CC0C39", "note": "From the fancy bakery", "votes": [{"user_id": "U004", "value": 1}, {"user_id": "U001", "value": -1}, {"user_id": "U003", "value": -1}], "vote_score": -1, "status": "pending"},
-    {"item_id": "HI007", "asin": "B0DECO001", "title": "LED Fairy Lights 10m", "category": "decorations", "price": 349, "quantity": 2, "added_by": "U004", "added_by_name": "Karan", "added_by_letter": "K", "added_by_color": "#CC0C39", "note": "For the garden area", "votes": [{"user_id": "U004", "value": 1}, {"user_id": "U002", "value": 1}], "vote_score": 2, "status": "approved"},
-    {"item_id": "HI008", "asin": "B0GAME001", "title": "Musical Chairs Speaker BT", "category": "party_games", "price": 1299, "quantity": 1, "added_by": "U004", "added_by_name": "Karan", "added_by_letter": "K", "added_by_color": "#CC0C39", "note": "Bluetooth speaker for games", "votes": [{"user_id": "U004", "value": 1}, {"user_id": "U001", "value": -1}, {"user_id": "U002", "value": -1}, {"user_id": "U003", "value": -1}], "vote_score": -2, "status": "rejected"},
-]
-
-MESSAGES = [
-    {"msg_id": "m1", "type": "system", "text": "Sneha created Birthday Party Squad", "timestamp": "10:00 AM"},
-    {"msg_id": "m2", "type": "text", "user_id": "U001", "name": "Sneha", "letter": "S", "color": "#FF9900", "text": "Added plates and napkins. 12 kids = 24 plates minimum!", "timestamp": "10:02 AM"},
-    {"msg_id": "m3", "type": "text", "user_id": "U002", "name": "Riya", "letter": "R", "color": "#007185", "text": "Adding balloons + pump. Should I get juice boxes too?", "timestamp": "10:05 AM"},
-    {"msg_id": "m4", "type": "text", "user_id": "U003", "name": "Arjun", "letter": "A", "color": "#007600", "text": "Return gifts sorted! 12 bags 👍", "timestamp": "10:08 AM"},
-    {"msg_id": "m5", "type": "text", "user_id": "U004", "name": "Karan", "letter": "K", "color": "#CC0C39", "text": "Added the cake and fairy lights. Party vibes! 🎉", "timestamp": "10:12 AM"},
-    {"msg_id": "m6", "type": "system", "text": "Budget alert: Cart is ₹720 over budget", "timestamp": "10:15 AM"},
-    {"msg_id": "m7", "type": "text", "user_id": "U001", "name": "Sneha", "letter": "S", "color": "#FF9900", "text": "Karan the cake is too expensive and the speaker is overkill. Let's optimize!", "timestamp": "10:16 AM"},
-    {"msg_id": "m8", "type": "text", "user_id": "U002", "name": "Riya", "letter": "R", "color": "#007185", "text": "Yeah let's use the optimizer. The juice boxes are essential though — trust me 😄", "timestamp": "10:18 AM"},
-]
+class AddItemRequest(BaseModel):
+    asin: str
+    title: str
+    category: str
+    price: float
+    quantity: int = 1
+    added_by: str = "U001"
+    note: Optional[str] = None
+    pack_size: int = 1
+    amazon_now_eligible: bool = True
+    delivery_eta: str = "now_20min"
+    rating: float = 4.0
 
 
-def _compute_total(items):
-    return sum(i["price"] * i["quantity"] for i in items)
+class SendMessageRequest(BaseModel):
+    hive_id: str
+    user_id: str = "U001"
+    content: str
+    cart_id: Optional[str] = None
 
 
-def _get_budget_status(items, cap=4000):
-    total = _compute_total(items)
-    return {
-        "total": total,
-        "cap": cap,
-        "percentage": round(total / cap * 100, 1),
-        "over_budget": total > cap,
-        "over_by": max(0, total - cap),
-        "under_by": max(0, cap - total),
-    }
+class UpdateBudgetRequest(BaseModel):
+    budget_cap: float
 
 
-def _get_split(items, method="equal"):
-    total = _compute_total(items)
-    if method == "equal":
-        per_person = round(total / 4, 2)
-        return {
-            "method": "equal",
-            "total": total,
-            "per_person": per_person,
-            "splits": [
-                {"user_id": m["user_id"], "name": m["name"], "letter": m["letter"], "color": m["color"], "amount": per_person}
-                for m in MEMBERS
-            ],
-        }
-    else:
-        # By contribution
-        contributions = {}
-        for item in items:
-            uid = item["added_by"]
-            contributions[uid] = contributions.get(uid, 0) + item["price"] * item["quantity"]
-        return {
-            "method": "by_contribution",
-            "total": total,
-            "per_person": round(total / 4, 2),
-            "splits": [
-                {"user_id": m["user_id"], "name": m["name"], "letter": m["letter"], "color": m["color"], "amount": contributions.get(m["user_id"], 0)}
-                for m in MEMBERS
-            ],
-        }
+# ── Helpers ────────────────────────────────────────────────
+
+def enrich_cart(cart: dict) -> dict:
+    member_map = get_member_map()
+    items = cart.get("items", [])
+    enriched_items = []
+    for item in items:
+        item_copy = dict(item)
+        item_copy["vote_score"] = get_vote_score(item)
+        added_by = item.get("added_by", "")
+        item_copy["added_by_name"] = member_map.get(added_by, {}).get("name", "Unknown")
+        item_copy["added_by_color"] = member_map.get(added_by, {}).get("color", "#565959")
+        item_copy["added_by_letter"] = member_map.get(added_by, {}).get("letter", "?")
+        enriched_items.append(item_copy)
+    cart_copy = dict(cart)
+    cart_copy["items"] = enriched_items
+    cart_copy["total"] = round(get_cart_total(items), 2)
+    cart_copy["item_count"] = len(items)
+    return cart_copy
 
 
-# ── ENDPOINTS ─────────────────────────────────────────────────────────────────
+# ── Endpoints ──────────────────────────────────────────────
 
 @router.get("/demo")
 async def get_demo_hive():
-    """Get the full demo hive state in one call."""
-    items = CART_ITEMS
+    data = load_hive_data()
+    hive = next((h for h in data["hives"] if h["hive_id"] == "HIVE_BIRTHDAY_001"), None)
+    cart = next((c for c in data["carts"] if c["cart_id"] == "CART_BIRTHDAY_001"), None)
+    messages = [m for m in data["messages"] if m["hive_id"] == "HIVE_BIRTHDAY_001"]
+
+    if not hive or not cart:
+        return {"success": False, "error": "Demo hive not found", "request_id": str(uuid4())}
+
+    enriched_cart = enrich_cart(cart)
+    total = enriched_cart["total"]
+    budget_cap = hive.get("budget_cap", 4500)
+    over_budget = total > budget_cap
+
+    split_preview = calculate_split(cart["items"], hive["members"], "equal")
+
     return {
         "success": True,
         "data": {
-            "hive": {
-                "hive_id": "HIVE_BDAY_001",
-                "name": "Birthday Party Squad",
-                "occasion": "kids_birthday",
-                "members": MEMBERS,
-                "member_count": 4,
-                "created_by": "U001",
+            "hive": hive,
+            "cart": enriched_cart,
+            "messages": sorted(messages, key=lambda m: m.get("created_at", "")),
+            "budget_status": {
+                "cap": budget_cap,
+                "total": total,
+                "over_budget": over_budget,
+                "over_by": round(total - budget_cap, 2) if over_budget else 0,
+                "percentage": round((total / budget_cap) * 100, 1) if budget_cap > 0 else 0,
             },
-            "cart": {
-                "cart_id": "CART_BIRTHDAY_001",
-                "items": items,
-                "item_count": len(items),
-                "total": _compute_total(items),
-            },
-            "messages": MESSAGES,
-            "budget_status": _get_budget_status(items),
-            "split_preview": _get_split(items, "equal"),
+            "split_preview": split_preview,
         },
         "error": None,
         "request_id": str(uuid4()),
     }
 
 
-@router.get("/messages")
-async def get_messages(hive_id: str = "HIVE_BDAY_001", since: str = ""):
-    """Get messages since a timestamp (for polling)."""
-    return {
-        "success": True,
-        "data": {"messages": [], "has_new": False},
-        "error": None,
-        "request_id": str(uuid4()),
-    }
+@router.post("/cart/{cart_id}/add-item")
+async def add_item_to_cart(cart_id: str, req: AddItemRequest):
+    data = load_hive_data()
+    cart = next((c for c in data["carts"] if c["cart_id"] == cart_id), None)
+    if not cart:
+        return {"success": False, "error": "Cart not found", "request_id": str(uuid4())}
 
-
-class VoteRequest(BaseModel):
-    cart_id: str = "CART_BIRTHDAY_001"
-    item_id: str
-    user_id: str = "U001"
-    value: int  # +1 or -1
-
-
-@router.post("/vote")
-async def vote_item(req: VoteRequest):
-    """Vote on a cart item."""
-    return {
-        "success": True,
-        "data": {"item_id": req.item_id, "new_vote": req.value, "user_id": req.user_id},
-        "error": None,
-        "request_id": str(uuid4()),
-    }
-
-
-class AddItemRequest(BaseModel):
-    cart_id: str = "CART_BIRTHDAY_001"
-    asin: str
-    title: str
-    category: str = ""
-    price: float
-    quantity: int = 1
-    user_id: str = "U001"
-    note: str = ""
-
-
-@router.post("/add-item")
-async def add_item(req: AddItemRequest):
-    """Add an item to the hive cart."""
-    member = next((m for m in MEMBERS if m["user_id"] == req.user_id), MEMBERS[0])
     new_item = {
-        "item_id": f"HI{str(uuid4())[:6]}",
+        "item_id": str(uuid4()),
         "asin": req.asin,
         "title": req.title,
         "category": req.category,
         "price": req.price,
         "quantity": req.quantity,
-        "added_by": req.user_id,
-        "added_by_name": member["name"],
-        "added_by_letter": member["letter"],
-        "added_by_color": member["color"],
+        "pack_size": req.pack_size,
+        "added_by": req.added_by,
         "note": req.note,
-        "votes": [{"user_id": req.user_id, "value": 1}],
-        "vote_score": 1,
         "status": "pending",
+        "amazon_now_eligible": req.amazon_now_eligible,
+        "delivery_eta": req.delivery_eta,
+        "rating": req.rating,
+        "votes": [{"user_id": req.added_by, "value": 1}],
     }
+    cart["items"].append(new_item)
+
+    member_map = get_member_map()
+    adder_name = member_map.get(req.added_by, {}).get("name", "Someone")
+    data["messages"].append({
+        "message_id": str(uuid4()),
+        "hive_id": cart["hive_id"],
+        "cart_id": cart_id,
+        "user_id": "system",
+        "type": "system",
+        "content": f"{adder_name} added {req.title[:30]} to the Quorum cart",
+        "created_at": datetime.utcnow().isoformat(),
+    })
+    save_hive_data(data)
+
+    new_total = get_cart_total(cart["items"])
     return {
         "success": True,
-        "data": new_item,
+        "data": {
+            "item_id": new_item["item_id"],
+            "new_total": round(new_total, 2),
+            "item_count": len(cart["items"]),
+        },
         "error": None,
         "request_id": str(uuid4()),
     }
 
 
-@router.post("/optimize")
-async def optimize_cart(cart_id: str = "CART_BIRTHDAY_001"):
-    """Optimize the hive cart — remove rejected items, find cheaper alternatives."""
-    original_total = _compute_total(CART_ITEMS)
-    # Remove rejected and low-vote items
-    kept = [i for i in CART_ITEMS if i["vote_score"] >= 0]
-    optimized_total = _compute_total(kept)
+@router.delete("/cart/{cart_id}/item/{item_id}")
+async def remove_item_from_cart(cart_id: str, item_id: str):
+    data = load_hive_data()
+    cart = next((c for c in data["carts"] if c["cart_id"] == cart_id), None)
+    if not cart:
+        return {"success": False, "error": "Cart not found", "request_id": str(uuid4())}
 
-    actions = [
-        {
-            "action_type": "remove",
-            "icon": "close-circle",
-            "title": "Removed Musical Chairs Speaker BT",
-            "reason": "Rejected by 3 of 4 members (vote: -2)",
-            "saved": 1299,
-        },
-        {
-            "action_type": "swap",
-            "icon": "swap-horizontal",
-            "title": "Swapped Premium Cake → Standard Cake",
-            "reason": "Negative votes. Found ₹450 alternative with 4.2★ rating",
-            "saved": 449,
-        },
-        {
-            "action_type": "reduce",
-            "icon": "remove-circle",
-            "title": "Reduced LED Fairy Lights to 1 set",
-            "reason": "Budget optimization — 1 set covers the garden area",
-            "saved": 349,
-        },
-    ]
+    item = next((i for i in cart["items"] if i["item_id"] == item_id), None)
+    if not item:
+        return {"success": False, "error": "Item not found", "request_id": str(uuid4())}
 
-    final_total = original_total - sum(a["saved"] for a in actions)
+    cart["items"] = [i for i in cart["items"] if i["item_id"] != item_id]
+    data["messages"].append({
+        "message_id": str(uuid4()),
+        "hive_id": cart["hive_id"],
+        "cart_id": cart_id,
+        "user_id": "system",
+        "type": "system",
+        "content": f"{item['title'][:30]} removed from cart",
+        "created_at": datetime.utcnow().isoformat(),
+    })
+    save_hive_data(data)
 
     return {
         "success": True,
         "data": {
-            "original_total": original_total,
-            "optimized_total": final_total,
-            "total_saved": original_total - final_total,
-            "actions": actions,
-            "items_removed": 1,
-            "items_swapped": 1,
-            "items_reduced": 1,
+            "removed_item_id": item_id,
+            "new_total": round(get_cart_total(cart["items"]), 2),
+            "item_count": len(cart["items"]),
         },
         "error": None,
         "request_id": str(uuid4()),
     }
 
 
-@router.get("/split")
-async def get_split(cart_id: str = "CART_BIRTHDAY_001", method: str = "equal"):
-    """Get bill split for the hive."""
-    items = [i for i in CART_ITEMS if i["vote_score"] >= 0]
-    return {
-        "success": True,
-        "data": _get_split(items, method),
-        "error": None,
-        "request_id": str(uuid4()),
+@router.post("/cart/{cart_id}/vote")
+async def vote_on_item(cart_id: str, item_id: str, user_id: str, value: int):
+    if value not in [1, -1]:
+        return {"success": False, "error": "Vote must be +1 or -1", "request_id": str(uuid4())}
+
+    data = load_hive_data()
+    cart = next((c for c in data["carts"] if c["cart_id"] == cart_id), None)
+    if not cart:
+        return {"success": False, "error": "Cart not found", "request_id": str(uuid4())}
+
+    for item in cart["items"]:
+        if item["item_id"] == item_id:
+            item["votes"] = [v for v in item["votes"] if v["user_id"] != user_id]
+            item["votes"].append({"user_id": user_id, "value": value})
+            new_score = get_vote_score(item)
+            if new_score >= 3:
+                item["status"] = "approved"
+            elif new_score <= -2:
+                item["status"] = "rejected"
+            else:
+                item["status"] = "pending"
+
+            member_map = get_member_map()
+            voter_name = member_map.get(user_id, {}).get("name", "Someone")
+            action = "upvoted" if value == 1 else "downvoted"
+            data["messages"].append({
+                "message_id": str(uuid4()),
+                "hive_id": cart["hive_id"],
+                "cart_id": cart_id,
+                "user_id": "system",
+                "type": "system",
+                "content": f"{voter_name} {action} {item['title'][:30]}",
+                "created_at": datetime.utcnow().isoformat(),
+            })
+            save_hive_data(data)
+
+            return {
+                "success": True,
+                "data": {"item_id": item_id, "new_score": new_score, "new_status": item["status"], "vote_recorded": value},
+                "error": None,
+                "request_id": str(uuid4()),
+            }
+
+    return {"success": False, "error": "Item not found", "request_id": str(uuid4())}
+
+
+@router.post("/cart/{cart_id}/optimize")
+async def optimize_cart(cart_id: str):
+    data = load_hive_data()
+    cart = next((c for c in data["carts"] if c["cart_id"] == cart_id), None)
+    if not cart:
+        return {"success": False, "error": "Cart not found", "request_id": str(uuid4())}
+
+    hive = next((h for h in data["hives"] if h["hive_id"] == cart["hive_id"]), None)
+    budget_cap = hive.get("budget_cap", 4500) if hive else 4500
+
+    result = run_optimizer(cart, budget_cap)
+    cart["items"] = result["optimized_items"]
+
+    data["messages"].append({
+        "message_id": str(uuid4()),
+        "hive_id": cart["hive_id"],
+        "cart_id": cart_id,
+        "user_id": "system",
+        "type": "system",
+        "content": f"Hive optimizer saved ₹{result['total_saved']:.0f} — cart is now {'within' if result['under_budget'] else 'over'} budget",
+        "created_at": datetime.utcnow().isoformat(),
+    })
+    save_hive_data(data)
+
+    return {"success": True, "data": result, "error": None, "request_id": str(uuid4())}
+
+
+@router.get("/cart/{cart_id}/split")
+async def get_split(cart_id: str, method: str = "equal"):
+    data = load_hive_data()
+    cart = next((c for c in data["carts"] if c["cart_id"] == cart_id), None)
+    hive = next((h for h in data["hives"] if cart and h["hive_id"] == cart["hive_id"]), None)
+    if not cart or not hive:
+        return {"success": False, "error": "Cart or hive not found", "request_id": str(uuid4())}
+
+    # Only split items with non-negative vote score (exclude rejected)
+    active_items = [i for i in cart["items"] if get_vote_score(i) >= 0]
+
+    result = calculate_split(active_items, hive["members"], method)
+
+    # Add extra context per share
+    for share in result["shares"]:
+        uid = share["user_id"]
+        items_added = [i for i in active_items if i.get("added_by") == uid]
+        share["items_added_count"] = len(items_added)
+        share["items_added_value"] = round(sum(i["price"] * i["quantity"] for i in items_added), 2)
+
+    result["active_item_count"] = len(active_items)
+    result["excluded_item_count"] = len(cart["items"]) - len(active_items)
+    result["method"] = method
+
+    return {"success": True, "data": result, "error": None, "request_id": str(uuid4())}
+
+
+@router.post("/messages/send")
+async def send_message(req: SendMessageRequest):
+    if not req.content.strip():
+        return {"success": False, "error": "Message cannot be empty", "request_id": str(uuid4())}
+
+    data = load_hive_data()
+    new_message = {
+        "message_id": str(uuid4()),
+        "hive_id": req.hive_id,
+        "cart_id": req.cart_id,
+        "user_id": req.user_id,
+        "type": "text",
+        "content": req.content.strip(),
+        "created_at": datetime.utcnow().isoformat(),
     }
+    data["messages"].append(new_message)
+    save_hive_data(data)
+
+    member_map = get_member_map()
+    new_message["display_name"] = member_map.get(req.user_id, {}).get("name", "Unknown")
+    new_message["avatar_color"] = member_map.get(req.user_id, {}).get("color", "#565959")
+    new_message["avatar_letter"] = member_map.get(req.user_id, {}).get("letter", "?")
+
+    return {"success": True, "data": new_message, "error": None, "request_id": str(uuid4())}
 
 
-@router.post("/place-order")
-async def place_order(cart_id: str = "CART_BIRTHDAY_001", method: str = "equal"):
-    """Place the hive order."""
-    items = [i for i in CART_ITEMS if i["vote_score"] >= 0]
-    total = _compute_total(items)
+@router.post("/hive/{hive_id}/budget")
+async def update_budget(hive_id: str, req: UpdateBudgetRequest):
+    if req.budget_cap <= 0:
+        return {"success": False, "error": "Budget must be greater than 0", "request_id": str(uuid4())}
+
+    data = load_hive_data()
+    hive = next((h for h in data["hives"] if h["hive_id"] == hive_id), None)
+    if not hive:
+        return {"success": False, "error": "Hive not found", "request_id": str(uuid4())}
+
+    old_budget = hive.get("budget_cap", 0)
+    hive["budget_cap"] = req.budget_cap
+
+    data["messages"].append({
+        "message_id": str(uuid4()),
+        "hive_id": hive_id,
+        "cart_id": None,
+        "user_id": "system",
+        "type": "system",
+        "content": f"Budget updated: ₹{old_budget:.0f} → ₹{req.budget_cap:.0f}",
+        "created_at": datetime.utcnow().isoformat(),
+    })
+    save_hive_data(data)
+
+    cart = next((c for c in data["carts"] if c["hive_id"] == hive_id), None)
+    total = get_cart_total(cart["items"]) if cart else 0
+    over_budget = total > req.budget_cap
+
     return {
         "success": True,
         "data": {
-            "order_id": f"HIVE-{847291}",
-            "total": total,
-            "per_person": round(total / 4, 2),
-            "delivery_eta": "20 mins",
-            "member_count": 4,
-            "status": "confirmed",
+            "hive_id": hive_id,
+            "budget_cap": req.budget_cap,
+            "current_total": round(total, 2),
+            "over_budget": over_budget,
+            "over_by": round(max(0, total - req.budget_cap), 2),
+            "percentage": round((total / req.budget_cap) * 100, 1) if req.budget_cap > 0 else 0,
         },
         "error": None,
         "request_id": str(uuid4()),
     }
+
+
+@router.get("/messages/{hive_id}")
+async def get_messages(hive_id: str, since: Optional[str] = None):
+    data = load_hive_data()
+    messages = [m for m in data["messages"] if m["hive_id"] == hive_id]
+    if since:
+        messages = [m for m in messages if m["created_at"] > since]
+
+    # Sort oldest first
+    messages = sorted(messages, key=lambda m: m.get("created_at", ""))
+
+    member_map = get_member_map()
+    for msg in messages:
+        uid = msg.get("user_id", "")
+        msg["display_name"] = member_map.get(uid, {}).get("name", "Unknown")
+        msg["avatar_color"] = member_map.get(uid, {}).get("color", "#565959")
+        msg["avatar_letter"] = member_map.get(uid, {}).get("letter", "?")
+
+    return {"success": True, "data": messages, "error": None, "request_id": str(uuid4())}
+
+
+@router.post("/cart/{cart_id}/place-order")
+async def place_hive_order(cart_id: str, split_method: str = "equal"):
+    import random
+    data = load_hive_data()
+    cart = next((c for c in data["carts"] if c["cart_id"] == cart_id), None)
+    hive = next((h for h in data["hives"] if cart and h["hive_id"] == cart["hive_id"]), None)
+    if not cart or not hive:
+        return {"success": False, "error": "Cart or hive not found", "request_id": str(uuid4())}
+
+    order_id = f"HIVE-{random.randint(100000, 999999)}"
+    total = get_cart_total(cart["items"])
+    split = calculate_split(cart["items"], hive["members"], split_method)
+
+    order = {
+        "order_id": order_id, "cart_id": cart_id, "hive_id": cart["hive_id"],
+        "hive_name": hive["name"], "total": round(total, 2), "split": split,
+        "item_count": len(cart["items"]),
+        "delivery_address": cart.get("delivery_address", "Bangalore"),
+        "estimated_delivery": "20 minutes",
+        "placed_at": datetime.utcnow().isoformat(), "status": "confirmed",
+    }
+    data["orders"].append(order)
+    cart["status"] = "ordered"
+    data["messages"].append({
+        "message_id": str(uuid4()), "hive_id": cart["hive_id"], "cart_id": cart_id,
+        "user_id": "system", "type": "system",
+        "content": f"Order placed! {order_id} · ₹{total:.0f} · Arriving in 20 mins ⚡",
+        "created_at": datetime.utcnow().isoformat(),
+    })
+    save_hive_data(data)
+
+    return {"success": True, "data": order, "error": None, "request_id": str(uuid4())}
+
+
+@router.post("/reset-demo")
+async def reset_demo():
+    return {"success": True, "data": {"message": "Demo reset — restart server"}, "error": None, "request_id": str(uuid4())}
