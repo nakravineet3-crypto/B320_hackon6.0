@@ -8,6 +8,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -692,6 +693,36 @@ export default function HomeScreen() {
         {/* SECTION 1.12 — DIVIDER */}
         <View style={styles.divider} />
 
+        {/* HIVES CARD */}
+        <TouchableOpacity
+          style={styles.hivesCard}
+          onPress={() => router.push('/hive')}
+          activeOpacity={0.8}
+        >
+          <View style={styles.hivesCardLeft}>
+            <Text style={styles.hivesCardLabel}>BIRTHDAY PARTY SQUAD</Text>
+            <Text style={styles.hivesCardTitle}>Shop together with Hives</Text>
+            <Text style={styles.hivesCardSub}>4 members · ₹4,720 cart · Vote on items</Text>
+          </View>
+          <View style={styles.hivesAvatarStack}>
+            {['S', 'R', 'A', 'K'].map((letter, i) => (
+              <View
+                key={i}
+                style={[
+                  styles.hivesAvatar,
+                  {
+                    backgroundColor: ['#FF9900', '#007185', '#007600', '#CC0C39'][i],
+                    marginLeft: i > 0 ? -8 : 0,
+                    zIndex: 4 - i,
+                  },
+                ]}
+              >
+                <Text style={styles.hivesAvatarText}>{letter}</Text>
+              </View>
+            ))}
+          </View>
+        </TouchableOpacity>
+
         {/* SECTION 1.13 — COMING UP SECTION */}
         <View style={styles.comingSection}>
           <View style={styles.sectionHeader}>
@@ -1319,5 +1350,51 @@ const styles = StyleSheet.create({
   persistentHint: {
     fontSize: 12,
     color: Colors.textSecondary,
+  },
+  // Hives card
+  hivesCard: {
+    margin: 16,
+    marginBottom: 8,
+    backgroundColor: '#1A3A5C',
+    borderRadius: 8,
+    padding: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  hivesCardLeft: { flex: 1 },
+  hivesCardLabel: {
+    color: 'rgba(255,255,255,0.7)',
+    fontSize: 10,
+    fontWeight: '700',
+    letterSpacing: 1.5,
+  },
+  hivesCardTitle: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '700',
+    marginTop: 4,
+  },
+  hivesCardSub: {
+    color: 'rgba(255,255,255,0.7)',
+    fontSize: 12,
+    marginTop: 4,
+  },
+  hivesAvatarStack: {
+    flexDirection: 'row',
+    marginLeft: 12,
+  },
+  hivesAvatar: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: '#1A3A5C',
+  },
+  hivesAvatarText: {
+    color: '#FFFFFF',
+    fontSize: 13,
+    fontWeight: '700',
   },
 })

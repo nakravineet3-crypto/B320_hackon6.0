@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import { useEffect, useRef, useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -60,6 +60,8 @@ export default function ReorderPlacingScreen() {
       state: index === 0 ? 'active' : 'pending',
     })),
   )
+  const [hasError, setHasError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     let cancelled = false
@@ -82,20 +84,15 @@ export default function ReorderPlacingScreen() {
           )
           order = response.data?.data || response.data
         }
-      } catch {
-        order = {
-          order_id: `MC-2026-${Math.floor(100000 + Math.random() * 900000)}`,
-          draft_id: draftId,
-          status: 'placed',
-          total_price: draft?.total_price || 0,
-          item_count: items.length,
-          items,
-          delivery_estimate: '20 minutes',
-          delivery_by: '',
-          amazon_now_confirmed: true,
-          placed_at: new Date().toISOString(),
-          steps: DEFAULT_STEPS,
+      } catch (error) {
+        console.error('Approve failed:', error)
+        if (!cancelled) {
+          setHasError(true)
+          setErrorMessage(
+            'Could not place your order. Please check your connection and try again.',
+          )
         }
+        return
       }
 
       if (cancelled) {
@@ -145,6 +142,28 @@ export default function ReorderPlacingScreen() {
       timers.forEach(clearTimeout)
     }
   }, [draft, idempotencyKey, router, setOrder])
+
+  if (hasError) {
+    return (
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.errorContainer}>
+          <Ionicons name="alert-circle-outline" size={56} color="#CC0C39" />
+          <Text style={styles.errorTitle}>Order Failed</Text>
+          <Text style={styles.errorMessage}>{errorMessage}</Text>
+          <TouchableOpacity
+            style={styles.retryButton}
+            onPress={() => {
+              setHasError(false)
+              setErrorMessage('')
+              router.replace('/reorder/review')
+            }}
+          >
+            <Text style={styles.retryText}>Go back and try again</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    )
+  }
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -277,5 +296,36 @@ const styles = StyleSheet.create({
   },
   doneLabel: {
     color: Colors.successGreen,
+  },
+  errorContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 32,
+  },
+  errorTitle: {
+    fontSize: 22,
+    fontWeight: '700',
+    color: '#0F1111',
+    marginTop: 16,
+  },
+  errorMessage: {
+    fontSize: 14,
+    color: '#565959',
+    textAlign: 'center',
+    marginTop: 8,
+    lineHeight: 20,
+  },
+  retryButton: {
+    marginTop: 24,
+    backgroundColor: '#FF9900',
+    borderRadius: 4,
+    paddingHorizontal: 24,
+    paddingVertical: 14,
+  },
+  retryText: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '700',
   },
 })

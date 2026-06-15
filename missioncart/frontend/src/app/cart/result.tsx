@@ -288,6 +288,13 @@ export default function CartResultScreen() {
       >
         <Text style={styles.auditCartLinkText}>Audit this cart</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => router.push('/hive')}
+        style={styles.shareToHiveBtn}
+      >
+        <Ionicons name="people-outline" size={16} color="#007185" />
+        <Text style={styles.shareToHiveText}>Share to Hive</Text>
+      </TouchableOpacity>
 
       <ComparisonBottomSheet />
       <ProductDetailBottomSheet
@@ -621,5 +628,25 @@ const styles = StyleSheet.create({
     color: Colors.linkBlue,
     fontSize: 13,
     textDecorationLine: 'underline',
+  },
+  shareToHiveBtn: {
+    position: 'absolute',
+    bottom: -20,
+    left: 16,
+    right: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1.5,
+    borderColor: '#007185',
+    borderRadius: 4,
+    height: 44,
+    gap: 8,
+    backgroundColor: Colors.background,
+  },
+  shareToHiveText: {
+    color: '#007185',
+    fontSize: 14,
+    fontWeight: '600',
   },
 })

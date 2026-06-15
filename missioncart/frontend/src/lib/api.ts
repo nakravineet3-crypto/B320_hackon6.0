@@ -32,6 +32,45 @@ export const catalogAPI = {
     api.get('/api/catalog/products', { params: search ? { search } : {} }),
 }
 
+export const hiveAPI = {
+  getDemo: () => api.get('/api/hive/demo'),
+
+  vote: (cartId: string, itemId: string, userId: string, value: 1 | -1) =>
+    api.post(`/api/hive/cart/${cartId}/vote`, null, {
+      params: { item_id: itemId, user_id: userId, value },
+    }),
+
+  optimize: (cartId: string) =>
+    api.post(`/api/hive/cart/${cartId}/optimize`),
+
+  getSplit: (cartId: string, method: string = 'equal') =>
+    api.get(`/api/hive/cart/${cartId}/split`, { params: { method } }),
+
+  addItem: (
+    cartId: string,
+    asin: string,
+    title: string,
+    category: string,
+    price: number,
+    quantity: number,
+    addedBy: string = 'U001',
+    note?: string,
+  ) =>
+    api.post(`/api/hive/cart/${cartId}/add-item`, null, {
+      params: { asin, title, category, price, quantity, added_by: addedBy, note },
+    }),
+
+  placeOrder: (cartId: string, splitMethod: string = 'equal') =>
+    api.post(`/api/hive/cart/${cartId}/place-order`, null, {
+      params: { split_method: splitMethod },
+    }),
+
+  getMessages: (hiveId: string, since?: string) =>
+    api.get(`/api/hive/messages/${hiveId}`, {
+      params: since ? { since } : {},
+    }),
+}
+
 export const searchAPI = {
   search: (q: string, occasion: string = 'general', withBadges: boolean = true) =>
     api.get('/api/search/products', {
@@ -94,3 +133,4 @@ export const reorderAPI = {
   getOrderStatus: (orderId: string) =>
     api.get(`/api/reorder/order-status/${orderId}`),
 }
+

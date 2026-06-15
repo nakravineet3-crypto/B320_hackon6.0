@@ -66,6 +66,8 @@ export default function RootLayout() {
           <Stack.Screen name="audit-build" />
           <Stack.Screen name="audit-result" />
           <Stack.Screen name="search" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="hive/index" options={{ headerShown: false }} />
+          <Stack.Screen name="hive/confirmation" options={{ headerShown: false }} />
           <Stack.Screen name="cart" />
           <Stack.Screen name="community" />
           <Stack.Screen

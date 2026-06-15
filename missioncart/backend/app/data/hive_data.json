@@ -1,0 +1,382 @@
+{
+  "hives": [
+    {
+      "hive_id": "HIVE_BIRTHDAY_001",
+      "name": "Birthday Party Squad",
+      "type": "friends",
+      "created_by": "U001",
+      "budget_cap": 1700,
+      "status": "active",
+      "invite_code": "BDAY42",
+      "created_at": "2026-06-14T10:00:00",
+      "members": [
+        {
+          "user_id": "U001",
+          "display_name": "Sneha",
+          "role": "admin",
+          "avatar_color": "#FF9900",
+          "avatar_letter": "S",
+          "contribution_limit": null,
+          "total_contributed": 0
+        },
+        {
+          "user_id": "U002",
+          "display_name": "Riya",
+          "role": "member",
+          "avatar_color": "#007185",
+          "avatar_letter": "R",
+          "contribution_limit": null,
+          "total_contributed": 0
+        },
+        {
+          "user_id": "U003",
+          "display_name": "Arjun",
+          "role": "member",
+          "avatar_color": "#007600",
+          "avatar_letter": "A",
+          "contribution_limit": null,
+          "total_contributed": 0
+        },
+        {
+          "user_id": "U004",
+          "display_name": "Kabir",
+          "role": "member",
+          "avatar_color": "#CC0C39",
+          "avatar_letter": "K",
+          "contribution_limit": null,
+          "total_contributed": 0
+        }
+      ]
+    }
+  ],
+  "carts": [
+    {
+      "cart_id": "CART_BIRTHDAY_001",
+      "hive_id": "HIVE_BIRTHDAY_001",
+      "name": "Riya's Birthday Party",
+      "status": "ordered",
+      "created_by": "U001",
+      "delivery_address": "Indiranagar, Bangalore",
+      "created_at": "2026-06-14T10:05:00",
+      "ordered_at": null,
+      "items": [
+        {
+          "item_id": "ITEM_001",
+          "asin": "MC_PLATES_001",
+          "title": "Paper Plates 25pc",
+          "category": "plates",
+          "price": 89,
+          "quantity": 2,
+          "added_by": "U001",
+          "note": "Need 2 packs for 12 kids",
+          "status": "approved",
+          "votes": [
+            {
+              "user_id": "U001",
+              "value": 1
+            },
+            {
+              "user_id": "U002",
+              "value": 1
+            },
+            {
+              "user_id": "U003",
+              "value": 1
+            },
+            {
+              "user_id": "U004",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "item_id": "ITEM_002",
+          "asin": "MC_BALLOONS_001",
+          "title": "Multicolor Balloons 30pc",
+          "category": "balloon_set",
+          "price": 149,
+          "quantity": 2,
+          "added_by": "U001",
+          "note": null,
+          "status": "approved",
+          "votes": [
+            {
+              "user_id": "U001",
+              "value": 1
+            },
+            {
+              "user_id": "U002",
+              "value": 1
+            },
+            {
+              "user_id": "U003",
+              "value": 1
+            },
+            {
+              "user_id": "U004",
+              "value": -1
+            }
+          ]
+        },
+        {
+          "item_id": "ITEM_003",
+          "asin": "MC_CHIPS_001",
+          "title": "Lay's Classic Chips Pack of 6",
+          "category": "snacks",
+          "price": 180,
+          "quantity": 2,
+          "added_by": "U002",
+          "note": "Kids love these",
+          "status": "approved",
+          "votes": [
+            {
+              "user_id": "U001",
+              "value": 1
+            },
+            {
+              "user_id": "U002",
+              "value": 1
+            },
+            {
+              "user_id": "U003",
+              "value": 1
+            },
+            {
+              "user_id": "U004",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "item_id": "ITEM_006",
+          "asin": "MC_STREAMERS_001",
+          "title": "Party Streamers 5pc",
+          "category": "decorations",
+          "price": 89,
+          "quantity": 2,
+          "added_by": "U001",
+          "note": null,
+          "status": "approved",
+          "votes": [
+            {
+              "user_id": "U001",
+              "value": 1
+            },
+            {
+              "user_id": "U002",
+              "value": 1
+            },
+            {
+              "user_id": "U003",
+              "value": -1
+            },
+            {
+              "user_id": "U004",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "item_id": "ITEM_007",
+          "asin": "MC_CONFETTI_001",
+          "title": "Confetti Poppers 6pc",
+          "category": "decorations",
+          "price": 129,
+          "quantity": 1,
+          "added_by": "U002",
+          "note": "Fun for the kids!",
+          "status": "pending",
+          "votes": []
+        },
+        {
+          "item_id": "ITEM_008",
+          "asin": "MC_CANDLES_001",
+          "title": "Birthday Candles Set",
+          "category": "candles",
+          "price": 49,
+          "quantity": 1,
+          "added_by": "U001",
+          "note": "For the cake",
+          "status": "approved",
+          "votes": [
+            {
+              "user_id": "U001",
+              "value": 1
+            },
+            {
+              "user_id": "U002",
+              "value": 1
+            },
+            {
+              "user_id": "U003",
+              "value": 1
+            },
+            {
+              "user_id": "U004",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "item_id": "5f8b2df4-4778-4be0-9070-c909a499597f",
+          "asin": "MC_COKE_FAMILY_001",
+          "title": "Coca-Cola 2L Family Pack",
+          "category": "beverages",
+          "price": 89,
+          "quantity": 1,
+          "added_by": "system",
+          "note": "Swapped by Hive optimizer",
+          "status": "approved",
+          "votes": [],
+          "is_optimizer_addition": true
+        }
+      ]
+    }
+  ],
+  "messages": [
+    {
+      "message_id": "MSG_001",
+      "hive_id": "HIVE_BIRTHDAY_001",
+      "cart_id": "CART_BIRTHDAY_001",
+      "user_id": "system",
+      "type": "system",
+      "content": "Sneha created Birthday Party Squad",
+      "created_at": "2026-06-14T10:00:00"
+    },
+    {
+      "message_id": "MSG_002",
+      "hive_id": "HIVE_BIRTHDAY_001",
+      "cart_id": "CART_BIRTHDAY_001",
+      "user_id": "U002",
+      "type": "system",
+      "content": "Riya added Lay's Classic Chips Pack of 6 x 2",
+      "created_at": "2026-06-14T10:08:00"
+    },
+    {
+      "message_id": "MSG_003",
+      "hive_id": "HIVE_BIRTHDAY_001",
+      "cart_id": "CART_BIRTHDAY_001",
+      "user_id": "U003",
+      "type": "system",
+      "content": "Arjun added Coca-Cola 500ml x 4",
+      "created_at": "2026-06-14T10:12:00"
+    },
+    {
+      "message_id": "MSG_004",
+      "hive_id": "HIVE_BIRTHDAY_001",
+      "cart_id": null,
+      "user_id": "U002",
+      "type": "text",
+      "content": "Should we get juice boxes instead of Coke? Kids party after all",
+      "created_at": "2026-06-14T10:15:00"
+    },
+    {
+      "message_id": "MSG_005",
+      "hive_id": "HIVE_BIRTHDAY_001",
+      "cart_id": null,
+      "user_id": "U004",
+      "type": "text",
+      "content": "Added premium cookies for a fancy touch but I see you all downvoted",
+      "created_at": "2026-06-14T10:18:00"
+    },
+    {
+      "message_id": "MSG_006",
+      "hive_id": "HIVE_BIRTHDAY_001",
+      "cart_id": "CART_BIRTHDAY_001",
+      "user_id": "system",
+      "type": "system",
+      "content": "Kabir downvoted Premium Oreo Gift Pack",
+      "created_at": "2026-06-14T10:20:00"
+    },
+    {
+      "message_id": "MSG_007",
+      "hive_id": "HIVE_BIRTHDAY_001",
+      "cart_id": null,
+      "user_id": "U001",
+      "type": "text",
+      "content": "We are over budget \u2014 let the optimizer fix it!",
+      "created_at": "2026-06-14T10:22:00"
+    },
+    {
+      "message_id": "70cd70b0-8e72-47cf-8b8a-ceb34abe05f1",
+      "hive_id": "HIVE_BIRTHDAY_001",
+      "cart_id": "CART_BIRTHDAY_001",
+      "user_id": "system",
+      "type": "system",
+      "content": "Sneha downvoted Premium Oreo Gift Pack",
+      "created_at": "2026-06-15T08:46:37.635451"
+    },
+    {
+      "message_id": "cf612276-89c4-413f-957a-d0a6bd3dc2b3",
+      "hive_id": "HIVE_BIRTHDAY_001",
+      "cart_id": "CART_BIRTHDAY_001",
+      "user_id": "system",
+      "type": "system",
+      "content": "Hive optimizer saved \u20b9690 \u2014 cart is now within budget",
+      "created_at": "2026-06-15T08:46:50.765244"
+    },
+    {
+      "message_id": "f8731e9b-11b9-4a8c-84a8-faca527e46ce",
+      "hive_id": "HIVE_BIRTHDAY_001",
+      "cart_id": "CART_BIRTHDAY_001",
+      "user_id": "system",
+      "type": "system",
+      "content": "Order placed! HIVE-588435 \u00b7 \u20b91281 \u00b7 Arriving in 20 mins \u26a1",
+      "created_at": "2026-06-15T08:47:49.348924"
+    }
+  ],
+  "orders": [
+    {
+      "order_id": "HIVE-588435",
+      "cart_id": "CART_BIRTHDAY_001",
+      "hive_id": "HIVE_BIRTHDAY_001",
+      "hive_name": "Birthday Party Squad",
+      "total": 1281,
+      "split": {
+        "method": "equal",
+        "total": 1281,
+        "member_count": 4,
+        "per_person": 320.25,
+        "shares": [
+          {
+            "user_id": "U001",
+            "display_name": "Sneha",
+            "avatar_color": "#FF9900",
+            "avatar_letter": "S",
+            "amount": 320.25,
+            "status": "pending"
+          },
+          {
+            "user_id": "U002",
+            "display_name": "Riya",
+            "avatar_color": "#007185",
+            "avatar_letter": "R",
+            "amount": 320.25,
+            "status": "pending"
+          },
+          {
+            "user_id": "U003",
+            "display_name": "Arjun",
+            "avatar_color": "#007600",
+            "avatar_letter": "A",
+            "amount": 320.25,
+            "status": "pending"
+          },
+          {
+            "user_id": "U004",
+            "display_name": "Kabir",
+            "avatar_color": "#CC0C39",
+            "avatar_letter": "K",
+            "amount": 320.25,
+            "status": "pending"
+          }
+        ]
+      },
+      "item_count": 7,
+      "delivery_address": "Indiranagar, Bangalore",
+      "estimated_delivery": "20 minutes",
+      "placed_at": "2026-06-15T08:47:49.348924",
+      "status": "confirmed"
+    }
+  ]
+}
