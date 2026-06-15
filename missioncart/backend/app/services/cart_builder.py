@@ -7,6 +7,8 @@ from app.models.product import Product
 from app.services.quantity_planner import calculate_quantity
 from app.services.retrieval_engine import retrieval_engine
 from app.services.compatibility import check_compatibility
+from app.services.constraint_engine import check_all_constraints, relax_and_recheck
+from app.services.budget_repair import repair_budget
 
 
 # Domain -> category mapping (used as fallback when no needs provided)
@@ -84,8 +86,10 @@ def _compute_score(product: Product, domain: str, budget: float, need: Optional[
     return score
 
 
-def _passes_constraints(product: Product, budget: float, spec: Optional[MissionSpec] = None) -> bool:
-    if product.price > budget * 0.4:
+def _passes_constraints(product: Product, budget: float, spec: Optional[MissionSpec] = None, need_priority: str = "optional") -> bool:
+    # Relaxed cap for must_have needs (60%), stricter for others (40%)
+    cap_ratio = 0.60 if need_priority == "must_have" else 0.40
+    if product.price > budget * cap_ratio:
         return False
     if product.rating < 3.5:
         return False
@@ -165,20 +169,40 @@ def _build_with_needs(catalog: List[Product], spec: MissionSpec, needs: List[Nee
         if remaining_budget <= 0:
             break
 
-        # Find candidates matching this need's categories
+        # Find candidates: try FAISS semantic retrieval first, then keyword fallback
+        need_query = f"{need.label} for {domain} {spec.occasion or ''} {spec.headcount or 1} people".strip()
+        candidates_raw = retrieval_engine.retrieve(
+            need_label=need_query,
+            category_candidates=need.category_candidates,
+            occasion_type=domain,
+            budget_ceiling=need.budget_ceiling or remaining_budget,
+            headcount=spec.headcount or 1,
+            top_k=15,
+        )
+
+        # Convert to Product objects for scoring (filter used categories)
         candidates = [
             p for p in catalog
             if p.category in need.category_candidates
-            and _passes_constraints(p, budget, spec)
+            and _passes_constraints(p, budget, spec, need.priority)
             and p.category not in used_categories
         ]
 
+        # If FAISS returned results, prefer those (already category-filtered)
+        if candidates_raw:
+            faiss_asins = {r.get("asin") for r in candidates_raw}
+            faiss_candidates = [
+                p for p in candidates if p.asin in faiss_asins
+            ]
+            if faiss_candidates:
+                candidates = faiss_candidates
+
         if not candidates:
-            # Try relaxed: any category in need candidates, allow used categories
+            # Try relaxed: allow used categories
             candidates = [
                 p for p in catalog
                 if p.category in need.category_candidates
-                and _passes_constraints(p, budget, spec)
+                and _passes_constraints(p, budget, spec, need.priority)
             ]
 
         if not candidates:
@@ -280,6 +304,24 @@ def _build_with_needs(catalog: List[Product], spec: MissionSpec, needs: List[Nee
     total_cost = sum(item["total_cost"] for item in cart_items)
     covered = len(cart_items)
 
+    # Budget repair if over budget
+    repair_summary = None
+    if total_cost > budget:
+        catalog_dicts = [{"asin": p.asin, "title": p.title, "category": p.category,
+                          "price": p.price, "rating": p.rating, "stock_available": p.stock_available}
+                         for p in catalog]
+        cart_items, repair_log = repair_budget(cart_items, needs, budget, catalog_dicts)
+        if repair_log:
+            final_total = sum(item["total_cost"] for item in cart_items)
+            repair_summary = {
+                "was_repaired": True,
+                "original_total": round(total_cost, 2),
+                "final_total": round(final_total, 2),
+                "steps": repair_log,
+            }
+            total_cost = final_total
+            covered = len(cart_items)
+
     return {
         "mission_id": spec.mission_id,
         "cart_items": cart_items,
@@ -302,7 +344,7 @@ def _build_with_needs(catalog: List[Product], spec: MissionSpec, needs: List[Nee
             "bottleneck_items": [item for item in cart_items if not item["amazon_now_eligible"]],
             "message": "All items available on Amazon Now ⚡" if all(item["amazon_now_eligible"] for item in cart_items) else "Some items arrive tomorrow",
         },
-        "repair_summary": None,
+        "repair_summary": repair_summary,
         "flags": [],
         "amazon_cart_url": _build_amazon_url(cart_items),
         "warnings": [],
@@ -315,11 +357,11 @@ def _build_by_domain(catalog: List[Product], spec: MissionSpec, budget: float, d
 
     candidates = [
         p for p in catalog
-        if p.category in domain_cats and _passes_constraints(p, budget, spec)
+        if p.category in domain_cats and _passes_constraints(p, budget, spec, "should_have")
     ]
 
     if len(candidates) < 8:
-        candidates = [p for p in catalog if _passes_constraints(p, budget, spec)]
+        candidates = [p for p in catalog if _passes_constraints(p, budget, spec, "should_have")]
 
     scored = [(p, _compute_score(p, domain, budget)) for p in candidates]
     scored.sort(key=lambda x: x[1], reverse=True)

@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from app.routers import mission, catalog, demo, reorder, intelligence
+from app.routers import mission, catalog, demo, reorder, intelligence, comparison, search
 
 
 @asynccontextmanager
@@ -58,6 +58,8 @@ app.include_router(catalog.router, prefix="/api/catalog", tags=["catalog"])
 app.include_router(reorder.router, prefix="/api/reorder", tags=["reorder"])
 app.include_router(demo.router, prefix="/api/demo", tags=["demo"])
 app.include_router(intelligence.router, prefix="/api/intelligence", tags=["intelligence"])
+app.include_router(comparison.router, prefix="/api/comparison", tags=["comparison"])
+app.include_router(search.router, prefix="/api/search", tags=["search"])
 
 
 @app.get("/health")

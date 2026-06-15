@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons'
 import * as Linking from 'expo-linking'
 import { useRouter } from 'expo-router'
 import { StatusBar } from 'expo-status-bar'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   FlatList,
   Pressable,
@@ -11,10 +11,13 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
+import Animated, { FadeInDown } from 'react-native-reanimated'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import ComparisonBottomSheet from '../../components/comparison/ComparisonBottomSheet'
+import ProductDetailBottomSheet from '../../components/comparison/ProductDetailBottomSheet'
 import PreCheckoutSheet from '../../components/PreCheckoutSheet'
+import UndoToast from '../../components/UndoToast'
 import { Colors, Radius, getLabelColor } from '../../lib/constants'
 import { useMissionStore } from '../../store/mission'
 
@@ -38,7 +41,12 @@ export default function CartResultScreen() {
   const storeCart = useMissionStore((s) => s.cart)
   const buildResult = useMissionStore((s) => s.currentBuildResult)
   const trackItemView = useMissionStore((s) => s.trackItemView)
+  const showChip = useMissionStore((s) => s.showCompareChip)
+  const dismissChip = useMissionStore((s) => s.dismissChip)
   const setComparisonItems = useMissionStore((s) => s.setComparisonItems)
+  const itemA = useMissionStore((s) => s.comparisonItemA)
+  const itemB = useMissionStore((s) => s.comparisonItemB)
+  const setCart = useMissionStore((s) => s.setCart)
 
   const cartItems: any[] = storeCart.length > 0 ? storeCart : FALLBACK_CART_ITEMS
   const total =
@@ -62,11 +70,23 @@ export default function CartResultScreen() {
 
   const [highlightedId, setHighlightedId] = useState<string | null>(null)
   const [showPreCheckout, setShowPreCheckout] = useState(false)
+  const [detailItem, setDetailItem] = useState<any | null>(null)
   const highlightTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    if (storeCart.length === 0) {
+      setCart(FALLBACK_CART_ITEMS as any)
+    }
+  }, [setCart, storeCart.length])
 
   const handleItemPress = useCallback(
     (item: any) => {
       trackItemView(item)
+      if (useMissionStore.getState().comparisonVisible) {
+        setDetailItem(null)
+      } else {
+        setDetailItem(item)
+      }
       setHighlightedId(item.cart_item_id)
       if (highlightTimer.current) clearTimeout(highlightTimer.current)
       highlightTimer.current = setTimeout(() => setHighlightedId(null), 300)
@@ -226,6 +246,31 @@ export default function CartResultScreen() {
               <Text style={styles.compareHint}>Having trouble deciding? </Text>
               <Text style={styles.compareLink}>Compare items</Text>
             </TouchableOpacity>
+
+            {showChip && itemA && itemB && (
+              <Animated.View entering={FadeInDown.duration(250)} style={styles.chipWrap}>
+                <Pressable
+                  onPress={() => setComparisonItems(itemA, itemB)}
+                  style={styles.compareChip}
+                >
+                  <Ionicons
+                    name="git-compare-outline"
+                    size={14}
+                    color={Colors.primary}
+                  />
+                  <Text style={styles.compareChipText}>Compare options</Text>
+                  <Pressable
+                    onPress={(event) => {
+                      event.stopPropagation()
+                      dismissChip()
+                    }}
+                    hitSlop={8}
+                  >
+                    <Text style={styles.compareChipClose}>×</Text>
+                  </Pressable>
+                </Pressable>
+              </Animated.View>
+            )}
           </>
         }
       />
@@ -237,8 +282,20 @@ export default function CartResultScreen() {
           <Text style={styles.addButtonText}>Add to Amazon →</Text>
         </Pressable>
       </View>
+      <TouchableOpacity
+        onPress={() => router.push('/audit-build')}
+        style={styles.auditCartLink}
+      >
+        <Text style={styles.auditCartLinkText}>Audit this cart</Text>
+      </TouchableOpacity>
 
       <ComparisonBottomSheet />
+      <ProductDetailBottomSheet
+        item={detailItem}
+        visible={Boolean(detailItem)}
+        onClose={() => setDetailItem(null)}
+      />
+      <UndoToast />
       <PreCheckoutSheet
         visible={showPreCheckout}
         cartItems={cartItems}
@@ -492,6 +549,34 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '600',
   },
+  chipWrap: {
+    alignItems: 'center',
+    marginTop: 8,
+    marginBottom: 4,
+  },
+  compareChip: {
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'center',
+    backgroundColor: '#FFF3E0',
+    borderWidth: 1,
+    borderColor: Colors.primary,
+    borderRadius: 20,
+  },
+  compareChipText: {
+    marginLeft: 6,
+    color: Colors.primary,
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  compareChipClose: {
+    marginLeft: 8,
+    color: Colors.primary,
+    fontSize: 16,
+    lineHeight: 16,
+  },
   // Bottom bar
   bottomBar: {
     position: 'absolute',
@@ -523,5 +608,18 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontSize: 15,
     fontWeight: '700',
+  },
+  auditCartLink: {
+    position: 'absolute',
+    bottom: 4,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+    paddingVertical: 4,
+  },
+  auditCartLinkText: {
+    color: Colors.linkBlue,
+    fontSize: 13,
+    textDecorationLine: 'underline',
   },
 })

@@ -45,9 +45,9 @@
     "explanation": "{units} pairs — 1 per day plus 2 buffer"
   },
   "water_bottles": {
-    "formula": "headcount * 2.0",
+    "formula": "headcount * 1.0",
     "pack_divide": true,
-    "explanation": "{units} water bottles — 2 per person"
+    "explanation": "{units} water bottles — 1 per person"
   },
   "snack_packets": {
     "formula": "headcount * 1.5 * 1.10",

@@ -7,11 +7,10 @@ import { Colors } from '../../lib/constants'
 type IconName = React.ComponentProps<typeof Ionicons>['name']
 
 const tabIcons: Record<
-  'index' | 'missions' | 'discover' | 'profile',
+  'index' | 'discover' | 'profile',
   { active: IconName; inactive: IconName }
 > = {
   index: { active: 'home', inactive: 'home-outline' },
-  missions: { active: 'rocket', inactive: 'rocket-outline' },
   discover: { active: 'compass', inactive: 'compass-outline' },
   profile: { active: 'person', inactive: 'person-outline' },
 }
@@ -40,7 +39,7 @@ export default function TabsLayout() {
       }}
     >
       <Tabs.Screen name="index" options={{ title: 'Home' }} />
-      <Tabs.Screen name="missions" options={{ title: 'Missions' }} />
+      <Tabs.Screen name="missions" options={{ href: null }} />
       <Tabs.Screen name="discover" options={{ title: 'Discover' }} />
       <Tabs.Screen name="profile" options={{ title: 'Profile' }} />
     </Tabs>

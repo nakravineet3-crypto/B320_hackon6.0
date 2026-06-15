@@ -7,8 +7,25 @@ Formula: ceil(headcount × usage_rate × buffer ÷ pack_size)
 
 import json
 import math
+import re as _re
 from pathlib import Path
 from typing import Optional
+
+
+def _eval_formula_safe(
+    formula: str, headcount: int, days: int = 1, pet_weight_kg: float = 5.0
+) -> float:
+    """Safe formula evaluation without arbitrary code exec.
+    Only supports: headcount, days, pet_weight_kg and basic arithmetic.
+    """
+    expr = formula.replace("headcount", str(headcount))
+    expr = expr.replace("days", str(days))
+    expr = expr.replace("pet_weight_kg", str(pet_weight_kg))
+    expr = expr.replace("math.ceil", "")
+    # Only allow digits, operators, spaces, decimal points, parens
+    if not _re.match(r"^[\d\s\.\+\-\*\/\(\)]+$", expr.strip()):
+        raise ValueError(f"Unsafe formula: {formula}")
+    return float(eval(expr, {"__builtins__": {}}))
 
 
 _RULES_PATH = Path(__file__).parent.parent / "data" / "quantity_rules.json"
@@ -98,16 +115,7 @@ def calculate_quantity(
     # Evaluate the formula safely
     formula = rule.get("formula", "1")
     try:
-        units = eval(
-            formula,
-            {"__builtins__": {}},
-            {
-                "headcount": headcount,
-                "days": days,
-                "pet_weight_kg": pet_weight_kg,
-                "math": math,
-            },
-        )
+        units = _eval_formula_safe(formula, headcount, days, pet_weight_kg)
     except Exception:
         units = pack_size
 

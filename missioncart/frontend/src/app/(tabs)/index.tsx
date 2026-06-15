@@ -1,21 +1,24 @@
 import { Ionicons } from '@expo/vector-icons'
 import * as Haptics from 'expo-haptics'
 import { useRouter } from 'expo-router'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
+  Image,
   Pressable,
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { demoAPI } from '../../lib/api'
+import { SwipeableSearchBar } from '../../components/SwipeableSearchBar'
+import { demoAPI, reorderAPI } from '../../lib/api'
 import { Colors } from '../../lib/constants'
 import { scheduleTestNotification } from '../../lib/notifications'
 import type { OccasionCard, UpcomingRecurrence } from '../../lib/types'
+import { ALL_PERSONAS, usePersonaStore } from '../../store/persona'
+import { useReorderStore } from '../../store/reorder'
 
 type IoniconName = keyof typeof Ionicons.glyphMap
 
@@ -28,6 +31,7 @@ interface Category {
 interface ReorderItem {
   id?: string
   asin?: string
+  item_id?: string
   item_name: string
   quantity: number
   unit: string
@@ -45,6 +49,88 @@ const categories: Category[] = [
   { id: 'party', label: 'Party', icon: 'balloon-outline' },
   { id: 'health', label: 'Health', icon: 'medkit-outline' },
 ]
+
+// ── PERSONA PRODUCTS (simulated — would come from backend) ─────
+interface PersonaProduct {
+  id: string
+  name: string
+  price: number
+  buyers: number
+  rating: number
+}
+
+const PERSONA_PRODUCTS: Record<string, PersonaProduct[]> = {
+  fitness: [
+    { id: 'f1', name: 'Whey Protein 1kg', price: 1899, buyers: 4200, rating: 4.5 },
+    { id: 'f2', name: 'Peanut Butter 1kg', price: 349, buyers: 3100, rating: 4.3 },
+    { id: 'f3', name: 'Resistance Bands Set', price: 499, buyers: 2800, rating: 4.4 },
+    { id: 'f4', name: 'BCAA Powder 300g', price: 799, buyers: 1900, rating: 4.2 },
+    { id: 'f5', name: 'Oats 2kg', price: 289, buyers: 5100, rating: 4.6 },
+  ],
+  dad: [
+    { id: 'd1', name: 'Tool Kit 25pc', price: 1299, buyers: 2300, rating: 4.4 },
+    { id: 'd2', name: 'BBQ Grill Portable', price: 2499, buyers: 1800, rating: 4.3 },
+    { id: 'd3', name: 'Beard Trimmer', price: 1599, buyers: 3400, rating: 4.5 },
+    { id: 'd4', name: 'Multivitamin 60 tabs', price: 449, buyers: 2900, rating: 4.2 },
+    { id: 'd5', name: 'Car Phone Mount', price: 599, buyers: 4100, rating: 4.6 },
+  ],
+  mom: [
+    { id: 'm1', name: 'Green Tea 100 bags', price: 349, buyers: 5200, rating: 4.5 },
+    { id: 'm2', name: 'Yoga Mat Premium', price: 899, buyers: 3800, rating: 4.4 },
+    { id: 'm3', name: 'Organic Honey 500g', price: 399, buyers: 4100, rating: 4.6 },
+    { id: 'm4', name: 'Face Serum Vitamin C', price: 549, buyers: 6200, rating: 4.3 },
+    { id: 'm5', name: 'Dry Fruits Mix 500g', price: 599, buyers: 3500, rating: 4.5 },
+  ],
+  swimmer: [
+    { id: 's1', name: 'Swim Goggles Anti-fog', price: 699, buyers: 1800, rating: 4.4 },
+    { id: 's2', name: 'Quick Dry Towel', price: 499, buyers: 2200, rating: 4.3 },
+    { id: 's3', name: 'Waterproof Earbuds', price: 1999, buyers: 1500, rating: 4.2 },
+    { id: 's4', name: 'Chlorine Shampoo', price: 349, buyers: 2800, rating: 4.5 },
+    { id: 's5', name: 'Swim Cap Silicone', price: 299, buyers: 3100, rating: 4.4 },
+  ],
+  gamer: [
+    { id: 'g1', name: 'Gaming Mouse Pad XL', price: 599, buyers: 4500, rating: 4.5 },
+    { id: 'g2', name: 'Energy Drink 12-pack', price: 899, buyers: 3200, rating: 4.1 },
+    { id: 'g3', name: 'Blue Light Glasses', price: 799, buyers: 2800, rating: 4.3 },
+    { id: 'g4', name: 'Wrist Rest Gel', price: 449, buyers: 2100, rating: 4.4 },
+    { id: 'g5', name: 'Snack Box Variety', price: 649, buyers: 3800, rating: 4.2 },
+  ],
+  cook: [
+    { id: 'c1', name: 'Cast Iron Skillet 10"', price: 1299, buyers: 3900, rating: 4.6 },
+    { id: 'c2', name: 'Spice Rack 16 jars', price: 899, buyers: 2700, rating: 4.4 },
+    { id: 'c3', name: 'Chef Knife Japanese', price: 1899, buyers: 2100, rating: 4.7 },
+    { id: 'c4', name: 'Olive Oil Extra Virgin 1L', price: 649, buyers: 4200, rating: 4.5 },
+    { id: 'c5', name: 'Silicone Spatula Set', price: 399, buyers: 3400, rating: 4.3 },
+  ],
+  student: [
+    { id: 'st1', name: 'Highlighters 6-pack', price: 149, buyers: 6100, rating: 4.4 },
+    { id: 'st2', name: 'Instant Noodles 12pc', price: 240, buyers: 8200, rating: 4.2 },
+    { id: 'st3', name: 'Notebook A4 5-pack', price: 299, buyers: 5400, rating: 4.5 },
+    { id: 'st4', name: 'USB-C Hub 6-in-1', price: 1299, buyers: 3200, rating: 4.3 },
+    { id: 'st5', name: 'Coffee Powder 200g', price: 349, buyers: 4800, rating: 4.4 },
+  ],
+  runner: [
+    { id: 'r1', name: 'Electrolyte Sachets 30pc', price: 499, buyers: 3800, rating: 4.5 },
+    { id: 'r2', name: 'Running Socks 3-pair', price: 599, buyers: 2900, rating: 4.4 },
+    { id: 'r3', name: 'Energy Gels 12-pack', price: 899, buyers: 2100, rating: 4.3 },
+    { id: 'r4', name: 'Foam Roller', price: 799, buyers: 3400, rating: 4.6 },
+    { id: 'r5', name: 'Arm Band Phone Holder', price: 399, buyers: 4200, rating: 4.2 },
+  ],
+  yogi: [
+    { id: 'y1', name: 'Yoga Block Cork', price: 599, buyers: 2800, rating: 4.5 },
+    { id: 'y2', name: 'Incense Sticks 100pc', price: 199, buyers: 5100, rating: 4.4 },
+    { id: 'y3', name: 'Meditation Cushion', price: 1299, buyers: 1800, rating: 4.6 },
+    { id: 'y4', name: 'Herbal Tea Sampler', price: 449, buyers: 3200, rating: 4.3 },
+    { id: 'y5', name: 'Essential Oil Set', price: 799, buyers: 2600, rating: 4.5 },
+  ],
+  'pet-parent': [
+    { id: 'p1', name: 'Dog Treats Chicken 500g', price: 349, buyers: 4800, rating: 4.5 },
+    { id: 'p2', name: 'Lint Roller 5-pack', price: 299, buyers: 3600, rating: 4.3 },
+    { id: 'p3', name: 'Pet Shampoo 500ml', price: 449, buyers: 3100, rating: 4.4 },
+    { id: 'p4', name: 'Chew Toy Durable', price: 399, buyers: 2900, rating: 4.2 },
+    { id: 'p5', name: 'Poop Bags 300pc', price: 249, buyers: 5200, rating: 4.6 },
+  ],
+}
 
 const fallbackReorderItems: ReorderItem[] = [
   {
@@ -135,13 +221,15 @@ function truncate(text: string, max: number) {
 
 export default function HomeScreen() {
   const router = useRouter()
-  const successTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const [search, setSearch] = useState('')
   const [goal, setGoal] = useState('')
   const [isApproving, setIsApproving] = useState(false)
   const [reorderItems, setReorderItems] =
     useState<ReorderItem[]>(fallbackReorderItems)
   const [occasions, setOccasions] = useState<FallbackOccasion[]>(fallbackOccasions)
+  // Persona state (from shared store)
+  const { selectedPersonas } = usePersonaStore()
+  const [activePersona, setActivePersona] = useState<string | null>(null)
   const [upcomingRecurrence, setUpcomingRecurrence] =
     useState<UpcomingRecurrence | null>(null)
   const [isRecurrenceDismissed, setIsRecurrenceDismissed] = useState(false)
@@ -164,12 +252,29 @@ export default function HomeScreen() {
         // Keep fallback occasions
       })
 
-    demoAPI
-      .getReorderAlerts()
+    reorderAPI
+      .getAlerts()
       .then((res) => {
         const alerts = res.data?.data || res.data || []
         if (Array.isArray(alerts) && alerts.length > 0) {
-          setReorderItems(alerts.slice(0, 3))
+          setReorderItems(
+            alerts.map((alert: any) => {
+              const quantity =
+                alert.suggested_quantity || alert.quantity || 1
+              return {
+                ...alert,
+                item_id: alert.item_id || alert.asin,
+                item_name: alert.item_name || alert.title,
+                quantity,
+                unit: alert.unit || (quantity === 1 ? 'pack' : 'packs'),
+                price_inr:
+                  alert.price_inr ??
+                  alert.total_cost ??
+                  (alert.price || 0) * quantity,
+                amazon_now_eligible: alert.amazon_now_eligible !== false,
+              }
+            }),
+          )
         }
       })
       .catch(() => {
@@ -189,15 +294,6 @@ export default function HomeScreen() {
       })
   }, [])
 
-  useEffect(
-    () => () => {
-      if (successTimerRef.current) {
-        clearTimeout(successTimerRef.current)
-      }
-    },
-    [],
-  )
-
   const openBuilding = (missionGoal: string) => {
     router.push({
       pathname: '/cart/building',
@@ -211,7 +307,7 @@ export default function HomeScreen() {
     }
   }
 
-  const handleApprove = () => {
+  const handleApprove = async () => {
     if (isApproving) {
       return
     }
@@ -221,15 +317,36 @@ export default function HomeScreen() {
     })
     setIsApproving(true)
 
-    if (successTimerRef.current) {
-      clearTimeout(successTimerRef.current)
+    try {
+      const draftResponse = await reorderAPI.getDraft()
+      const draft = draftResponse.data?.data || draftResponse.data
+      const orderResponse = await reorderAPI.approve(
+        draft.draft_id,
+        Date.now().toString(),
+        draft.items || [],
+      )
+      const order = orderResponse.data?.data || orderResponse.data
+
+      useReorderStore.getState().setDraft(draft)
+      useReorderStore.getState().setOrder(order)
+      router.push({
+        pathname: '/reorder/placing',
+        params: { order_data: JSON.stringify(order) },
+      })
+    } catch {
+      router.push('/reorder/draft')
+    } finally {
+      setIsApproving(false)
     }
-    successTimerRef.current = setTimeout(() => setIsApproving(false), 800)
   }
 
   const handleBuildCart = () => {
     openBuilding(goal.trim() || 'Birthday party for 20 people under ₹3000')
   }
+
+  const handlePersonaPress = useCallback((personaId: string) => {
+    setActivePersona((prev) => (prev === personaId ? null : personaId))
+  }, [])
 
   const handleRebuildMission = () => {
     if (!upcomingRecurrence) {
@@ -282,21 +399,16 @@ export default function HomeScreen() {
           </Pressable>
         </View>
 
-        {/* SECTION 1.2 — SEARCH BAR */}
+        {/* SECTION 1.2 — SWIPEABLE SEARCH / MISSION BAR */}
         <View style={styles.discoverySection}>
-          <View style={styles.searchBar}>
-            <Ionicons name="search" size={21} color={Colors.textSecondary} />
-            <TextInput
-              value={search}
-              onChangeText={setSearch}
-              placeholder="Search for groceries, snacks..."
-              placeholderTextColor={Colors.placeholder}
-              style={styles.searchInput}
-              returnKeyType="search"
-              accessibilityLabel="Search products"
-            />
-            <Ionicons name="mic-outline" size={21} color={Colors.textSecondary} />
-          </View>
+          <SwipeableSearchBar
+            search={search}
+            onSearchChange={setSearch}
+            goal={goal}
+            onGoalChange={setGoal}
+            onBuildCart={handleBuildCart}
+            onSearchFocus={() => router.push('/search')}
+          />
 
           {/* SECTION 1.3 — CATEGORY PILLS */}
           <ScrollView
@@ -325,53 +437,103 @@ export default function HomeScreen() {
         </View>
 
         {/* SECTION 1.4 — PROMOTIONAL BANNER */}
-        <View style={styles.banner}>
-          <View style={styles.bannerLeft}>
-            <Text style={styles.bannerBrand}>MissionCart</Text>
-            <Text style={styles.bannerHeadline}>Plan any occasion</Text>
-            <Text style={styles.bannerHeadline}>in under 60 seconds</Text>
-            <Pressable style={styles.bannerCta} accessibilityRole="button">
-              <Text style={styles.bannerCtaText}>Get started →</Text>
-            </Pressable>
-          </View>
-          <View style={styles.bannerRight}>
-            <View style={styles.bannerStatPill}>
-              <Text style={styles.bannerStatText}>3,847 occasions</Text>
-            </View>
-            <View style={styles.bannerStatPill}>
-              <Text style={styles.bannerStatText}>234 products</Text>
-            </View>
-            <View style={styles.bannerStatPill}>
-              <Text style={styles.bannerStatText}>94% accuracy</Text>
-            </View>
-          </View>
+        <Pressable
+          onPress={() => router.push('/search')}
+          style={styles.banner}
+          accessibilityRole="button"
+          accessibilityLabel="Browse all products"
+        >
+          <Image
+            source={require('../../../assets/banner-snack-store.png')}
+            style={styles.bannerImage}
+            resizeMode="cover"
+          />
+        </Pressable>
+
+        {/* SECTION 1.5 — PERSONA CIRCLES */}
+        <View style={styles.identitySection}>
+          <Text style={styles.identitySectionTitle}>Your personas</Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.identityRow}
+          >
+            {ALL_PERSONAS.filter((p) => selectedPersonas.includes(p.id)).map(
+              (persona) => {
+                const isActive = activePersona === persona.id
+                return (
+                  <Pressable
+                    key={persona.id}
+                    onPress={() => handlePersonaPress(persona.id)}
+                    style={styles.identityItem}
+                    accessibilityRole="button"
+                    accessibilityLabel={persona.label}
+                  >
+                    <View
+                      style={[
+                        styles.identityCircle,
+                        { backgroundColor: persona.color },
+                        isActive && styles.identityCircleActive,
+                      ]}
+                    >
+                      <Text style={styles.identityEmoji}>{persona.emoji}</Text>
+                    </View>
+                    <Text
+                      style={[
+                        styles.identityLabel,
+                        isActive && styles.identityLabelActive,
+                      ]}
+                      numberOfLines={1}
+                    >
+                      {persona.label}
+                    </Text>
+                  </Pressable>
+                )
+              },
+            )}
+          </ScrollView>
         </View>
 
-        {/* SECTION 1.5 — BENEFIT PILLS ROW */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.benefitRow}
-        >
-          <View style={styles.benefitPill}>
-            <Ionicons name="flash-outline" size={20} color={Colors.primary} />
-            <View style={styles.benefitTextWrap}>
-              <Text style={styles.benefitTitle}>Fast Delivery</Text>
-              <Text style={styles.benefitSubtitle}>Above ₹149</Text>
+        {/* SECTION 1.5b — PERSONA PRODUCTS (shown when a persona is active) */}
+        {activePersona && (
+          <View style={styles.identityProductsSection}>
+            <View style={styles.identityProductsBanner}>
+              <Ionicons name="shield-checkmark" size={16} color={Colors.white} />
+              <Text style={styles.identityProductsBannerText}>
+                No sponsored products, just what shoppers love and trust
+              </Text>
             </View>
+            <Text style={styles.identityProductsTitle}>
+              Popular with{' '}
+              {ALL_PERSONAS.find((p) => p.id === activePersona)?.label} shoppers
+            </Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.identityProductsList}
+            >
+              {(PERSONA_PRODUCTS[activePersona] || []).map((product) => (
+                <View key={product.id} style={styles.identityProductCard}>
+                  <View style={styles.identityProductRatingRow}>
+                    <Ionicons name="star" size={11} color="#FF9900" />
+                    <Text style={styles.identityProductRating}>
+                      {product.rating}
+                    </Text>
+                  </View>
+                  <Text style={styles.identityProductName} numberOfLines={2}>
+                    {product.name}
+                  </Text>
+                  <Text style={styles.identityProductPrice}>
+                    ₹{product.price.toLocaleString('en-IN')}
+                  </Text>
+                  <Text style={styles.identityProductBuyers}>
+                    {product.buyers.toLocaleString('en-IN')}+ bought
+                  </Text>
+                </View>
+              ))}
+            </ScrollView>
           </View>
-          <View style={styles.benefitPill}>
-            <Ionicons
-              name="shield-checkmark-outline"
-              size={20}
-              color={Colors.successGreen}
-            />
-            <View style={styles.benefitTextWrap}>
-              <Text style={styles.benefitTitle}>Zero Sponsored</Text>
-              <Text style={styles.benefitSubtitle}>In mission carts</Text>
-            </View>
-          </View>
-        </ScrollView>
+        )}
 
         {/* SECTION 1.6 — DIVIDER */}
         <View style={styles.divider} />
@@ -386,18 +548,18 @@ export default function HomeScreen() {
             </View>
           </View>
 
-          <View style={styles.reorderRows}>
-            {reorderItems.map((item, index) => {
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.reorderScrollContent}
+          >
+            {reorderItems.slice(0, 5).map((item, index) => {
               const tileColor =
                 REORDER_TILE_COLORS[index % REORDER_TILE_COLORS.length]
               return (
                 <View
                   key={item.id || item.asin || item.item_name}
-                  style={[
-                    styles.productRow,
-                    index < reorderItems.length - 1 &&
-                      styles.productRowDivider,
-                  ]}
+                  style={styles.productCard}
                 >
                   <View
                     style={[
@@ -414,24 +576,34 @@ export default function HomeScreen() {
                       {item.item_name.charAt(0).toUpperCase()}
                     </Text>
                   </View>
-                  <View style={styles.productCopy}>
-                    <Text style={styles.productName}>{item.item_name}</Text>
-                    <Text style={styles.productQuantity}>
-                      {item.quantity} {item.unit}
-                    </Text>
-                  </View>
-                  <View style={styles.productMeta}>
-                    <Text style={styles.productPrice}>₹{item.price_inr}</Text>
-                    {item.amazon_now_eligible && (
-                      <View style={styles.nowPill}>
-                        <Text style={styles.nowPillText}>NOW</Text>
-                      </View>
-                    )}
-                  </View>
+                  <Text style={styles.productName} numberOfLines={2}>
+                    {item.item_name}
+                  </Text>
+                  <Text style={styles.productQuantity}>
+                    {item.quantity} {item.unit}
+                  </Text>
+                  <Text style={styles.productPrice}>₹{item.price_inr}</Text>
+                  {item.amazon_now_eligible && (
+                    <View style={styles.nowPill}>
+                      <Text style={styles.nowPillText}>NOW</Text>
+                    </View>
+                  )}
                 </View>
               )
             })}
-          </View>
+          </ScrollView>
+
+          {reorderItems.length > 3 && (
+            <Pressable
+              onPress={() => router.push('/reorder/draft')}
+              style={styles.viewAllReorders}
+              accessibilityRole="button"
+            >
+              <Text style={styles.viewAllReordersText}>
+                View all {reorderItems.length} items â†’
+              </Text>
+            </Pressable>
+          )}
 
           <View style={styles.reorderFooter}>
             <View style={styles.actionButtons}>
@@ -446,7 +618,7 @@ export default function HomeScreen() {
                 <Text style={styles.approveButtonText}>Approve & Order</Text>
               </Pressable>
               <Pressable
-                onPress={() => console.log('Review daily reorder')}
+                onPress={() => router.push('/reorder/draft')}
                 style={styles.reviewButton}
                 accessibilityRole="button"
               >
@@ -496,37 +668,14 @@ export default function HomeScreen() {
             </View>
           )}
 
-        {/* SECTION 1.9 — MISSION INPUT SECTION */}
-        <Text style={styles.missionHeader}>What do you need?</Text>
-        <TextInput
-          value={goal}
-          onChangeText={setGoal}
-          placeholder="e.g. Birthday party for 20 people"
-          placeholderTextColor={Colors.placeholder}
-          style={styles.goalInput}
-          returnKeyType="done"
-          accessibilityLabel="Mission goal"
-        />
-        <View style={styles.budgetRow}>
-          <Text style={styles.budgetLabel}>Budget</Text>
-          <Pressable accessibilityRole="button">
-            <Text style={styles.budgetValue}>₹3,000</Text>
-          </Pressable>
-        </View>
-        <Pressable
-          onPress={handleBuildCart}
-          style={styles.buildCartButton}
-          accessibilityRole="button"
-        >
-          <Text style={styles.buildCartText}>Build Cart</Text>
-        </Pressable>
+        {/* SECTION 1.9 — REMOVED: Mission input now integrated in search bar */}
 
         {/* SECTION 1.10 — DIVIDER */}
         <View style={styles.dividerSpaced} />
 
         {/* SECTION 1.11 — CART AUDIT BANNER */}
         <Pressable
-          onPress={() => router.push('/audit')}
+          onPress={() => router.push('/audit-entry')}
           style={styles.auditBanner}
           accessibilityRole="button"
         >
@@ -581,7 +730,14 @@ export default function HomeScreen() {
           style={styles.testNotifLink}
           accessibilityRole="button"
         >
-          <Text style={styles.testNotifText}>Test morning notification</Text>
+          <Ionicons
+            name="notifications-outline"
+            size={14}
+            color="#F57F17"
+          />
+          <Text style={styles.testNotifText}>
+            Test morning notification (5s)
+          </Text>
         </Pressable>
 
         {/* SECTION 1.14 — BOTTOM PERSISTENT BAR */}
@@ -684,25 +840,6 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     backgroundColor: Colors.background,
   },
-  searchBar: {
-    height: 44,
-    marginHorizontal: 16,
-    paddingHorizontal: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: Colors.background,
-    borderWidth: 1,
-    borderColor: Colors.inputBorder,
-    borderRadius: 4,
-  },
-  searchInput: {
-    flex: 1,
-    height: 42,
-    marginHorizontal: 8,
-    paddingVertical: 0,
-    color: Colors.textPrimary,
-    fontSize: 14,
-  },
   categoryList: {
     paddingHorizontal: 12,
     paddingTop: 12,
@@ -721,86 +858,128 @@ const styles = StyleSheet.create({
   },
   // Banner
   banner: {
-    marginHorizontal: 0,
-    height: 140,
-    flexDirection: 'row',
-    padding: 16,
-    backgroundColor: Colors.bannerGreen,
-  },
-  bannerLeft: {
-    flex: 0.6,
-    justifyContent: 'center',
-  },
-  bannerBrand: {
-    color: Colors.deliveryYellow,
-    fontSize: 11,
-    fontWeight: '700',
-    letterSpacing: 1.5,
-    marginBottom: 4,
-  },
-  bannerHeadline: {
-    color: Colors.white,
-    fontSize: 20,
-    fontWeight: '700',
-    lineHeight: 24,
-  },
-  bannerCta: {
+    marginHorizontal: 16,
     marginTop: 12,
-    backgroundColor: Colors.deliveryYellow,
-    paddingVertical: 6,
-    paddingHorizontal: 14,
-    borderRadius: 4,
-    alignSelf: 'flex-start',
+    borderRadius: 8,
+    overflow: 'hidden',
   },
-  bannerCtaText: {
-    color: Colors.textPrimary,
-    fontWeight: '700',
+  bannerImage: {
+    width: '100%',
+    height: 130,
+    borderRadius: 8,
+  },
+  // Identity circles
+  identitySection: {
+    paddingTop: 10,
+    paddingBottom: 6,
+  },
+  identitySectionTitle: {
+    paddingHorizontal: 16,
     fontSize: 13,
+    fontWeight: '700',
+    color: Colors.textPrimary,
+    marginBottom: 8,
   },
-  bannerRight: {
-    flex: 0.4,
+  identityRow: {
+    paddingHorizontal: 12,
+  },
+  identityItem: {
+    alignItems: 'center',
+    marginHorizontal: 6,
+    width: 60,
+  },
+  identityCircle: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: 'transparent',
   },
-  bannerStatPill: {
-    backgroundColor: 'rgba(255,255,255,0.15)',
-    borderRadius: 4,
-    paddingVertical: 6,
-    paddingHorizontal: 10,
-    marginBottom: 4,
+  identityCircleActive: {
+    borderColor: '#FF9900',
   },
-  bannerStatText: {
-    color: Colors.white,
-    fontSize: 11,
-    fontWeight: '600',
+  identityEmoji: {
+    fontSize: 22,
   },
-  // Benefit pills
-  benefitRow: {
+  identityLabel: {
+    marginTop: 4,
+    fontSize: 10,
+    color: Colors.textSecondary,
+    textAlign: 'center',
+  },
+  identityLabelActive: {
+    color: '#FF9900',
+    fontWeight: '700',
+  },
+  // Identity products
+  identityProductsSection: {
+    paddingBottom: 8,
+  },
+  identityProductsBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#2E7D32',
     paddingHorizontal: 16,
     paddingVertical: 8,
+    gap: 8,
   },
-  benefitPill: {
-    width: 160,
-    flexDirection: 'row',
-    alignItems: 'center',
+  identityProductsBannerText: {
+    color: Colors.white,
+    fontSize: 12,
+    fontWeight: '600',
+    flex: 1,
+  },
+  identityProductsTitle: {
+    paddingHorizontal: 16,
+    paddingTop: 10,
+    paddingBottom: 8,
+    fontSize: 14,
+    fontWeight: '700',
+    color: Colors.textPrimary,
+  },
+  identityProductsList: {
+    paddingHorizontal: 12,
+  },
+  identityProductCard: {
+    width: 130,
+    marginHorizontal: 4,
+    padding: 10,
+    backgroundColor: Colors.background,
     borderWidth: 1,
     borderColor: Colors.border,
-    borderRadius: 4,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    marginRight: 8,
+    borderRadius: 8,
   },
-  benefitTextWrap: {
-    marginLeft: 8,
+  identityProductRatingRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
+    marginBottom: 6,
   },
-  benefitTitle: {
-    color: Colors.textPrimary,
-    fontSize: 13,
-    fontWeight: '700',
-  },
-  benefitSubtitle: {
-    color: Colors.textSecondary,
+  identityProductRating: {
     fontSize: 11,
+    color: Colors.textSecondary,
+    fontWeight: '600',
+  },
+  identityProductName: {
+    fontSize: 12,
+    lineHeight: 16,
+    color: Colors.textPrimary,
+    fontWeight: '600',
+    minHeight: 32,
+  },
+  identityProductPrice: {
+    marginTop: 6,
+    fontSize: 14,
+    fontWeight: '700',
+    color: Colors.textPrimary,
+  },
+  identityProductBuyers: {
+    marginTop: 2,
+    fontSize: 10,
+    color: Colors.successGreen,
+    fontWeight: '600',
   },
   // Dividers
   divider: {
@@ -839,52 +1018,50 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontSize: 11,
   },
-  reorderRows: {
-    paddingHorizontal: 16,
+  reorderScrollContent: {
+    paddingHorizontal: 12,
+    paddingVertical: 10,
   },
-  productRow: {
-    minHeight: 64,
-    flexDirection: 'row',
+  productCard: {
+    width: 110,
+    marginRight: 10,
     alignItems: 'center',
-  },
-  productRowDivider: {
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.divider,
+    backgroundColor: Colors.background,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    borderRadius: 8,
+    padding: 10,
   },
   letterTile: {
-    width: 36,
-    height: 36,
-    marginRight: 12,
+    width: 40,
+    height: 40,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 4,
+    borderRadius: 8,
+    marginBottom: 6,
   },
   letterTileText: {
     fontSize: 18,
     fontWeight: '700',
   },
-  productCopy: {
-    flex: 1,
-  },
   productName: {
     color: Colors.textPrimary,
-    fontSize: 14,
-    lineHeight: 18,
+    fontSize: 11,
+    lineHeight: 14,
     fontWeight: '600',
+    textAlign: 'center',
   },
   productQuantity: {
     marginTop: 2,
     color: Colors.textSecondary,
-    fontSize: 12,
-    lineHeight: 15,
-  },
-  productMeta: {
-    alignItems: 'flex-end',
+    fontSize: 10,
+    lineHeight: 13,
   },
   productPrice: {
+    marginTop: 4,
     color: Colors.textPrimary,
-    fontSize: 14,
-    lineHeight: 18,
+    fontSize: 13,
+    lineHeight: 16,
     fontWeight: '700',
   },
   nowPill: {
@@ -904,6 +1081,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 12,
     paddingBottom: 12,
+  },
+  viewAllReorders: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderTopWidth: 1,
+    borderTopColor: Colors.divider,
+  },
+  viewAllReordersText: {
+    color: Colors.linkBlue,
+    fontSize: 13,
+    fontWeight: '600',
   },
   actionButtons: {
     flexDirection: 'row',
@@ -992,56 +1182,6 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     color: '#565959',
     fontSize: 13,
-  },
-  // Mission input
-  missionHeader: {
-    color: Colors.textPrimary,
-    fontSize: 16,
-    fontWeight: '700',
-    paddingHorizontal: 16,
-    paddingTop: 16,
-    paddingBottom: 8,
-  },
-  goalInput: {
-    height: 52,
-    marginHorizontal: 16,
-    paddingHorizontal: 12,
-    color: Colors.textPrimary,
-    fontSize: 14,
-    backgroundColor: Colors.background,
-    borderWidth: 1,
-    borderColor: Colors.inputBorder,
-    borderRadius: 4,
-  },
-  budgetRow: {
-    marginHorizontal: 16,
-    marginTop: 8,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  budgetLabel: {
-    color: Colors.textSecondary,
-    fontSize: 13,
-  },
-  budgetValue: {
-    color: Colors.linkBlue,
-    fontSize: 13,
-    fontWeight: '600',
-  },
-  buildCartButton: {
-    marginHorizontal: 16,
-    marginTop: 12,
-    height: 48,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.primary,
-    borderRadius: 4,
-  },
-  buildCartText: {
-    color: Colors.white,
-    fontSize: 15,
-    fontWeight: '700',
   },
   // Audit banner
   auditBanner: {
@@ -1137,13 +1277,23 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   testNotifLink: {
-    alignSelf: 'center',
-    marginTop: 16,
+    marginHorizontal: 16,
+    marginTop: 4,
     marginBottom: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFF8E1',
+    borderWidth: 1,
+    borderColor: '#FFD814',
+    borderRadius: 4,
   },
   testNotifText: {
-    color: Colors.linkBlue,
-    fontSize: 11,
+    marginLeft: 6,
+    color: '#F57F17',
+    fontSize: 12,
+    fontWeight: '600',
   },
   // Persistent bar
   persistentBar: {

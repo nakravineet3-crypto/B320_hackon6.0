@@ -19,16 +19,14 @@ def _has_api_key() -> bool:
 
 
 class AuditRequest(BaseModel):
-    # Accept both naming conventions
     cart_items: list = []
-    existing_cart: list = []  # frontend sends this
-    headcount: int = 12
-    occasion: str = "birthday"
+    existing_cart: list = []
+    headcount: int = 1
+    occasion: str = "general"
     goal: str = ""
-
-    def get_cart(self):
-        # Use whichever field was provided
-        return self.existing_cart or self.cart_items
+    budget_max: float = 0
+    deadline_hours: int = 24
+    safety_context: str = "general"
 
 
 class ParseRequest(BaseModel):
@@ -43,169 +41,54 @@ class BuildRequest(BaseModel):
 
 @router.post("/audit")
 async def audit_cart(request: AuditRequest):
-    from app.services.quantity_planner import calculate_quantity
+    from app.services.audit_engine import (
+        is_demo_cart,
+        run_real_audit,
+        DEMO_FLAGS,
+        DEMO_REPAIRED_CART,
+    )
 
-    DEMO_FLAGS = [
-        {
-            "flag_id": "f1",
-            "severity": "red",
-            "message": "12 plates — you need 24",
-            "math_explanation": "2 plates per child × 12 kids = 24 plates. You have 1 pack of 12. Need 2 packs.",
-            "product_id": "P001",
-            "fix_action": "increase_quantity",
-            "animate_at_ms": 1500,
-        },
-        {
-            "flag_id": "f2",
-            "severity": "red",
-            "message": "Balloon set — no pump included",
-            "math_explanation": "This balloon set requires a pump to inflate. No pump found in cart.",
-            "product_id": "P002",
-            "fix_action": "add_compatible_item",
-            "animate_at_ms": 3000,
-        },
-        {
-            "flag_id": "f3",
-            "severity": "amber",
-            "message": "Streamers not on Amazon Now — swapping",
-            "math_explanation": "These streamers arrive in 2 days. Party is tomorrow (18hrs). Swapped to Now-eligible alternative.",
-            "product_id": "P003",
-            "fix_action": "swap_now_eligible",
-            "animate_at_ms": 4500,
-        },
-        {
-            "flag_id": "f4",
-            "severity": "blue",
-            "message": "Sponsored cups blocked — failed child_safe check",
-            "math_explanation": "This sponsored product has no child_safe certification. Required for kids birthday mission. Blocked per MissionCart policy.",
-            "product_id": "P004",
-            "fix_action": "block_sponsored",
-            "animate_at_ms": 6000,
-        },
-    ]
+    cart_items = request.existing_cart or request.cart_items or []
 
-    # Get cart items from whichever field was provided
-    cart_items = request.get_cart()
+    # DEMO PATH — preserved exactly
+    if is_demo_cart(cart_items):
+        return {
+            "success": True,
+            "data": {
+                "flags": DEMO_FLAGS,
+                "original_cart": [
+                    {"product_id": "P001", "name": "Paper Plates 10pc", "quantity": 1, "price_inr": 120, "amazon_now_eligible": True, "sponsored": False},
+                    {"product_id": "P002", "name": "Balloon Set 20pc", "quantity": 1, "price_inr": 180, "amazon_now_eligible": True, "sponsored": False},
+                    {"product_id": "P003", "name": "Streamers 5pc", "quantity": 2, "price_inr": 90, "amazon_now_eligible": False, "sponsored": False},
+                    {"product_id": "P004", "name": "Party Cups 10pc", "quantity": 2, "price_inr": 95, "amazon_now_eligible": True, "sponsored": True},
+                ],
+                "repaired_cart": DEMO_REPAIRED_CART,
+                "original_total": 4340,
+                "repaired_total": 3850,
+                "coverage_score": "9/9",
+                "all_amazon_now": True,
+                "is_demo": True,
+                "analysis_stats": {
+                    "items_checked": 4,
+                    "flags_found": 4,
+                    "items_repaired": 3,
+                    "engine": "demo_path",
+                },
+            },
+            "error": None,
+            "request_id": str(uuid4()),
+        }
 
-    if not cart_items:
-        # Demo mode — return hardcoded flags
-        flags = DEMO_FLAGS
-    else:
-        # Real mode — run basic checks
-        flags = []
-        headcount = request.headcount or 12
-
-        for item in cart_items:
-            # Quantity check
-            category = item.get("category", "")
-            pack_size = item.get("pack_size", 10)
-            current_qty = item.get("quantity", 1)
-
-            qty = calculate_quantity(
-                category=category,
-                pack_size=pack_size,
-                headcount=headcount,
-            )
-            needed_packs = qty["packs_required"]
-
-            if current_qty < needed_packs:
-                units_have = current_qty * pack_size
-                units_need = needed_packs * pack_size
-                flags.append({
-                    "flag_id": f"qty_{item.get('asin', '')}",
-                    "severity": "red",
-                    "message": f"{units_have} {category.replace('_', ' ')} — you need {units_need}",
-                    "math_explanation": qty["explanation"],
-                    "product_id": item.get("asin"),
-                    "fix_action": "increase_quantity",
-                    "animate_at_ms": len(flags) * 1500 + 1500,
-                })
-
-            # Amazon Now check
-            if not item.get("amazon_now_eligible") and headcount > 0:
-                flags.append({
-                    "flag_id": f"now_{item.get('asin', '')}",
-                    "severity": "amber",
-                    "message": f"{item.get('title', 'Item')} not on Amazon Now — swapping",
-                    "math_explanation": "Not available for instant delivery. Finding Now-eligible alternative.",
-                    "product_id": item.get("asin"),
-                    "fix_action": "swap_now_eligible",
-                    "animate_at_ms": len(flags) * 1500 + 1500,
-                })
-
-            # Sponsored check
-            if item.get("sponsored") and not item.get("safety_tags"):
-                flags.append({
-                    "flag_id": f"sponsored_{item.get('asin', '')}",
-                    "severity": "blue",
-                    "message": "Sponsored item blocked — failed safety check",
-                    "math_explanation": "Sponsored product with no safety certification. Blocked per MissionCart policy.",
-                    "product_id": item.get("asin"),
-                    "fix_action": "block_sponsored",
-                    "animate_at_ms": len(flags) * 1500 + 1500,
-                })
-
-        # If no flags found, return demo flags anyway
-        if not flags:
-            flags = DEMO_FLAGS
-
-    repaired_cart = [
-        {
-            "product_id": "P001",
-            "name": "Paper Plates 10pc",
-            "quantity": 3,
-            "price_inr": 120,
-            "amazon_now_eligible": True,
-            "sponsored": False,
-        },
-        {
-            "product_id": "P005",
-            "name": "Balloon Pump",
-            "quantity": 1,
-            "price_inr": 149,
-            "amazon_now_eligible": True,
-            "sponsored": False,
-        },
-        {
-            "product_id": "P002",
-            "name": "Balloon Set 20pc",
-            "quantity": 1,
-            "price_inr": 180,
-            "amazon_now_eligible": True,
-            "sponsored": False,
-        },
-        {
-            "product_id": "P006",
-            "name": "Streamers 5pc (Now)",
-            "quantity": 2,
-            "price_inr": 85,
-            "amazon_now_eligible": True,
-            "sponsored": False,
-        },
-        {
-            "product_id": "P007",
-            "name": "Paper Cups 20pc",
-            "quantity": 2,
-            "price_inr": 79,
-            "amazon_now_eligible": True,
-            "sponsored": False,
-        },
-    ]
-
-    data = {
-        "original_cart": [
-            {"product_id": "P001", "name": "Paper Plates 10pc", "quantity": 1, "price_inr": 120, "amazon_now_eligible": True, "sponsored": False},
-            {"product_id": "P002", "name": "Balloon Set 20pc", "quantity": 1, "price_inr": 180, "amazon_now_eligible": True, "sponsored": False},
-            {"product_id": "P003", "name": "Streamers 5pc", "quantity": 2, "price_inr": 90, "amazon_now_eligible": False, "sponsored": False},
-            {"product_id": "P004", "name": "Party Cups 10pc", "quantity": 2, "price_inr": 95, "amazon_now_eligible": True, "sponsored": True},
-        ],
-        "flags": flags,
-        "repaired_cart": repaired_cart,
-        "original_total": 4340,
-        "repaired_total": 3850,
-        "coverage_score": "9/9",
-    }
-    return {"success": True, "data": data, "error": None, "request_id": str(uuid4())}
+    # REAL AUDIT PATH
+    result = run_real_audit(
+        cart_items=cart_items,
+        occasion_type=request.occasion or "general",
+        headcount=request.headcount or 1,
+        budget_max=request.budget_max or 0,
+        deadline_hours=request.deadline_hours or 24,
+        safety_context=request.safety_context or "general",
+    )
+    return {"success": True, "data": result, "error": None, "request_id": str(uuid4())}
 
 
 @router.post("/parse")
@@ -269,8 +152,78 @@ async def build_cart_endpoint(request: BuildRequest):
         from app.services.cart_builder import build_cart
 
         spec = await parse_mission(request.goal, request.budget)
+
+        # Handle unsupported domain
+        if spec.domain == "unsupported":
+            reason = getattr(spec, "unsupported_reason", None) or (
+                "This type of item is not available on Amazon Now"
+            )
+            return {
+                "success": False,
+                "data": {
+                    "unsupported": True,
+                    "unsupported_reason": reason,
+                    "suggestion": "Try searching Amazon.in directly",
+                    "amazon_search_url": (
+                        f"https://www.amazon.in/s?k="
+                        f"{request.goal.replace(' ', '+')}"
+                    ),
+                    "supported_goals": [
+                        "Birthday party for 12 kids under ₹4000",
+                        "New flat setup this weekend",
+                        "Trek to Coorg for 4 people",
+                        "Diwali celebration at home",
+                        "Weekly grocery restock",
+                    ],
+                },
+                "error": "Goal not supported by MissionCart",
+                "request_id": str(uuid4()),
+            }
+
+        # Handle needs clarification
+        if getattr(spec, "needs_clarification", False):
+            return {
+                "success": False,
+                "data": {
+                    "needs_clarification": True,
+                    "clarification_question": getattr(
+                        spec, "clarification_question",
+                        "Could you provide more details?"
+                    ),
+                    "clarification_type": getattr(
+                        spec, "clarification_type", "goal_unclear"
+                    ),
+                    "partial_spec": {
+                        "domain": spec.domain,
+                        "goal": spec.raw_goal,
+                        "detected": {
+                            "headcount": spec.headcount,
+                            "budget": spec.budget_max,
+                            "deadline": spec.deadline_hours,
+                        },
+                    },
+                    "suggestions": [
+                        f"Try: '{spec.raw_goal} for 10 people'",
+                        f"Try: '{spec.raw_goal} under ₹3000'",
+                        f"Try: '{spec.raw_goal} tomorrow'",
+                    ],
+                },
+                "error": "Need more information to build cart",
+                "request_id": str(uuid4()),
+            }
+
         needs = route_and_decompose(spec)
         result = build_cart(spec, needs)
+
+        # Add retrieval metadata
+        from app.services.retrieval_engine import retrieval_engine as _re
+        result["retrieval_method"] = (
+            "blair_faiss" if _re.index is not None else "keyword_category"
+        )
+        result["embedding_model"] = (
+            "hyp1231/blair-roberta-large" if _re.index is not None else "none"
+        )
+
         _build_cache[cache_key] = result
         return {"success": True, "data": result, "error": None, "request_id": str(uuid4())}
     except Exception as e:

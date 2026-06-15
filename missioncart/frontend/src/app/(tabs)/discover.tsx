@@ -1,7 +1,9 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
 import { useState } from 'react'
 import {
+  Alert,
   ScrollView,
   StyleSheet,
   Text,
@@ -11,6 +13,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { Colors, getLabelColor } from '../../lib/constants'
+import { useReorderStore } from '../../store/reorder'
 
 type IoniconName = keyof typeof Ionicons.glyphMap
 
@@ -215,6 +218,18 @@ export default function DiscoverScreen() {
               </TouchableOpacity>
             ))}
           </View>
+          <TouchableOpacity
+            onPress={async () => {
+              await AsyncStorage.removeItem('removed_items')
+              await AsyncStorage.removeItem('approved_orders')
+              useReorderStore.getState().clear()
+              Alert.alert('Demo state cleared')
+            }}
+            style={styles.resetDemoButton}
+            accessibilityRole="button"
+          >
+            <Text style={styles.resetDemoButtonText}>Reset demo data</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -414,5 +429,19 @@ const styles = StyleSheet.create({
   demoLinkText: {
     color: '#007185',
     fontSize: 12,
+  },
+  resetDemoButton: {
+    alignSelf: 'flex-start',
+    marginTop: 8,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    backgroundColor: '#FFF5F5',
+    borderWidth: 1,
+    borderColor: '#CC0C39',
+    borderRadius: 4,
+  },
+  resetDemoButtonText: {
+    color: '#CC0C39',
+    fontSize: 13,
   },
 })

@@ -262,14 +262,155 @@ def _add_community(product: dict, headcount: int = 1, occasion_type: str = "even
 
 class RetrievalEngine:
     """
-    Retrieval engine wrapper exposing community enrichment and (lazy) BLaIR encoding.
+    Retrieval engine with FAISS semantic search and community enrichment.
+    Loads pre-built FAISS index + catalog at init.
+    Query encoding: averages embeddings of category exemplars (no runtime model needed).
     """
 
     def __init__(self):
-        self._encoder: Optional[BlairEncoder] = None
+        self._encoder = None
+        self.index = None
+        self.catalog = []
+        self._category_centroids = {}
+        self._load()
+
+    def _load(self):
+        """Load FAISS index and embedded catalog."""
+        data_path = Path(__file__).parent.parent / "data"
+        try:
+            import faiss
+            import numpy as np
+
+            # Load FAISS index
+            index_path = data_path / "product_faiss.index"
+            if index_path.exists():
+                self.index = faiss.read_index(str(index_path))
+                print(f"FAISS index loaded: {self.index.ntotal} products, dim={self.index.d}")
+
+            # Load embedded catalog
+            catalog_path = data_path / "catalog_embedded.json"
+            if catalog_path.exists():
+                with open(catalog_path, encoding="utf-8") as f:
+                    self.catalog = json.load(f)
+
+            # Pre-compute category centroids from FAISS vectors
+            if self.index and self.catalog:
+                self._build_category_centroids(np)
+
+        except ImportError as e:
+            print(f"FAISS/numpy not available: {e}. Using keyword fallback.")
+        except Exception as e:
+            print(f"FAISS load failed: {e}. Using keyword fallback.")
+
+    def _build_category_centroids(self, np):
+        """Pre-compute average embedding per category for query-free retrieval."""
+        category_indices = {}
+        for i, product in enumerate(self.catalog):
+            cat = product.get("category", "")
+            if cat not in category_indices:
+                category_indices[cat] = []
+            category_indices[cat].append(i)
+
+        for cat, indices in category_indices.items():
+            if indices:
+                vectors = []
+                for idx in indices:
+                    vec = self.index.reconstruct(idx)
+                    vectors.append(vec)
+                centroid = np.mean(vectors, axis=0).astype("float32")
+                # L2 normalize
+                norm = np.linalg.norm(centroid)
+                if norm > 0:
+                    centroid = centroid / norm
+                self._category_centroids[cat] = centroid
+
+    def retrieve(
+        self,
+        need_label: str,
+        category_candidates: List[str],
+        occasion_type: str = "event",
+        budget_ceiling: float = 5000,
+        headcount: int = 1,
+        top_k: int = 15,
+    ) -> List[dict]:
+        """Retrieve products using FAISS semantic search.
+
+        If FAISS loaded: uses category centroid vectors for nearest-neighbor search.
+        If not: falls back to keyword category matching.
+        """
+        if self.index and self._category_centroids:
+            return self._faiss_retrieve(
+                category_candidates, budget_ceiling, top_k
+            )
+        return self._keyword_retrieve(
+            category_candidates, budget_ceiling
+        )
+
+    def _faiss_retrieve(
+        self,
+        category_candidates: List[str],
+        budget_ceiling: float,
+        top_k: int,
+    ) -> List[dict]:
+        """FAISS-based retrieval using pre-computed category centroids."""
+        import numpy as np
+
+        # Build query vector: average of target category centroids
+        query_vectors = []
+        for cat in category_candidates:
+            if cat in self._category_centroids:
+                query_vectors.append(self._category_centroids[cat])
+
+        if not query_vectors:
+            return self._keyword_retrieve(category_candidates, budget_ceiling)
+
+        query = np.mean(query_vectors, axis=0).astype("float32").reshape(1, -1)
+        # Normalize for cosine similarity
+        norm = np.linalg.norm(query)
+        if norm > 0:
+            query = query / norm
+
+        # Search FAISS
+        distances, indices = self.index.search(query, min(top_k * 3, self.index.ntotal))
+
+        # Filter and score results
+        results = []
+        for dist, idx in zip(distances[0], indices[0]):
+            if idx < 0 or idx >= len(self.catalog):
+                continue
+            product = dict(self.catalog[idx])
+            # Filter by category and budget
+            if product.get("category") not in category_candidates:
+                continue
+            if product.get("price", 0) > budget_ceiling:
+                continue
+            if not product.get("stock_available", True):
+                continue
+            product["retrieval_score"] = float(1.0 / (1.0 + dist))
+            product["retrieval_method"] = "blair_faiss"
+            results.append(product)
+
+        return results[:top_k]
+
+    def _keyword_retrieve(
+        self,
+        category_candidates: List[str],
+        budget_ceiling: float,
+    ) -> List[dict]:
+        """Fallback: simple category + price filter."""
+        results = []
+        for product in self.catalog:
+            if product.get("category") in category_candidates:
+                if product.get("price", 0) <= budget_ceiling:
+                    if product.get("stock_available", True):
+                        product_copy = dict(product)
+                        product_copy["retrieval_score"] = 0.5
+                        product_copy["retrieval_method"] = "keyword_category"
+                        results.append(product_copy)
+        return results
 
     @property
-    def encoder(self) -> BlairEncoder:
+    def encoder(self):
         if self._encoder is None:
             self._encoder = BlairEncoder()
         return self._encoder

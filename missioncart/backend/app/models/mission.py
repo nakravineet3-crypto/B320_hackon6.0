@@ -43,6 +43,8 @@ class MissionSpec(BaseModel):
     special_constraints: List[str] = []
     needs_clarification: bool = False
     clarification_question: Optional[str] = None
+    clarification_type: Optional[str] = None
+    unsupported_reason: Optional[str] = None
     created_at: datetime = Field(default_factory=datetime.utcnow)
 
     class Config:

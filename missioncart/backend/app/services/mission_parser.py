@@ -202,6 +202,49 @@ def extract_fallback(raw_goal: str) -> dict:
         elif any(w in text for w in ["this week", "in a week"]):
             result["deadline_hours"] = 120
 
+    # ── UNSUPPORTED GOAL DETECTION ─────────────────────────
+    UNSUPPORTED_KEYWORDS = [
+        "football", "cricket", "basketball", "tennis",
+        "badminton", "hockey", "sports", "jersey",
+        "iphone", "laptop", "phone", "mobile",
+        "tv", "television", "refrigerator", "washing machine",
+        "car", "bike", "motorcycle", "vehicle",
+        "medicine", "tablet", "prescription",
+        "furniture", "sofa", "table", "chair",
+        "clothes", "shirt", "dress", "shoes",
+        "gold", "jewellery", "jewelry",
+    ]
+    for keyword in UNSUPPORTED_KEYWORDS:
+        if keyword in text:
+            result["domain"] = "unsupported"
+            result["unsupported_reason"] = (
+                f"'{keyword.title()}' items are not available "
+                f"on Amazon Now through MissionCart. "
+                f"Try searching Amazon directly for the best selection."
+            )
+            result["needs_clarification"] = False
+            return result
+
+    # ── CLARIFICATION NEEDED ───────────────────────────────
+    # Single word or very short ambiguous goal
+    if len(raw_goal.strip().split()) <= 2 and result["domain"] == "general":
+        result["needs_clarification"] = True
+        result["clarification_question"] = (
+            "Could you tell me more? For example: "
+            "'Football kit for 5 players under ₹3000' "
+            "or 'Birthday party for 12 kids tomorrow'"
+        )
+        result["clarification_type"] = "goal_unclear"
+        return result
+
+    # Missing budget for events
+    if result["domain"] == "event" and not result.get("budget_max"):
+        result["needs_clarification"] = True
+        result["clarification_question"] = (
+            "What is your budget for this occasion?"
+        )
+        result["clarification_type"] = "budget"
+
     return result
 
 

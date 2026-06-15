@@ -4,76 +4,148 @@ import type { CartItem, MissionBuildResult } from '../lib/types'
 
 interface MissionStore {
   cart: CartItem[]
+  currentCart: CartItem[]
   currentMission: MissionBuildResult | null
   currentBuildResult: any | null
+  auditResult: any | null
   isLoading: boolean
   comparisonVisible: boolean
   comparisonItemA: any | null
   comparisonItemB: any | null
-  viewHistory: string[]
+  showCompareChip: boolean
+  lastComparisonTime: number
+  _viewHistory: Array<{ item: any; timestamp: number }>
+  undoToast: {
+    visible: boolean
+    message: string
+    onUndo: (() => void) | null
+    duration: number
+  } | null
   setCart: (cart: CartItem[]) => void
   setMission: (mission: MissionBuildResult | null) => void
   setBuildResult: (result: any) => void
+  setAuditResult: (result: any) => void
   setLoading: (isLoading: boolean) => void
   clearMission: () => void
   trackItemView: (item: any) => void
   setComparisonItems: (a: any, b: any) => void
   dismissComparison: () => void
+  dismissChip: () => void
+  showUndoToast: (config: {
+    message: string
+    onUndo: (() => void) | null
+    duration: number
+  }) => void
+  hideUndoToast: () => void
 }
 
 export const useMissionStore = create<MissionStore>((set, get) => ({
   cart: [],
+  currentCart: [],
   currentMission: null,
   currentBuildResult: null,
+  auditResult: null,
   isLoading: false,
   comparisonVisible: false,
   comparisonItemA: null,
   comparisonItemB: null,
-  viewHistory: [],
-  setCart: (cart) => set({ cart }),
+  showCompareChip: false,
+  lastComparisonTime: 0,
+  _viewHistory: [],
+  undoToast: null,
+  setCart: (cart) => set({ cart, currentCart: cart }),
   setMission: (currentMission) => set({ currentMission }),
   setBuildResult: (currentBuildResult) => set({ currentBuildResult }),
+  setAuditResult: (auditResult) => set({ auditResult }),
   setLoading: (isLoading) => set({ isLoading }),
   clearMission: () =>
     set({
       cart: [],
+      currentCart: [],
       currentMission: null,
       currentBuildResult: null,
       isLoading: false,
+      comparisonVisible: false,
+      comparisonItemA: null,
+      comparisonItemB: null,
+      showCompareChip: false,
+      _viewHistory: [],
+      undoToast: null,
     }),
   trackItemView: (item) => {
-    const { viewHistory } = get()
-    const key = item.title || item.cart_item_id || item.asin
-    const newHistory = [...viewHistory, key].slice(-10)
-    const last6 = newHistory.slice(-6)
-    const uniqueKeys = [...new Set(last6)]
+    const now = Date.now()
+    const history = [...get()._viewHistory, { item, timestamp: now }].slice(-10)
+    const recentViews = history
+      .filter((view) => now - view.timestamp < 60000)
+      .slice(-6)
+    const uniqueItems = new Set(
+      recentViews.map((view) => view.item.cart_item_id),
+    )
+    const cooldownOk = now - get().lastComparisonTime > 300000
 
-    if (uniqueKeys.length === 2) {
-      const countA = last6.filter((k) => k === uniqueKeys[0]).length
-      const countB = last6.filter((k) => k === uniqueKeys[1]).length
+    if (uniqueItems.size === 2 && cooldownOk) {
+      const ids = [...uniqueItems]
+      const countA = recentViews.filter(
+        (view) => view.item.cart_item_id === ids[0],
+      ).length
+      const countB = recentViews.filter(
+        (view) => view.item.cart_item_id === ids[1],
+      ).length
+      const itemA = recentViews.find(
+        (view) => view.item.cart_item_id === ids[0],
+      )?.item
+      const itemB = recentViews.find(
+        (view) => view.item.cart_item_id === ids[1],
+      )?.item
 
       if (countA >= 3 && countB >= 3) {
-        const { cart } = get()
-        const itemA = cart.find(
-          (c) => c.title === uniqueKeys[0] || c.cart_item_id === uniqueKeys[0],
-        )
-        const itemB = cart.find(
-          (c) => c.title === uniqueKeys[1] || c.cart_item_id === uniqueKeys[1],
-        )
         set({
-          viewHistory: newHistory,
+          _viewHistory: history,
           comparisonVisible: true,
-          comparisonItemA: itemA || item,
-          comparisonItemB: itemB || item,
+          comparisonItemA: itemA,
+          comparisonItemB: itemB,
+          lastComparisonTime: now,
+          showCompareChip: false,
+        })
+        return
+      }
+
+      if (countA >= 2 && countB >= 1) {
+        set({
+          _viewHistory: history,
+          showCompareChip: true,
+          comparisonItemA: itemA,
+          comparisonItemB: itemB,
         })
         return
       }
     }
 
-    set({ viewHistory: newHistory })
+    set({ _viewHistory: history })
   },
   setComparisonItems: (a, b) =>
-    set({ comparisonVisible: true, comparisonItemA: a, comparisonItemB: b }),
+    set({
+      comparisonVisible: true,
+      comparisonItemA: a,
+      comparisonItemB: b,
+      lastComparisonTime: Date.now(),
+      showCompareChip: false,
+    }),
   dismissComparison: () =>
-    set({ comparisonVisible: false, viewHistory: [] }),
+    set({
+      comparisonVisible: false,
+      showCompareChip: false,
+      _viewHistory: [],
+    }),
+  dismissChip: () => set({ showCompareChip: false, _viewHistory: [] }),
+  showUndoToast: (config) => {
+    const toast = { visible: true, ...config }
+    set({ undoToast: toast })
+    setTimeout(() => {
+      if (get().undoToast === toast) {
+        set({ undoToast: null })
+      }
+    }, config.duration)
+  },
+  hideUndoToast: () => set({ undoToast: null }),
 }))

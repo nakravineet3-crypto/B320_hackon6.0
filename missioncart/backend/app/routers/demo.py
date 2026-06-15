@@ -91,7 +91,9 @@ async def get_reorder_alerts():
             u001_alerts,
             key=lambda a: (urgency_order.get(a.get("reorder_urgency", "low"), 3), a.get("days_remaining", 99)),
         )
-        top_3 = sorted_alerts[:3]
+        # Return all items with days_remaining <= 2 (urgent), fallback to top 3
+        urgent = [a for a in sorted_alerts if a.get("days_remaining", 99) <= 2]
+        selected = urgent if urgent else sorted_alerts[:3]
         data = [
             {
                 "id": alert.get("asin", f"r{i}"),
@@ -107,7 +109,7 @@ async def get_reorder_alerts():
                 "last_purchased": alert.get("last_purchased"),
                 "purchase_count": alert.get("purchase_count", 0),
             }
-            for i, alert in enumerate(top_3)
+            for i, alert in enumerate(selected)
         ]
         return {"success": True, "data": data, "error": None, "request_id": str(uuid4())}
 
@@ -434,4 +436,82 @@ async def get_mission_share_card():
             "Amazon Now in 20 mins."
         ),
     }
+    return {"success": True, "data": data, "error": None, "request_id": str(uuid4())}
+
+
+@router.get("/notification-content")
+async def get_notification_content():
+    """Returns push notification content computed from real depletion alerts."""
+    alerts_data = _load_json("depletion_alerts.json")
+
+    if not alerts_data:
+        # Hardcoded fallback
+        return {
+            "success": True,
+            "data": {
+                "title": "🛒 Your daily reorder is ready",
+                "body": "Tata Salt, Surf Excel, Parle-G — Tap to approve ⚡",
+                "items": [],
+                "urgency": "high",
+                "total_price": 399,
+                "item_count": 3,
+            },
+            "error": None,
+            "request_id": str(uuid4()),
+        }
+
+    u001_alerts = alerts_data.get("U001", [])
+
+    # Sort by urgency then days_remaining
+    urgency_order = {"urgent": 0, "soon": 1, "normal": 2, "low": 3}
+    sorted_alerts = sorted(
+        u001_alerts,
+        key=lambda a: (
+            urgency_order.get(a.get("reorder_urgency", "low"), 3),
+            a.get("days_remaining", 99),
+        ),
+    )
+    # Use same urgent filter: all items with days_remaining <= 2
+    urgent = [a for a in sorted_alerts if a.get("days_remaining", 99) <= 2]
+    selected = urgent if urgent else sorted_alerts[:3]
+
+    # Build items list
+    items = []
+    for alert in selected:
+        qty = alert.get("suggested_quantity", 1)
+        price = alert.get("price", 0)
+        items.append({
+            "name": alert.get("title", "Item"),
+            "quantity": qty,
+            "unit": "bottles" if "milk" in alert.get("title", "").lower() else "packs",
+            "price_inr": price * qty,
+            "days_remaining": alert.get("days_remaining", 0),
+        })
+
+    # Build notification body — first 3 names + "+N more" if more
+    names = [item["name"] for item in items]
+    if len(names) == 1:
+        body = f"{names[0]} — Tap to approve & order ⚡"
+    elif len(names) == 2:
+        body = f"{names[0]}, {names[1]} — Tap to approve ⚡"
+    elif len(names) == 3:
+        body = f"{names[0]}, {names[1]}, {names[2]} — Tap to approve ⚡"
+    else:
+        body = f"{names[0]}, {names[1]}, {names[2]} +{len(names) - 3} more — Tap to approve ⚡"
+
+    # Determine urgency
+    has_urgent = any(a.get("reorder_urgency") == "urgent" for a in selected)
+    urgency = "high" if has_urgent else "medium"
+
+    total_price = sum(item["price_inr"] for item in items)
+
+    data = {
+        "title": "🛒 Your daily reorder is ready",
+        "body": body,
+        "items": items,
+        "urgency": urgency,
+        "total_price": total_price,
+        "item_count": len(items),
+    }
+
     return {"success": True, "data": data, "error": None, "request_id": str(uuid4())}
