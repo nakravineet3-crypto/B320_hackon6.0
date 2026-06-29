@@ -27,6 +27,8 @@ interface Category {
   id: string
   label: string
   icon: IoniconName
+  color: string
+  bgColor: string
 }
 
 interface ReorderItem {
@@ -41,14 +43,18 @@ interface ReorderItem {
 }
 
 const categories: Category[] = [
-  { id: 'beverages', label: 'Beverages', icon: 'wine-outline' },
-  { id: 'snacks', label: 'Snacks', icon: 'fast-food-outline' },
-  { id: 'ice-cream', label: 'Ice cream', icon: 'ice-cream-outline' },
-  { id: 'bath-body', label: 'Bath & body', icon: 'sparkles-outline' },
-  { id: 'cleaners', label: 'Cleaners', icon: 'water-outline' },
-  { id: 'grocery', label: 'Grocery', icon: 'basket-outline' },
-  { id: 'party', label: 'Party', icon: 'balloon-outline' },
-  { id: 'health', label: 'Health', icon: 'medkit-outline' },
+  { id: 'beverages', label: 'Beverages', icon: 'wine', color: '#D32F2F', bgColor: '#FFEBEE' },
+  { id: 'snacks', label: 'Snacks', icon: 'fast-food', color: '#F57C00', bgColor: '#FFF3E0' },
+  { id: 'ice-cream', label: 'Ice cream', icon: 'ice-cream', color: '#E91E63', bgColor: '#FCE4EC' },
+  { id: 'bath-body', label: 'Bath & body', icon: 'sparkles', color: '#9C27B0', bgColor: '#F3E5F5' },
+  { id: 'cleaners', label: 'Cleaners', icon: 'water', color: '#1976D2', bgColor: '#E3F2FD' },
+  { id: 'grocery', label: 'Grocery', icon: 'basket', color: '#388E3C', bgColor: '#E8F5E9' },
+  { id: 'party', label: 'Party', icon: 'balloon', color: '#7B1FA2', bgColor: '#EDE7F6' },
+  { id: 'health', label: 'Health', icon: 'medkit', color: '#00796B', bgColor: '#E0F7FA' },
+  { id: 'baby', label: 'Baby', icon: 'happy', color: '#FF8F00', bgColor: '#FFF8E1' },
+  { id: 'dairy', label: 'Dairy', icon: 'cafe', color: '#5D4037', bgColor: '#EFEBE9' },
+  { id: 'fruits', label: 'Fruits', icon: 'nutrition', color: '#689F38', bgColor: '#F1F8E9' },
+  { id: 'meat', label: 'Meat & fish', icon: 'fish', color: '#C62828', bgColor: '#FFCDD2' },
 ]
 
 // ── PERSONA PRODUCTS (simulated — would come from backend) ─────
@@ -374,31 +380,40 @@ export default function HomeScreen() {
         {/* SECTION 1.1 — HEADER */}
         <View style={styles.nowHeader}>
           <View style={styles.topHeaderRow}>
-            <Pressable style={styles.headerIconButton} accessibilityRole="button">
-              <Ionicons name="person-circle" size={30} color={Colors.white} />
-            </Pressable>
-
-            <View style={styles.logo}>
-              <Text style={styles.amazonLogoText}>amazon</Text>
-              <Text style={styles.logoBolt}>⚡</Text>
-              <Text style={styles.nowLogoText}>now</Text>
+            {/* Left: Profile + Amazon Pay Balance */}
+            <View style={styles.headerLeftGroup}>
+              <Pressable style={styles.headerIconButton} accessibilityRole="button">
+                <Ionicons name="person-circle" size={30} color={Colors.white} />
+              </Pressable>
+              <View style={styles.payBalanceBadge}>
+                <Ionicons name="wallet-outline" size={12} color={Colors.white} />
+                <Text style={styles.payBalanceText}>₹155</Text>
+              </View>
             </View>
 
+            {/* Center: Amazon Now Logo */}
+            <Image
+              source={require('../../../assets/amazon-now-logo.png')}
+              style={styles.logoImage}
+              resizeMode="contain"
+            />
+
+            {/* Right: Cart icon */}
             <Pressable style={styles.headerIconButton} accessibilityRole="button">
-              <Ionicons name="cart-outline" size={26} color={Colors.white} />
+              <Ionicons name="close" size={24} color={Colors.white} />
             </Pressable>
           </View>
-
-          <Pressable style={styles.deliveryRow} accessibilityRole="button">
-            <View style={styles.deliveryPill}>
-              <Text style={styles.deliveryPillText}>⚡ 10 mins</Text>
-            </View>
-            <Text style={styles.deliveryAddress}>
-              {truncate('Bangalore, 560001', 20)}
-            </Text>
-            <Ionicons name="chevron-down" size={16} color={Colors.white} />
-          </Pressable>
         </View>
+
+        {/* Delivery address row — below header on white bg */}
+        <Pressable style={styles.deliveryRow} accessibilityRole="button">
+          <Ionicons name="location-sharp" size={18} color={Colors.primary} />
+          <Text style={styles.deliveryLabel}>Delivering to </Text>
+          <Text style={styles.deliveryAddress} numberOfLines={1}>
+            jai ambey co live, Doddakannelli Road, Sande...
+          </Text>
+          <Ionicons name="chevron-down" size={16} color={Colors.textPrimary} />
+        </Pressable>
 
         {/* SECTION 1.2 — SWIPEABLE SEARCH / MISSION BAR */}
         <View style={styles.discoverySection}>
@@ -424,11 +439,13 @@ export default function HomeScreen() {
                 style={styles.categoryItem}
                 accessibilityRole="button"
               >
-                <Ionicons
-                  name={category.icon}
-                  size={28}
-                  color={Colors.textPrimary}
-                />
+                <View style={[styles.categoryIconCircle, { backgroundColor: category.bgColor }]}>
+                  <Ionicons
+                    name={category.icon}
+                    size={24}
+                    color={category.color}
+                  />
+                </View>
                 <Text style={styles.categoryLabel} numberOfLines={1}>
                   {category.label}
                 </Text>
@@ -451,47 +468,56 @@ export default function HomeScreen() {
           />
         </Pressable>
 
-        {/* SECTION 1.5 — PERSONA CIRCLES */}
+        {/* SECTION 1.5 — PERSONA CIRCLES (all personas shown, detected ones highlighted) */}
         <View style={styles.identitySection}>
-          <Text style={styles.identitySectionTitle}>Your personas</Text>
+          <Text style={styles.identitySectionTitle}>Shop by persona</Text>
+          <Text style={styles.identitySectionSubtitle}>
+            Based on your buying history
+          </Text>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.identityRow}
           >
-            {ALL_PERSONAS.filter((p) => selectedPersonas.includes(p.id)).map(
-              (persona) => {
-                const isActive = activePersona === persona.id
-                return (
-                  <Pressable
-                    key={persona.id}
-                    onPress={() => handlePersonaPress(persona.id)}
-                    style={styles.identityItem}
-                    accessibilityRole="button"
-                    accessibilityLabel={persona.label}
+            {ALL_PERSONAS.map((persona) => {
+              const isDetected = selectedPersonas.includes(persona.id)
+              const isActive = activePersona === persona.id
+              return (
+                <Pressable
+                  key={persona.id}
+                  onPress={() => handlePersonaPress(persona.id)}
+                  style={styles.identityItem}
+                  accessibilityRole="button"
+                  accessibilityLabel={persona.label}
+                >
+                  <View
+                    style={[
+                      styles.identityCircle,
+                      { backgroundColor: persona.color },
+                      isActive && styles.identityCircleActive,
+                      !isDetected && styles.identityCircleUndetected,
+                    ]}
                   >
-                    <View
-                      style={[
-                        styles.identityCircle,
-                        { backgroundColor: persona.color },
-                        isActive && styles.identityCircleActive,
-                      ]}
-                    >
-                      <Text style={styles.identityEmoji}>{persona.emoji}</Text>
-                    </View>
-                    <Text
-                      style={[
-                        styles.identityLabel,
-                        isActive && styles.identityLabelActive,
-                      ]}
-                      numberOfLines={1}
-                    >
-                      {persona.label}
-                    </Text>
-                  </Pressable>
-                )
-              },
-            )}
+                    <Text style={styles.identityEmoji}>{persona.emoji}</Text>
+                    {isDetected && (
+                      <View style={styles.detectedBadge}>
+                        <Ionicons name="checkmark-circle" size={14} color="#2E7D32" />
+                      </View>
+                    )}
+                  </View>
+                  <Text
+                    style={[
+                      styles.identityLabel,
+                      isActive && styles.identityLabelActive,
+                      isDetected && styles.identityLabelDetected,
+                    ]}
+                    numberOfLines={1}
+                  >
+                    {persona.label}
+                  </Text>
+                </Pressable>
+              )
+            })}
           </ScrollView>
         </View>
 
@@ -544,7 +570,7 @@ export default function HomeScreen() {
           <View style={styles.reorderTopBar}>
             <Text style={styles.reorderTopTitle}>Your daily reorder</Text>
             <View style={styles.reorderReady}>
-              <Ionicons name="time-outline" size={16} color={Colors.white} />
+              <Ionicons name="time-outline" size={16} color={Colors.textSecondary} />
               <Text style={styles.reorderReadyText}>Ready now</Text>
             </View>
           </View>
@@ -674,25 +700,6 @@ export default function HomeScreen() {
         {/* SECTION 1.10 — DIVIDER */}
         <View style={styles.dividerSpaced} />
 
-        {/* SECTION 1.11 — CART AUDIT BANNER */}
-        <Pressable
-          onPress={() => router.push('/audit-entry')}
-          style={styles.auditBanner}
-          accessibilityRole="button"
-        >
-          <View style={styles.auditCopy}>
-            <Text style={styles.auditTitle}>Cart health check</Text>
-            <Text style={styles.auditSubtitle}>Find issues before checkout</Text>
-          </View>
-          <View style={styles.auditAction}>
-            <Text style={styles.auditActionText}>Check now</Text>
-            <Ionicons name="chevron-forward" size={14} color={Colors.linkBlue} />
-          </View>
-        </Pressable>
-
-        {/* SECTION 1.12 — DIVIDER */}
-        <View style={styles.divider} />
-
         {/* HIVES CARD */}
         <TouchableOpacity
           style={styles.hivesCard}
@@ -789,7 +796,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: Colors.nowBlue,
+    backgroundColor: '#232F3E',
   },
   screen: {
     flex: 1,
@@ -802,7 +809,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingTop: 8,
     paddingBottom: 12,
-    backgroundColor: Colors.nowBlue,
+    backgroundColor: '#232F3E',
   },
   topHeaderRow: {
     minHeight: 40,
@@ -816,9 +823,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  headerLeftGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  payBalanceBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.3)',
+    borderRadius: 12,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    marginLeft: 4,
+  },
+  payBalanceText: {
+    color: Colors.white,
+    fontSize: 11,
+    fontWeight: '700',
+    marginLeft: 3,
+  },
   logo: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  logoImage: {
+    width: 220,
+    height: 48,
   },
   amazonLogoText: {
     color: Colors.white,
@@ -840,11 +870,30 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     letterSpacing: -0.5,
   },
+  nowLogoTextGreen: {
+    color: '#00E676',
+    fontSize: 22,
+    lineHeight: 26,
+    fontWeight: '700',
+    letterSpacing: -0.5,
+  },
   deliveryRow: {
-    alignSelf: 'center',
-    marginTop: 4,
+    alignSelf: 'stretch',
+    marginTop: 0,
     flexDirection: 'row',
     alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    backgroundColor: '#EAF2F8',
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.border,
+  },
+  deliveryLabel: {
+    color: Colors.textPrimary,
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '700',
+    marginLeft: 6,
   },
   deliveryPill: {
     paddingHorizontal: 8,
@@ -859,12 +908,11 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   deliveryAddress: {
-    marginLeft: 8,
-    marginRight: 4,
-    color: Colors.white,
+    flex: 1,
+    color: Colors.textPrimary,
     fontSize: 13,
     lineHeight: 18,
-    fontWeight: '600',
+    fontWeight: '400',
   },
   discoverySection: {
     paddingTop: 12,
@@ -872,19 +920,27 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   categoryList: {
-    paddingHorizontal: 12,
+    paddingHorizontal: 8,
     paddingTop: 12,
   },
   categoryItem: {
-    width: 72,
+    width: 68,
     alignItems: 'center',
+    marginHorizontal: 2,
+  },
+  categoryIconCircle: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   categoryLabel: {
-    marginTop: 4,
+    marginTop: 6,
     color: Colors.textPrimary,
     fontSize: 11,
     lineHeight: 14,
-    fontWeight: '400',
+    fontWeight: '500',
     textAlign: 'center',
   },
   // Banner
@@ -909,6 +965,12 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '700',
     color: Colors.textPrimary,
+    marginBottom: 2,
+  },
+  identitySectionSubtitle: {
+    paddingHorizontal: 16,
+    fontSize: 11,
+    color: Colors.textSecondary,
     marginBottom: 8,
   },
   identityRow: {
@@ -931,6 +993,16 @@ const styles = StyleSheet.create({
   identityCircleActive: {
     borderColor: '#FF9900',
   },
+  identityCircleUndetected: {
+    opacity: 0.5,
+  },
+  detectedBadge: {
+    position: 'absolute',
+    bottom: -2,
+    right: -2,
+    backgroundColor: Colors.white,
+    borderRadius: 8,
+  },
   identityEmoji: {
     fontSize: 22,
   },
@@ -943,6 +1015,10 @@ const styles = StyleSheet.create({
   identityLabelActive: {
     color: '#FF9900',
     fontWeight: '700',
+  },
+  identityLabelDetected: {
+    color: Colors.textPrimary,
+    fontWeight: '600',
   },
   // Identity products
   identityProductsSection: {
@@ -1032,10 +1108,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.background,
   },
   reorderTopTitle: {
-    color: Colors.white,
+    color: '#000000',
     fontSize: 14,
     lineHeight: 18,
     fontWeight: '700',
@@ -1046,7 +1122,7 @@ const styles = StyleSheet.create({
   },
   reorderReadyText: {
     marginLeft: 4,
-    color: Colors.white,
+    color: Colors.textSecondary,
     fontSize: 11,
   },
   reorderScrollContent: {
@@ -1135,7 +1211,7 @@ const styles = StyleSheet.create({
     height: 48,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.nowBlue,
     borderRadius: 4,
   },
   approveButtonSuccess: {
@@ -1213,37 +1289,6 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     color: '#565959',
     fontSize: 13,
-  },
-  // Audit banner
-  auditBanner: {
-    backgroundColor: Colors.divider,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  auditCopy: {
-    flex: 1,
-  },
-  auditTitle: {
-    color: Colors.textPrimary,
-    fontSize: 14,
-    fontWeight: '700',
-  },
-  auditSubtitle: {
-    marginTop: 2,
-    color: Colors.textSecondary,
-    fontSize: 12,
-  },
-  auditAction: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  auditActionText: {
-    color: Colors.linkBlue,
-    fontSize: 13,
-    fontWeight: '600',
-    marginRight: 2,
   },
   // Coming up
   comingSection: {

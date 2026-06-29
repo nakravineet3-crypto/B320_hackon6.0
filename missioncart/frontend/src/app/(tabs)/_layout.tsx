@@ -7,12 +7,10 @@ import { Colors } from '../../lib/constants'
 type IconName = React.ComponentProps<typeof Ionicons>['name']
 
 const tabIcons: Record<
-  'index' | 'discover' | 'profile',
+  'index',
   { active: IconName; inactive: IconName }
 > = {
   index: { active: 'home', inactive: 'home-outline' },
-  discover: { active: 'compass', inactive: 'compass-outline' },
-  profile: { active: 'person', inactive: 'person-outline' },
 }
 
 export default function TabsLayout() {
@@ -26,11 +24,11 @@ export default function TabsLayout() {
           headerShown: false,
           tabBarActiveTintColor: Colors.primary,
           tabBarInactiveTintColor: Colors.textSecondary,
-          tabBarStyle: styles.tabBar,
+          tabBarStyle: { display: 'none' },
           tabBarLabelStyle: styles.tabLabel,
           tabBarIcon: ({ color, focused, size }) => (
             <Ionicons
-              name={focused ? icons.active : icons.inactive}
+              name={focused ? icons?.active : icons?.inactive}
               size={size}
               color={color}
             />
@@ -40,8 +38,8 @@ export default function TabsLayout() {
     >
       <Tabs.Screen name="index" options={{ title: 'Home' }} />
       <Tabs.Screen name="missions" options={{ href: null }} />
-      <Tabs.Screen name="discover" options={{ title: 'Discover' }} />
-      <Tabs.Screen name="profile" options={{ title: 'Profile' }} />
+      <Tabs.Screen name="discover" options={{ href: null }} />
+      <Tabs.Screen name="profile" options={{ href: null }} />
     </Tabs>
   )
 }

@@ -43,7 +43,7 @@ if errorlevel 1 (
     )
     set PYTHON=python3
 ) else (
-    set PYTHON=python
+    set PYTHON=py -3.12
 )
 
 where adb >nul 2>&1
@@ -159,12 +159,6 @@ if not exist "%FRONTEND_DIR%\node_modules" (
     echo  node_modules found. Skipping install.
 )
 
-where expo >nul 2>&1
-if errorlevel 1 (
-    echo  Installing Expo CLI globally...
-    npm install -g expo-cli --quiet
-)
-
 echo  Frontend ready.
 echo.
 
@@ -173,7 +167,12 @@ echo.
 :: -------------------------------------------------------
 echo [5/6] Starting backend server...
 
-start "MissionCart Backend" cmd /k "cd /d "%BACKEND_DIR%" && "%VENV_DIR%\Scripts\uvicorn.exe" app.main:app --host 0.0.0.0 --port 8000 --reload"
+:: Write a helper bat to %TEMP% (no spaces in path) to avoid CMD quoting issues
+> "%TEMP%\mc_backend.bat" echo @echo off
+>> "%TEMP%\mc_backend.bat" echo cd /d "%BACKEND_DIR%"
+>> "%TEMP%\mc_backend.bat" echo "%VENV_DIR%\Scripts\uvicorn.exe" app.main:app --host 0.0.0.0 --port 8000 --reload
+
+start "MissionCart Backend" cmd /k "%TEMP%\mc_backend.bat"
 
 echo  Backend starting at http://localhost:8000
 echo  Waiting 8 seconds for it to boot...
@@ -195,8 +194,12 @@ echo.
 :: Open Expo Go on the device if installed
 "%ADB%" -s %DEVICE_SERIAL% shell monkey -p host.exp.exponent -c android.intent.category.LAUNCHER 1 >nul 2>&1
 
-:: Start Expo in a new window (--localhost so Metro is accessible via ADB reverse)
-start "MissionCart Expo" cmd /k "cd /d "%FRONTEND_DIR%" && npx expo start --android --localhost"
+:: Write a helper bat to %TEMP% (no spaces in path) to avoid CMD quoting issues
+> "%TEMP%\mc_frontend.bat" echo @echo off
+>> "%TEMP%\mc_frontend.bat" echo cd /d "%FRONTEND_DIR%"
+>> "%TEMP%\mc_frontend.bat" echo npx expo start --android --localhost
+
+start "MissionCart Expo" cmd /k "%TEMP%\mc_frontend.bat"
 
 echo.
 echo ============================================================
