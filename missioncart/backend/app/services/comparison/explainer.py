@@ -11,38 +11,27 @@ def _template_explanation(
     score_loser: dict,
     mission_context: dict,
     dominant_factor: str,
-    near_tie: bool,
 ) -> str:
     """Template fallback when LLM unavailable."""
     w_title = winner.get("title", "Product")[:35]
-    l_title = loser.get("title", "Product")[:35]
     headcount = mission_context.get("headcount", 1)
     packs = score_winner.get("packs_needed", 1)
     total_cost = score_winner.get("total_cost", 0)
-
-    if near_tie:
-        return (
-            f"Both {w_title} and {l_title} are strong choices for "
-            f"{headcount} guests. {w_title} edges ahead slightly on "
-            f"{dominant_factor.replace('_', ' ')} — ₹{total_cost:.0f} "
-            f"for {packs} pack(s)."
-        )
+    ppu = score_winner.get("price_per_unit", 0)
 
     factor_explanations = {
-        "delivery": f"it arrives via Amazon Now in 20 minutes",
+        "delivery": "it arrives via Amazon Now in 20 minutes",
         "price": f"₹{total_cost:.0f} total for {packs} pack(s) is more budget-efficient",
+        "price_per_unit": f"₹{ppu:.2f}/unit gives better value than the alternative",
         "quantity": f"{packs} pack(s) covers {headcount} guests with minimal waste",
-        "quality": f"it has higher ratings and lower return risk",
+        "quality": "it has higher ratings and lower return risk",
     }
-    factor_text = factor_explanations.get(
-        dominant_factor, f"it scores higher on {dominant_factor}"
-    )
+    factor_text = factor_explanations.get(dominant_factor, f"it scores higher on {dominant_factor.replace('_', ' ')}")
 
     return (
-        f"{w_title} is the better pick for {headcount} guests because "
-        f"{factor_text}. "
-        f"{l_title} falls short on {dominant_factor.replace('_', ' ')} "
-        f"for this mission."
+        f"{w_title} is the better pick for {headcount} {'guests' if headcount > 1 else 'person'} "
+        f"because {factor_text}. "
+        f"It leads on {dominant_factor.replace('_', ' ')} for this mission."
     )
 
 
@@ -56,29 +45,31 @@ async def generate_explanation(
 ) -> dict:
     """Generate 2-sentence explanation. LLM first, template fallback."""
 
-    # Determine dominant factor (largest score gap)
-    dimensions = ["delivery_score", "price_score", "quantity_score", "quality_score"]
+    # Dominant factor — prefer price_per_unit_score if available
+    dimensions = ["price_per_unit_score", "delivery_score", "price_score", "quantity_score", "quality_score"]
     gaps = {}
     for dim in dimensions:
-        gaps[dim.replace("_score", "")] = (
-            score_winner.get(dim, 0) - score_loser.get(dim, 0)
-        )
+        key = dim.replace("_score", "")
+        gaps[key] = score_winner.get(dim, 0) - score_loser.get(dim, 0)
     dominant_factor = max(gaps, key=lambda k: gaps[k])
-    near_tie = confidence == "near_tie"
 
     # Try LLM
-    from app.services.llm.factory import llm_client
-    from app.services.llm.prompt_cache import prompt_cache
+    try:
+        from app.services.llm.factory import llm_client
+        from app.services.llm.prompt_cache import prompt_cache
+    except Exception:
+        llm_client = None
+        prompt_cache = None
 
     if llm_client:
         system = (
             "You are a shopping advisor for Amazon Now India. "
             "Compare two products for a specific mission. "
             "Write exactly 2 short sentences. "
-            "Reference actual numbers (₹, pack counts, headcount). "
+            "Reference actual numbers (₹ price per unit, pack counts, headcount). "
             "Use the real product titles — never say 'Product A'. "
             "Never say 'overall' or 'generally'. "
-            "If near_tie is true, acknowledge both are valid choices."
+            "Be decisive. One product clearly wins."
         )
         user_msg = (
             f"Winner: {winner.get('title', '')}\n"
@@ -87,31 +78,21 @@ async def generate_explanation(
             f"for {mission_context.get('headcount', 1)} people\n"
             f"Deadline: {mission_context.get('deadline_hours', 24)} hours\n"
             f"Budget remaining: ₹{mission_context.get('budget_remaining', 0):.0f}\n"
-            f"Winner delivery: {score_winner.get('delivery_score', 0)} "
-            f"(eta: {winner.get('delivery_eta', 'unknown')})\n"
-            f"Winner price: ₹{score_winner.get('total_cost', 0):.0f} "
-            f"for {score_winner.get('packs_needed', 1)} pack(s)\n"
-            f"Winner quantity: {score_winner.get('quantity_score', 0)} "
-            f"({score_winner.get('packs_needed', 1)} packs, "
-            f"{score_winner.get('quantity_needed', 1)} units needed)\n"
-            f"Winner quality: {score_winner.get('quality_score', 0)}\n"
-            f"Loser delivery: {score_loser.get('delivery_score', 0)}\n"
-            f"Loser price: ₹{score_loser.get('total_cost', 0):.0f}\n"
-            f"Loser quantity: {score_loser.get('quantity_score', 0)}\n"
-            f"Loser quality: {score_loser.get('quality_score', 0)}\n"
+            f"Winner price/unit: ₹{score_winner.get('price_per_unit', 0):.2f}\n"
+            f"Winner total: ₹{score_winner.get('total_cost', 0):.0f} for {score_winner.get('packs_needed', 1)} pack(s)\n"
+            f"Winner delivery: {winner.get('delivery_eta', 'unknown')}\n"
+            f"Winner quality score: {score_winner.get('quality_score', 0):.2f}\n"
+            f"Loser price/unit: ₹{score_loser.get('price_per_unit', 0):.2f}\n"
+            f"Loser total: ₹{score_loser.get('total_cost', 0):.0f}\n"
+            f"Loser delivery: {loser.get('delivery_eta', 'unknown')}\n"
+            f"Loser quality score: {score_loser.get('quality_score', 0):.2f}\n"
             f"Dominant factor: {dominant_factor}\n"
-            f"Near tie: {near_tie}\n"
             f"Explain in 2 sentences why {winner.get('title', '')} wins."
         )
 
         cached = prompt_cache.get(system, user_msg)
         if cached:
-            return {
-                "explanation": cached,
-                "source": "groq_cached",
-                "dominant_factor": dominant_factor,
-                "near_tie": near_tie,
-            }
+            return {"explanation": cached, "source": "groq_cached", "dominant_factor": dominant_factor}
 
         try:
             response = await llm_client.complete(
@@ -122,23 +103,9 @@ async def generate_explanation(
             )
             explanation = response.text.strip()
             prompt_cache.set(system, user_msg, explanation)
-            return {
-                "explanation": explanation,
-                "source": "groq",
-                "dominant_factor": dominant_factor,
-                "near_tie": near_tie,
-            }
+            return {"explanation": explanation, "source": "groq", "dominant_factor": dominant_factor}
         except Exception:
             pass
 
-    # Template fallback
-    explanation = _template_explanation(
-        winner, loser, score_winner, score_loser,
-        mission_context, dominant_factor, near_tie,
-    )
-    return {
-        "explanation": explanation,
-        "source": "template",
-        "dominant_factor": dominant_factor,
-        "near_tie": near_tie,
-    }
+    explanation = _template_explanation(winner, loser, score_winner, score_loser, mission_context, dominant_factor)
+    return {"explanation": explanation, "source": "template", "dominant_factor": dominant_factor}
