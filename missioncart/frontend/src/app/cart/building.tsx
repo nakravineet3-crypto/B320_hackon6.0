@@ -23,19 +23,11 @@ import Svg, { Circle, Line, Text as SvgText } from 'react-native-svg'
 
 import { missionAPI } from '../../lib/api'
 import { Colors } from '../../lib/constants'
+import { FALLBACK_CART_ITEMS } from '../../lib/fallbacks'
 import { useMissionStore } from '../../store/mission'
 
 const FALLBACK_CART = {
-  cart_items: [
-    { cart_item_id: '1', need_label: 'Plates & utensils', title: 'Disposable Paper Plates 25pc', price: 89, packs_quantity: 2, total_cost: 178, amazon_now_eligible: true, rating: 4.2, delivery_eta: 'now_20min', prime: true, explanation: '2 plates per child × 12 kids = 24 plates' },
-    { cart_item_id: '2', need_label: 'Cups & drinks', title: 'Disposable Cups 50pc', price: 79, packs_quantity: 1, total_cost: 79, amazon_now_eligible: true, rating: 4.0, delivery_eta: 'now_20min', prime: true, explanation: '2.5 cups per child × 12 kids' },
-    { cart_item_id: '3', need_label: 'Candles & cake knife', title: 'Birthday Candles Set 10pc', price: 49, packs_quantity: 1, total_cost: 49, amazon_now_eligible: true, rating: 4.3, delivery_eta: 'now_20min', prime: true, explanation: '1 pack of candles' },
-    { cart_item_id: '4', need_label: 'Balloons & decorations', title: 'Multicolor Balloons 30pc', price: 149, packs_quantity: 2, total_cost: 298, amazon_now_eligible: true, rating: 4.1, delivery_eta: 'now_20min', prime: true, explanation: '3 balloons per child × 12 kids with buffer' },
-    { cart_item_id: '5', need_label: 'Napkins & tissues', title: 'Paper Napkins 100pc', price: 59, packs_quantity: 1, total_cost: 59, amazon_now_eligible: true, rating: 4.0, delivery_eta: 'now_20min', prime: true, explanation: '3 napkins per child × 12 kids' },
-    { cart_item_id: '6', need_label: 'Entertainment', title: 'Party Games Set', price: 199, packs_quantity: 1, total_cost: 199, amazon_now_eligible: false, rating: 3.8, delivery_eta: 'tomorrow', prime: true, explanation: '1 games set for group activities' },
-    { cart_item_id: '7', need_label: 'Return gifts', title: 'Return Gift Bags 12pc', price: 199, packs_quantity: 1, total_cost: 199, amazon_now_eligible: true, rating: 4.2, delivery_eta: 'now_20min', prime: true, explanation: '1 gift per child × 12 kids' },
-    { cart_item_id: '8', need_label: 'Cleanup', title: 'Trash Bags 30pc', price: 129, packs_quantity: 1, total_cost: 129, amazon_now_eligible: true, rating: 4.1, delivery_eta: 'now_20min', prime: true, explanation: '1 pack for post-party cleanup' },
-  ],
+  cart_items: FALLBACK_CART_ITEMS,
   total_cost: 1190,
   budget_remaining: 1810,
   coverage_score: { display: '8/8', covered: 8, total: 8, all_must_haves_covered: true, missing: [] },
@@ -373,13 +365,27 @@ function ClarificationScreen({
 
 // ── MAIN BUILDING SCREEN ────────────────────────────────
 export default function BuildingScreen() {
-  const params = useLocalSearchParams()
-  const goal = (params.goal as string) || 'Building your cart...'
-  const budget = parseFloat(params.budget as string) || 3000
+  const { goal: rawGoal, budget: rawBudget, headcount: rawHeadcount, occasion_type: rawOccasionType } =
+    useLocalSearchParams<{
+      goal?: string
+      budget?: string
+      headcount?: string
+      occasion_type?: string
+    }>()
+  const goal = rawGoal || 'Building your cart...'
+  const budget = parseFloat(rawBudget ?? '') || 3000
+  const occasionType = rawOccasionType ?? undefined
+  const headcount = rawHeadcount ? parseInt(rawHeadcount, 10) : undefined
 
   const [screenState, setScreenState] = useState<ScreenState>('building')
+  const screenStateRef = useRef<ScreenState>('building')
   const [unsupportedData, setUnsupportedData] = useState<any>(null)
   const [clarificationData, setClarificationData] = useState<any>(null)
+
+  const setScreen = (s: ScreenState) => {
+    screenStateRef.current = s
+    setScreenState(s)
+  }
 
   const [steps, setSteps] = useState<StepData[]>([
     { label: 'Parsing your goal', status: 'active', number: 1 },
@@ -391,6 +397,7 @@ export default function BuildingScreen() {
   const [showGraph, setShowGraph] = useState(false)
   const apiResolved = useRef(false)
   const navigated = useRef(false)
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const updateStep = (index: number, status: StepStatus) => {
     setSteps((prev) => prev.map((s, i) => (i === index ? { ...s, status } : s)))
@@ -405,8 +412,11 @@ export default function BuildingScreen() {
   useEffect(() => {
     let cancelled = false
 
+    // Clear any stale cart from a previous build before starting
+    useMissionStore.getState().clearMission()
+
     missionAPI
-      .build(goal, budget)
+      .build(goal, budget, { occasion_type: occasionType, headcount })
       .then((res) => {
         if (cancelled) return
         apiResolved.current = true
@@ -414,14 +424,14 @@ export default function BuildingScreen() {
 
         // STATE 1: Unsupported
         if (!data.success && data.data?.unsupported) {
-          setScreenState('unsupported')
+          setScreen('unsupported')
           setUnsupportedData(data.data)
           return
         }
 
         // STATE 2: Needs clarification
         if (!data.success && data.data?.needs_clarification) {
-          setScreenState('clarification')
+          setScreen('clarification')
           setClarificationData(data.data)
           return
         }
@@ -446,32 +456,45 @@ export default function BuildingScreen() {
       })
 
     const t1 = setTimeout(() => {
-      if (cancelled || screenState !== 'building') return
+      if (cancelled || screenStateRef.current !== 'building') return
       updateStep(0, 'done')
       updateStep(1, 'active')
     }, 800)
 
     const t2 = setTimeout(() => {
-      if (cancelled || screenState !== 'building') return
+      if (cancelled || screenStateRef.current !== 'building') return
       updateStep(1, 'done')
       setShowGraph(true)
       updateStep(2, 'active')
     }, 1500)
 
     const t3 = setTimeout(() => {
-      if (cancelled || screenState !== 'building') return
+      if (cancelled || screenStateRef.current !== 'building') return
       updateStep(2, 'done')
       updateStep(3, 'active')
     }, 4500)
 
     const t4 = setTimeout(() => {
-      if (cancelled || screenState !== 'building') return
+      if (cancelled || screenStateRef.current !== 'building') return
       updateStep(3, 'done')
     }, 5200)
 
     const t5 = setTimeout(() => {
-      if (cancelled || screenState !== 'building') return
-      navigateToResult()
+      if (cancelled || screenStateRef.current !== 'building') return
+      if (apiResolved.current) {
+        navigateToResult()
+      } else {
+        const pollStart = Date.now()
+        const poll = setInterval(() => {
+          if (cancelled) { clearInterval(poll); return }
+          if (apiResolved.current || Date.now() - pollStart > 3000) {
+            clearInterval(poll)
+            pollRef.current = null
+            if (!navigated.current) navigateToResult()
+          }
+        }, 200)
+        pollRef.current = poll
+      }
     }, 5700)
 
     return () => {
@@ -481,8 +504,12 @@ export default function BuildingScreen() {
       clearTimeout(t3)
       clearTimeout(t4)
       clearTimeout(t5)
+      if (pollRef.current) {
+        clearInterval(pollRef.current)
+        pollRef.current = null
+      }
     }
-  }, [goal, budget])
+  }, [goal, budget, occasionType, headcount])
 
   // Render based on screen state
   if (screenState === 'unsupported') {

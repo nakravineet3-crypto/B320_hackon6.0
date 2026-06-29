@@ -4,6 +4,7 @@ export default function CommunityLayout() {
   return (
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="trekking" />
+      <Stack.Screen name="goal" />
     </Stack>
   )
 }

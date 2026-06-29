@@ -54,11 +54,18 @@ DOMAIN_CATEGORIES = {
 }
 
 
+_CATALOG_CACHE: List[Product] = []
+
+
 def _load_catalog() -> List[Product]:
+    global _CATALOG_CACHE
+    if _CATALOG_CACHE:
+        return _CATALOG_CACHE
     data_path = Path(__file__).parent.parent / "data" / "catalog.json"
     with open(data_path, encoding="utf-8") as f:
         raw = json.load(f)
-    return [Product(**p) for p in raw]
+    _CATALOG_CACHE = [Product(**p) for p in raw]
+    return _CATALOG_CACHE
 
 
 def _compute_score(product: Product, domain: str, budget: float, need: Optional[NeedItem] = None) -> float:
@@ -180,30 +187,51 @@ def _build_with_needs(catalog: List[Product], spec: MissionSpec, needs: List[Nee
             top_k=15,
         )
 
-        # Convert to Product objects for scoring (filter used categories)
-        candidates = [
-            p for p in catalog
-            if p.category in need.category_candidates
-            and _passes_constraints(p, budget, spec, need.priority)
-            and p.category not in used_categories
-        ]
+        # Convert to Product objects for scoring:
+        # Step 1 — fast pre-filter (budget cap only; cheapest to evaluate)
+        # Step 2 — full 8-check constraint engine on survivors
+        cart_categories_current = [item.get("category", "") for item in cart_items]
+        cap_ratio = 0.80 if need.priority == "must_have" else 0.50
+        candidates = []
+        for p in catalog:
+            if p.category not in need.category_candidates:
+                continue
+            if p.category in used_categories:
+                continue
+            if not p.stock_available:
+                continue
+            # Budget cap pre-filter
+            if p.price > budget * cap_ratio:
+                continue
+            # Full 8-check engine
+            packs_est = calculate_quantity(p.category, p.pack_size, spec.headcount or 1)["packs_required"]
+            passes, _ = check_all_constraints(p, spec, remaining_budget, packs_est, cart_categories_current)
+            if passes:
+                candidates.append(p)
 
-        # If FAISS returned results, prefer those (already category-filtered)
+        # If FAISS returned results, prefer those — but always include exact
+        # primary-category matches so products added after the FAISS index was
+        # built (demo products, catalog updates) are never silently excluded.
+        primary_cat = need.category_candidates[0] if need.category_candidates else ""
+        primary_exact = {p.asin for p in candidates if p.category == primary_cat}
         if candidates_raw:
             faiss_asins = {r.get("asin") for r in candidates_raw}
-            faiss_candidates = [
-                p for p in candidates if p.asin in faiss_asins
-            ]
+            merged_asins = faiss_asins | primary_exact
+            faiss_candidates = [p for p in candidates if p.asin in merged_asins]
             if faiss_candidates:
                 candidates = faiss_candidates
 
         if not candidates:
-            # Try relaxed: allow used categories
-            candidates = [
-                p for p in catalog
-                if p.category in need.category_candidates
-                and _passes_constraints(p, budget, spec, need.priority)
-            ]
+            # Relaxed fallback: allow used categories, relax quality/budget
+            for p in catalog:
+                if p.category not in need.category_candidates:
+                    continue
+                if not p.stock_available:
+                    continue
+                packs_est = calculate_quantity(p.category, p.pack_size, spec.headcount or 1)["packs_required"]
+                passes, _ = relax_and_recheck(p, spec, remaining_budget, packs_est, cart_categories_current)
+                if passes:
+                    candidates.append(p)
 
         if not candidates:
             continue
@@ -212,14 +240,6 @@ def _build_with_needs(catalog: List[Product], spec: MissionSpec, needs: List[Nee
         scored = [(p, _compute_score(p, domain, budget, need)) for p in candidates]
         scored.sort(key=lambda x: x[1], reverse=True)
         best = scored[0][0]
-
-        # Check if we can afford it
-        if best.price > remaining_budget:
-            # Try cheaper alternative
-            affordable = [(p, s) for p, s in scored if p.price <= remaining_budget]
-            if not affordable:
-                continue
-            best = affordable[0][0]
 
         used_categories.add(best.category)
 
@@ -231,6 +251,24 @@ def _build_with_needs(catalog: List[Product], spec: MissionSpec, needs: List[Nee
         )
         packs_qty = qty_result["packs_required"]
         item_total_cost = best.price * packs_qty
+
+        # Affordability check must compare TOTAL cost (packs × price), not per-unit.
+        # A backpack at ₹1,499 for 4 people costs ₹5,996 — the per-unit check
+        # would incorrectly pass and blow the remaining budget negative.
+        if item_total_cost > remaining_budget:
+            # Try cheaper alternative whose total cost fits
+            affordable = []
+            for p, s in scored:
+                p_qty = calculate_quantity(p.category, p.pack_size, spec.headcount or 1)["packs_required"]
+                if p.price * p_qty <= remaining_budget:
+                    affordable.append((p, s, p_qty))
+            if not affordable:
+                used_categories.discard(best.category)
+                continue
+            best, _, packs_qty = affordable[0]
+            qty_result = calculate_quantity(best.category, best.pack_size, spec.headcount or 1)
+            packs_qty = qty_result["packs_required"]
+            item_total_cost = best.price * packs_qty
 
         remaining_budget -= item_total_cost
 
@@ -250,6 +288,8 @@ def _build_with_needs(catalog: List[Product], spec: MissionSpec, needs: List[Nee
             "prime": best.prime,
             "amazon_now_eligible": best.amazon_now_eligible,
             "rating": best.rating,
+            "return_risk": best.return_risk,
+            "stock_available": best.stock_available,
             "explanation": qty_result["explanation"],
             "is_sponsored": best.sponsored,
             "mission_fit_score": round(scored[0][1], 3),
@@ -291,6 +331,8 @@ def _build_with_needs(catalog: List[Product], spec: MissionSpec, needs: List[Nee
                     "prime": best.prime,
                     "amazon_now_eligible": best.amazon_now_eligible,
                     "rating": best.rating,
+                    "return_risk": best.return_risk,
+                    "stock_available": best.stock_available,
                     "explanation": f"Required accessory for {item.get('category', '')}",
                     "is_sponsored": False,
                     "was_repaired": True,

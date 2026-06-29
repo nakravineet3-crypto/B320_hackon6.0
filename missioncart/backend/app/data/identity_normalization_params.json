@@ -1,0 +1,20 @@
+{
+  "feature_order": [
+    "office_tech_signal",
+    "student_signal",
+    "personal_care_signal",
+    "cooking_signal",
+    "lifestyle_variety",
+    "premium_ratio"
+  ],
+  "centroid_dims": 6,
+  "max_values": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "description": "6-dimensional feature vector. Centroids are from community_groups.json. Use cosine similarity for cold-start cluster assignment."
+}

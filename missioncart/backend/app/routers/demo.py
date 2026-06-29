@@ -2,7 +2,7 @@ import json
 import time
 from pathlib import Path
 from collections import Counter
-from fastapi import APIRouter
+from fastapi import APIRouter, Query
 from uuid import uuid4
 
 router = APIRouter()
@@ -30,26 +30,32 @@ async def get_demo_scenarios():
 
 
 @router.get("/occasions")
-async def get_occasion_cards():
-    data = [
-        {"id": "occ1", "title": "Diwali", "days_until": 24, "emoji": "🪔", "estimated_budget": 2400},
-        {"id": "occ2", "title": "Mom's Birthday", "days_until": 6, "emoji": "🎂", "estimated_budget": 1800},
-        {"id": "occ3", "title": "Trek to Coorg", "days_until": 12, "emoji": "🏕️", "estimated_budget": 3200},
-        {"id": "occ4", "title": "Office Potluck", "days_until": 3, "emoji": "🏢", "estimated_budget": 800},
-    ]
+async def get_occasion_cards(user_id: str = Query(default="U001")):
+    from app.services.occasion_engine import get_occasion_feed
 
-    # Enrich with recurrence alerts from occasion_history
+    # Resolve cluster_id from user_cluster_map for the given user
+    cluster_id = "office_gym_dad"  # default for U001 demo
+    try:
+        cluster_path = Path(__file__).parent.parent / "data" / "user_cluster_map.json"
+        with open(cluster_path, encoding="utf-8") as f:
+            cluster_map = json.load(f)
+        user_entry = cluster_map.get(user_id, {})
+        cluster_id = user_entry.get("cluster_id", cluster_id)
+    except Exception:
+        pass
+
+    cards = get_occasion_feed(cluster_id=cluster_id, limit=6)
+
+    # Enrich with recurrence alerts from occasion_history for personalisation
     occasion_history = _load_json("occasion_history.json")
     if occasion_history:
-        u001_occasions = occasion_history.get("U001", [])
-        # Build mapping from occasion_type to recurrence data
+        u_occasions = occasion_history.get(user_id, [])
         recurrence_map = {}
-        for occ in u001_occasions:
+        for occ in u_occasions:
             if occ.get("recurrence_date") and occ.get("repeat_next_year"):
                 occ_type = occ.get("occasion_type", "")
                 days_until = occ.get("days_until_recurrence")
                 if days_until and days_until < 365:
-                    # Keep closest recurrence per type
                     if occ_type not in recurrence_map or days_until < recurrence_map[occ_type]["days_until_recurrence"]:
                         recurrence_map[occ_type] = {
                             "days_until_recurrence": days_until,
@@ -57,26 +63,17 @@ async def get_occasion_cards():
                             "last_headcount": occ.get("headcount"),
                             "last_budget": occ.get("budget_used"),
                         }
+        for card in cards:
+            rec = recurrence_map.get(card["occasion_type"])
+            if rec:
+                card["recurrence_alert"] = (
+                    f"{card['title']} in {rec['days_until_recurrence']} days — "
+                    f"rebuild last year's mission?"
+                )
+                card["last_headcount"] = rec.get("last_headcount")
+                card["last_budget"] = rec.get("last_budget")
 
-        # Match hardcoded cards with recurrence info
-        type_to_card_id = {
-            "festival": "occ1",  # Diwali
-            "kids_birthday": "occ2",  # Mom's Birthday
-        }
-        for occ_type, rec_data in recurrence_map.items():
-            card_id = type_to_card_id.get(occ_type)
-            if card_id:
-                for card in data:
-                    if card["id"] == card_id:
-                        card["recurrence_alert"] = (
-                            f"{card['title']} in {card['days_until']} days — "
-                            f"rebuild last year's mission?"
-                        )
-                        card["last_headcount"] = rec_data.get("last_headcount")
-                        card["last_budget"] = rec_data.get("last_budget")
-                        break
-
-    return {"success": True, "data": data, "error": None, "request_id": str(uuid4())}
+    return {"success": True, "data": cards, "error": None, "request_id": str(uuid4())}
 
 
 @router.get("/reorder-alerts")

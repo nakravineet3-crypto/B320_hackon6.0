@@ -1,7 +1,7 @@
 {
   "U001": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.0,
@@ -17,7 +17,7 @@
       "avg_interval_days": 3.0
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 7.0,
@@ -33,7 +33,7 @@
       "avg_interval_days": 7.0
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 4.8,
@@ -49,7 +49,7 @@
       "avg_interval_days": 4.8
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 6.8,
@@ -65,7 +65,7 @@
       "avg_interval_days": 6.8
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 13.7,
@@ -81,7 +81,7 @@
       "avg_interval_days": 13.7
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 14.0,
@@ -97,7 +97,7 @@
       "avg_interval_days": 14.0
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 13.8,
@@ -113,7 +113,7 @@
       "avg_interval_days": 13.8
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 20.7,
@@ -127,11 +127,59 @@
       "reorder_urgency": "normal",
       "purchase_count": 18,
       "avg_interval_days": 20.7
+    },
+    {
+      "asin": "B07BFMWZF2",
+      "title": "Ariel Matic Powder 2kg",
+      "category": "laundry",
+      "average_interval_days": 29.58,
+      "last_purchased": "2026-05-25",
+      "days_since_purchase": 29,
+      "days_remaining": 0.0,
+      "confidence": "high",
+      "suggested_quantity": 1,
+      "price": 399,
+      "amazon_now_eligible": true,
+      "reorder_urgency": "urgent",
+      "purchase_count": 11,
+      "avg_interval_days": 29.58
+    },
+    {
+      "asin": "B00CPFSO6K",
+      "title": "Head & Shoulders Shampoo 400ml",
+      "category": "hair_care",
+      "average_interval_days": 35.0,
+      "last_purchased": "2026-05-19",
+      "days_since_purchase": 35,
+      "days_remaining": 0.0,
+      "confidence": "high",
+      "suggested_quantity": 1,
+      "price": 285,
+      "amazon_now_eligible": true,
+      "reorder_urgency": "urgent",
+      "purchase_count": 8,
+      "avg_interval_days": 35.0
+    },
+    {
+      "asin": "B00PNS7HM0",
+      "title": "Pedigree Adult Chicken & Vegetables 3kg",
+      "category": "pet_care",
+      "average_interval_days": 20.7,
+      "last_purchased": "2026-06-05",
+      "days_since_purchase": 18,
+      "days_remaining": 2.7,
+      "confidence": "high",
+      "suggested_quantity": 1,
+      "price": 680,
+      "amazon_now_eligible": true,
+      "reorder_urgency": "soon",
+      "purchase_count": 7,
+      "avg_interval_days": 20.7
     }
   ],
   "U002": [
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.1,
@@ -147,7 +195,7 @@
       "avg_interval_days": 7.1
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 14.0,
@@ -163,7 +211,7 @@
       "avg_interval_days": 14.0
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 5.0,
@@ -179,7 +227,7 @@
       "avg_interval_days": 5.0
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 13.3,
@@ -195,7 +243,7 @@
       "avg_interval_days": 13.3
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 20.9,
@@ -213,7 +261,7 @@
   ],
   "U003": [
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 6.8,
@@ -229,7 +277,7 @@
       "avg_interval_days": 6.8
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 5.0,
@@ -245,7 +293,7 @@
       "avg_interval_days": 5.0
     },
     {
-      "asin": "MC_COLGATE_001",
+      "asin": "B0957GRR76",
       "title": "Colgate Toothpaste 150g",
       "category": "oral_care",
       "average_interval_days": 42.7,
@@ -261,7 +309,7 @@
       "avg_interval_days": 42.7
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 26.8,
@@ -279,7 +327,7 @@
   ],
   "U004": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.1,
@@ -295,7 +343,7 @@
       "avg_interval_days": 3.1
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 13.9,
@@ -311,7 +359,7 @@
       "avg_interval_days": 13.9
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.2,
@@ -327,7 +375,7 @@
       "avg_interval_days": 7.2
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 15.4,
@@ -345,7 +393,7 @@
   ],
   "U005": [
     {
-      "asin": "MC_DETTOL_001",
+      "asin": "B07CVVQVTV",
       "title": "Dettol Soap",
       "category": "personal_care",
       "average_interval_days": 60.5,
@@ -361,7 +409,7 @@
       "avg_interval_days": 60.5
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 13.6,
@@ -377,7 +425,7 @@
       "avg_interval_days": 13.6
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 31.8,
@@ -393,7 +441,7 @@
       "avg_interval_days": 31.8
     },
     {
-      "asin": "MC_COLGATE_001",
+      "asin": "B0957GRR76",
       "title": "Colgate Toothpaste 150g",
       "category": "oral_care",
       "average_interval_days": 48.5,
@@ -409,7 +457,7 @@
       "avg_interval_days": 48.5
     },
     {
-      "asin": "MC_SHAMPOO_001",
+      "asin": "B00CPFSO6K",
       "title": "Head & Shoulders Shampoo 400ml",
       "category": "hair_care",
       "average_interval_days": 44.3,
@@ -427,7 +475,7 @@
   ],
   "U006": [
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 5.0,
@@ -443,7 +491,7 @@
       "avg_interval_days": 5.0
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 14.1,
@@ -459,7 +507,7 @@
       "avg_interval_days": 14.1
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 30.2,
@@ -475,7 +523,7 @@
       "avg_interval_days": 30.2
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 7.2,
@@ -491,7 +539,7 @@
       "avg_interval_days": 7.2
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 13.2,
@@ -507,7 +555,7 @@
       "avg_interval_days": 13.2
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 13.4,
@@ -523,7 +571,7 @@
       "avg_interval_days": 13.4
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 29.2,
@@ -539,7 +587,7 @@
       "avg_interval_days": 29.2
     },
     {
-      "asin": "MC_SHAMPOO_001",
+      "asin": "B00CPFSO6K",
       "title": "Head & Shoulders Shampoo 400ml",
       "category": "hair_care",
       "average_interval_days": 42.7,
@@ -557,7 +605,7 @@
   ],
   "U007": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.0,
@@ -573,7 +621,7 @@
       "avg_interval_days": 3.0
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 6.6,
@@ -589,7 +637,7 @@
       "avg_interval_days": 6.6
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 13.8,
@@ -605,7 +653,7 @@
       "avg_interval_days": 13.8
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 13.8,
@@ -621,7 +669,7 @@
       "avg_interval_days": 13.8
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 18.9,
@@ -637,7 +685,7 @@
       "avg_interval_days": 18.9
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 30.8,
@@ -655,7 +703,7 @@
   ],
   "U008": [
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 13.6,
@@ -671,7 +719,7 @@
       "avg_interval_days": 13.6
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 13.9,
@@ -687,7 +735,7 @@
       "avg_interval_days": 13.9
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 5.1,
@@ -703,7 +751,7 @@
       "avg_interval_days": 5.1
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 7.2,
@@ -719,7 +767,7 @@
       "avg_interval_days": 7.2
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 22.6,
@@ -735,7 +783,7 @@
       "avg_interval_days": 22.6
     },
     {
-      "asin": "MC_SHAMPOO_001",
+      "asin": "B00CPFSO6K",
       "title": "Head & Shoulders Shampoo 400ml",
       "category": "hair_care",
       "average_interval_days": 46.3,
@@ -753,7 +801,7 @@
   ],
   "U009": [
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 13.7,
@@ -769,7 +817,7 @@
       "avg_interval_days": 13.7
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 28.2,
@@ -785,7 +833,7 @@
       "avg_interval_days": 28.2
     },
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.1,
@@ -801,7 +849,7 @@
       "avg_interval_days": 3.1
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 4.8,
@@ -819,7 +867,7 @@
   ],
   "U010": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.1,
@@ -835,7 +883,7 @@
       "avg_interval_days": 3.1
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 6.5,
@@ -851,7 +899,7 @@
       "avg_interval_days": 6.5
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 6.7,
@@ -867,7 +915,7 @@
       "avg_interval_days": 6.7
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 14.2,
@@ -883,7 +931,7 @@
       "avg_interval_days": 14.2
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 20.6,
@@ -901,7 +949,7 @@
   ],
   "U011": [
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 23.0,
@@ -917,7 +965,7 @@
       "avg_interval_days": 23.0
     },
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 2.9,
@@ -933,7 +981,7 @@
       "avg_interval_days": 2.9
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 6.7,
@@ -949,7 +997,7 @@
       "avg_interval_days": 6.7
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 14.2,
@@ -965,7 +1013,7 @@
       "avg_interval_days": 14.2
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 30.0,
@@ -983,7 +1031,7 @@
   ],
   "U012": [
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 8.0,
@@ -999,7 +1047,7 @@
       "avg_interval_days": 8.0
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 28.0,
@@ -1015,7 +1063,7 @@
       "avg_interval_days": 28.0
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 14.4,
@@ -1031,7 +1079,7 @@
       "avg_interval_days": 14.4
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.6,
@@ -1047,7 +1095,7 @@
       "avg_interval_days": 7.6
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 22.3,
@@ -1065,7 +1113,7 @@
   ],
   "U013": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.1,
@@ -1081,7 +1129,7 @@
       "avg_interval_days": 3.1
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 13.8,
@@ -1097,7 +1145,7 @@
       "avg_interval_days": 13.8
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 6.5,
@@ -1113,7 +1161,7 @@
       "avg_interval_days": 6.5
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 26.5,
@@ -1129,7 +1177,7 @@
       "avg_interval_days": 26.5
     },
     {
-      "asin": "MC_COLGATE_001",
+      "asin": "B0957GRR76",
       "title": "Colgate Toothpaste 150g",
       "category": "oral_care",
       "average_interval_days": 38.0,
@@ -1145,7 +1193,7 @@
       "avg_interval_days": 38.0
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 13.7,
@@ -1161,7 +1209,7 @@
       "avg_interval_days": 13.7
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 21.3,
@@ -1177,7 +1225,7 @@
       "avg_interval_days": 21.3
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 29.5,
@@ -1195,7 +1243,7 @@
   ],
   "U014": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.3,
@@ -1211,7 +1259,7 @@
       "avg_interval_days": 3.3
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 14.2,
@@ -1227,7 +1275,7 @@
       "avg_interval_days": 14.2
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 5.1,
@@ -1243,7 +1291,7 @@
       "avg_interval_days": 5.1
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 28.5,
@@ -1259,7 +1307,7 @@
       "avg_interval_days": 28.5
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 19.3,
@@ -1275,7 +1323,7 @@
       "avg_interval_days": 19.3
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.1,
@@ -1291,7 +1339,7 @@
       "avg_interval_days": 7.1
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 14.5,
@@ -1307,7 +1355,7 @@
       "avg_interval_days": 14.5
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 14.3,
@@ -1325,7 +1373,7 @@
   ],
   "U015": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.1,
@@ -1341,7 +1389,7 @@
       "avg_interval_days": 3.1
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 6.9,
@@ -1357,7 +1405,7 @@
       "avg_interval_days": 6.9
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 34.0,
@@ -1373,7 +1421,7 @@
       "avg_interval_days": 34.0
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 14.2,
@@ -1389,7 +1437,7 @@
       "avg_interval_days": 14.2
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 27.5,
@@ -1405,7 +1453,7 @@
       "avg_interval_days": 27.5
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 13.5,
@@ -1421,7 +1469,7 @@
       "avg_interval_days": 13.5
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 19.2,
@@ -1437,7 +1485,7 @@
       "avg_interval_days": 19.2
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 14.5,
@@ -1455,7 +1503,7 @@
   ],
   "U016": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 2.9,
@@ -1471,7 +1519,7 @@
       "avg_interval_days": 2.9
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.0,
@@ -1487,7 +1535,7 @@
       "avg_interval_days": 7.0
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 13.8,
@@ -1505,7 +1553,7 @@
   ],
   "U017": [
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 5.8,
@@ -1521,7 +1569,7 @@
       "avg_interval_days": 5.8
     },
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.0,
@@ -1537,7 +1585,7 @@
       "avg_interval_days": 3.0
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 6.5,
@@ -1553,7 +1601,7 @@
       "avg_interval_days": 6.5
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.1,
@@ -1569,7 +1617,7 @@
       "avg_interval_days": 7.1
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 19.7,
@@ -1585,7 +1633,7 @@
       "avg_interval_days": 19.7
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 14.2,
@@ -1601,7 +1649,7 @@
       "avg_interval_days": 14.2
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 13.5,
@@ -1617,7 +1665,7 @@
       "avg_interval_days": 13.5
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 33.5,
@@ -1635,7 +1683,7 @@
   ],
   "U018": [
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 15.0,
@@ -1651,7 +1699,7 @@
       "avg_interval_days": 15.0
     },
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.1,
@@ -1667,7 +1715,7 @@
       "avg_interval_days": 3.1
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 4.9,
@@ -1683,7 +1731,7 @@
       "avg_interval_days": 4.9
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 6.8,
@@ -1699,7 +1747,7 @@
       "avg_interval_days": 6.8
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 14.4,
@@ -1717,7 +1765,7 @@
   ],
   "U019": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.1,
@@ -1733,7 +1781,7 @@
       "avg_interval_days": 3.1
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 7.7,
@@ -1749,7 +1797,7 @@
       "avg_interval_days": 7.7
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 13.8,
@@ -1765,7 +1813,7 @@
       "avg_interval_days": 13.8
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 14.3,
@@ -1781,7 +1829,7 @@
       "avg_interval_days": 14.3
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 31.5,
@@ -1797,7 +1845,7 @@
       "avg_interval_days": 31.5
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 19.5,
@@ -1815,7 +1863,7 @@
   ],
   "U020": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.0,
@@ -1831,7 +1879,7 @@
       "avg_interval_days": 3.0
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 5.1,
@@ -1847,7 +1895,7 @@
       "avg_interval_days": 5.1
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 29.0,
@@ -1863,7 +1911,7 @@
       "avg_interval_days": 29.0
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 13.2,
@@ -1879,7 +1927,7 @@
       "avg_interval_days": 13.2
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 6.6,
@@ -1895,7 +1943,7 @@
       "avg_interval_days": 6.6
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 14.2,
@@ -1911,7 +1959,7 @@
       "avg_interval_days": 14.2
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 7.3,
@@ -1927,7 +1975,7 @@
       "avg_interval_days": 7.3
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 13.3,
@@ -1943,7 +1991,7 @@
       "avg_interval_days": 13.3
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 21.3,
@@ -1961,7 +2009,7 @@
   ],
   "U021": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 2.9,
@@ -1977,7 +2025,7 @@
       "avg_interval_days": 2.9
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 29.5,
@@ -1993,7 +2041,7 @@
       "avg_interval_days": 29.5
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 15.6,
@@ -2009,7 +2057,7 @@
       "avg_interval_days": 15.6
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.1,
@@ -2025,7 +2073,7 @@
       "avg_interval_days": 7.1
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 20.8,
@@ -2043,7 +2091,7 @@
   ],
   "U022": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.0,
@@ -2059,7 +2107,7 @@
       "avg_interval_days": 3.0
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 5.0,
@@ -2075,7 +2123,7 @@
       "avg_interval_days": 5.0
     },
     {
-      "asin": "MC_COLGATE_001",
+      "asin": "B0957GRR76",
       "title": "Colgate Toothpaste 150g",
       "category": "oral_care",
       "average_interval_days": 39.0,
@@ -2091,7 +2139,7 @@
       "avg_interval_days": 39.0
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 19.3,
@@ -2107,7 +2155,7 @@
       "avg_interval_days": 19.3
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 6.8,
@@ -2125,7 +2173,7 @@
   ],
   "U023": [
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.3,
@@ -2141,7 +2189,7 @@
       "avg_interval_days": 7.3
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 12.2,
@@ -2157,7 +2205,7 @@
       "avg_interval_days": 12.2
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 5.1,
@@ -2173,7 +2221,7 @@
       "avg_interval_days": 5.1
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 7.1,
@@ -2189,7 +2237,7 @@
       "avg_interval_days": 7.1
     },
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.2,
@@ -2205,7 +2253,7 @@
       "avg_interval_days": 3.2
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 23.0,
@@ -2221,7 +2269,7 @@
       "avg_interval_days": 23.0
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 15.6,
@@ -2237,7 +2285,7 @@
       "avg_interval_days": 15.6
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 14.6,
@@ -2255,7 +2303,7 @@
   ],
   "U024": [
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 6.8,
@@ -2271,7 +2319,7 @@
       "avg_interval_days": 6.8
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 20.3,
@@ -2287,7 +2335,7 @@
       "avg_interval_days": 20.3
     },
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 2.9,
@@ -2303,7 +2351,7 @@
       "avg_interval_days": 2.9
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 14.2,
@@ -2319,7 +2367,7 @@
       "avg_interval_days": 14.2
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.2,
@@ -2335,7 +2383,7 @@
       "avg_interval_days": 7.2
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 14.3,
@@ -2351,7 +2399,7 @@
       "avg_interval_days": 14.3
     },
     {
-      "asin": "MC_COLGATE_001",
+      "asin": "B0957GRR76",
       "title": "Colgate Toothpaste 150g",
       "category": "oral_care",
       "average_interval_days": 49.0,
@@ -2367,7 +2415,7 @@
       "avg_interval_days": 49.0
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 29.0,
@@ -2385,7 +2433,7 @@
   ],
   "U025": [
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 5.1,
@@ -2401,7 +2449,7 @@
       "avg_interval_days": 5.1
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 6.8,
@@ -2417,7 +2465,7 @@
       "avg_interval_days": 6.8
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 21.0,
@@ -2433,7 +2481,7 @@
       "avg_interval_days": 21.0
     },
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 2.9,
@@ -2449,7 +2497,7 @@
       "avg_interval_days": 2.9
     },
     {
-      "asin": "MC_SHAMPOO_001",
+      "asin": "B00CPFSO6K",
       "title": "Head & Shoulders Shampoo 400ml",
       "category": "hair_care",
       "average_interval_days": 43.0,
@@ -2465,7 +2513,7 @@
       "avg_interval_days": 43.0
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.3,
@@ -2481,7 +2529,7 @@
       "avg_interval_days": 7.3
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 15.2,
@@ -2497,7 +2545,7 @@
       "avg_interval_days": 15.2
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 33.0,
@@ -2513,7 +2561,7 @@
       "avg_interval_days": 33.0
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 13.7,
@@ -2531,7 +2579,7 @@
   ],
   "U026": [
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 22.0,
@@ -2547,7 +2595,7 @@
       "avg_interval_days": 22.0
     },
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.1,
@@ -2563,7 +2611,7 @@
       "avg_interval_days": 3.1
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 7.5,
@@ -2579,7 +2627,7 @@
       "avg_interval_days": 7.5
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 6.8,
@@ -2595,7 +2643,7 @@
       "avg_interval_days": 6.8
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 15.2,
@@ -2611,7 +2659,7 @@
       "avg_interval_days": 15.2
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 12.6,
@@ -2627,7 +2675,7 @@
       "avg_interval_days": 12.6
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 14.2,
@@ -2643,7 +2691,7 @@
       "avg_interval_days": 14.2
     },
     {
-      "asin": "MC_COLGATE_001",
+      "asin": "B0957GRR76",
       "title": "Colgate Toothpaste 150g",
       "category": "oral_care",
       "average_interval_days": 42.0,
@@ -2661,7 +2709,7 @@
   ],
   "U027": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.0,
@@ -2677,7 +2725,7 @@
       "avg_interval_days": 3.0
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 13.2,
@@ -2693,7 +2741,7 @@
       "avg_interval_days": 13.2
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.5,
@@ -2709,7 +2757,7 @@
       "avg_interval_days": 7.5
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 4.7,
@@ -2725,7 +2773,7 @@
       "avg_interval_days": 4.7
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 6.8,
@@ -2741,7 +2789,7 @@
       "avg_interval_days": 6.8
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 35.0,
@@ -2757,7 +2805,7 @@
       "avg_interval_days": 35.0
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 19.3,
@@ -2773,7 +2821,7 @@
       "avg_interval_days": 19.3
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 13.5,
@@ -2789,7 +2837,7 @@
       "avg_interval_days": 13.5
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 13.5,
@@ -2807,7 +2855,7 @@
   ],
   "U028": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.1,
@@ -2823,7 +2871,7 @@
       "avg_interval_days": 3.1
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 20.7,
@@ -2839,7 +2887,7 @@
       "avg_interval_days": 20.7
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 6.8,
@@ -2855,7 +2903,7 @@
       "avg_interval_days": 6.8
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 13.8,
@@ -2871,7 +2919,7 @@
       "avg_interval_days": 13.8
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 29.5,
@@ -2889,7 +2937,7 @@
   ],
   "U029": [
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 6.5,
@@ -2905,7 +2953,7 @@
       "avg_interval_days": 6.5
     },
     {
-      "asin": "MC_COLGATE_001",
+      "asin": "B0957GRR76",
       "title": "Colgate Toothpaste 150g",
       "category": "oral_care",
       "average_interval_days": 43.0,
@@ -2921,7 +2969,7 @@
       "avg_interval_days": 43.0
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 4.8,
@@ -2937,7 +2985,7 @@
       "avg_interval_days": 4.8
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 15.4,
@@ -2953,7 +3001,7 @@
       "avg_interval_days": 15.4
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 12.7,
@@ -2969,7 +3017,7 @@
       "avg_interval_days": 12.7
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 30.0,
@@ -2987,7 +3035,7 @@
   ],
   "U030": [
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 28.5,
@@ -3003,7 +3051,7 @@
       "avg_interval_days": 28.5
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.1,
@@ -3019,7 +3067,7 @@
       "avg_interval_days": 7.1
     },
     {
-      "asin": "MC_SHAMPOO_001",
+      "asin": "B00CPFSO6K",
       "title": "Head & Shoulders Shampoo 400ml",
       "category": "hair_care",
       "average_interval_days": 47.0,
@@ -3035,7 +3083,7 @@
       "avg_interval_days": 47.0
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 14.3,
@@ -3051,7 +3099,7 @@
       "avg_interval_days": 14.3
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 22.7,
@@ -3069,7 +3117,7 @@
   ],
   "U031": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.1,
@@ -3085,7 +3133,7 @@
       "avg_interval_days": 3.1
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 18.2,
@@ -3101,7 +3149,7 @@
       "avg_interval_days": 18.2
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 13.5,
@@ -3117,7 +3165,7 @@
       "avg_interval_days": 13.5
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 26.5,
@@ -3133,7 +3181,7 @@
       "avg_interval_days": 26.5
     },
     {
-      "asin": "MC_COLGATE_001",
+      "asin": "B0957GRR76",
       "title": "Colgate Toothpaste 150g",
       "category": "oral_care",
       "average_interval_days": 42.0,
@@ -3151,7 +3199,7 @@
   ],
   "U032": [
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 5.2,
@@ -3167,7 +3215,7 @@
       "avg_interval_days": 5.2
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.4,
@@ -3183,7 +3231,7 @@
       "avg_interval_days": 7.4
     },
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.2,
@@ -3199,7 +3247,7 @@
       "avg_interval_days": 3.2
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 7.5,
@@ -3215,7 +3263,7 @@
       "avg_interval_days": 7.5
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 29.0,
@@ -3231,7 +3279,7 @@
       "avg_interval_days": 29.0
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 20.0,
@@ -3249,7 +3297,7 @@
   ],
   "U033": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.2,
@@ -3265,7 +3313,7 @@
       "avg_interval_days": 3.2
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 7.5,
@@ -3281,7 +3329,7 @@
       "avg_interval_days": 7.5
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.2,
@@ -3297,7 +3345,7 @@
       "avg_interval_days": 7.2
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 32.0,
@@ -3313,7 +3361,7 @@
       "avg_interval_days": 32.0
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 12.7,
@@ -3331,7 +3379,7 @@
   ],
   "U034": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.0,
@@ -3347,7 +3395,7 @@
       "avg_interval_days": 3.0
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 4.9,
@@ -3363,7 +3411,7 @@
       "avg_interval_days": 4.9
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 13.2,
@@ -3379,7 +3427,7 @@
       "avg_interval_days": 13.2
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 6.4,
@@ -3395,7 +3443,7 @@
       "avg_interval_days": 6.4
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.5,
@@ -3411,7 +3459,7 @@
       "avg_interval_days": 7.5
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 21.3,
@@ -3429,7 +3477,7 @@
   ],
   "U035": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.0,
@@ -3445,7 +3493,7 @@
       "avg_interval_days": 3.0
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 13.6,
@@ -3461,7 +3509,7 @@
       "avg_interval_days": 13.6
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 26.5,
@@ -3477,7 +3525,7 @@
       "avg_interval_days": 26.5
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 6.8,
@@ -3495,7 +3543,7 @@
   ],
   "U036": [
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 6.8,
@@ -3511,7 +3559,7 @@
       "avg_interval_days": 6.8
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 21.7,
@@ -3527,7 +3575,7 @@
       "avg_interval_days": 21.7
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 14.4,
@@ -3543,7 +3591,7 @@
       "avg_interval_days": 14.4
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 6.4,
@@ -3559,7 +3607,7 @@
       "avg_interval_days": 6.4
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 13.5,
@@ -3577,7 +3625,7 @@
   ],
   "U037": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 2.9,
@@ -3593,7 +3641,7 @@
       "avg_interval_days": 2.9
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 4.6,
@@ -3609,7 +3657,7 @@
       "avg_interval_days": 4.6
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 15.4,
@@ -3625,7 +3673,7 @@
       "avg_interval_days": 15.4
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 14.0,
@@ -3641,7 +3689,7 @@
       "avg_interval_days": 14.0
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 21.7,
@@ -3659,7 +3707,7 @@
   ],
   "U038": [
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 12.8,
@@ -3675,7 +3723,7 @@
       "avg_interval_days": 12.8
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 5.4,
@@ -3691,7 +3739,7 @@
       "avg_interval_days": 5.4
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 13.8,
@@ -3707,7 +3755,7 @@
       "avg_interval_days": 13.8
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 12.5,
@@ -3725,7 +3773,7 @@
   ],
   "U039": [
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 6.4,
@@ -3741,7 +3789,7 @@
       "avg_interval_days": 6.4
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 12.5,
@@ -3757,7 +3805,7 @@
       "avg_interval_days": 12.5
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 4.7,
@@ -3773,7 +3821,7 @@
       "avg_interval_days": 4.7
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 21.0,
@@ -3789,7 +3837,7 @@
       "avg_interval_days": 21.0
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 7.4,
@@ -3805,7 +3853,7 @@
       "avg_interval_days": 7.4
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 28.5,
@@ -3821,7 +3869,7 @@
       "avg_interval_days": 28.5
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 14.2,
@@ -3839,7 +3887,7 @@
   ],
   "U040": [
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 4.7,
@@ -3855,7 +3903,7 @@
       "avg_interval_days": 4.7
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 6.4,
@@ -3871,7 +3919,7 @@
       "avg_interval_days": 6.4
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 26.5,
@@ -3887,7 +3935,7 @@
       "avg_interval_days": 26.5
     },
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.1,
@@ -3903,7 +3951,7 @@
       "avg_interval_days": 3.1
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.6,
@@ -3919,7 +3967,7 @@
       "avg_interval_days": 7.6
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 14.0,
@@ -3935,7 +3983,7 @@
       "avg_interval_days": 14.0
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 15.2,
@@ -3953,7 +4001,7 @@
   ],
   "U041": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.0,
@@ -3969,7 +4017,7 @@
       "avg_interval_days": 3.0
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 7.5,
@@ -3985,7 +4033,7 @@
       "avg_interval_days": 7.5
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 6.8,
@@ -4001,7 +4049,7 @@
       "avg_interval_days": 6.8
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 26.5,
@@ -4017,7 +4065,7 @@
       "avg_interval_days": 26.5
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 13.7,
@@ -4035,7 +4083,7 @@
   ],
   "U042": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 2.8,
@@ -4051,7 +4099,7 @@
       "avg_interval_days": 2.8
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 7.2,
@@ -4067,7 +4115,7 @@
       "avg_interval_days": 7.2
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 21.0,
@@ -4083,7 +4131,7 @@
       "avg_interval_days": 21.0
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 14.2,
@@ -4101,7 +4149,7 @@
   ],
   "U043": [
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 5.2,
@@ -4117,7 +4165,7 @@
       "avg_interval_days": 5.2
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 6.8,
@@ -4133,7 +4181,7 @@
       "avg_interval_days": 6.8
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 21.3,
@@ -4149,7 +4197,7 @@
       "avg_interval_days": 21.3
     },
     {
-      "asin": "MC_SHAMPOO_001",
+      "asin": "B00CPFSO6K",
       "title": "Head & Shoulders Shampoo 400ml",
       "category": "hair_care",
       "average_interval_days": 40.0,
@@ -4165,7 +4213,7 @@
       "avg_interval_days": 40.0
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 13.8,
@@ -4181,7 +4229,7 @@
       "avg_interval_days": 13.8
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 30.0,
@@ -4199,7 +4247,7 @@
   ],
   "U044": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.1,
@@ -4215,7 +4263,7 @@
       "avg_interval_days": 3.1
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 4.8,
@@ -4231,7 +4279,7 @@
       "avg_interval_days": 4.8
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 12.8,
@@ -4247,7 +4295,7 @@
       "avg_interval_days": 12.8
     },
     {
-      "asin": "MC_ARIEL_001",
+      "asin": "B07BFMWZF2",
       "title": "Ariel Detergent 2kg",
       "category": "laundry",
       "average_interval_days": 27.0,
@@ -4263,7 +4311,7 @@
       "avg_interval_days": 27.0
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 13.3,
@@ -4279,7 +4327,7 @@
       "avg_interval_days": 13.3
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 21.0,
@@ -4295,7 +4343,7 @@
       "avg_interval_days": 21.0
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 29.5,
@@ -4313,7 +4361,7 @@
   ],
   "U045": [
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 26.5,
@@ -4329,7 +4377,7 @@
       "avg_interval_days": 26.5
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 7.3,
@@ -4345,7 +4393,7 @@
       "avg_interval_days": 7.3
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 12.8,
@@ -4361,7 +4409,7 @@
       "avg_interval_days": 12.8
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.0,
@@ -4377,7 +4425,7 @@
       "avg_interval_days": 7.0
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 21.7,
@@ -4393,7 +4441,7 @@
       "avg_interval_days": 21.7
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 12.5,
@@ -4411,7 +4459,7 @@
   ],
   "U046": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.0,
@@ -4427,7 +4475,7 @@
       "avg_interval_days": 3.0
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 6.8,
@@ -4443,7 +4491,7 @@
       "avg_interval_days": 6.8
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.5,
@@ -4459,7 +4507,7 @@
       "avg_interval_days": 7.5
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 13.5,
@@ -4475,7 +4523,7 @@
       "avg_interval_days": 13.5
     },
     {
-      "asin": "MC_SHAMPOO_001",
+      "asin": "B00CPFSO6K",
       "title": "Head & Shoulders Shampoo 400ml",
       "category": "hair_care",
       "average_interval_days": 42.0,
@@ -4491,7 +4539,7 @@
       "avg_interval_days": 42.0
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 14.2,
@@ -4507,7 +4555,7 @@
       "avg_interval_days": 14.2
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 27.0,
@@ -4523,7 +4571,7 @@
       "avg_interval_days": 27.0
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 13.8,
@@ -4541,7 +4589,7 @@
   ],
   "U047": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 2.9,
@@ -4557,7 +4605,7 @@
       "avg_interval_days": 2.9
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 5.2,
@@ -4573,7 +4621,7 @@
       "avg_interval_days": 5.2
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 14.0,
@@ -4589,7 +4637,7 @@
       "avg_interval_days": 14.0
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 14.3,
@@ -4605,7 +4653,7 @@
       "avg_interval_days": 14.3
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 21.3,
@@ -4623,7 +4671,7 @@
   ],
   "U048": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.0,
@@ -4639,7 +4687,7 @@
       "avg_interval_days": 3.0
     },
     {
-      "asin": "MC_BREAD_001",
+      "asin": "B0858VN54M",
       "title": "Brown Bread",
       "category": "bakery",
       "average_interval_days": 4.7,
@@ -4655,7 +4703,7 @@
       "avg_interval_days": 4.7
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 13.3,
@@ -4671,7 +4719,7 @@
       "avg_interval_days": 13.3
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 15.0,
@@ -4689,7 +4737,7 @@
   ],
   "U049": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 2.9,
@@ -4705,7 +4753,7 @@
       "avg_interval_days": 2.9
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.3,
@@ -4721,7 +4769,7 @@
       "avg_interval_days": 7.3
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 14.0,
@@ -4737,7 +4785,7 @@
       "avg_interval_days": 14.0
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 12.6,
@@ -4753,7 +4801,7 @@
       "avg_interval_days": 12.6
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 7.4,
@@ -4769,7 +4817,7 @@
       "avg_interval_days": 7.4
     },
     {
-      "asin": "MC_SHAMPOO_001",
+      "asin": "B00CPFSO6K",
       "title": "Head & Shoulders Shampoo 400ml",
       "category": "hair_care",
       "average_interval_days": 46.0,
@@ -4785,7 +4833,7 @@
       "avg_interval_days": 46.0
     },
     {
-      "asin": "MC_OIL_001",
+      "asin": "B0BJ13B3HF",
       "title": "Sunflower Oil 1L",
       "category": "cooking_oil",
       "average_interval_days": 21.0,
@@ -4803,7 +4851,7 @@
   ],
   "U050": [
     {
-      "asin": "MC_MILK_001",
+      "asin": "B08BN2HQ8M",
       "title": "Amul Milk 1L",
       "category": "dairy",
       "average_interval_days": 3.2,
@@ -4819,7 +4867,7 @@
       "avg_interval_days": 3.2
     },
     {
-      "asin": "MC_SALT_001",
+      "asin": "B0BGTB4GD2",
       "title": "Tata Salt 1kg",
       "category": "grocery_staples",
       "average_interval_days": 7.1,
@@ -4835,7 +4883,7 @@
       "avg_interval_days": 7.1
     },
     {
-      "asin": "MC_DAL_001",
+      "asin": "B07J47B5ZZ",
       "title": "Toor Dal 1kg",
       "category": "pulses",
       "average_interval_days": 14.2,
@@ -4851,7 +4899,7 @@
       "avg_interval_days": 14.2
     },
     {
-      "asin": "MC_PARLEG_001",
+      "asin": "B017WHIVS6",
       "title": "Parle-G 800g",
       "category": "biscuits",
       "average_interval_days": 6.5,
@@ -4867,7 +4915,7 @@
       "avg_interval_days": 6.5
     },
     {
-      "asin": "MC_SURF_001",
+      "asin": "B08QXY5SNW",
       "title": "Surf Excel 1kg",
       "category": "detergent",
       "average_interval_days": 13.5,
@@ -4883,7 +4931,7 @@
       "avg_interval_days": 13.5
     },
     {
-      "asin": "MC_RICE_001",
+      "asin": "B08FQ2ZKP7",
       "title": "Basmati Rice 5kg",
       "category": "rice",
       "average_interval_days": 30.0,
@@ -4899,7 +4947,7 @@
       "avg_interval_days": 30.0
     },
     {
-      "asin": "MC_ONION_001",
+      "asin": "B09P72BSWQ",
       "title": "Onions 1kg",
       "category": "vegetables",
       "average_interval_days": 13.7,

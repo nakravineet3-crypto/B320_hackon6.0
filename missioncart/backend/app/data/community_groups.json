@@ -1,0 +1,236 @@
+[
+  {
+    "group_id": "office_gym_dad",
+    "group_name": "The Fit Dads",
+    "archetype": "office_gym_dad",
+    "tagline": "Protein shakers and school bags — all before 8am",
+    "color": "#45B7D1",
+    "member_count": 13,
+    "members": [
+      "U001",
+      "U002",
+      "U003",
+      "U004",
+      "U005",
+      "U006",
+      "U007",
+      "U008",
+      "U009",
+      "U010",
+      "U011",
+      "U012",
+      "U013"
+    ],
+    "active_now": 42,
+    "top_categories": [
+      {
+        "category": "webcam",
+        "total_spend": 200971.0
+      },
+      {
+        "category": "induction_compatible_vessel",
+        "total_spend": 172196.0
+      },
+      {
+        "category": "backpack",
+        "total_spend": 152611.0
+      },
+      {
+        "category": "induction_cooktop",
+        "total_spend": 96957.0
+      },
+      {
+        "category": "keyboard",
+        "total_spend": 96258.0
+      },
+      {
+        "category": "rain_jacket",
+        "total_spend": 67133.0
+      }
+    ],
+    "top_occasion": "kids_birthday",
+    "centroid": [
+      1.0,
+      0.0,
+      0.172942,
+      0.0,
+      0.16747,
+      0.403026
+    ]
+  },
+  {
+    "group_id": "jee_student",
+    "group_name": "The JEE Grinders",
+    "archetype": "jee_student",
+    "tagline": "Highlighters, snacks, repeat",
+    "color": "#FFEAA7",
+    "member_count": 13,
+    "members": [
+      "U014",
+      "U015",
+      "U016",
+      "U017",
+      "U018",
+      "U019",
+      "U020",
+      "U021",
+      "U022",
+      "U023",
+      "U024",
+      "U025",
+      "U026"
+    ],
+    "active_now": 42,
+    "top_categories": [
+      {
+        "category": "webcam",
+        "total_spend": 83984.0
+      },
+      {
+        "category": "usb_c_hub",
+        "total_spend": 66967.0
+      },
+      {
+        "category": "desk_organizer",
+        "total_spend": 47920.0
+      },
+      {
+        "category": "keyboard",
+        "total_spend": 45782.0
+      },
+      {
+        "category": "mouse",
+        "total_spend": 44966.0
+      },
+      {
+        "category": "chocolates",
+        "total_spend": 42491.0
+      }
+    ],
+    "top_occasion": "kids_birthday",
+    "centroid": [
+      0.0,
+      1.0,
+      0.422514,
+      0.131287,
+      0.862494,
+      0.0
+    ]
+  },
+  {
+    "group_id": "college_girl",
+    "group_name": "The Campus Crew",
+    "archetype": "college_girl",
+    "tagline": "Skincare, chai, and group study hauls",
+    "color": "#DDA0DD",
+    "member_count": 13,
+    "members": [
+      "U027",
+      "U028",
+      "U029",
+      "U030",
+      "U031",
+      "U032",
+      "U033",
+      "U034",
+      "U035",
+      "U036",
+      "U037",
+      "U038",
+      "U039"
+    ],
+    "active_now": 22,
+    "top_categories": [
+      {
+        "category": "shampoo",
+        "total_spend": 70044.0
+      },
+      {
+        "category": "hangers",
+        "total_spend": 54384.0
+      },
+      {
+        "category": "chocolates",
+        "total_spend": 46985.0
+      },
+      {
+        "category": "towels",
+        "total_spend": 45000.0
+      },
+      {
+        "category": "baby_oil",
+        "total_spend": 44642.0
+      },
+      {
+        "category": "pillow_covers",
+        "total_spend": 43390.0
+      }
+    ],
+    "top_occasion": "kids_birthday",
+    "centroid": [
+      0.0,
+      0.74971,
+      1.0,
+      0.230272,
+      1.0,
+      0.0
+    ]
+  },
+  {
+    "group_id": "home_chef",
+    "group_name": "The Kitchen Masters",
+    "archetype": "home_chef",
+    "tagline": "Fresh dal, tadka, and the perfect masala ratio",
+    "color": "#96CEB4",
+    "member_count": 11,
+    "members": [
+      "U040",
+      "U041",
+      "U042",
+      "U043",
+      "U044",
+      "U045",
+      "U046",
+      "U047",
+      "U048",
+      "U049",
+      "U050"
+    ],
+    "active_now": 26,
+    "top_categories": [
+      {
+        "category": "induction_compatible_vessel",
+        "total_spend": 198081.0
+      },
+      {
+        "category": "induction_cooktop",
+        "total_spend": 137940.0
+      },
+      {
+        "category": "atta",
+        "total_spend": 51129.0
+      },
+      {
+        "category": "bedsheet",
+        "total_spend": 41859.0
+      },
+      {
+        "category": "kitchen_knife",
+        "total_spend": 41161.0
+      },
+      {
+        "category": "rice",
+        "total_spend": 36926.0
+      }
+    ],
+    "top_occasion": "kids_birthday",
+    "centroid": [
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      1.0
+    ]
+  }
+]

@@ -113,13 +113,17 @@ export interface MorningAlert {
 }
 
 export interface OccasionCard {
-  id: string
+  occasion_type: string
   title: string
-  days_until: number
   emoji: string
-  category: string
+  days_until: number | null
+  urgency_state: 'discovery' | 'preparation' | 'urgent' | 'emergency'
+  urgency_label: string
   estimated_budget: number
-  tap_action: string
+  headcount: number
+  community_signal: string
+  tap_goal: string
+  relevance_score: number
 }
 
 export interface UpcomingRecurrence {

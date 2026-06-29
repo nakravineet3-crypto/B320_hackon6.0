@@ -10,7 +10,7 @@ def get_llm_client():
     2. First available API key
     3. None (fallback mode — regex parser only)
 
-    Set LLM_PROVIDER=groq|anthropic|bedrock|gemini
+    Set LLM_PROVIDER=groq|anthropic|bedrock
     """
     provider = os.environ.get("LLM_PROVIDER", "").lower().strip()
 
@@ -33,12 +33,6 @@ def get_llm_client():
         print("LLM Provider: Amazon Bedrock")
         return BedrockClient()
 
-    if provider == "gemini" and os.environ.get("GEMINI_API_KEY"):
-        from app.services.llm.providers import GeminiClient
-
-        print("LLM Provider: Google Gemini")
-        return GeminiClient()
-
     # Auto-detect from available keys
     if os.environ.get("GROQ_API_KEY"):
         from app.services.llm.providers import GroqClient
@@ -59,12 +53,6 @@ def get_llm_client():
 
         print("LLM Provider: Bedrock (auto-detected)")
         return BedrockClient()
-
-    if os.environ.get("GEMINI_API_KEY"):
-        from app.services.llm.providers import GeminiClient
-
-        print("LLM Provider: Gemini (auto-detected)")
-        return GeminiClient()
 
     # No provider available
     print("LLM Provider: NONE (fallback mode)")

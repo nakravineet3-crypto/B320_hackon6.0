@@ -1,62 +1,111 @@
 {
   "balloon_set": {
-    "requires": ["balloon_pump"],
-    "recommends": ["balloon_ribbon"],
+    "requires": [
+      "balloon_pump"
+    ],
+    "recommends": [
+      "balloon_ribbon"
+    ],
     "incompatible_with": []
   },
   "induction_cooktop": {
-    "requires": ["induction_compatible_vessel"],
-    "recommends": ["silicone_trivet"],
-    "incompatible_with": ["aluminium_vessel", "copper_vessel"]
+    "requires": [
+      "induction_compatible_vessel"
+    ],
+    "recommends": [
+      "silicone_trivet"
+    ],
+    "incompatible_with": [
+      "aluminium_vessel",
+      "copper_vessel"
+    ]
   },
   "water_purifier_electric": {
-    "requires": ["installation_kit"],
+    "requires": [
+      "installation_kit"
+    ],
     "recommends": [],
     "incompatible_with": []
   },
   "gas_stove": {
-    "requires": ["gas_regulator", "gas_pipe"],
+    "requires": [
+      "gas_regulator",
+      "gas_pipe"
+    ],
     "recommends": [],
     "incompatible_with": []
   },
   "inverter": {
-    "requires": ["inverter_battery"],
-    "recommends": ["battery_stand"],
+    "requires": [
+      "inverter_battery"
+    ],
+    "recommends": [
+      "battery_stand"
+    ],
     "incompatible_with": []
   },
   "dslr_camera": {
-    "requires": ["memory_card", "camera_bag"],
-    "recommends": ["extra_battery"],
+    "requires": [
+      "memory_card",
+      "camera_bag"
+    ],
+    "recommends": [
+      "extra_battery"
+    ],
     "incompatible_with": []
   },
   "camping_tent": {
-    "requires": ["tent_pegs", "ground_sheet"],
-    "recommends": ["mallet"],
+    "requires": [
+      "tent_pegs",
+      "ground_sheet"
+    ],
+    "recommends": [
+      "mallet"
+    ],
     "incompatible_with": []
   },
   "puppy_food": {
     "requires": [],
-    "recommends": ["dog_bowl"],
-    "incompatible_with": ["adult_dog_food"]
+    "recommends": [
+      "dog_bowl"
+    ],
+    "incompatible_with": [
+      "adult_dog_food"
+    ]
   },
   "newborn_formula": {
     "requires": [],
-    "recommends": ["bottle_sterilizer"],
-    "incompatible_with": ["stage2_formula", "stage3_formula"]
+    "recommends": [
+      "bottle_sterilizer"
+    ],
+    "incompatible_with": [
+      "stage2_formula",
+      "stage3_formula"
+    ]
   },
   "cake_knife": {
     "requires": [],
-    "recommends": ["cake_stand"],
+    "recommends": [
+      "cake_stand"
+    ],
     "incompatible_with": []
   },
   "candles": {
     "requires": [],
-    "recommends": ["matchbox", "lighter"],
+    "recommends": [
+      "matchbox",
+      "lighter"
+    ],
     "incompatible_with": []
   },
   "printer": {
-    "requires": ["ink_cartridge", "paper_ream"],
-    "recommends": ["usb_cable"],
+    "requires": [
+      "ink_cartridge",
+      "paper_ream"
+    ],
+    "recommends": [
+      "usb_cable"
+    ],
     "incompatible_with": []
   },
   "extension_board": {
@@ -70,43 +119,65 @@
     "incompatible_with": []
   },
   "mattress": {
-    "requires": ["bedsheet", "pillow"],
-    "recommends": ["mattress_protector"],
+    "requires": [
+      "bedsheet",
+      "pillow"
+    ],
+    "recommends": [
+      "mattress_protector"
+    ],
     "incompatible_with": []
   },
   "webcam": {
     "requires": [],
-    "recommends": ["ring_light"],
+    "recommends": [
+      "ring_light"
+    ],
     "incompatible_with": []
   },
   "keyboard": {
     "requires": [],
-    "recommends": ["wrist_rest"],
+    "recommends": [
+      "wrist_rest"
+    ],
     "incompatible_with": []
   },
   "laptop_stand": {
     "requires": [],
-    "recommends": ["keyboard", "mouse"],
+    "recommends": [
+      "keyboard",
+      "mouse"
+    ],
     "incompatible_with": []
   },
   "dog_bed": {
     "requires": [],
-    "recommends": ["pet_wipes"],
+    "recommends": [
+      "pet_wipes"
+    ],
     "incompatible_with": []
   },
   "backpack": {
     "requires": [],
-    "recommends": ["rain_cover"],
+    "recommends": [
+      "rain_cover"
+    ],
     "incompatible_with": []
   },
   "diapers_newborn": {
     "requires": [],
-    "recommends": ["baby_wipes", "diaper_rash_cream"],
+    "recommends": [
+      "baby_wipes",
+      "diaper_rash_cream"
+    ],
     "incompatible_with": []
   },
   "baby_bath_tub": {
     "requires": [],
-    "recommends": ["baby_soap", "baby_oil"],
+    "recommends": [
+      "baby_soap",
+      "baby_oil"
+    ],
     "incompatible_with": []
   },
   "muslin_cloth": {
@@ -116,8 +187,12 @@
   },
   "adult_dog_food": {
     "requires": [],
-    "recommends": ["dog_bowl"],
-    "incompatible_with": ["puppy_food"]
+    "recommends": [
+      "dog_bowl"
+    ],
+    "incompatible_with": [
+      "puppy_food"
+    ]
   },
   "water_bottle": {
     "requires": [],
@@ -126,12 +201,239 @@
   },
   "chopping_board": {
     "requires": [],
-    "recommends": ["kitchen_knife"],
+    "recommends": [
+      "kitchen_knife"
+    ],
     "incompatible_with": []
   },
   "curtains": {
     "requires": [],
-    "recommends": ["curtain_rod"],
+    "recommends": [
+      "curtain_rod"
+    ],
+    "incompatible_with": []
+  },
+  "candle_set": {
+    "requires": [],
+    "recommends": [
+      "matchbox",
+      "lighter",
+      "candle_holder"
+    ],
+    "incompatible_with": []
+  },
+  "agarbatti": {
+    "requires": [
+      "agarbatti_stand"
+    ],
+    "recommends": [
+      "matchbox",
+      "lighter"
+    ],
+    "incompatible_with": []
+  },
+  "puja_kit": {
+    "requires": [],
+    "recommends": [
+      "agarbatti",
+      "candles",
+      "matchbox",
+      "flowers"
+    ],
+    "incompatible_with": []
+  },
+  "birthday_cake": {
+    "requires": [],
+    "recommends": [
+      "candles",
+      "cake_knife",
+      "plates",
+      "napkins"
+    ],
+    "incompatible_with": []
+  },
+  "birthday_cake_mix": {
+    "requires": [],
+    "recommends": [
+      "birthday_candles",
+      "piping_bag",
+      "cake_mould"
+    ],
+    "incompatible_with": []
+  },
+  "tent": {
+    "requires": [
+      "tent_pegs",
+      "ground_sheet"
+    ],
+    "recommends": [
+      "sleeping_bag",
+      "headlamp",
+      "insect_repellent",
+      "mallet"
+    ],
+    "incompatible_with": []
+  },
+  "sleeping_bag": {
+    "requires": [],
+    "recommends": [
+      "sleeping_pad",
+      "pillow",
+      "travel_pillow"
+    ],
+    "incompatible_with": []
+  },
+  "laptop": {
+    "requires": [],
+    "recommends": [
+      "laptop_stand",
+      "keyboard",
+      "mouse",
+      "usb_hub"
+    ],
+    "incompatible_with": []
+  },
+  "plates": {
+    "requires": [],
+    "recommends": [
+      "cups",
+      "napkins",
+      "tablecloth",
+      "disposable_spoons"
+    ],
+    "incompatible_with": []
+  },
+  "disposable_cups": {
+    "requires": [],
+    "recommends": [
+      "plates",
+      "napkins"
+    ],
+    "incompatible_with": []
+  },
+  "water_balloon_set": {
+    "requires": [
+      "balloon_pump"
+    ],
+    "recommends": [
+      "water_gun"
+    ],
+    "incompatible_with": []
+  },
+  "holi_colors": {
+    "requires": [],
+    "recommends": [
+      "water_balloon_set",
+      "white_clothing",
+      "skin_moisturizer"
+    ],
+    "incompatible_with": []
+  },
+  "induction_compatible_vessel": {
+    "requires": [],
+    "recommends": [
+      "silicone_trivet",
+      "oven_mitt"
+    ],
+    "incompatible_with": [
+      "aluminium_vessel",
+      "copper_vessel"
+    ]
+  },
+  "return_gifts": {
+    "requires": [],
+    "recommends": [
+      "gift_wrap",
+      "ribbon",
+      "greeting_card"
+    ],
+    "incompatible_with": []
+  },
+  "torch": {
+    "requires": [],
+    "recommends": [
+      "batteries",
+      "headlamp"
+    ],
+    "incompatible_with": []
+  },
+  "first_aid_kit": {
+    "requires": [],
+    "recommends": [
+      "ors_sachets",
+      "antifungal_cream"
+    ],
+    "incompatible_with": []
+  },
+  "rain_jacket": {
+    "requires": [],
+    "recommends": [
+      "waterproof_bag_cover",
+      "trekking_socks"
+    ],
+    "incompatible_with": []
+  },
+  "trekking_poles": {
+    "requires": [],
+    "recommends": [
+      "trekking_gloves",
+      "knee_support"
+    ],
+    "incompatible_with": []
+  },
+  "protein_powder": {
+    "requires": [
+      "shaker_bottle"
+    ],
+    "recommends": [
+      "creatine",
+      "multivitamin"
+    ],
+    "incompatible_with": []
+  },
+  "baby_formula": {
+    "requires": [
+      "feeding_bottle"
+    ],
+    "recommends": [
+      "bottle_sterilizer",
+      "bottle_brush"
+    ],
+    "incompatible_with": [
+      "stage2_formula",
+      "stage3_formula"
+    ]
+  },
+  "diaper_bag": {
+    "requires": [],
+    "recommends": [
+      "diapers_newborn",
+      "baby_wipes",
+      "changing_mat"
+    ],
+    "incompatible_with": []
+  },
+  "electric_kettle": {
+    "requires": [],
+    "recommends": [
+      "tea_bags",
+      "coffee_sachets"
+    ],
+    "incompatible_with": []
+  },
+  "mosquito_repellent_device": {
+    "requires": [
+      "mosquito_repellent_refill"
+    ],
+    "recommends": [],
+    "incompatible_with": []
+  },
+  "scented_candle": {
+    "requires": [],
+    "recommends": [
+      "candle_holder",
+      "matchbox"
+    ],
     "incompatible_with": []
   }
 }

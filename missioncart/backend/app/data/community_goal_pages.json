@@ -1,0 +1,292 @@
+{
+  "goal_pages": [
+    {
+      "goal_id": "goal_diwali_2026_sharma",
+      "title": "Sharma Family Diwali 2026",
+      "occasion_type": "diwali_celebration",
+      "occasion_emoji": "🪔",
+      "created_by": "U001",
+      "participants": ["U001", "U003", "U007", "U014", "U027"],
+      "participant_names": ["Anmol", "Priya", "Ravi", "Neha", "Deepa"],
+      "target_date": "2026-10-20",
+      "budget_total": 4800,
+      "budget_per_person": 960,
+      "items": [
+        {
+          "item_id": "cgp_d1",
+          "asin": "B0CANDLE001",
+          "title": "Decorative Diya Set 12-Pack",
+          "price_inr": 299,
+          "category": "diyas",
+          "claimed_by": "U001",
+          "claimed_by_name": "Anmol",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_d2",
+          "asin": "B0CANDLE003",
+          "title": "Premium Agarbatti Set 40-Sticks",
+          "price_inr": 149,
+          "category": "agarbatti",
+          "claimed_by": "U003",
+          "claimed_by_name": "Priya",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_d3",
+          "asin": "B0PARTY031",
+          "title": "Diwali Decorative String Lights 5m",
+          "price_inr": 349,
+          "category": "decorations",
+          "claimed_by": "U007",
+          "claimed_by_name": "Ravi",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_d4",
+          "asin": "B0PARTY013",
+          "title": "Multicolor Balloon Set Pack of 50",
+          "price_inr": 199,
+          "category": "balloon_set",
+          "claimed_by": "U014",
+          "claimed_by_name": "Neha",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_d5",
+          "asin": "B0PARTY009",
+          "title": "Paper Napkins White Pack of 100",
+          "price_inr": 79,
+          "category": "napkins",
+          "claimed_by": null,
+          "claimed_by_name": null,
+          "status": "unclaimed"
+        },
+        {
+          "item_id": "cgp_d6",
+          "asin": "B0PARTY001",
+          "title": "Disposable Paper Plates Pack of 25",
+          "price_inr": 89,
+          "category": "plates",
+          "claimed_by": null,
+          "claimed_by_name": null,
+          "status": "unclaimed"
+        },
+        {
+          "item_id": "cgp_d7",
+          "asin": "B0PARTY005",
+          "title": "Disposable Paper Cups Pack of 50",
+          "price_inr": 99,
+          "category": "cups",
+          "claimed_by": "U027",
+          "claimed_by_name": "Deepa",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_d8",
+          "asin": "B0PARTY033",
+          "title": "Festive Gift Bags Printed Pack of 12",
+          "price_inr": 179,
+          "category": "return_gifts",
+          "claimed_by": null,
+          "claimed_by_name": null,
+          "status": "unclaimed"
+        }
+      ],
+      "coverage_pct": 63,
+      "community_signal": "87% of Diwali goal pages are completed 2 weeks before the date"
+    },
+    {
+      "goal_id": "goal_potluck_3rdfloor",
+      "title": "3rd Floor Potluck Friday",
+      "occasion_type": "office_potluck",
+      "occasion_emoji": "🍽️",
+      "created_by": "U014",
+      "participants": ["U014", "U015", "U016", "U017", "U018", "U019", "U020", "U021"],
+      "participant_names": ["Kiran", "Sonal", "Dev", "Asha", "Manu", "Tanya", "Rohit", "Leena"],
+      "target_date": "2026-06-27",
+      "budget_total": 2400,
+      "budget_per_person": 300,
+      "items": [
+        {
+          "item_id": "cgp_p1",
+          "asin": "B0PARTY001",
+          "title": "Disposable Paper Plates Pack of 25",
+          "price_inr": 89,
+          "category": "plates",
+          "claimed_by": "U014",
+          "claimed_by_name": "Kiran",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_p2",
+          "asin": "B0PARTY005",
+          "title": "Disposable Paper Cups Pack of 50",
+          "price_inr": 99,
+          "category": "cups",
+          "claimed_by": "U015",
+          "claimed_by_name": "Sonal",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_p3",
+          "asin": "B0PARTY009",
+          "title": "Paper Napkins White Pack of 100",
+          "price_inr": 79,
+          "category": "napkins",
+          "claimed_by": null,
+          "claimed_by_name": null,
+          "status": "unclaimed"
+        },
+        {
+          "item_id": "cgp_p4",
+          "asin": "B0PARTY015",
+          "title": "Disposable Serving Spoons Pack of 20",
+          "price_inr": 59,
+          "category": "disposable_spoons",
+          "claimed_by": null,
+          "claimed_by_name": null,
+          "status": "unclaimed"
+        },
+        {
+          "item_id": "cgp_p5",
+          "asin": "B0HOME007",
+          "title": "Cling Wrap Food Grade 30m Roll",
+          "price_inr": 89,
+          "category": "cling_wrap",
+          "claimed_by": "U016",
+          "claimed_by_name": "Dev",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_p6",
+          "asin": "B0PARTY021",
+          "title": "Paper Tablecloth Disposable 137x274cm",
+          "price_inr": 149,
+          "category": "tablecloth",
+          "claimed_by": null,
+          "claimed_by_name": null,
+          "status": "unclaimed"
+        },
+        {
+          "item_id": "cgp_p7",
+          "asin": "B0PARTY013",
+          "title": "Multicolor Balloon Set Pack of 50",
+          "price_inr": 199,
+          "category": "balloon_set",
+          "claimed_by": null,
+          "claimed_by_name": null,
+          "status": "unclaimed"
+        }
+      ],
+      "coverage_pct": 43,
+      "community_signal": "Office potlucks with pre-assigned items waste 62% less food on average"
+    },
+    {
+      "goal_id": "goal_birthday_arjun",
+      "title": "Arjun's 7th Birthday Bash",
+      "occasion_type": "kids_birthday",
+      "occasion_emoji": "🎂",
+      "created_by": "U003",
+      "participants": ["U003", "U001", "U007"],
+      "participant_names": ["Priya", "Anmol", "Ravi"],
+      "target_date": "2026-07-01",
+      "budget_total": 3600,
+      "budget_per_person": 1200,
+      "items": [
+        {
+          "item_id": "cgp_b1",
+          "asin": "B0PARTY001",
+          "title": "Disposable Paper Plates Pack of 25",
+          "price_inr": 89,
+          "category": "plates",
+          "claimed_by": "U003",
+          "claimed_by_name": "Priya",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_b2",
+          "asin": "B0PARTY005",
+          "title": "Disposable Paper Cups Pack of 50",
+          "price_inr": 99,
+          "category": "cups",
+          "claimed_by": "U003",
+          "claimed_by_name": "Priya",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_b3",
+          "asin": "B0PARTY013",
+          "title": "Multicolor Balloon Set Pack of 50",
+          "price_inr": 199,
+          "category": "balloon_set",
+          "claimed_by": "U001",
+          "claimed_by_name": "Anmol",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_b4",
+          "asin": "B0PARTY019",
+          "title": "Balloon Hand Pump Double Action",
+          "price_inr": 99,
+          "category": "balloon_pump",
+          "claimed_by": "U001",
+          "claimed_by_name": "Anmol",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_b5",
+          "asin": "B0PARTY021",
+          "title": "Birthday Candles Number Set",
+          "price_inr": 49,
+          "category": "candles",
+          "claimed_by": "U007",
+          "claimed_by_name": "Ravi",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_b6",
+          "asin": "B0PARTY009",
+          "title": "Paper Napkins White Pack of 100",
+          "price_inr": 79,
+          "category": "napkins",
+          "claimed_by": "U007",
+          "claimed_by_name": "Ravi",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_b7",
+          "asin": "B0PARTY033",
+          "title": "Return Gift Bags Printed Pack of 12",
+          "price_inr": 179,
+          "category": "return_gifts",
+          "claimed_by": "U003",
+          "claimed_by_name": "Priya",
+          "status": "claimed"
+        },
+        {
+          "item_id": "cgp_b8",
+          "asin": "B0PARTY031",
+          "title": "Happy Birthday Banner Glitter Gold",
+          "price_inr": 99,
+          "category": "banner",
+          "claimed_by": null,
+          "claimed_by_name": null,
+          "status": "unclaimed"
+        },
+        {
+          "item_id": "cgp_b9",
+          "asin": "B0PARTY015",
+          "title": "Disposable Serving Spoons Pack of 20",
+          "price_inr": 59,
+          "category": "disposable_spoons",
+          "claimed_by": null,
+          "claimed_by_name": null,
+          "status": "unclaimed"
+        }
+      ],
+      "coverage_pct": 78,
+      "community_signal": "Kids birthday carts with 3+ people coordinating save an average of ₹480 vs solo orders"
+    }
+  ]
+}

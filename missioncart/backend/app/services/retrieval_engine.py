@@ -304,8 +304,12 @@ class RetrievalEngine:
 
     def _build_category_centroids(self, np):
         """Pre-compute average embedding per category for query-free retrieval."""
+        faiss_size = self.index.ntotal
         category_indices = {}
         for i, product in enumerate(self.catalog):
+            if i >= faiss_size:
+                # Product was added after the FAISS index was built — skip
+                continue
             cat = product.get("category", "")
             if cat not in category_indices:
                 category_indices[cat] = []

@@ -1,0 +1,803 @@
+{
+  "kids_birthday": {
+    "B0PARTY001": {
+      "frequency": 800,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0PARTY005",
+          "count": 800,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY021",
+          "count": 800,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY013",
+          "count": 691,
+          "confidence": 0.864
+        },
+        {
+          "asin": "B0PARTY019",
+          "count": 570,
+          "confidence": 0.713
+        },
+        {
+          "asin": "B0PARTY033",
+          "count": 568,
+          "confidence": 0.71
+        }
+      ]
+    },
+    "B0PARTY005": {
+      "frequency": 800,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0PARTY001",
+          "count": 800,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY021",
+          "count": 800,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY013",
+          "count": 691,
+          "confidence": 0.864
+        },
+        {
+          "asin": "B0PARTY019",
+          "count": 570,
+          "confidence": 0.713
+        },
+        {
+          "asin": "B0PARTY033",
+          "count": 568,
+          "confidence": 0.71
+        }
+      ]
+    },
+    "B0PARTY021": {
+      "frequency": 800,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0PARTY001",
+          "count": 800,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY005",
+          "count": 800,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY013",
+          "count": 691,
+          "confidence": 0.864
+        },
+        {
+          "asin": "B0PARTY019",
+          "count": 570,
+          "confidence": 0.713
+        },
+        {
+          "asin": "B0PARTY033",
+          "count": 568,
+          "confidence": 0.71
+        }
+      ]
+    },
+    "B0PARTY013": {
+      "frequency": 691,
+      "frequency_rate": 0.864,
+      "co_asins": [
+        {
+          "asin": "B0PARTY001",
+          "count": 691,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY005",
+          "count": 691,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY021",
+          "count": 691,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY019",
+          "count": 570,
+          "confidence": 0.825
+        },
+        {
+          "asin": "B0PARTY033",
+          "count": 491,
+          "confidence": 0.711
+        }
+      ]
+    },
+    "B0PARTY019": {
+      "frequency": 570,
+      "frequency_rate": 0.713,
+      "co_asins": [
+        {
+          "asin": "B0PARTY001",
+          "count": 570,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY005",
+          "count": 570,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY021",
+          "count": 570,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY013",
+          "count": 570,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY033",
+          "count": 403,
+          "confidence": 0.707
+        }
+      ]
+    },
+    "B0PARTY033": {
+      "frequency": 568,
+      "frequency_rate": 0.71,
+      "co_asins": [
+        {
+          "asin": "B0PARTY001",
+          "count": 568,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY005",
+          "count": 568,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY021",
+          "count": 568,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY013",
+          "count": 491,
+          "confidence": 0.864
+        },
+        {
+          "asin": "B0PARTY019",
+          "count": 403,
+          "confidence": 0.71
+        }
+      ]
+    }
+  },
+  "home_setup": {
+    "B0HOME001": {
+      "frequency": 480,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0HOME005",
+          "count": 480,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0HOME019",
+          "count": 423,
+          "confidence": 0.881
+        },
+        {
+          "asin": "MC_WATER_PURIFIER_001",
+          "count": 366,
+          "confidence": 0.762
+        },
+        {
+          "asin": "B0HOME021",
+          "count": 348,
+          "confidence": 0.725
+        }
+      ]
+    },
+    "B0HOME005": {
+      "frequency": 480,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0HOME001",
+          "count": 480,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0HOME019",
+          "count": 423,
+          "confidence": 0.881
+        },
+        {
+          "asin": "MC_WATER_PURIFIER_001",
+          "count": 366,
+          "confidence": 0.762
+        },
+        {
+          "asin": "B0HOME021",
+          "count": 348,
+          "confidence": 0.725
+        }
+      ]
+    },
+    "B0HOME019": {
+      "frequency": 423,
+      "frequency_rate": 0.881,
+      "co_asins": [
+        {
+          "asin": "B0HOME001",
+          "count": 423,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0HOME005",
+          "count": 423,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0HOME021",
+          "count": 348,
+          "confidence": 0.823
+        },
+        {
+          "asin": "MC_WATER_PURIFIER_001",
+          "count": 327,
+          "confidence": 0.773
+        }
+      ]
+    },
+    "B0HOME021": {
+      "frequency": 348,
+      "frequency_rate": 0.725,
+      "co_asins": [
+        {
+          "asin": "B0HOME001",
+          "count": 348,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0HOME005",
+          "count": 348,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0HOME019",
+          "count": 348,
+          "confidence": 1.0
+        },
+        {
+          "asin": "MC_WATER_PURIFIER_001",
+          "count": 265,
+          "confidence": 0.761
+        }
+      ]
+    },
+    "MC_WATER_PURIFIER_001": {
+      "frequency": 366,
+      "frequency_rate": 0.762,
+      "co_asins": [
+        {
+          "asin": "B0HOME001",
+          "count": 366,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0HOME005",
+          "count": 366,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0HOME019",
+          "count": 327,
+          "confidence": 0.893
+        },
+        {
+          "asin": "B0HOME021",
+          "count": 265,
+          "confidence": 0.724
+        }
+      ]
+    }
+  },
+  "grihapravesh": {
+    "B0MISC010": {
+      "frequency": 160,
+      "frequency_rate": 2.0,
+      "co_asins": [
+        {
+          "asin": "B0PARTY045",
+          "count": 320,
+          "confidence": 2.0
+        },
+        {
+          "asin": "B0SNCK004",
+          "count": 160,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY033",
+          "count": 160,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "B0SNCK004": {
+      "frequency": 80,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0MISC010",
+          "count": 160,
+          "confidence": 2.0
+        },
+        {
+          "asin": "B0PARTY045",
+          "count": 160,
+          "confidence": 2.0
+        },
+        {
+          "asin": "B0PARTY033",
+          "count": 80,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "B0PARTY045": {
+      "frequency": 160,
+      "frequency_rate": 2.0,
+      "co_asins": [
+        {
+          "asin": "B0MISC010",
+          "count": 320,
+          "confidence": 2.0
+        },
+        {
+          "asin": "B0SNCK004",
+          "count": 160,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY033",
+          "count": 160,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "B0PARTY033": {
+      "frequency": 80,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0MISC010",
+          "count": 160,
+          "confidence": 2.0
+        },
+        {
+          "asin": "B0PARTY045",
+          "count": 160,
+          "confidence": 2.0
+        },
+        {
+          "asin": "B0SNCK004",
+          "count": 80,
+          "confidence": 1.0
+        }
+      ]
+    }
+  },
+  "travel_prep": {
+    "B0TRVL009": {
+      "frequency": 292,
+      "frequency_rate": 0.912,
+      "co_asins": [
+        {
+          "asin": "B0TRVL001",
+          "count": 268,
+          "confidence": 0.918
+        },
+        {
+          "asin": "B0TRVL013",
+          "count": 237,
+          "confidence": 0.812
+        }
+      ]
+    },
+    "B0TRVL013": {
+      "frequency": 259,
+      "frequency_rate": 0.809,
+      "co_asins": [
+        {
+          "asin": "B0TRVL009",
+          "count": 237,
+          "confidence": 0.915
+        },
+        {
+          "asin": "B0TRVL001",
+          "count": 236,
+          "confidence": 0.911
+        }
+      ]
+    },
+    "B0TRVL001": {
+      "frequency": 294,
+      "frequency_rate": 0.919,
+      "co_asins": [
+        {
+          "asin": "B0TRVL009",
+          "count": 268,
+          "confidence": 0.912
+        },
+        {
+          "asin": "B0TRVL013",
+          "count": 236,
+          "confidence": 0.803
+        }
+      ]
+    }
+  },
+  "festival": {
+    "B0HOME039": {
+      "frequency": 240,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0SNCK004",
+          "count": 240,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY045",
+          "count": 240,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0MISC010",
+          "count": 240,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "B0SNCK004": {
+      "frequency": 240,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0HOME039",
+          "count": 240,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY045",
+          "count": 240,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0MISC010",
+          "count": 240,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "B0PARTY045": {
+      "frequency": 240,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0HOME039",
+          "count": 240,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0SNCK004",
+          "count": 240,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0MISC010",
+          "count": 240,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "B0MISC010": {
+      "frequency": 240,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0HOME039",
+          "count": 240,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0SNCK004",
+          "count": 240,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY045",
+          "count": 240,
+          "confidence": 1.0
+        }
+      ]
+    }
+  },
+  "annaprasanam": {
+    "B0PARTY001": {
+      "frequency": 120,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0SNCK004",
+          "count": 120,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0MISC010",
+          "count": 120,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY045",
+          "count": 120,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "B0SNCK004": {
+      "frequency": 120,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0PARTY001",
+          "count": 120,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0MISC010",
+          "count": 120,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY045",
+          "count": 120,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "B0MISC010": {
+      "frequency": 120,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0PARTY001",
+          "count": 120,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0SNCK004",
+          "count": 120,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY045",
+          "count": 120,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "B0PARTY045": {
+      "frequency": 120,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0PARTY001",
+          "count": 120,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0SNCK004",
+          "count": 120,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0MISC010",
+          "count": 120,
+          "confidence": 1.0
+        }
+      ]
+    }
+  },
+  "office_farewell": {
+    "B0SNCK004": {
+      "frequency": 40,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0PARTY001",
+          "count": 40,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY005",
+          "count": 40,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY045",
+          "count": 40,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "B0PARTY001": {
+      "frequency": 40,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0SNCK004",
+          "count": 40,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY005",
+          "count": 40,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY045",
+          "count": 40,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "B0PARTY005": {
+      "frequency": 40,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0SNCK004",
+          "count": 40,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY001",
+          "count": 40,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY045",
+          "count": 40,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "B0PARTY045": {
+      "frequency": 40,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0SNCK004",
+          "count": 40,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY001",
+          "count": 40,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY005",
+          "count": 40,
+          "confidence": 1.0
+        }
+      ]
+    }
+  },
+  "office_event": {
+    "B0PARTY001": {
+      "frequency": 160,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0PARTY005",
+          "count": 160,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY009",
+          "count": 160,
+          "confidence": 1.0
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "count": 160,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "B0PARTY005": {
+      "frequency": 160,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0PARTY001",
+          "count": 160,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY009",
+          "count": 160,
+          "confidence": 1.0
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "count": 160,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "B0PARTY009": {
+      "frequency": 160,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0PARTY001",
+          "count": 160,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY005",
+          "count": 160,
+          "confidence": 1.0
+        },
+        {
+          "asin": "MC_SNACKS_001",
+          "count": 160,
+          "confidence": 1.0
+        }
+      ]
+    },
+    "MC_SNACKS_001": {
+      "frequency": 160,
+      "frequency_rate": 1.0,
+      "co_asins": [
+        {
+          "asin": "B0PARTY001",
+          "count": 160,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY005",
+          "count": 160,
+          "confidence": 1.0
+        },
+        {
+          "asin": "B0PARTY009",
+          "count": 160,
+          "confidence": 1.0
+        }
+      ]
+    }
+  },
+  "category_pairs": []
+}

@@ -1,0 +1,1225 @@
+{
+    "$schema":  "occasion_need_taxonomy_v1",
+    "occasions":  {
+                      "kids_birthday":  {
+                                            "occasion_id":  "kids_birthday",
+                                            "parent_occasion":  "birthday",
+                                            "domain":  "event",
+                                            "source":  "hardcoded",
+                                            "generated_by":  "human_curated",
+                                            "confidence":  1.0,
+                                            "signal_confidence":  0.0,
+                                            "feedback_count":  0,
+                                            "safety_context":  "child_safe",
+                                            "safety_defaults":  [
+                                                                    "child_safe"
+                                                                ],
+                                            "headcount_range":  [
+                                                                    5,
+                                                                    30
+                                                                ],
+                                            "last_updated":  "2026-06-23",
+                                            "needs":  [
+                                                          {
+                                                              "need_id":  "plates",
+                                                              "priority":  "must_have",
+                                                              "qty_formula":  "headcount * 2",
+                                                              "category_candidates":  [
+                                                                                          "plates"
+                                                                                      ],
+                                                              "community_signal":  1.0,
+                                                              "clamp_floor":  0.85,
+                                                              "notes":  "Kids double-plate at parties â€” food plate and cake plate"
+                                                          },
+                                                          {
+                                                              "need_id":  "cups",
+                                                              "priority":  "must_have",
+                                                              "qty_formula":  "headcount * 2",
+                                                              "category_candidates":  [
+                                                                                          "cups",
+                                                                                          "disposable_cups"
+                                                                                      ],
+                                                              "community_signal":  1.0,
+                                                              "clamp_floor":  0.85,
+                                                              "notes":  "Juice and cold drink served separately at kids parties"
+                                                          },
+                                                          {
+                                                              "need_id":  "napkins",
+                                                              "priority":  "must_have",
+                                                              "qty_formula":  "headcount * 5",
+                                                              "category_candidates":  [
+                                                                                          "napkins",
+                                                                                          "tissue_pack"
+                                                                                      ],
+                                                              "community_signal":  0.0,
+                                                              "clamp_floor":  0.8,
+                                                              "notes":  "Kids are messy; 5 napkins per guest is standard at Indian birthday parties"
+                                                          },
+                                                          {
+                                                              "need_id":  "candles",
+                                                              "priority":  "must_have",
+                                                              "qty_formula":  "1",
+                                                              "category_candidates":  [
+                                                                                          "candles"
+                                                                                      ],
+                                                              "community_signal":  1.0,
+                                                              "clamp_floor":  0.9,
+                                                              "notes":  "One candle pack per party â€” age-number candles standard in India"
+                                                          },
+                                                          {
+                                                              "need_id":  "balloon_set",
+                                                              "priority":  "should_have",
+                                                              "qty_formula":  "headcount * 3",
+                                                              "category_candidates":  [
+                                                                                          "balloon_set"
+                                                                                      ],
+                                                              "community_signal":  0.864,
+                                                              "clamp_floor":  0.7,
+                                                              "notes":  "3 balloons per guest minimum; primary visual decor for kids birthday"
+                                                          },
+                                                          {
+                                                              "need_id":  "balloon_pump",
+                                                              "priority":  "should_have",
+                                                              "qty_formula":  "1",
+                                                              "category_candidates":  [
+                                                                                          "balloon_pump"
+                                                                                      ],
+                                                              "community_signal":  0.713,
+                                                              "clamp_floor":  0.7,
+                                                              "notes":  "Required dependency for balloon_set â€” inflating 50+ balloons by hand is not practical"
+                                                          },
+                                                          {
+                                                              "need_id":  "return_gifts",
+                                                              "priority":  "should_have",
+                                                              "qty_formula":  "headcount * 1",
+                                                              "category_candidates":  [
+                                                                                          "return_gifts"
+                                                                                      ],
+                                                              "community_signal":  0.71,
+                                                              "clamp_floor":  0.6,
+                                                              "notes":  "Standard Indian expectation â€” one return gift bag per attending child"
+                                                          },
+                                                          {
+                                                              "need_id":  "banner",
+                                                              "priority":  "should_have",
+                                                              "qty_formula":  "1",
+                                                              "category_candidates":  [
+                                                                                          "banner"
+                                                                                      ],
+                                                              "community_signal":  0.0,
+                                                              "clamp_floor":  0.6,
+                                                              "notes":  "Happy Birthday banner â€” visual focal point for party photos"
+                                                          },
+                                                          {
+                                                              "need_id":  "streamers",
+                                                              "priority":  "optional",
+                                                              "qty_formula":  "2",
+                                                              "category_candidates":  [
+                                                                                          "decoration_streamers"
+                                                                                      ],
+                                                              "community_signal":  0.0,
+                                                              "clamp_floor":  0.0,
+                                                              "notes":  "Additional decor streamers, not functionally required but enhance atmosphere"
+                                                          },
+                                                          {
+                                                              "need_id":  "tablecloth",
+                                                              "priority":  "optional",
+                                                              "qty_formula":  "1",
+                                                              "category_candidates":  [
+                                                                                          "tablecloth"
+                                                                                      ],
+                                                              "community_signal":  0.0,
+                                                              "clamp_floor":  0.0,
+                                                              "notes":  "Protects surface and adds visual cohesion to the food table"
+                                                          }
+                                                      ]
+                                        },
+                      "adult_birthday":  {
+                                             "occasion_id":  "adult_birthday",
+                                             "parent_occasion":  "birthday",
+                                             "domain":  "event",
+                                             "source":  "hardcoded",
+                                             "generated_by":  "human_curated",
+                                             "confidence":  1.0,
+                                             "signal_confidence":  0.0,
+                                             "feedback_count":  0,
+                                             "safety_context":  null,
+                                             "safety_defaults":  [
+
+                                                                 ],
+                                             "headcount_range":  [
+                                                                     5,
+                                                                     30
+                                                                 ],
+                                             "last_updated":  "2026-06-23",
+                                             "needs":  [
+                                                           {
+                                                               "need_id":  "plates",
+                                                               "priority":  "must_have",
+                                                               "qty_formula":  "headcount * 2",
+                                                               "category_candidates":  [
+                                                                                           "plates"
+                                                                                       ],
+                                                               "community_signal":  0.0,
+                                                               "clamp_floor":  0.85,
+                                                               "notes":  "Two rounds of food per guest â€” snacks and main course plates"
+                                                           },
+                                                           {
+                                                               "need_id":  "cups",
+                                                               "priority":  "must_have",
+                                                               "qty_formula":  "headcount * 2",
+                                                               "category_candidates":  [
+                                                                                           "cups",
+                                                                                           "disposable_cups"
+                                                                                       ],
+                                                               "community_signal":  0.0,
+                                                               "clamp_floor":  0.85,
+                                                               "notes":  "Multiple drink rounds at adult parties"
+                                                           },
+                                                           {
+                                                               "need_id":  "napkins",
+                                                               "priority":  "must_have",
+                                                               "qty_formula":  "headcount * 3",
+                                                               "category_candidates":  [
+                                                                                           "napkins",
+                                                                                           "tissue_pack"
+                                                                                       ],
+                                                               "community_signal":  0.0,
+                                                               "clamp_floor":  0.8,
+                                                               "notes":  "3 napkins per guest â€” slightly less than kids but still essential"
+                                                           },
+                                                           {
+                                                               "need_id":  "candles",
+                                                               "priority":  "must_have",
+                                                               "qty_formula":  "1",
+                                                               "category_candidates":  [
+                                                                                           "candles"
+                                                                                       ],
+                                                               "community_signal":  0.0,
+                                                               "clamp_floor":  0.9,
+                                                               "notes":  "Age-number candle set for cake â€” non-negotiable for birthday"
+                                                           },
+                                                           {
+                                                               "need_id":  "balloon_set",
+                                                               "priority":  "should_have",
+                                                               "qty_formula":  "headcount * 2",
+                                                               "category_candidates":  [
+                                                                                           "balloon_set"
+                                                                                       ],
+                                                               "community_signal":  0.0,
+                                                               "clamp_floor":  0.6,
+                                                               "notes":  "Fewer balloons needed for adult parties than kids; 2 per guest sufficient"
+                                                           },
+                                                           {
+                                                               "need_id":  "balloon_pump",
+                                                               "priority":  "should_have",
+                                                               "qty_formula":  "1",
+                                                               "category_candidates":  [
+                                                                                           "balloon_pump"
+                                                                                       ],
+                                                               "community_signal":  0.0,
+                                                               "clamp_floor":  0.6,
+                                                               "notes":  "Required dependency for balloon_set"
+                                                           },
+                                                           {
+                                                               "need_id":  "banner",
+                                                               "priority":  "should_have",
+                                                               "qty_formula":  "1",
+                                                               "category_candidates":  [
+                                                                                           "banner"
+                                                                                       ],
+                                                               "community_signal":  0.0,
+                                                               "clamp_floor":  0.6,
+                                                               "notes":  "Happy Birthday banner â€” centrepiece for photos at adult parties"
+                                                           },
+                                                           {
+                                                               "need_id":  "decorations",
+                                                               "priority":  "should_have",
+                                                               "qty_formula":  "2",
+                                                               "category_candidates":  [
+                                                                                           "decorations",
+                                                                                           "party_supplies"
+                                                                                       ],
+                                                               "community_signal":  0.0,
+                                                               "clamp_floor":  0.5,
+                                                               "notes":  "Honeycomb balls or hanging decor for visual ambience at adult venues"
+                                                           },
+                                                           {
+                                                               "need_id":  "streamers",
+                                                               "priority":  "optional",
+                                                               "qty_formula":  "2",
+                                                               "category_candidates":  [
+                                                                                           "decoration_streamers"
+                                                                                       ],
+                                                               "community_signal":  0.0,
+                                                               "clamp_floor":  0.0,
+                                                               "notes":  "Optional additional decor streamers for adults"
+                                                           },
+                                                           {
+                                                               "need_id":  "tablecloth",
+                                                               "priority":  "optional",
+                                                               "qty_formula":  "1",
+                                                               "category_candidates":  [
+                                                                                           "tablecloth"
+                                                                                       ],
+                                                               "community_signal":  0.0,
+                                                               "clamp_floor":  0.0,
+                                                               "notes":  "Table protection and visual polish for the food/cake table"
+                                                           }
+                                                       ]
+                                         },
+                      "home_setup":  {
+                                         "occasion_id":  "home_setup",
+                                         "parent_occasion":  null,
+                                         "domain":  "home_setup",
+                                         "source":  "hardcoded",
+                                         "generated_by":  "human_curated",
+                                         "confidence":  1.0,
+                                         "signal_confidence":  0.0,
+                                         "feedback_count":  0,
+                                         "safety_context":  null,
+                                         "safety_defaults":  [
+
+                                                             ],
+                                         "headcount_range":  [
+                                                                 1,
+                                                                 4
+                                                             ],
+                                         "last_updated":  "2026-06-23",
+                                         "needs":  [
+                                                       {
+                                                           "need_id":  "mattress",
+                                                           "priority":  "must_have",
+                                                           "qty_formula":  "headcount * 1",
+                                                           "category_candidates":  [
+                                                                                       "mattress"
+                                                                                   ],
+                                                           "community_signal":  1.0,
+                                                           "clamp_floor":  0.9,
+                                                           "notes":  "One mattress per occupant is non-negotiable for any new flat setup"
+                                                       },
+                                                       {
+                                                           "need_id":  "bedsheet",
+                                                           "priority":  "must_have",
+                                                           "qty_formula":  "headcount * 1",
+                                                           "category_candidates":  [
+                                                                                       "bedsheet"
+                                                                                   ],
+                                                           "community_signal":  1.0,
+                                                           "clamp_floor":  0.85,
+                                                           "notes":  "One bedsheet set per person â€” pillow covers included in set"
+                                                       },
+                                                       {
+                                                           "need_id":  "water_purifier",
+                                                           "priority":  "must_have",
+                                                           "qty_formula":  "1",
+                                                           "category_candidates":  [
+                                                                                       "water_purifier",
+                                                                                       "water_purifier_electric"
+                                                                                   ],
+                                                           "community_signal":  0.762,
+                                                           "clamp_floor":  0.85,
+                                                           "notes":  "Essential for safe drinking water in any Indian city â€” municipal water is untreated"
+                                                       },
+                                                       {
+                                                           "need_id":  "induction_cooktop",
+                                                           "priority":  "must_have",
+                                                           "qty_formula":  "1",
+                                                           "category_candidates":  [
+                                                                                       "induction_cooktop"
+                                                                                   ],
+                                                           "community_signal":  0.881,
+                                                           "clamp_floor":  0.8,
+                                                           "notes":  "Standard cooking appliance for hostel/PG setups where gas connection is unavailable"
+                                                       },
+                                                       {
+                                                           "need_id":  "cooking_vessel",
+                                                           "priority":  "should_have",
+                                                           "qty_formula":  "2",
+                                                           "category_candidates":  [
+                                                                                       "induction_compatible_vessel"
+                                                                                   ],
+                                                           "community_signal":  0.725,
+                                                           "clamp_floor":  0.7,
+                                                           "notes":  "Induction-compatible vessels are required with the cooktop â€” regular vessels don\u0027t work"
+                                                       },
+                                                       {
+                                                           "need_id":  "towels",
+                                                           "priority":  "should_have",
+                                                           "qty_formula":  "headcount * 2",
+                                                           "category_candidates":  [
+                                                                                       "towels"
+                                                                                   ],
+                                                           "community_signal":  0.0,
+                                                           "clamp_floor":  0.7,
+                                                           "notes":  "2 towels per person â€” standard Indian household practice"
+                                                       },
+                                                       {
+                                                           "need_id":  "extension_board",
+                                                           "priority":  "should_have",
+                                                           "qty_formula":  "1",
+                                                           "category_candidates":  [
+                                                                                       "extension_board"
+                                                                                   ],
+                                                           "community_signal":  0.0,
+                                                           "clamp_floor":  0.65,
+                                                           "notes":  "Multiple devices need a multi-socket board in any single-room setup"
+                                                       },
+                                                       {
+                                                           "need_id":  "led_bulbs",
+                                                           "priority":  "should_have",
+                                                           "qty_formula":  "4",
+                                                           "category_candidates":  [
+                                                                                       "led_bulb"
+                                                                                   ],
+                                                           "community_signal":  0.0,
+                                                           "clamp_floor":  0.6,
+                                                           "notes":  "Builders often install cheap CFL bulbs â€” upgrade to LED on day 1 for energy savings"
+                                                       },
+                                                       {
+                                                           "need_id":  "pillow",
+                                                           "priority":  "should_have",
+                                                           "qty_formula":  "headcount * 1",
+                                                           "category_candidates":  [
+                                                                                       "pillow"
+                                                                                   ],
+                                                           "community_signal":  0.0,
+                                                           "clamp_floor":  0.65,
+                                                           "notes":  "One pillow per occupant â€” typically not included with mattress purchase"
+                                                       },
+                                                       {
+                                                           "need_id":  "storage_boxes",
+                                                           "priority":  "optional",
+                                                           "qty_formula":  "2",
+                                                           "category_candidates":  [
+                                                                                       "storage_box"
+                                                                                   ],
+                                                           "community_signal":  0.0,
+                                                           "clamp_floor":  0.0,
+                                                           "notes":  "Under-bed or wardrobe shelf storage to organise belongings"
+                                                       },
+                                                       {
+                                                           "need_id":  "trash_bags",
+                                                           "priority":  "optional",
+                                                           "qty_formula":  "1",
+                                                           "category_candidates":  [
+                                                                                       "trash_bags"
+                                                                                   ],
+                                                           "community_signal":  0.0,
+                                                           "clamp_floor":  0.0,
+                                                           "notes":  "Basic waste management from day one of moving in"
+                                                       }
+                                                   ]
+                                     },
+                      "travel_trek":  {
+                                          "occasion_id":  "travel_trek",
+                                          "parent_occasion":  null,
+                                          "domain":  "travel",
+                                          "source":  "hardcoded",
+                                          "generated_by":  "human_curated",
+                                          "confidence":  1.0,
+                                          "signal_confidence":  0.0,
+                                          "feedback_count":  0,
+                                          "safety_context":  null,
+                                          "safety_defaults":  [
+
+                                                              ],
+                                          "headcount_range":  [
+                                                                  1,
+                                                                  10
+                                                              ],
+                                          "last_updated":  "2026-06-23",
+                                          "needs":  [
+                                                        {
+                                                            "need_id":  "backpack",
+                                                            "priority":  "must_have",
+                                                            "qty_formula":  "headcount * 1",
+                                                            "category_candidates":  [
+                                                                                        "backpack"
+                                                                                    ],
+                                                            "community_signal":  0.919,
+                                                            "clamp_floor":  0.9,
+                                                            "notes":  "One backpack per trekker â€” non-negotiable for carrying gear on the trail"
+                                                        },
+                                                        {
+                                                            "need_id":  "water_bottle",
+                                                            "priority":  "must_have",
+                                                            "qty_formula":  "headcount * 2",
+                                                            "category_candidates":  [
+                                                                                        "water_bottle"
+                                                                                    ],
+                                                            "community_signal":  0.912,
+                                                            "clamp_floor":  0.9,
+                                                            "notes":  "2 bottles per person â€” one for water, one for electrolyte drinks during trek"
+                                                        },
+                                                        {
+                                                            "need_id":  "first_aid_kit",
+                                                            "priority":  "must_have",
+                                                            "qty_formula":  "1",
+                                                            "category_candidates":  [
+                                                                                        "first_aid_kit",
+                                                                                        "first_aid"
+                                                                                    ],
+                                                            "community_signal":  0.809,
+                                                            "clamp_floor":  0.85,
+                                                            "notes":  "One first aid kit per group â€” minimum safety requirement for any trail"
+                                                        },
+                                                        {
+                                                            "need_id":  "rain_jacket",
+                                                            "priority":  "must_have",
+                                                            "qty_formula":  "headcount * 1",
+                                                            "category_candidates":  [
+                                                                                        "rain_jacket"
+                                                                                    ],
+                                                            "community_signal":  0.0,
+                                                            "clamp_floor":  0.8,
+                                                            "notes":  "Indian treks frequently pass through monsoon zones â€” rain protection is critical"
+                                                        },
+                                                        {
+                                                            "need_id":  "torch",
+                                                            "priority":  "should_have",
+                                                            "qty_formula":  "headcount / 2",
+                                                            "category_candidates":  [
+                                                                                        "torch"
+                                                                                    ],
+                                                            "community_signal":  0.0,
+                                                            "clamp_floor":  0.7,
+                                                            "notes":  "One torch per 2 people for overnight or dawn treks on unlit trails"
+                                                        },
+                                                        {
+                                                            "need_id":  "trekking_socks",
+                                                            "priority":  "should_have",
+                                                            "qty_formula":  "headcount * 2",
+                                                            "category_candidates":  [
+                                                                                        "trekking_socks"
+                                                                                    ],
+                                                            "community_signal":  0.0,
+                                                            "clamp_floor":  0.65,
+                                                            "notes":  "Anti-blister socks prevent the most common trek injury â€” essential for multi-day hikes"
+                                                        },
+                                                        {
+                                                            "need_id":  "energy_bars",
+                                                            "priority":  "should_have",
+                                                            "qty_formula":  "headcount * 3",
+                                                            "category_candidates":  [
+                                                                                        "energy_bar"
+                                                                                    ],
+                                                            "community_signal":  0.0,
+                                                            "clamp_floor":  0.6,
+                                                            "notes":  "3 energy bars per person per day of trekking â€” quick fuel during strenuous climbs"
+                                                        },
+                                                        {
+                                                            "need_id":  "packing_cubes",
+                                                            "priority":  "optional",
+                                                            "qty_formula":  "headcount * 1",
+                                                            "category_candidates":  [
+                                                                                        "packing_cubes"
+                                                                                    ],
+                                                            "community_signal":  0.0,
+                                                            "clamp_floor":  0.0,
+                                                            "notes":  "Compression cubes keep backpack organised and reduce packing volume"
+                                                        },
+                                                        {
+                                                            "need_id":  "travel_adapter",
+                                                            "priority":  "optional",
+                                                            "qty_formula":  "1",
+                                                            "category_candidates":  [
+                                                                                        "travel_adapter"
+                                                                                    ],
+                                                            "community_signal":  0.0,
+                                                            "clamp_floor":  0.0,
+                                                            "notes":  "Universal adapter for charging devices at trekking base camps or homestays"
+                                                        }
+                                                    ]
+                                      },
+                      "diwali_celebration":  {
+                                                 "occasion_id":  "diwali_celebration",
+                                                 "parent_occasion":  "festival",
+                                                 "domain":  "event",
+                                                 "source":  "hardcoded",
+                                                 "generated_by":  "human_curated",
+                                                 "confidence":  1.0,
+                                                 "signal_confidence":  0.0,
+                                                 "feedback_count":  0,
+                                                 "safety_context":  null,
+                                                 "safety_defaults":  [
+
+                                                                     ],
+                                                 "headcount_range":  [
+                                                                         2,
+                                                                         20
+                                                                     ],
+                                                 "last_updated":  "2026-06-23",
+                                                 "needs":  [
+                                                               {
+                                                                   "need_id":  "lighting",
+                                                                   "priority":  "must_have",
+                                                                   "notes":  "Diyas and LED lights are the centrepiece of Diwali",
+                                                                   "category_candidates":  [
+                                                                                               "diya",
+                                                                                               "fairy_lights",
+                                                                                               "led_lights"
+                                                                                           ]
+                                                               },
+                                                               {
+                                                                   "need_id":  "sweets_gifting",
+                                                                   "priority":  "must_have",
+                                                                   "notes":  "Sweets and gift boxes for family and guests",
+                                                                   "category_candidates":  [
+                                                                                               "sweets_box",
+                                                                                               "gift_hamper"
+                                                                                           ]
+                                                               },
+                                                               {
+                                                                   "need_id":  "home_decoration",
+                                                                   "priority":  "should_have",
+                                                                   "notes":  "Rangoli, torans, and flowers for home",
+                                                                   "category_candidates":  [
+                                                                                               "rangoli",
+                                                                                               "torans",
+                                                                                               "flowers"
+                                                                                           ]
+                                                               },
+                                                               {
+                                                                   "need_id":  "pooja_items",
+                                                                   "priority":  "must_have",
+                                                                   "notes":  "Incense sticks, camphor for puja",
+                                                                   "category_candidates":  [
+                                                                                               "incense",
+                                                                                               "camphor"
+                                                                                           ]
+                                                               },
+                                                               {
+                                                                   "need_id":  "candles_diyas",
+                                                                   "priority":  "optional",
+                                                                   "notes":  "Extra decorative candles or floating diyas",
+                                                                   "category_candidates":  [
+                                                                                               "diya",
+                                                                                               "candles"
+                                                                                           ]
+                                                               }
+                                                           ]
+                                             },
+                      "holi_celebration":  {
+                                               "occasion_id":  "holi_celebration",
+                                               "parent_occasion":  "festival",
+                                               "domain":  "event",
+                                               "source":  "hardcoded",
+                                               "generated_by":  "human_curated",
+                                               "confidence":  1.0,
+                                               "signal_confidence":  0.0,
+                                               "feedback_count":  0,
+                                               "safety_context":  null,
+                                               "safety_defaults":  [
+
+                                                                   ],
+                                               "headcount_range":  [
+                                                                       5,
+                                                                       50
+                                                                   ],
+                                               "last_updated":  "2026-06-23",
+                                               "needs":  [
+                                                             {
+                                                                 "need_id":  "holi_colors",
+                                                                 "priority":  "must_have",
+                                                                 "qty_formula":  "headcount * 1",
+                                                                 "category_candidates":  [
+                                                                                             "holi_colors"
+                                                                                         ],
+                                                                 "community_signal":  0.0,
+                                                                 "clamp_floor":  0.9,
+                                                                 "notes":  "One pack of Holi colors per person is the absolute minimum â€” the core ritual of the festival"
+                                                             },
+                                                             {
+                                                                 "need_id":  "water_balloons",
+                                                                 "priority":  "must_have",
+                                                                 "qty_formula":  "headcount * 20",
+                                                                 "category_candidates":  [
+                                                                                             "balloon_set"
+                                                                                         ],
+                                                                 "community_signal":  0.0,
+                                                                 "clamp_floor":  0.8,
+                                                                 "notes":  "20 water balloons per person is standard for a Holi party â€” balloon_set packs used for this"
+                                                             },
+                                                             {
+                                                                 "need_id":  "napkins",
+                                                                 "priority":  "should_have",
+                                                                 "qty_formula":  "headcount * 5",
+                                                                 "category_candidates":  [
+                                                                                             "napkins",
+                                                                                             "tissue_pack"
+                                                                                         ],
+                                                                 "community_signal":  0.0,
+                                                                 "clamp_floor":  0.65,
+                                                                 "notes":  "Cleaning up after colour play; wipes and napkins in high demand post-Holi"
+                                                             },
+                                                             {
+                                                                 "need_id":  "snacks",
+                                                                 "priority":  "should_have",
+                                                                 "qty_formula":  "headcount * 2",
+                                                                 "category_candidates":  [
+                                                                                             "chips",
+                                                                                             "namkeen",
+                                                                                             "biscuits"
+                                                                                         ],
+                                                                 "community_signal":  0.0,
+                                                                 "clamp_floor":  0.65,
+                                                                 "notes":  "Traditional Holi gatherings include snacking â€” namkeen and chips are the standard"
+                                                             },
+                                                             {
+                                                                 "need_id":  "cups",
+                                                                 "priority":  "should_have",
+                                                                 "qty_formula":  "headcount * 2",
+                                                                 "category_candidates":  [
+                                                                                             "cups",
+                                                                                             "disposable_cups"
+                                                                                         ],
+                                                                 "community_signal":  0.0,
+                                                                 "clamp_floor":  0.6,
+                                                                 "notes":  "Cups for thandai, lassi, or cold drinks served during Holi celebrations"
+                                                             },
+                                                             {
+                                                                 "need_id":  "plates",
+                                                                 "priority":  "optional",
+                                                                 "qty_formula":  "headcount * 1",
+                                                                 "category_candidates":  [
+                                                                                             "plates"
+                                                                                         ],
+                                                                 "community_signal":  0.0,
+                                                                 "clamp_floor":  0.0,
+                                                                 "notes":  "Plates for gujiyas and snacks served at the Holi gathering"
+                                                             },
+                                                             {
+                                                                 "need_id":  "balloon_pump",
+                                                                 "priority":  "optional",
+                                                                 "qty_formula":  "1",
+                                                                 "category_candidates":  [
+                                                                                             "balloon_pump"
+                                                                                         ],
+                                                                 "community_signal":  0.0,
+                                                                 "clamp_floor":  0.0,
+                                                                 "notes":  "Pump to fill water balloons faster for Holi water play"
+                                                             }
+                                                         ]
+                                           },
+                      "office_potluck":  {
+                                             "occasion_id":  "office_potluck",
+                                             "parent_occasion":  "social",
+                                             "domain":  "event",
+                                             "source":  "hardcoded",
+                                             "generated_by":  "human_curated",
+                                             "confidence":  1.0,
+                                             "signal_confidence":  0.0,
+                                             "feedback_count":  0,
+                                             "safety_context":  null,
+                                             "safety_defaults":  [
+
+                                                                 ],
+                                             "headcount_range":  [
+                                                                     10,
+                                                                     50
+                                                                 ],
+                                             "last_updated":  "2026-06-23",
+                                             "needs":  [
+                                                           {
+                                                               "need_id":  "plates",
+                                                               "priority":  "must_have",
+                                                               "qty_formula":  "headcount * 2",
+                                                               "category_candidates":  [
+                                                                                           "plates"
+                                                                                       ],
+                                                               "community_signal":  1.0,
+                                                               "clamp_floor":  0.85,
+                                                               "notes":  "Main course and dessert plating â€” 2 rounds per guest at a potluck"
+                                                           },
+                                                           {
+                                                               "need_id":  "cups",
+                                                               "priority":  "must_have",
+                                                               "qty_formula":  "headcount * 2",
+                                                               "category_candidates":  [
+                                                                                           "cups",
+                                                                                           "disposable_cups"
+                                                                                       ],
+                                                               "community_signal":  1.0,
+                                                               "clamp_floor":  0.85,
+                                                               "notes":  "Tea/coffee and cold drinks served separately at office potlucks"
+                                                           },
+                                                           {
+                                                               "need_id":  "napkins",
+                                                               "priority":  "must_have",
+                                                               "qty_formula":  "headcount * 3",
+                                                               "category_candidates":  [
+                                                                                           "napkins",
+                                                                                           "tissue_pack"
+                                                                                       ],
+                                                               "community_signal":  1.0,
+                                                               "clamp_floor":  0.8,
+                                                               "notes":  "3 napkins per person for a meal setting â€” standard table setting requirement"
+                                                           },
+                                                           {
+                                                               "need_id":  "serving_spoons",
+                                                               "priority":  "should_have",
+                                                               "qty_formula":  "headcount / 5",
+                                                               "category_candidates":  [
+                                                                                           "disposable_spoons"
+                                                                                       ],
+                                                               "community_signal":  0.0,
+                                                               "clamp_floor":  0.7,
+                                                               "notes":  "One serving spoon per dish; estimate 1 dish per 5 people at a potluck"
+                                                           },
+                                                           {
+                                                               "need_id":  "cling_wrap",
+                                                               "priority":  "should_have",
+                                                               "qty_formula":  "1",
+                                                               "category_candidates":  [
+                                                                                           "cling_wrap",
+                                                                                           "aluminium_foil"
+                                                                                       ],
+                                                               "community_signal":  0.0,
+                                                               "clamp_floor":  0.65,
+                                                               "notes":  "Cover dishes brought from home â€” keeps food fresh during commute"
+                                                           },
+                                                           {
+                                                               "need_id":  "tablecloth",
+                                                               "priority":  "optional",
+                                                               "qty_formula":  "2",
+                                                               "category_candidates":  [
+                                                                                           "tablecloth"
+                                                                                       ],
+                                                               "community_signal":  0.0,
+                                                               "clamp_floor":  0.0,
+                                                               "notes":  "Cover office tables for food service â€” adds cleanliness and presentation"
+                                                           },
+                                                           {
+                                                               "need_id":  "paper_bags",
+                                                               "priority":  "optional",
+                                                               "qty_formula":  "headcount * 1",
+                                                               "category_candidates":  [
+                                                                                           "trash_bags"
+                                                                                       ],
+                                                               "community_signal":  0.0,
+                                                               "clamp_floor":  0.0,
+                                                               "notes":  "Leftover food packing for takeaway â€” reduces waste at the end of the event"
+                                                           }
+                                                       ]
+                                         },
+                      "baby_shower":  {
+                                          "occasion_id":  "baby_shower",
+                                          "parent_occasion":  "social",
+                                          "domain":  "event",
+                                          "source":  "hardcoded",
+                                          "generated_by":  "human_curated",
+                                          "confidence":  1.0,
+                                          "signal_confidence":  0.0,
+                                          "feedback_count":  0,
+                                          "safety_context":  "child_safe",
+                                          "safety_defaults":  [
+                                                                  "child_safe"
+                                                              ],
+                                          "headcount_range":  [
+                                                                  10,
+                                                                  40
+                                                              ],
+                                          "last_updated":  "2026-06-23",
+                                          "needs":  [
+                                                        {
+                                                            "need_id":  "plates",
+                                                            "priority":  "must_have",
+                                                            "qty_formula":  "headcount * 2",
+                                                            "category_candidates":  [
+                                                                                        "plates"
+                                                                                    ],
+                                                            "community_signal":  1.0,
+                                                            "clamp_floor":  0.85,
+                                                            "notes":  "Standard serving plates for all guests at the baby shower"
+                                                        },
+                                                        {
+                                                            "need_id":  "cups",
+                                                            "priority":  "must_have",
+                                                            "qty_formula":  "headcount * 2",
+                                                            "category_candidates":  [
+                                                                                        "cups",
+                                                                                        "disposable_cups"
+                                                                                    ],
+                                                            "community_signal":  1.0,
+                                                            "clamp_floor":  0.85,
+                                                            "notes":  "Tea, juice, and cold drinks for guests at the baby shower"
+                                                        },
+                                                        {
+                                                            "need_id":  "napkins",
+                                                            "priority":  "must_have",
+                                                            "qty_formula":  "headcount * 3",
+                                                            "category_candidates":  [
+                                                                                        "napkins",
+                                                                                        "tissue_pack"
+                                                                                    ],
+                                                            "community_signal":  0.0,
+                                                            "clamp_floor":  0.8,
+                                                            "notes":  "Table napkins for guests â€” also useful for new mother during celebration"
+                                                        },
+                                                        {
+                                                            "need_id":  "balloon_set",
+                                                            "priority":  "should_have",
+                                                            "qty_formula":  "headcount * 2",
+                                                            "category_candidates":  [
+                                                                                        "balloon_set"
+                                                                                    ],
+                                                            "community_signal":  0.0,
+                                                            "clamp_floor":  0.7,
+                                                            "notes":  "Pastel balloon decor is standard for baby showers in India"
+                                                        },
+                                                        {
+                                                            "need_id":  "balloon_pump",
+                                                            "priority":  "should_have",
+                                                            "qty_formula":  "1",
+                                                            "category_candidates":  [
+                                                                                        "balloon_pump"
+                                                                                    ],
+                                                            "community_signal":  0.0,
+                                                            "clamp_floor":  0.7,
+                                                            "notes":  "Required dependency for balloon_set inflation"
+                                                        },
+                                                        {
+                                                            "need_id":  "banner",
+                                                            "priority":  "should_have",
+                                                            "qty_formula":  "1",
+                                                            "category_candidates":  [
+                                                                                        "banner"
+                                                                                    ],
+                                                            "community_signal":  0.0,
+                                                            "clamp_floor":  0.65,
+                                                            "notes":  "Baby shower specific banner for photos â€” \u0027It\u0027s a Boy/Girl\u0027 or \u0027Baby Shower\u0027 theme"
+                                                        },
+                                                        {
+                                                            "need_id":  "return_gifts",
+                                                            "priority":  "should_have",
+                                                            "qty_formula":  "headcount * 1",
+                                                            "category_candidates":  [
+                                                                                        "return_gifts"
+                                                                                    ],
+                                                            "community_signal":  0.0,
+                                                            "clamp_floor":  0.65,
+                                                            "notes":  "Small thank-you gift for guests who attended â€” standard at Indian baby showers"
+                                                        },
+                                                        {
+                                                            "need_id":  "tablecloth",
+                                                            "priority":  "optional",
+                                                            "qty_formula":  "2",
+                                                            "category_candidates":  [
+                                                                                        "tablecloth"
+                                                                                    ],
+                                                            "community_signal":  0.0,
+                                                            "clamp_floor":  0.0,
+                                                            "notes":  "Themed tablecloth for gift table and food table"
+                                                        }
+                                                    ]
+                                      },
+                      "monsoon_prep":  {
+                                           "occasion_id":  "monsoon_prep",
+                                           "parent_occasion":  "seasonal",
+                                           "domain":  "event",
+                                           "source":  "hardcoded",
+                                           "generated_by":  "human_curated",
+                                           "confidence":  1.0,
+                                           "signal_confidence":  0.0,
+                                           "feedback_count":  0,
+                                           "safety_context":  null,
+                                           "safety_defaults":  [
+
+                                                               ],
+                                           "headcount_range":  [
+                                                                   1,
+                                                                   6
+                                                               ],
+                                           "last_updated":  "2026-06-23",
+                                           "needs":  [
+                                                         {
+                                                             "need_id":  "umbrella",
+                                                             "priority":  "must_have",
+                                                             "qty_formula":  "headcount * 1",
+                                                             "category_candidates":  [
+                                                                                         "rain_jacket"
+                                                                                     ],
+                                                             "community_signal":  0.0,
+                                                             "clamp_floor":  0.9,
+                                                             "notes":  "Primary rain protection â€” rain jacket serves as umbrella substitute per available catalog"
+                                                         },
+                                                         {
+                                                             "need_id":  "mosquito_repellent",
+                                                             "priority":  "must_have",
+                                                             "qty_formula":  "2",
+                                                             "category_candidates":  [
+                                                                                         "mosquito_repellent"
+                                                                                     ],
+                                                             "community_signal":  0.0,
+                                                             "clamp_floor":  0.85,
+                                                             "notes":  "Monsoon brings peak mosquito season â€” CATALOG GAP: no mosquito_repellent category; closest available items listed"
+                                                         },
+                                                         {
+                                                             "need_id":  "raincoat",
+                                                             "priority":  "should_have",
+                                                             "qty_formula":  "headcount * 1",
+                                                             "category_candidates":  [
+                                                                                         "rain_jacket"
+                                                                                     ],
+                                                             "community_signal":  0.0,
+                                                             "clamp_floor":  0.7,
+                                                             "notes":  "Required for two-wheeler commuters; rain_jacket in catalog covers this need"
+                                                         },
+                                                         {
+                                                             "need_id":  "waterproof_footwear",
+                                                             "priority":  "should_have",
+                                                             "qty_formula":  "headcount * 1",
+                                                             "category_candidates":  [
+                                                                                         "waterproof_footwear",
+                                                                                         "trekking_socks"
+                                                                                     ],
+                                                             "community_signal":  0.0,
+                                                             "clamp_floor":  0.65,
+                                                             "notes":  "CATALOG GAP: no waterproof_footwear category; trekking_socks are the closest moisture-resistant option"
+                                                         },
+                                                         {
+                                                             "need_id":  "antifungal_powder",
+                                                             "priority":  "should_have",
+                                                             "qty_formula":  "headcount * 1",
+                                                             "category_candidates":  [
+                                                                                         "baby_powder",
+                                                                                         "soap"
+                                                                                     ],
+                                                             "community_signal":  0.0,
+                                                             "clamp_floor":  0.65,
+                                                             "notes":  "CATALOG GAP: no antifungal_powder; soap is the available fallback for hygiene during monsoon"
+                                                         },
+                                                         {
+                                                             "need_id":  "first_aid",
+                                                             "priority":  "should_have",
+                                                             "qty_formula":  "1",
+                                                             "category_candidates":  [
+                                                                                         "first_aid",
+                                                                                         "first_aid_kit"
+                                                                                     ],
+                                                             "community_signal":  0.0,
+                                                             "clamp_floor":  0.6,
+                                                             "notes":  "Basic first aid for minor injuries common during wet monsoon conditions"
+                                                         },
+                                                         {
+                                                             "need_id":  "instant_noodles",
+                                                             "priority":  "optional",
+                                                             "qty_formula":  "headcount * 3",
+                                                             "category_candidates":  [
+                                                                                         "instant_noodles",
+                                                                                         "food_beverages"
+                                                                                     ],
+                                                             "community_signal":  0.0,
+                                                             "clamp_floor":  0.0,
+                                                             "notes":  "CATALOG GAP: no instant_noodles; food_beverages category is the closest rainy-day comfort food"
+                                                         }
+                                                     ]
+                                       },
+                      "cricket_viewing_party":  {
+                                                    "occasion_id":  "cricket_viewing_party",
+                                                    "parent_occasion":  "social",
+                                                    "domain":  "event",
+                                                    "source":  "hardcoded",
+                                                    "generated_by":  "human_curated",
+                                                    "confidence":  1.0,
+                                                    "signal_confidence":  0.0,
+                                                    "feedback_count":  0,
+                                                    "safety_context":  null,
+                                                    "safety_defaults":  [
+
+                                                                        ],
+                                                    "headcount_range":  [
+                                                                            5,
+                                                                            30
+                                                                        ],
+                                                    "last_updated":  "2026-06-23",
+                                                    "needs":  [
+                                                                  {
+                                                                      "need_id":  "plates",
+                                                                      "priority":  "must_have",
+                                                                      "qty_formula":  "headcount * 2",
+                                                                      "category_candidates":  [
+                                                                                                  "plates"
+                                                                                              ],
+                                                                      "community_signal":  1.0,
+                                                                      "clamp_floor":  0.85,
+                                                                      "notes":  "Two rounds of snacks expected during a long cricket match"
+                                                                  },
+                                                                  {
+                                                                      "need_id":  "cups",
+                                                                      "priority":  "must_have",
+                                                                      "qty_formula":  "headcount * 3",
+                                                                      "category_candidates":  [
+                                                                                                  "cups",
+                                                                                                  "disposable_cups"
+                                                                                              ],
+                                                                      "community_signal":  1.0,
+                                                                      "clamp_floor":  0.85,
+                                                                      "notes":  "3 drinks per person over a 4-hour cricket match is standard"
+                                                                  },
+                                                                  {
+                                                                      "need_id":  "napkins",
+                                                                      "priority":  "must_have",
+                                                                      "qty_formula":  "headcount * 4",
+                                                                      "category_candidates":  [
+                                                                                                  "napkins",
+                                                                                                  "tissue_pack"
+                                                                                              ],
+                                                                      "community_signal":  1.0,
+                                                                      "clamp_floor":  0.8,
+                                                                      "notes":  "Finger food creates high napkin demand â€” 4 per person for a cricket party"
+                                                                  },
+                                                                  {
+                                                                      "need_id":  "chips_and_snacks",
+                                                                      "priority":  "should_have",
+                                                                      "qty_formula":  "headcount * 2",
+                                                                      "category_candidates":  [
+                                                                                                  "chips",
+                                                                                                  "namkeen"
+                                                                                              ],
+                                                                      "community_signal":  0.0,
+                                                                      "clamp_floor":  0.7,
+                                                                      "notes":  "Salty snacks are the standard cricket-watching food in India â€” chips and namkeen"
+                                                                  },
+                                                                  {
+                                                                      "need_id":  "cold_drinks",
+                                                                      "priority":  "should_have",
+                                                                      "qty_formula":  "headcount * 3",
+                                                                      "category_candidates":  [
+                                                                                                  "soda",
+                                                                                                  "juice",
+                                                                                                  "water"
+                                                                                              ],
+                                                                      "community_signal":  0.0,
+                                                                      "clamp_floor":  0.7,
+                                                                      "notes":  "3 cold drinks per person across a full cricket match â€” soda, juice, and water"
+                                                                  },
+                                                                  {
+                                                                      "need_id":  "streamers",
+                                                                      "priority":  "optional",
+                                                                      "qty_formula":  "2",
+                                                                      "category_candidates":  [
+                                                                                                  "decoration_streamers",
+                                                                                                  "decorations"
+                                                                                              ],
+                                                                      "community_signal":  0.0,
+                                                                      "clamp_floor":  0.0,
+                                                                      "notes":  "Team colour decorations for cricket enthusiasts who want full match-day atmosphere"
+                                                                  },
+                                                                  {
+                                                                      "need_id":  "tablecloth",
+                                                                      "priority":  "optional",
+                                                                      "qty_formula":  "1",
+                                                                      "category_candidates":  [
+                                                                                                  "tablecloth"
+                                                                                              ],
+                                                                      "community_signal":  0.0,
+                                                                      "clamp_floor":  0.0,
+                                                                      "notes":  "Cover the snack table for a cleaner setup during the match"
+                                                                  }
+                                                              ]
+                                                },
+                      "grihapravesh":  {
+                                           "occasion_id":  "grihapravesh",
+                                           "parent_occasion":  "puja",
+                                           "domain":  "event",
+                                           "source":  "hardcoded",
+                                           "generated_by":  "human_curated",
+                                           "confidence":  1.0,
+                                           "signal_confidence":  0.0,
+                                           "feedback_count":  0,
+                                           "safety_context":  null,
+                                           "safety_defaults":  [
+
+                                                               ],
+                                           "headcount_range":  [
+                                                                   10,
+                                                                   100
+                                                               ],
+                                           "last_updated":  "2026-06-23",
+                                           "needs":  [
+                                                         {
+                                                             "need_id":  "puja_kit",
+                                                             "priority":  "must_have",
+                                                             "qty_formula":  "1",
+                                                             "category_candidates":  [
+                                                                                         "puja_kit"
+                                                                                     ],
+                                                             "community_signal":  0.0,
+                                                             "clamp_floor":  0.9,
+                                                             "notes":  "CATALOG GAP: no puja_kit/pooja_kit category; decorations is used as fallback for ritual items"
+                                                         },
+                                                         {
+                                                             "need_id":  "candles",
+                                                             "priority":  "must_have",
+                                                             "qty_formula":  "10",
+                                                             "category_candidates":  [
+                                                                                         "candles",
+                                                                                         "scented_candle"
+                                                                                     ],
+                                                             "community_signal":  0.0,
+                                                             "clamp_floor":  0.9,
+                                                             "notes":  "Minimum 10 candles/diyas for the threshold puja and room blessings at grihapravesh"
+                                                         },
+                                                         {
+                                                             "need_id":  "agarbatti",
+                                                             "priority":  "must_have",
+                                                             "qty_formula":  "3",
+                                                             "category_candidates":  [
+                                                                                         "agarbatti"
+                                                                                     ],
+                                                             "community_signal":  0.0,
+                                                             "clamp_floor":  0.85,
+                                                             "notes":  "Incense is central to all puja rituals â€” available via Amazon Now."
+                                                         },
+                                                         {
+                                                             "need_id":  "decorations",
+                                                             "priority":  "must_have",
+                                                             "qty_formula":  "3",
+                                                             "category_candidates":  [
+                                                                                         "decorations",
+                                                                                         "decoration_streamers"
+                                                                                     ],
+                                                             "community_signal":  1.0,
+                                                             "clamp_floor":  0.7,
+                                                             "notes":  "Torana/garland-style decorations for the main entrance â€” near-universal for grihapravesh"
+                                                         },
+                                                         {
+                                                             "need_id":  "plates",
+                                                             "priority":  "should_have",
+                                                             "qty_formula":  "headcount * 2",
+                                                             "category_candidates":  [
+                                                                                         "plates"
+                                                                                     ],
+                                                             "community_signal":  0.0,
+                                                             "clamp_floor":  0.7,
+                                                             "notes":  "Prasad and meal serving for guests after the grihapravesh puja"
+                                                         },
+                                                         {
+                                                             "need_id":  "cups",
+                                                             "priority":  "should_have",
+                                                             "qty_formula":  "headcount * 2",
+                                                             "category_candidates":  [
+                                                                                         "cups",
+                                                                                         "disposable_cups"
+                                                                                     ],
+                                                             "community_signal":  0.0,
+                                                             "clamp_floor":  0.7,
+                                                             "notes":  "Drinks for guests attending the grihapravesh ceremony"
+                                                         },
+                                                         {
+                                                             "need_id":  "return_gifts",
+                                                             "priority":  "must_have",
+                                                             "qty_formula":  "headcount * 1",
+                                                             "category_candidates":  [
+                                                                                         "return_gifts"
+                                                                                     ],
+                                                             "community_signal":  1.0,
+                                                             "clamp_floor":  0.0,
+                                                             "notes":  "Small gifts for attending guests â€” common but not universal at grihapravesh"
+                                                         }
+                                                     ]
+                                       }
+                  }
+}

@@ -1,3 +1,4 @@
+import asyncio
 import os
 import time
 from app.services.llm.base import BaseLLMClient, LLMResponse
@@ -7,7 +8,7 @@ from app.services.llm.base import BaseLLMClient, LLMResponse
 
 
 class GroqClient(BaseLLMClient):
-    DEFAULT_MODEL = "llama-3.1-8b-instant"
+    DEFAULT_MODEL = "llama-3.3-70b-versatile"
 
     def __init__(self):
         from groq import Groq
@@ -19,15 +20,22 @@ class GroqClient(BaseLLMClient):
         self, system_prompt, user_message, max_tokens=500, temperature=0.1
     ) -> LLMResponse:
         start = time.perf_counter()
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_message},
-            ],
-            max_tokens=max_tokens,
-            temperature=temperature,
-        )
+        try:
+            response = await asyncio.wait_for(
+                asyncio.to_thread(
+                    self.client.chat.completions.create,
+                    model=self.model,
+                    messages=[
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": user_message},
+                    ],
+                    max_tokens=max_tokens,
+                    temperature=temperature,
+                ),
+                timeout=8.0,
+            )
+        except asyncio.TimeoutError:
+            raise TimeoutError("LLM provider GroqClient timed out after 8s")
         latency = (time.perf_counter() - start) * 1000
         return LLMResponse(
             text=response.choices[0].message.content,
@@ -56,20 +64,25 @@ class AnthropicClient(BaseLLMClient):
         self, system_prompt, user_message, max_tokens=500, temperature=0.1
     ) -> LLMResponse:
         start = time.perf_counter()
-        # Use Anthropic prompt caching for system prompt
-        # System prompt is static — perfect for caching
-        response = self.client.messages.create(
-            model=self.model,
-            max_tokens=max_tokens,
-            system=[
-                {
-                    "type": "text",
-                    "text": system_prompt,
-                    "cache_control": {"type": "ephemeral"},
-                }
-            ],
-            messages=[{"role": "user", "content": user_message}],
-        )
+        try:
+            response = await asyncio.wait_for(
+                asyncio.to_thread(
+                    self.client.messages.create,
+                    model=self.model,
+                    max_tokens=max_tokens,
+                    system=[
+                        {
+                            "type": "text",
+                            "text": system_prompt,
+                            "cache_control": {"type": "ephemeral"},
+                        }
+                    ],
+                    messages=[{"role": "user", "content": user_message}],
+                ),
+                timeout=8.0,
+            )
+        except asyncio.TimeoutError:
+            raise TimeoutError("LLM provider AnthropicClient timed out after 8s")
         latency = (time.perf_counter() - start) * 1000
         cache_hit = hasattr(response, "usage") and getattr(
             response.usage, "cache_read_input_tokens", 0
@@ -88,7 +101,7 @@ class AnthropicClient(BaseLLMClient):
 
 
 class BedrockClient(BaseLLMClient):
-    DEFAULT_MODEL = "anthropic.claude-haiku-20240307-v1:0"
+    DEFAULT_MODEL = "anthropic.claude-haiku-4-5-20251001-v1:0"
 
     def __init__(self):
         import boto3
@@ -113,47 +126,22 @@ class BedrockClient(BaseLLMClient):
                 "messages": [{"role": "user", "content": user_message}],
             }
         )
-        response = self.client.invoke_model(modelId=self.model, body=body)
+        try:
+            response = await asyncio.wait_for(
+                asyncio.to_thread(
+                    self.client.invoke_model,
+                    modelId=self.model,
+                    body=body,
+                ),
+                timeout=8.0,
+            )
+        except asyncio.TimeoutError:
+            raise TimeoutError("LLM provider BedrockClient timed out after 8s")
         result = self.json.loads(response["body"].read())
         latency = (time.perf_counter() - start) * 1000
         return LLMResponse(
             text=result["content"][0]["text"],
             provider="bedrock",
             model=self.model,
-            latency_ms=latency,
-        )
-
-
-# ── Gemini ─────────────────────────────────────────────────
-
-
-class GeminiClient(BaseLLMClient):
-    DEFAULT_MODEL = "gemini-1.5-flash"
-
-    def __init__(self):
-        import google.generativeai as genai
-
-        genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
-        self.model = genai.GenerativeModel(
-            os.environ.get("GEMINI_MODEL", self.DEFAULT_MODEL)
-        )
-
-    async def complete(
-        self, system_prompt, user_message, max_tokens=500, temperature=0.1
-    ) -> LLMResponse:
-        start = time.perf_counter()
-        prompt = f"{system_prompt}\n\n{user_message}"
-        response = self.model.generate_content(
-            prompt,
-            generation_config={
-                "max_output_tokens": max_tokens,
-                "temperature": temperature,
-            },
-        )
-        latency = (time.perf_counter() - start) * 1000
-        return LLMResponse(
-            text=response.text,
-            provider="gemini",
-            model=self.DEFAULT_MODEL,
             latency_ms=latency,
         )

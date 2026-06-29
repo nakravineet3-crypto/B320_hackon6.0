@@ -1,0 +1,114 @@
+{
+  "kids_birthday": {
+    "plates": 1.0,
+    "cups": 1.0,
+    "napkins": 0.0,
+    "candles": 1.0,
+    "balloon_set": 0.864,
+    "balloon_pump": 0.713,
+    "return_gifts": 0.71,
+    "banner": 0.0,
+    "streamers": 0.0,
+    "tablecloth": 0.0
+  },
+  "adult_birthday": {
+    "plates": 0.0,
+    "cups": 0.0,
+    "napkins": 0.0,
+    "candles": 0.0,
+    "balloon_set": 0.0,
+    "balloon_pump": 0.0,
+    "banner": 0.0,
+    "decorations": 0.0,
+    "streamers": 0.0,
+    "tablecloth": 0.0
+  },
+  "home_setup": {
+    "mattress": 1.0,
+    "bedsheet": 1.0,
+    "water_purifier": 0.762,
+    "induction_cooktop": 0.881,
+    "cooking_vessel": 0.725,
+    "towels": 0.0,
+    "extension_board": 0.0,
+    "led_bulbs": 0.0,
+    "pillow": 0.0,
+    "storage_boxes": 0.0,
+    "trash_bags": 0.0
+  },
+  "travel_trek": {
+    "backpack": 0.919,
+    "water_bottle": 0.912,
+    "first_aid_kit": 0.809,
+    "rain_jacket": 0.0,
+    "torch": 0.0,
+    "trekking_socks": 0.0,
+    "energy_bars": 0.0,
+    "packing_cubes": 0.0,
+    "travel_adapter": 0.0
+  },
+  "diwali_celebration": {
+    "candles": 0.0,
+    "decorations": 0.0,
+    "napkins": 0.0,
+    "chocolates": 0.0,
+    "festival_lights": 0.0,
+    "plates": 0.0,
+    "cups": 0.0
+  },
+  "holi_celebration": {
+    "holi_colors": 0.0,
+    "water_balloons": 0.0,
+    "napkins": 0.0,
+    "snacks": 0.0,
+    "cups": 0.0,
+    "plates": 0.0,
+    "balloon_pump": 0.0
+  },
+  "office_potluck": {
+    "plates": 1.0,
+    "cups": 1.0,
+    "napkins": 1.0,
+    "serving_spoons": 0.0,
+    "cling_wrap": 0.0,
+    "tablecloth": 0.0,
+    "paper_bags": 0.0
+  },
+  "baby_shower": {
+    "plates": 1.0,
+    "cups": 1.0,
+    "napkins": 0.0,
+    "balloon_set": 0.0,
+    "balloon_pump": 0.0,
+    "banner": 0.0,
+    "return_gifts": 0.0,
+    "tablecloth": 0.0
+  },
+  "monsoon_prep": {
+    "umbrella": 0.0,
+    "mosquito_repellent": 0.0,
+    "raincoat": 0.0,
+    "waterproof_footwear": 0.0,
+    "antifungal_powder": 0.0,
+    "first_aid": 0.0,
+    "instant_noodles": 0.0
+  },
+  "cricket_viewing_party": {
+    "plates": 1.0,
+    "cups": 1.0,
+    "napkins": 1.0,
+    "chips_and_snacks": 0.0,
+    "cold_drinks": 0.0,
+    "streamers": 0.0,
+    "tablecloth": 0.0
+  },
+  "grihapravesh": {
+    "puja_kit": 0.0,
+    "candles": 0.0,
+    "agarbatti": 0.0,
+    "decorations": 1.0,
+    "plates": 0.0,
+    "cups": 0.0,
+    "return_gifts": 1.0
+  }
+}

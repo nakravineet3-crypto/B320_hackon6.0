@@ -1,0 +1,570 @@
+{
+  "office_gym_dad": [
+    {
+      "asin": "B0BL6PR4VW",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B06W575K37",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B077VZ63V6",
+      "lift": 3.846,
+      "adoption_rate": 0.2308,
+      "buyer_count": 3,
+      "adoption_copy": "23% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B0BPBR2P74",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B0BBSF46T9",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B000DZABUQ",
+      "lift": 3.846,
+      "adoption_rate": 0.2308,
+      "buyer_count": 3,
+      "adoption_copy": "23% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B01MY3B4RI",
+      "lift": 3.846,
+      "adoption_rate": 0.3077,
+      "buyer_count": 4,
+      "adoption_copy": "31% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B08ZMHXH3V",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B07ZZFST3Y",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B0859Y3PGL",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B08NSV3N3S",
+      "lift": 3.846,
+      "adoption_rate": 0.2308,
+      "buyer_count": 3,
+      "adoption_copy": "23% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B091FC7CY4",
+      "lift": 3.846,
+      "adoption_rate": 0.2308,
+      "buyer_count": 3,
+      "adoption_copy": "23% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B005MQKIXG",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B07R6B2RKY",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B0B3VQRNGG",
+      "lift": 3.846,
+      "adoption_rate": 0.3846,
+      "buyer_count": 5,
+      "adoption_copy": "38% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B0BVW8G421",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B0BLFFR84V",
+      "lift": 3.846,
+      "adoption_rate": 0.2308,
+      "buyer_count": 3,
+      "adoption_copy": "23% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B0B9C9DQYR",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B0B8RSZNL1",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of Office Gym Dads (n=13)"
+    },
+    {
+      "asin": "B0C4DG57MT",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of Office Gym Dads (n=13)"
+    }
+  ],
+  "jee_student": [
+    {
+      "asin": "B01N5MH57K",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B00CORKM00",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B08NY1NJX4",
+      "lift": 3.846,
+      "adoption_rate": 0.2308,
+      "buyer_count": 3,
+      "adoption_copy": "23% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B00DUDTXAC",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B01MT035NY",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B09BNSZN32",
+      "lift": 3.846,
+      "adoption_rate": 0.3077,
+      "buyer_count": 4,
+      "adoption_copy": "31% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B08R1JY1P4",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B005GX8BOI",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    },
+    {
+      "asin": "147880307X",
+      "lift": 3.846,
+      "adoption_rate": 0.2308,
+      "buyer_count": 3,
+      "adoption_copy": "23% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B075D1KDFN",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B00VX433P6",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B00Q4OL47O",
+      "lift": 3.846,
+      "adoption_rate": 0.2308,
+      "buyer_count": 3,
+      "adoption_copy": "23% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B07RYFFSK6",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B0BLGJ2D27",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B07G8SF9WK",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B07NBNPTHD",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B0BQ21FVXY",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B00I63VWHS",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B0BHKK3R27",
+      "lift": 3.846,
+      "adoption_rate": 0.2308,
+      "buyer_count": 3,
+      "adoption_copy": "23% of JEE Students (n=13)"
+    },
+    {
+      "asin": "B08H5K9WRJ",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of JEE Students (n=13)"
+    }
+  ],
+  "college_girl": [
+    {
+      "asin": "B00OP4T0O4",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B000J3FXIW",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B018EXFUG8",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B01J4DT55Y",
+      "lift": 3.846,
+      "adoption_rate": 0.2308,
+      "buyer_count": 3,
+      "adoption_copy": "23% of College Girls (n=13)"
+    },
+    {
+      "asin": "B079YL15T2",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B07Y1ZNQ9D",
+      "lift": 3.846,
+      "adoption_rate": 0.2308,
+      "buyer_count": 3,
+      "adoption_copy": "23% of College Girls (n=13)"
+    },
+    {
+      "asin": "B005SE0XPU",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B010DSB9PI",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B004SICHTW",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B005Q05JQY",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B07JB27NN9",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B0822Z3RQX",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B017O357TO",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B0B8Y1S8H1",
+      "lift": 3.846,
+      "adoption_rate": 0.3077,
+      "buyer_count": 4,
+      "adoption_copy": "31% of College Girls (n=13)"
+    },
+    {
+      "asin": "B07YDYLZLL",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B0867PZT45",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B009EEQD5Y",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B008D01P0S",
+      "lift": 3.846,
+      "adoption_rate": 0.2308,
+      "buyer_count": 3,
+      "adoption_copy": "23% of College Girls (n=13)"
+    },
+    {
+      "asin": "B0006O12HA",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    },
+    {
+      "asin": "B07NBYYRYN",
+      "lift": 3.846,
+      "adoption_rate": 0.1538,
+      "buyer_count": 2,
+      "adoption_copy": "15% of College Girls (n=13)"
+    }
+  ],
+  "home_chef": [
+    {
+      "asin": "B07RY32Y2C",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B000NSKB94",
+      "lift": 4.545,
+      "adoption_rate": 0.2727,
+      "buyer_count": 3,
+      "adoption_copy": "27% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B09ZPC7LZH",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B0C1SQK9HF",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B096G9M73C",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B07YLN45TG",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B08VH58JXL",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B00ZN7JM7W",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B09NHR5S3V",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B01H3WIWAW",
+      "lift": 4.545,
+      "adoption_rate": 0.2727,
+      "buyer_count": 3,
+      "adoption_copy": "27% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B07S4641DC",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B09L4RH9NC",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B07Q3VFHX8",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B0C4X67BRW",
+      "lift": 4.545,
+      "adoption_rate": 0.2727,
+      "buyer_count": 3,
+      "adoption_copy": "27% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B09L8KBBCM",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B08LV5XVDH",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B005H91YE0",
+      "lift": 4.545,
+      "adoption_rate": 0.2727,
+      "buyer_count": 3,
+      "adoption_copy": "27% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B097R8N5ZV",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B0BP6GW3HM",
+      "lift": 4.545,
+      "adoption_rate": 0.1818,
+      "buyer_count": 2,
+      "adoption_copy": "18% of Home Chefs (n=11)"
+    },
+    {
+      "asin": "B07VQXB25D",
+      "lift": 4.545,
+      "adoption_rate": 0.3636,
+      "buyer_count": 4,
+      "adoption_copy": "36% of Home Chefs (n=11)"
+    }
+  ]
+}

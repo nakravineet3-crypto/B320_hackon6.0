@@ -126,6 +126,13 @@ export default function ReorderConfirmationScreen() {
         >
           <Text style={styles.trackText}>Track Order</Text>
         </TouchableOpacity>
+        <Pressable
+          onPress={() => router.push('/audit-entry')}
+          style={styles.auditLink}
+        >
+          <Ionicons name="shield-checkmark-outline" size={14} color="#007185" />
+          <Text style={styles.auditLinkText}>Audit this order before it ships</Text>
+        </Pressable>
         <TouchableOpacity
           onPress={() => router.replace('/')}
           style={styles.homeButton}
@@ -298,5 +305,17 @@ const styles = StyleSheet.create({
   homeText: {
     color: Colors.textPrimary,
     fontSize: 15,
+  },
+  auditLink: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 12,
+    paddingVertical: 8,
+  },
+  auditLinkText: {
+    color: '#007185',
+    fontSize: 13,
+    marginLeft: 6,
   },
 })

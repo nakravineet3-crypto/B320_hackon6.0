@@ -8,13 +8,37 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from app.routers import mission, catalog, demo, reorder, intelligence, comparison, search, hive
+from app.routers import mission, catalog, demo, reorder, intelligence, comparison, search, hive, community
+from app.routers import occasions
+from app.services.depletion_engine import depletion_engine
+from app.services.profile_engine import profile_engine
 
 
 @asynccontextmanager
 async def lifespan(app):
     # Startup: warm the cache with demo goals
     print("Warming demo cache...")
+    # Load depletion engine prediction data
+    try:
+        await depletion_engine.load()
+        print("DepletionEngine warm complete")
+    except Exception as e:
+        print(f"DepletionEngine warm failed (non-fatal): {e}")
+    # Load profile engine taxonomy and LLM cache
+    try:
+        await profile_engine.load()
+        print("ProfileEngine warm complete")
+    except Exception as e:
+        print(f"ProfileEngine warm failed (non-fatal): {e}")
+    # Warm community engine (loads pre-computed clustering data)
+    try:
+        from app.services.community_engine import community_engine
+        if not community_engine._loaded:
+            community_engine._load()
+        print(f"CommunityEngine warm: {len(community_engine.groups)} groups ready")
+    except Exception as e:
+        print(f"CommunityEngine warm failed (non-fatal): {e}")
+
     try:
         from app.services.mission_parser import parse_mission
         from app.services.domain_router import route_and_decompose
@@ -61,6 +85,8 @@ app.include_router(intelligence.router, prefix="/api/intelligence", tags=["intel
 app.include_router(comparison.router, prefix="/api/comparison", tags=["comparison"])
 app.include_router(search.router, prefix="/api/search", tags=["search"])
 app.include_router(hive.router, prefix="/api/quorum", tags=["quorum"])
+app.include_router(community.router, prefix="/api/community", tags=["community"])
+app.include_router(occasions.router, prefix="/api/occasions", tags=["occasions"])
 
 
 @app.get("/health")

@@ -5,8 +5,10 @@ import { StatusBar } from 'expo-status-bar'
 import { useEffect, useRef, useState } from 'react'
 import {
   FlatList,
+  Image,
   KeyboardAvoidingView,
   Platform,
+  Pressable,
   StyleSheet,
   Text,
   TextInput,
@@ -35,6 +37,7 @@ interface ProductResult {
   sponsored: boolean
   stock_available: boolean
   safety_tags: string[]
+  image_url?: string
   badge?: {
     badge_type: string
     badge_label: string
@@ -78,8 +81,18 @@ export default function SearchScreen() {
   // Badge mode
   const [badgeMode, setBadgeMode] = useState(false)
 
+  const displayResults = badgeMode
+    ? [...results].sort((a, b) => {
+        const aHasBadge = a.badge?.badge_type ? 1 : 0
+        const bHasBadge = b.badge?.badge_type ? 1 : 0
+        return bHasBadge - aHasBadge
+      })
+    : results
+
   // Zustand store
   const setComparisonItems = useMissionStore((s) => s.setComparisonItems)
+  const missionContext = useMissionStore((s) => s.currentBuildResult)
+  const clearMission = useMissionStore((s) => s.clearMission)
 
   // Focus input after screen transition
   useEffect(() => {
@@ -251,11 +264,15 @@ export default function SearchScreen() {
       activeOpacity={0.8}
       style={styles.productRow}
     >
-      <View style={styles.productLetter}>
-        <Text style={styles.productLetterText}>
-          {item.title[0].toUpperCase()}
-        </Text>
-      </View>
+      {item.image_url ? (
+        <Image source={{ uri: item.image_url }} style={styles.productImage} resizeMode="contain" />
+      ) : (
+        <View style={styles.productLetter}>
+          <Text style={styles.productLetterText}>
+            {item.title[0].toUpperCase()}
+          </Text>
+        </View>
+      )}
       <View style={styles.productInfo}>
         <Text style={styles.productTitle} numberOfLines={1}>
           {item.title}
@@ -333,6 +350,19 @@ export default function SearchScreen() {
           </View>
         </View>
 
+        {/* MISSION CONTEXT BANNER */}
+        {missionContext && (
+          <View style={styles.missionContextBanner}>
+            <Ionicons name="flag-outline" size={14} color={Colors.primary} />
+            <Text style={styles.missionContextText}>
+              Shopping for: {(missionContext.goal as string | undefined)?.split(' ').slice(0, 5).join(' ')}...
+            </Text>
+            <Pressable onPress={() => clearMission()} hitSlop={8}>
+              <Ionicons name="close" size={14} color={Colors.textSecondary} />
+            </Pressable>
+          </View>
+        )}
+
         {/* SUGGESTIONS */}
         {!hasSearched && suggestions.length > 0 && (
           <View style={styles.suggestionsSection}>
@@ -386,8 +416,15 @@ export default function SearchScreen() {
               </TouchableOpacity>
             )}
 
+            {badgeMode && (
+              <View style={styles.badgeModeBar}>
+                <Ionicons name="shield-checkmark" size={14} color="#007600" />
+                <Text style={styles.badgeModeText}>Showing most trusted products first</Text>
+              </View>
+            )}
+
             <FlatList
-              data={results}
+              data={displayResults}
               keyExtractor={(item) => item.asin}
               renderItem={renderProduct}
               style={styles.resultsList}
@@ -404,6 +441,14 @@ export default function SearchScreen() {
                   <Text style={styles.emptyHint}>
                     Try a different search term
                   </Text>
+                  {query.trim().length > 0 && (
+                    <TouchableOpacity
+                      style={styles.emptyBuildBtn}
+                      onPress={() => router.push({ pathname: '/cart/building', params: { goal: query } })}
+                    >
+                      <Text style={styles.emptyBuildText}>Build a cart for "{query}" →</Text>
+                    </TouchableOpacity>
+                  )}
                 </View>
               }
               ListHeaderComponent={
@@ -565,6 +610,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#F0F2F2',
   },
+  productImage: {
+    width: 48,
+    height: 48,
+    borderRadius: 4,
+    backgroundColor: '#F3F3F3',
+  },
   productLetter: {
     width: 48,
     height: 48,
@@ -618,6 +669,26 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   emptyHint: { color: Colors.textSecondary, fontSize: 13, marginTop: 4 },
+  emptyBuildBtn: {
+    marginTop: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    backgroundColor: '#FF9900',
+    borderRadius: 4,
+    alignSelf: 'center',
+  },
+  emptyBuildText: { color: '#0F1111', fontSize: 14, fontWeight: '700' },
+  badgeModeBar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    backgroundColor: '#F0FFF0',
+    borderBottomWidth: 1,
+    borderBottomColor: '#C8E6C9',
+    gap: 6,
+  },
+  badgeModeText: { color: '#007600', fontSize: 13, fontWeight: '600' },
   compareChip: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -656,4 +727,17 @@ const styles = StyleSheet.create({
   floatingCartText: { color: '#FFFFFF', fontWeight: '700', fontSize: 14 },
   floatingCartSep: { color: '#FFFFFF', fontSize: 14 },
   floatingCartTotal: { color: '#FFFFFF', fontWeight: '700', fontSize: 14 },
+  missionContextBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFF3E0',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    gap: 6,
+  },
+  missionContextText: {
+    flex: 1,
+    fontSize: 12,
+    color: Colors.textPrimary,
+  },
 })

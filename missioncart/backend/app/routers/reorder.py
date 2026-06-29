@@ -2,10 +2,13 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 from typing import List, Optional
 from uuid import uuid4
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
+import asyncio
 import json
 import random
 from pathlib import Path
+
+from ..services.depletion_engine import depletion_engine, DepletionPrediction
 
 router = APIRouter()
 
@@ -24,175 +27,6 @@ def load_depletion_alerts(user_id: str = "U001") -> list:
     return all_alerts.get(user_id, [])
 
 
-def compute_confidence(alert: dict) -> dict:
-    """Confidence formula:
-    base = purchase_count regularity (more purchases = higher)
-    urgency = 1.0 if days_remaining < 1, 0.8 if < 2, 0.6 if < 3
-    confidence_raw = (regularity * 0.5) + (urgency * 0.5)
-    """
-    purchase_count = alert.get("purchase_count", 2)
-    days_remaining = alert.get("days_remaining", 2)
-
-    # Regularity score
-    if purchase_count >= 8:
-        regularity = 1.0
-    elif purchase_count >= 5:
-        regularity = 0.85
-    elif purchase_count >= 3:
-        regularity = 0.70
-    else:
-        regularity = 0.55
-
-    # Urgency score
-    if days_remaining <= 0:
-        urgency = 1.0
-    elif days_remaining <= 1:
-        urgency = 0.92
-    elif days_remaining <= 2:
-        urgency = 0.80
-    else:
-        urgency = 0.65
-
-    confidence_raw = (regularity * 0.5) + (urgency * 0.5)
-
-    if confidence_raw >= 0.85:
-        label = "High"
-    elif confidence_raw >= 0.70:
-        label = "Medium"
-    else:
-        label = "Estimated"
-
-    return {
-        "score": round(confidence_raw, 2),
-        "percentage": round(confidence_raw * 100),
-        "label": label,
-    }
-
-
-def build_draft_item(alert: dict) -> dict:
-    confidence = compute_confidence(alert)
-
-    # Runtime days_remaining computation
-    avg_interval = alert.get("average_interval_days", 7)
-    last_purchased_str = alert.get("last_purchased", "")
-    if last_purchased_str:
-        try:
-            last_purchased_dt = datetime.strptime(last_purchased_str, "%Y-%m-%d")
-            expected_next = last_purchased_dt + timedelta(days=avg_interval)
-            days_remaining = (expected_next - datetime.now()).days
-            days_remaining = max(0, days_remaining)
-        except Exception:
-            days_remaining = alert.get("days_remaining", 1)
-    else:
-        days_remaining = alert.get("days_remaining", 1)
-
-    days_since = alert.get("days_since_purchase", 6)
-    purchase_count = alert.get("purchase_count", 4)
-    last_purchased = last_purchased_str
-
-    # Urgency copy for card
-    if days_remaining <= 0:
-        urgency_copy = "Runs out today"
-    elif days_remaining <= 1:
-        urgency_copy = "Runs out tomorrow"
-    else:
-        urgency_copy = f"Runs out in {days_remaining:.0f} days"
-
-    # Pattern description
-    if avg_interval <= 4:
-        pattern = f"You buy this every {avg_interval:.0f} days"
-    elif avg_interval <= 8:
-        pattern = f"Weekly purchase · every {avg_interval:.0f} days"
-    elif avg_interval <= 16:
-        pattern = "Bi-weekly purchase"
-    else:
-        pattern = "Monthly purchase"
-
-    # Inventory status
-    now_eligible = alert.get("amazon_now_eligible", True)
-    inventory_status = "in_stock" if now_eligible else "substitute_available"
-
-    qty = alert.get("suggested_quantity", 1)
-    price = alert.get("price", 50)
-
-    return {
-        "item_id": alert.get("asin", str(uuid4())),
-        "asin": alert.get("asin", ""),
-        "title": alert.get("title", ""),
-        "category": alert.get("category", ""),
-        "suggested_quantity": qty,
-        "user_quantity": qty,
-        "unit": alert.get("unit", "pack") if alert.get("unit") else "pack",
-        "price_per_unit": price,
-        "total_cost": round(price * qty, 2),
-        "confidence": confidence,
-        "urgency_copy": urgency_copy,
-        "explanation": {
-            "avg_interval_days": round(avg_interval, 1),
-            "last_purchased": last_purchased,
-            "days_since": days_since,
-            "days_remaining": round(days_remaining, 1),
-            "purchase_count": purchase_count,
-            "pattern": pattern,
-            "days_remaining_formula": (
-                f"Last bought {last_purchased} + "
-                f"{avg_interval:.0f} day avg interval = "
-                f"runs out in {days_remaining} days"
-            ),
-            "availability": (
-                "Available via Amazon Now · Delivers in ~20 min"
-                if now_eligible
-                else "Not on Amazon Now · Standard delivery"
-            ),
-        },
-        "inventory_status": inventory_status,
-        "amazon_now_eligible": now_eligible,
-        "delivery_eta_mins": 20 if now_eligible else 1440,
-    }
-
-
-def build_draft(user_id: str = "U001", removed_ids: list = []) -> dict:
-    alerts = load_depletion_alerts(user_id)
-
-    # Filter urgent items (days_remaining <= 2)
-    # Exclude removed items
-    urgent = [
-        a for a in alerts
-        if a.get("days_remaining", 99) <= 2
-        and a.get("asin") not in removed_ids
-    ]
-
-    # If no urgent, include soon items
-    if not urgent:
-        urgent = [
-            a for a in alerts
-            if a.get("days_remaining", 99) <= 5
-            and a.get("asin") not in removed_ids
-        ][:5]
-
-    items = [build_draft_item(a) for a in urgent]
-    total = sum(i["total_cost"] for i in items)
-    all_now = all(i["amazon_now_eligible"] for i in items)
-
-    return {
-        "draft_id": f"DRAFT-{str(uuid4())[:8].upper()}",
-        "user_id": user_id,
-        "created_at": datetime.utcnow().isoformat(),
-        "expires_at": (datetime.utcnow() + timedelta(hours=24)).isoformat(),
-        "status": "pending",
-        "items": items,
-        "item_count": len(items),
-        "total_price": round(total, 2),
-        "all_amazon_now": all_now,
-        "delivery_estimate_mins": 20 if all_now else 60,
-        "delivery_copy": (
-            "All items via Amazon Now · ~20 min"
-            if all_now
-            else "Some items via standard delivery"
-        ),
-    }
-
-
 # ── ENDPOINTS ─────────────────────────────────────────
 
 
@@ -201,8 +35,171 @@ async def get_reorder_draft(user_id: str = "U001", removed: str = ""):
     """Get today's reorder draft.
     removed: comma-separated ASINs to exclude
     """
-    removed_ids = [r.strip() for r in removed.split(",") if r.strip()]
-    draft = build_draft(user_id, removed_ids)
+    removed_ids = {r.strip() for r in removed.split(",") if r.strip()}
+
+    bundle: list[DepletionPrediction] = depletion_engine.build_morning_bundle(user_id)
+
+    # Filter removed items
+    bundle = [p for p in bundle if p.asin not in removed_ids]
+
+    if not bundle:
+        return {
+            "success": True,
+            "data": {
+                "draft_id": f"DRAFT-{str(uuid4())[:8].upper()}",
+                "user_id": user_id,
+                "created_at": datetime.utcnow().isoformat(),
+                "expires_at": (datetime.utcnow() + timedelta(hours=24)).isoformat(),
+                "status": "pending",
+                "items": [],
+                "item_count": 0,
+                "total_price": 0.0,
+                "all_amazon_now": False,
+                "delivery_estimate_mins": 60,
+                "delivery_copy": "Some items via standard delivery",
+                "simulated_data": True,
+                "prediction_model": "ewma_v1",
+                "coverage_summary": {"items_due_today": 0, "items_due_soon": 0, "model_confidence_avg": 0.0},
+            },
+            "error": None,
+            "request_id": str(uuid4()),
+        }
+
+    # Gather explanations concurrently
+    explanations = await asyncio.gather(
+        *[depletion_engine.explain(pred) for pred in bundle],
+        return_exceptions=True,
+    )
+
+    items = []
+    total_cost = 0.0
+    today = date.today()
+
+    for pred, explain_result in zip(bundle, explanations):
+        if isinstance(explain_result, Exception):
+            urgency_copy_llm = "Running low based on your purchase history."
+            model_used = "template"
+        else:
+            urgency_copy_llm, model_used = explain_result
+
+        # Runtime urgency display copy
+        days_remaining = pred.days_remaining
+        if days_remaining <= 0:
+            urgency_copy = "Runs out today"
+        elif days_remaining <= 1:
+            urgency_copy = "Runs out tomorrow"
+        else:
+            urgency_copy = f"Runs out in {int(days_remaining)} days"
+
+        # Days since last purchase (runtime-computed)
+        try:
+            last_date = date.fromisoformat(pred.last_purchase_date)
+            days_since = (today - last_date).days
+        except (ValueError, TypeError):
+            days_since = int(pred.ewma_interval)
+
+        # Pattern description
+        avg_interval = pred.ewma_interval
+        if avg_interval <= 4:
+            pattern = f"You buy this every {avg_interval:.0f} days"
+        elif avg_interval <= 8:
+            pattern = f"Weekly purchase · every {avg_interval:.0f} days"
+        elif avg_interval <= 16:
+            pattern = "Bi-weekly purchase"
+        else:
+            pattern = "Monthly purchase"
+
+        now_eligible = pred.amazon_now_eligible
+        qty = pred.suggested_quantity
+        price = pred.price_inr
+
+        item = {
+            # ALL ORIGINAL FIELDS (frontend compatibility guaranteed)
+            "item_id": pred.prediction_id,
+            "asin": pred.asin,
+            "title": pred.title,
+            "category": pred.category,
+            "suggested_quantity": qty,
+            "user_quantity": qty,
+            "unit": "pack",
+            "price_per_unit": price,
+            "total_cost": round(price * qty, 2),
+            "confidence": pred.confidence["percentage"],
+            "urgency_copy": urgency_copy,
+            "explanation": {
+                "avg_interval_days": round(pred.ewma_interval, 1),
+                "last_purchased": pred.last_purchase_date,
+                "days_since": days_since,
+                "days_remaining": days_remaining,
+                "purchase_count": pred.confidence.get("n_observations", 0) + 1,
+                "pattern": pattern,
+                "days_remaining_formula": (
+                    f"ewma: {pred.ewma_interval:.1f}d | "
+                    f"cv: {pred.confidence.get('cv', 0):.2f} | "
+                    f"n_obs: {pred.confidence.get('n_observations', 0)} | "
+                    f"remaining: {days_remaining:.1f}d"
+                ),
+                "availability": (
+                    "Available via Amazon Now · Delivers in ~20 min"
+                    if now_eligible
+                    else "Not on Amazon Now · Standard delivery"
+                ),
+                # NEW ADDITIVE FIELDS
+                "ewma_interval": pred.ewma_interval,
+                "seasonal_multiplier": 1.0,
+                "bulk_multiplier": 1.0,
+                "model_notes": [],
+                "anomalies_excluded": 0,
+                "explanation_copy": urgency_copy_llm,
+                "model_used": model_used,
+            },
+            "inventory_status": "in_stock" if now_eligible else "substitute_available",
+            "amazon_now_eligible": now_eligible,
+            "delivery_eta_mins": 20 if now_eligible else 120,
+            # NEW ADDITIVE FIELDS
+            "bundle_score": pred.bundle_score,
+            "reorder_urgency": pred.reorder_urgency,
+            "subcategory": pred.subcategory,
+            "confidence_detail": pred.confidence,
+            "days_remaining": pred.days_remaining,
+            "simulated_data": True,
+        }
+        items.append(item)
+        total_cost += item["total_cost"]
+
+    all_now = all(i["amazon_now_eligible"] for i in items) if items else False
+    items_urgent = sum(1 for p in bundle if p.reorder_urgency == "urgent")
+    items_soon = sum(1 for p in bundle if p.reorder_urgency == "soon")
+    avg_confidence = (
+        sum(p.confidence.get("score", 0) for p in bundle) / len(bundle)
+        if bundle else 0.0
+    )
+
+    draft = {
+        "draft_id": f"DRAFT-{str(uuid4())[:8].upper()}",
+        "user_id": user_id,
+        "created_at": datetime.utcnow().isoformat(),
+        "expires_at": (datetime.utcnow() + timedelta(hours=24)).isoformat(),
+        "status": "pending",
+        "items": items,
+        "item_count": len(items),
+        "total_price": round(total_cost, 2),
+        "all_amazon_now": all_now,
+        "delivery_estimate_mins": 20 if all_now else 60,
+        "delivery_copy": (
+            "All items via Amazon Now · ~20 min"
+            if all_now
+            else "Some items via standard delivery"
+        ),
+        "simulated_data": True,
+        "prediction_model": "ewma_v1",
+        "coverage_summary": {
+            "items_due_today": items_urgent,
+            "items_due_soon": items_soon,
+            "model_confidence_avg": round(avg_confidence, 2),
+        },
+    }
+
     return {
         "success": True,
         "data": draft,

@@ -1,0 +1,352 @@
+{
+  "$schema": "quantity_sufficiency_rules_v1",
+  "generated_at": "2026-06-23",
+  "notes": "Formulas are evaluated at runtime with actual headcount. pack_rounding=true means the engine rounds up to the nearest full pack_size. severity_thresholds are coverage ratios: qty_in_cart / qty_required.",
+  "rules": [
+    {
+      "category": "plates",
+      "occasion_contexts": ["kids_birthday", "adult_birthday", "office_potluck", "baby_shower", "grihapravesh", "cricket_viewing_party", "diwali_celebration", "default"],
+      "formula": "headcount * 2",
+      "minimum": 20,
+      "pack_rounding": true,
+      "severity_thresholds": {
+        "low": 0.90,
+        "medium": 0.70,
+        "high": 0.50,
+        "critical": 0.30
+      },
+      "fix_strategy": "add_packs",
+      "notes": "Kids use 2 plates at parties — food plate and cake plate. Adults also do 2 rounds at sit-down events. 20-piece minimum floors small gatherings."
+    },
+    {
+      "category": "cups",
+      "occasion_contexts": ["kids_birthday", "adult_birthday", "office_potluck", "baby_shower", "cricket_viewing_party", "holi_celebration", "diwali_celebration", "default"],
+      "formula": "headcount * 2",
+      "minimum": 20,
+      "pack_rounding": true,
+      "severity_thresholds": {
+        "low": 0.90,
+        "medium": 0.70,
+        "high": 0.50,
+        "critical": 0.30
+      },
+      "fix_strategy": "add_packs",
+      "notes": "Kids get juice + cold drink separately. Adults get 2 drink rounds minimum. Cricket match bumps this to 3 but the base formula is shared."
+    },
+    {
+      "category": "napkins",
+      "occasion_contexts": ["kids_birthday", "default"],
+      "formula": "headcount * 5",
+      "minimum": 40,
+      "pack_rounding": true,
+      "severity_thresholds": {
+        "low": 0.85,
+        "medium": 0.65,
+        "high": 0.45,
+        "critical": 0.25
+      },
+      "fix_strategy": "add_packs",
+      "notes": "Kids are significantly messier than adults. 5 napkins per child is the observed average at Indian birthday parties. Napkins are cheap so over-ordering is preferred."
+    },
+    {
+      "category": "napkins",
+      "occasion_contexts": ["adult_birthday", "office_potluck", "baby_shower", "grihapravesh", "diwali_celebration", "cricket_viewing_party"],
+      "formula": "headcount * 3",
+      "minimum": 30,
+      "pack_rounding": true,
+      "severity_thresholds": {
+        "low": 0.85,
+        "medium": 0.65,
+        "high": 0.45,
+        "critical": 0.25
+      },
+      "fix_strategy": "add_packs",
+      "notes": "Adults use 3 napkins at a seated meal or party. Potluck setting needs at least 3 for multi-course finger food."
+    },
+    {
+      "category": "balloon_set",
+      "occasion_contexts": ["kids_birthday"],
+      "formula": "headcount * 3",
+      "minimum": 30,
+      "pack_rounding": true,
+      "severity_thresholds": {
+        "low": 0.80,
+        "medium": 0.60,
+        "high": 0.40,
+        "critical": 0.20
+      },
+      "fix_strategy": "add_packs",
+      "notes": "3 balloons per child is the Indian birthday party visual minimum — some pop, some are given away. Most packs are 50-count so a single pack covers up to ~16 kids."
+    },
+    {
+      "category": "balloon_set",
+      "occasion_contexts": ["adult_birthday", "baby_shower", "holi_celebration", "default"],
+      "formula": "headcount * 2",
+      "minimum": 20,
+      "pack_rounding": true,
+      "severity_thresholds": {
+        "low": 0.80,
+        "medium": 0.60,
+        "high": 0.40,
+        "critical": 0.20
+      },
+      "fix_strategy": "add_packs",
+      "notes": "Adult and baby shower events need fewer balloons — 2 per guest is sufficient for visual decor without covering the floor."
+    },
+    {
+      "category": "candles",
+      "occasion_contexts": ["kids_birthday", "adult_birthday"],
+      "formula": "1",
+      "minimum": 1,
+      "pack_rounding": false,
+      "severity_thresholds": {
+        "low": 1.0,
+        "medium": 1.0,
+        "high": 1.0,
+        "critical": 0.0
+      },
+      "fix_strategy": "add_one",
+      "notes": "Birthday candles are binary — you need exactly 1 set (number candle or age-appropriate pack). The severity is binary: present or absent. Missing candles is always a critical flag."
+    },
+    {
+      "category": "candles",
+      "occasion_contexts": ["diwali_celebration", "grihapravesh"],
+      "formula": "headcount * 5",
+      "minimum": 10,
+      "pack_rounding": true,
+      "severity_thresholds": {
+        "low": 0.90,
+        "medium": 0.70,
+        "high": 0.50,
+        "critical": 0.30
+      },
+      "fix_strategy": "add_packs",
+      "notes": "Diwali lighting requires 5+ diyas or candles per household member as the central ritual act. Grihapravesh needs minimum 10 for all room blessings."
+    },
+    {
+      "category": "tablecloth",
+      "occasion_contexts": ["kids_birthday", "adult_birthday", "office_potluck", "baby_shower", "default"],
+      "formula": "1",
+      "minimum": 1,
+      "pack_rounding": false,
+      "severity_thresholds": {
+        "low": 1.0,
+        "medium": 1.0,
+        "high": 0.0,
+        "critical": 0.0
+      },
+      "fix_strategy": "add_one",
+      "notes": "One tablecloth per event is sufficient for the main food table. Flagged as low severity only — it protects the table and reads well in photos but is not functional-critical."
+    },
+    {
+      "category": "decoration_streamers",
+      "occasion_contexts": ["kids_birthday", "adult_birthday", "cricket_viewing_party", "default"],
+      "formula": "2",
+      "minimum": 2,
+      "pack_rounding": false,
+      "severity_thresholds": {
+        "low": 1.0,
+        "medium": 0.5,
+        "high": 0.0,
+        "critical": 0.0
+      },
+      "fix_strategy": "add_one",
+      "notes": "2 streamer rolls minimum for a decorated space — one for the entrance arch, one for the backdrop or ceiling. More than 4 is decorative excess, not a meaningful addition."
+    },
+    {
+      "category": "return_gifts",
+      "occasion_contexts": ["kids_birthday", "baby_shower", "grihapravesh"],
+      "formula": "headcount * 1",
+      "minimum": 10,
+      "pack_rounding": true,
+      "severity_thresholds": {
+        "low": 0.90,
+        "medium": 0.75,
+        "high": 0.55,
+        "critical": 0.30
+      },
+      "fix_strategy": "add_packs",
+      "notes": "One return gift per attending guest is the Indian social expectation. Undercounting is a social embarrassment — running out mid-party means some kids go home empty-handed. Round up aggressively."
+    },
+    {
+      "category": "banner",
+      "occasion_contexts": ["kids_birthday", "adult_birthday", "baby_shower"],
+      "formula": "1",
+      "minimum": 1,
+      "pack_rounding": false,
+      "severity_thresholds": {
+        "low": 1.0,
+        "medium": 1.0,
+        "high": 0.0,
+        "critical": 0.0
+      },
+      "fix_strategy": "add_one",
+      "notes": "One banner is the visual focal point for party photos. Missing banner is flagged low — it is strongly recommended but not functionally critical."
+    },
+    {
+      "category": "water_bottle",
+      "occasion_contexts": ["travel_trek"],
+      "formula": "headcount * 2",
+      "minimum": 2,
+      "pack_rounding": false,
+      "severity_thresholds": {
+        "low": 0.90,
+        "medium": 0.75,
+        "high": 0.50,
+        "critical": 0.25
+      },
+      "fix_strategy": "add_units",
+      "notes": "2 bottles per trekker: one for water, one for electrolyte drink or reserve. Single-bottle setup risks dehydration on long ascents. Low minimum of 2 for solo trekkers."
+    },
+    {
+      "category": "energy_bar",
+      "occasion_contexts": ["travel_trek"],
+      "formula": "headcount * 3",
+      "minimum": 3,
+      "pack_rounding": false,
+      "severity_thresholds": {
+        "low": 0.85,
+        "medium": 0.65,
+        "high": 0.40,
+        "critical": 0.20
+      },
+      "fix_strategy": "add_units",
+      "notes": "3 energy bars per trekker per day of a standard day-trek. Multi-day treks need this multiplied by trip days — formula assumes 1-day default. Under 40% is a safety issue on strenuous trails."
+    },
+    {
+      "category": "first_aid_kit",
+      "occasion_contexts": ["travel_trek", "monsoon_prep"],
+      "formula": "1",
+      "minimum": 1,
+      "pack_rounding": false,
+      "severity_thresholds": {
+        "low": 1.0,
+        "medium": 1.0,
+        "high": 1.0,
+        "critical": 0.0
+      },
+      "fix_strategy": "add_one",
+      "notes": "First aid kit is binary — present or absent. Absence on any trek is always critical. One kit per group is sufficient. If absent, block the trip completion message in the demo."
+    },
+    {
+      "category": "chips",
+      "occasion_contexts": ["cricket_viewing_party", "office_potluck", "holi_celebration", "default"],
+      "formula": "headcount * 1",
+      "minimum": 2,
+      "pack_rounding": false,
+      "severity_thresholds": {
+        "low": 0.85,
+        "medium": 0.60,
+        "high": 0.40,
+        "critical": 0.20
+      },
+      "fix_strategy": "add_units",
+      "notes": "1 bag of chips per person as a baseline snack. For cricket parties, the formula reflects that chips are the primary food — undercounting is noticeable. 2-pack minimum for any gathering."
+    },
+    {
+      "category": "chocolates",
+      "occasion_contexts": ["kids_birthday", "diwali_celebration", "adult_birthday", "default"],
+      "formula": "headcount * 2",
+      "minimum": 10,
+      "pack_rounding": false,
+      "severity_thresholds": {
+        "low": 0.85,
+        "medium": 0.65,
+        "high": 0.40,
+        "critical": 0.20
+      },
+      "fix_strategy": "add_units",
+      "notes": "Chocolates are for distribution and consumption — 2 per guest accounts for 1 to eat and 1 for the gift plate or prasad. Diwali gifting demands at least 2 per visitor."
+    },
+    {
+      "category": "disposable_spoons",
+      "occasion_contexts": ["office_potluck", "adult_birthday", "default"],
+      "formula": "headcount / 5",
+      "minimum": 3,
+      "pack_rounding": true,
+      "severity_thresholds": {
+        "low": 0.85,
+        "medium": 0.65,
+        "high": 0.40,
+        "critical": 0.20
+      },
+      "fix_strategy": "add_units",
+      "notes": "Serving spoons — estimate 1 dish per 5 people at a potluck. These are serving utensils, not personal spoons. Minimum 3 for any multi-dish setup."
+    },
+    {
+      "category": "biscuits",
+      "occasion_contexts": ["office_potluck", "holi_celebration", "cricket_viewing_party", "default"],
+      "formula": "headcount * 1",
+      "minimum": 2,
+      "pack_rounding": false,
+      "severity_thresholds": {
+        "low": 0.85,
+        "medium": 0.65,
+        "high": 0.40,
+        "critical": 0.20
+      },
+      "fix_strategy": "add_units",
+      "notes": "1 biscuit pack per person as a snack supplement. Popular as a light food backup at potlucks. Minimum 2 packs regardless of headcount."
+    },
+    {
+      "category": "juice",
+      "occasion_contexts": ["kids_birthday", "baby_shower", "office_potluck", "default"],
+      "formula": "headcount * 1",
+      "minimum": 3,
+      "pack_rounding": false,
+      "severity_thresholds": {
+        "low": 0.90,
+        "medium": 0.70,
+        "high": 0.45,
+        "critical": 0.25
+      },
+      "fix_strategy": "add_units",
+      "notes": "1 juice carton/bottle per guest. Kids birthday is the strongest signal — juice is the primary cold drink for children. Minimum 3 for any gathering to avoid running out before the cake cutting."
+    },
+    {
+      "category": "soda",
+      "occasion_contexts": ["adult_birthday", "office_potluck", "cricket_viewing_party", "default"],
+      "formula": "headcount * 1",
+      "minimum": 3,
+      "pack_rounding": false,
+      "severity_thresholds": {
+        "low": 0.90,
+        "medium": 0.70,
+        "high": 0.45,
+        "critical": 0.25
+      },
+      "fix_strategy": "add_units",
+      "notes": "1 soda/cold drink per guest for adult events. Cricket watching drives higher consumption — the formula is a conservative baseline. Minimum 3 for any gathering."
+    },
+    {
+      "category": "scented_candle",
+      "occasion_contexts": ["grihapravesh", "diwali_celebration", "baby_shower", "default"],
+      "formula": "2",
+      "minimum": 2,
+      "pack_rounding": false,
+      "severity_thresholds": {
+        "low": 1.0,
+        "medium": 0.5,
+        "high": 0.0,
+        "critical": 0.0
+      },
+      "fix_strategy": "add_one",
+      "notes": "2 scented candles for ambience — one near the entrance, one on the main table. Grihapravesh and Diwali have atmospheric scent as a cultural element. Severity is low — it is a nice-to-have."
+    },
+    {
+      "category": "torch",
+      "occasion_contexts": ["travel_trek"],
+      "formula": "ceil(headcount / 2)",
+      "minimum": 1,
+      "pack_rounding": false,
+      "severity_thresholds": {
+        "low": 0.90,
+        "medium": 0.70,
+        "high": 0.50,
+        "critical": 0.25
+      },
+      "fix_strategy": "add_units",
+      "notes": "1 torch per 2 trekkers for overnight or early-morning treks on unlit trails. At least 1 per group regardless of size. Under 50% coverage on a multi-day trek is a safety issue."
+    }
+  ]
+}

@@ -1,0 +1,342 @@
+{
+  "dairy": {
+    "default_interval_days": 3,
+    "household_size_scaling": 0.7,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 1000,
+    "confidence_at_tier3": 0.4
+  },
+  "laundry": {
+    "default_interval_days": 28,
+    "household_size_scaling": 0.8,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.15,
+      "7": 1.15,
+      "8": 1.15,
+      "9": 1.1,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 2000,
+    "confidence_at_tier3": 0.35
+  },
+  "detergent": {
+    "default_interval_days": 14,
+    "household_size_scaling": 0.8,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.15,
+      "7": 1.15,
+      "8": 1.15,
+      "9": 1.1,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 2000,
+    "confidence_at_tier3": 0.35
+  },
+  "personal_care": {
+    "default_interval_days": 21,
+    "household_size_scaling": 0.5,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 400,
+    "confidence_at_tier3": 0.35
+  },
+  "shampoo": {
+    "default_interval_days": 21,
+    "household_size_scaling": 0.5,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 400,
+    "confidence_at_tier3": 0.35
+  },
+  "food_beverages": {
+    "default_interval_days": 7,
+    "household_size_scaling": 0.8,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 1000,
+    "confidence_at_tier3": 0.4
+  },
+  "grocery_staples": {
+    "default_interval_days": 7,
+    "household_size_scaling": 0.8,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 1000,
+    "confidence_at_tier3": 0.4
+  },
+  "household": {
+    "default_interval_days": 30,
+    "household_size_scaling": 0.6,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 1000,
+    "confidence_at_tier3": 0.35
+  },
+  "pet_care": {
+    "default_interval_days": 21,
+    "household_size_scaling": 1.0,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 3000,
+    "confidence_at_tier3": 0.35
+  },
+  "bakery": {
+    "default_interval_days": 4,
+    "household_size_scaling": 0.7,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 400,
+    "confidence_at_tier3": 0.4
+  },
+  "biscuits": {
+    "default_interval_days": 7,
+    "household_size_scaling": 0.7,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 800,
+    "confidence_at_tier3": 0.4
+  },
+  "cooking_oil": {
+    "default_interval_days": 21,
+    "household_size_scaling": 0.8,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 1000,
+    "confidence_at_tier3": 0.38
+  },
+  "snacks": {
+    "default_interval_days": 7,
+    "household_size_scaling": 0.6,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 500,
+    "confidence_at_tier3": 0.35
+  },
+  "beverages": {
+    "default_interval_days": 10,
+    "household_size_scaling": 0.7,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 500,
+    "confidence_at_tier3": 0.38
+  },
+  "instant_food": {
+    "default_interval_days": 10,
+    "household_size_scaling": 0.7,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 500,
+    "confidence_at_tier3": 0.35
+  },
+  "packaged_food": {
+    "default_interval_days": 10,
+    "household_size_scaling": 0.7,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 500,
+    "confidence_at_tier3": 0.35
+  },
+  "default": {
+    "default_interval_days": 14,
+    "household_size_scaling": 0.7,
+    "seasonal_indices": {
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0,
+      "10": 1.0,
+      "11": 1.0,
+      "12": 1.0
+    },
+    "typical_pack_size_g": 500,
+    "confidence_at_tier3": 0.35
+  }
+}

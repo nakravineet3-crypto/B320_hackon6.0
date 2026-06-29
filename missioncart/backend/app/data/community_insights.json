@@ -1,0 +1,872 @@
+{
+  "clusters": {
+    "grp_urban_planners": {
+      "group_id": "grp_urban_planners",
+      "top_categories": [
+        {
+          "category": "occasion_extras",
+          "total_spend": 2751.0
+        },
+        {
+          "category": "laundry",
+          "total_spend": 2022.0
+        },
+        {
+          "category": "vegetables",
+          "total_spend": 1193.0
+        },
+        {
+          "category": "hair_care",
+          "total_spend": 1185.0
+        },
+        {
+          "category": "holi_supplies",
+          "total_spend": 984.0
+        },
+        {
+          "category": "personal_care",
+          "total_spend": 564.0
+        }
+      ],
+      "top_occasion": "kids_birthday",
+      "member_count": 1
+    },
+    "grp_daily_essentials": {
+      "group_id": "grp_daily_essentials",
+      "top_categories": [
+        {
+          "category": "dairy",
+          "total_spend": 9746.0
+        },
+        {
+          "category": "occasion_extras",
+          "total_spend": 9149.0
+        },
+        {
+          "category": "laundry",
+          "total_spend": 2834.0
+        },
+        {
+          "category": "detergent",
+          "total_spend": 2605.0
+        },
+        {
+          "category": "pulses",
+          "total_spend": 2471.0
+        },
+        {
+          "category": "biscuits",
+          "total_spend": 2374.0
+        }
+      ],
+      "top_occasion": "kids_birthday",
+      "member_count": 2
+    },
+    "grp_home_builders": {
+      "group_id": "grp_home_builders",
+      "top_categories": [
+        {
+          "category": "bakery",
+          "total_spend": 10565.0
+        },
+        {
+          "category": "occasion_extras",
+          "total_spend": 9666.0
+        },
+        {
+          "category": "biscuits",
+          "total_spend": 7870.0
+        },
+        {
+          "category": "pulses",
+          "total_spend": 6206.0
+        },
+        {
+          "category": "laundry",
+          "total_spend": 5938.0
+        },
+        {
+          "category": "rice",
+          "total_spend": 5541.0
+        }
+      ],
+      "top_occasion": "holi",
+      "member_count": 4
+    },
+    "grp_family_first": {
+      "group_id": "grp_family_first",
+      "top_categories": [
+        {
+          "category": "dairy",
+          "total_spend": 121751.0
+        },
+        {
+          "category": "occasion_extras",
+          "total_spend": 52865.0
+        },
+        {
+          "category": "cooking_oil",
+          "total_spend": 33794.0
+        },
+        {
+          "category": "pulses",
+          "total_spend": 30928.0
+        },
+        {
+          "category": "laundry",
+          "total_spend": 28470.0
+        },
+        {
+          "category": "bakery",
+          "total_spend": 27358.0
+        }
+      ],
+      "top_occasion": "holi",
+      "member_count": 32
+    },
+    "grp_weekend_adventurers": {
+      "group_id": "grp_weekend_adventurers",
+      "top_categories": [
+        {
+          "category": "dairy",
+          "total_spend": 46015.0
+        },
+        {
+          "category": "rice",
+          "total_spend": 9070.0
+        },
+        {
+          "category": "detergent",
+          "total_spend": 8832.0
+        },
+        {
+          "category": "occasion_extras",
+          "total_spend": 7883.0
+        },
+        {
+          "category": "cooking_oil",
+          "total_spend": 6954.0
+        },
+        {
+          "category": "laundry",
+          "total_spend": 6014.0
+        }
+      ],
+      "top_occasion": "holi",
+      "member_count": 8
+    },
+    "grp_celebration_circle": {
+      "group_id": "grp_celebration_circle",
+      "top_categories": [
+        {
+          "category": "dairy",
+          "total_spend": 29573.0
+        },
+        {
+          "category": "occasion_extras",
+          "total_spend": 10656.0
+        },
+        {
+          "category": "biscuits",
+          "total_spend": 8249.0
+        },
+        {
+          "category": "pulses",
+          "total_spend": 7520.0
+        },
+        {
+          "category": "cooking_oil",
+          "total_spend": 7350.0
+        },
+        {
+          "category": "bakery",
+          "total_spend": 6750.0
+        }
+      ],
+      "top_occasion": "festival",
+      "member_count": 3
+    }
+  },
+  "occasions": {
+    "kids_birthday": {
+      "occasion_type": "kids_birthday",
+      "sessions_analyzed": 800,
+      "success_rate": 0.961,
+      "avg_spend": 3345.9,
+      "avg_headcount": 16.8,
+      "avg_budget": 4260.64,
+      "avg_rating": 4.46,
+      "top_items": [
+        {
+          "category": "plates",
+          "adoption_rate": 1.0,
+          "asin": "B0PARTY001",
+          "title": "Disposable Paper Plates White (Pack of 25)",
+          "price": 89
+        },
+        {
+          "category": "cups",
+          "adoption_rate": 1.0,
+          "asin": "B0PARTY005",
+          "title": "Disposable Paper Cups White (Pack of 50)",
+          "price": 99
+        },
+        {
+          "category": "candles",
+          "adoption_rate": 1.0,
+          "asin": "B0PARTY021",
+          "title": "Birthday Candles Number Set (0-9)",
+          "price": 49
+        },
+        {
+          "category": "balloon_set",
+          "adoption_rate": 0.864,
+          "asin": "B0PARTY013",
+          "title": "Multicolor Balloon Set (Pack of 50)",
+          "price": 199
+        },
+        {
+          "category": "balloon_pump",
+          "adoption_rate": 0.713,
+          "asin": "B0PARTY019",
+          "title": "Balloon Hand Pump Double Action",
+          "price": 99
+        },
+        {
+          "category": "return_gifts",
+          "adoption_rate": 0.71,
+          "asin": "B0PARTY033",
+          "title": "Return Gift Bags Printed (Pack of 12)",
+          "price": 179
+        }
+      ],
+      "top_city": "Kolkata",
+      "city_distribution": {
+        "Kolkata": 80,
+        "Pune": 56,
+        "Indore": 70,
+        "Hyderabad": 58,
+        "Jaipur": 60,
+        "Kochi": 69,
+        "Lucknow": 67,
+        "Bangalore": 66,
+        "Chennai": 64,
+        "Ahmedabad": 78,
+        "Delhi": 66,
+        "Mumbai": 66
+      },
+      "coverage_gaps": [
+        {
+          "category": "return_gifts",
+          "coverage_rate": 0.71,
+          "miss_rate": 0.29,
+          "sessions_with": 568,
+          "sessions_total": 800,
+          "sample_asin": "B0PARTY033",
+          "sample_title": "Return Gift Bags Printed (Pack of 12)"
+        },
+        {
+          "category": "balloon_pump",
+          "coverage_rate": 0.713,
+          "miss_rate": 0.287,
+          "sessions_with": 570,
+          "sessions_total": 800,
+          "sample_asin": "B0PARTY019",
+          "sample_title": "Balloon Hand Pump Double Action"
+        }
+      ]
+    },
+    "home_setup": {
+      "occasion_type": "home_setup",
+      "sessions_analyzed": 480,
+      "success_rate": 0.946,
+      "avg_spend": 11099.24,
+      "avg_headcount": 2.0,
+      "avg_budget": 13995.57,
+      "avg_rating": 4.48,
+      "top_items": [
+        {
+          "category": "mattress",
+          "adoption_rate": 1.0,
+          "asin": "B0HOME001",
+          "title": "Sleepwell Ortho Mattress Single 72x36",
+          "price": 6499
+        },
+        {
+          "category": "bedsheet",
+          "adoption_rate": 1.0,
+          "asin": "B0HOME005",
+          "title": "Cotton Bedsheet Double with Pillow Covers",
+          "price": 799
+        },
+        {
+          "category": "induction_cooktop",
+          "adoption_rate": 0.881,
+          "asin": "B0HOME019",
+          "title": "Prestige Induction Cooktop 1600W",
+          "price": 1999
+        },
+        {
+          "category": "water_purifier",
+          "adoption_rate": 0.762,
+          "asin": "MC_PURIFIER_001",
+          "title": "Kent Grand Plus 8L RO+UV Water Purifier",
+          "price": 6999
+        },
+        {
+          "category": "induction_compatible_vessel",
+          "adoption_rate": 0.725,
+          "asin": "B0HOME021",
+          "title": "Hawkins Stainless Steel Pressure Cooker 3L",
+          "price": 2199
+        }
+      ],
+      "top_city": "Indore",
+      "city_distribution": {
+        "Hyderabad": 30,
+        "Delhi": 45,
+        "Kochi": 45,
+        "Kolkata": 45,
+        "Bangalore": 39,
+        "Indore": 49,
+        "Lucknow": 40,
+        "Pune": 37,
+        "Chennai": 38,
+        "Ahmedabad": 36,
+        "Jaipur": 29,
+        "Mumbai": 47
+      },
+      "coverage_gaps": [
+        {
+          "category": "induction_compatible_vessel",
+          "coverage_rate": 0.725,
+          "miss_rate": 0.275,
+          "sessions_with": 348,
+          "sessions_total": 480,
+          "sample_asin": "B0HOME021",
+          "sample_title": "Hawkins Stainless Steel Pressure Cooker 3L"
+        },
+        {
+          "category": "water_purifier",
+          "coverage_rate": 0.762,
+          "miss_rate": 0.238,
+          "sessions_with": 366,
+          "sessions_total": 480,
+          "sample_asin": "MC_PURIFIER_001",
+          "sample_title": "Kent Grand Plus 8L RO+UV Water Purifier"
+        }
+      ]
+    },
+    "grihapravesh": {
+      "occasion_type": "grihapravesh",
+      "sessions_analyzed": 80,
+      "success_rate": 0.912,
+      "avg_spend": 11208.4,
+      "avg_headcount": 28.8,
+      "avg_budget": 14435.11,
+      "avg_rating": 4.55,
+      "top_items": [
+        {
+          "category": "pooja_items",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "pooja_items",
+          "price": null
+        },
+        {
+          "category": "sweets",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "sweets",
+          "price": null
+        },
+        {
+          "category": "flowers",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "flowers",
+          "price": null
+        },
+        {
+          "category": "diyas",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "diyas",
+          "price": null
+        },
+        {
+          "category": "decorations",
+          "adoption_rate": 1.0,
+          "asin": "B0PARTY045",
+          "title": "Paper Honeycomb Balls Decoration (Pack of 6)",
+          "price": 249
+        },
+        {
+          "category": "return_gifts",
+          "adoption_rate": 1.0,
+          "asin": "B0PARTY033",
+          "title": "Return Gift Bags Printed (Pack of 12)",
+          "price": 179
+        }
+      ],
+      "top_city": "Chennai",
+      "city_distribution": {
+        "Ahmedabad": 9,
+        "Kolkata": 6,
+        "Chennai": 11,
+        "Mumbai": 8,
+        "Kochi": 8,
+        "Pune": 9,
+        "Indore": 9,
+        "Bangalore": 6,
+        "Jaipur": 4,
+        "Delhi": 4,
+        "Lucknow": 3,
+        "Hyderabad": 3
+      },
+      "coverage_gaps": []
+    },
+    "travel_prep": {
+      "occasion_type": "travel_prep",
+      "sessions_analyzed": 320,
+      "success_rate": 0.944,
+      "avg_spend": 3889.83,
+      "avg_headcount": 4.0,
+      "avg_budget": 4912.87,
+      "avg_rating": 4.4,
+      "top_items": [
+        {
+          "category": "backpack",
+          "adoption_rate": 0.919,
+          "asin": "B0TRVL001",
+          "title": "Wildcraft Hiking Backpack 45L",
+          "price": 2499
+        },
+        {
+          "category": "water_bottle",
+          "adoption_rate": 0.912,
+          "asin": "B0TRVL009",
+          "title": "Stainless Steel Water Bottle 1L",
+          "price": 499
+        },
+        {
+          "category": "first_aid",
+          "adoption_rate": 0.809,
+          "asin": "MC_FIRSTAID_001",
+          "title": "Dr Trust First Aid Kit 25 Components",
+          "price": 299
+        }
+      ],
+      "top_city": "Chennai",
+      "city_distribution": {
+        "Hyderabad": 26,
+        "Bangalore": 28,
+        "Lucknow": 28,
+        "Chennai": 32,
+        "Jaipur": 20,
+        "Kochi": 27,
+        "Mumbai": 32,
+        "Delhi": 24,
+        "Pune": 29,
+        "Ahmedabad": 20,
+        "Indore": 26,
+        "Kolkata": 28
+      },
+      "coverage_gaps": []
+    },
+    "festival": {
+      "occasion_type": "festival",
+      "sessions_analyzed": 240,
+      "success_rate": 0.95,
+      "avg_spend": 3132.28,
+      "avg_headcount": 9.2,
+      "avg_budget": 3991.0,
+      "avg_rating": 4.38,
+      "top_items": [
+        {
+          "category": "festival_lights",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "festival_lights",
+          "price": null
+        },
+        {
+          "category": "sweets",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "sweets",
+          "price": null
+        },
+        {
+          "category": "decoration",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "decoration",
+          "price": null
+        },
+        {
+          "category": "incense",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "incense",
+          "price": null
+        }
+      ],
+      "top_city": "Chennai",
+      "city_distribution": {
+        "Hyderabad": 22,
+        "Delhi": 22,
+        "Lucknow": 20,
+        "Kochi": 19,
+        "Indore": 24,
+        "Chennai": 27,
+        "Kolkata": 18,
+        "Mumbai": 20,
+        "Bangalore": 21,
+        "Jaipur": 14,
+        "Pune": 14,
+        "Ahmedabad": 19
+      },
+      "coverage_gaps": []
+    },
+    "annaprasanam": {
+      "occasion_type": "annaprasanam",
+      "sessions_analyzed": 120,
+      "success_rate": 0.933,
+      "avg_spend": 7770.83,
+      "avg_headcount": 40.7,
+      "avg_budget": 9703.08,
+      "avg_rating": 4.39,
+      "top_items": [
+        {
+          "category": "banana_leaf",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "banana_leaf",
+          "price": null
+        },
+        {
+          "category": "sweets",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "sweets",
+          "price": null
+        },
+        {
+          "category": "pooja_items",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "pooja_items",
+          "price": null
+        },
+        {
+          "category": "flowers",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "flowers",
+          "price": null
+        }
+      ],
+      "top_city": "Chennai",
+      "city_distribution": {
+        "Kochi": 25,
+        "Hyderabad": 29,
+        "Chennai": 36,
+        "Bangalore": 30
+      },
+      "coverage_gaps": []
+    },
+    "office_farewell": {
+      "occasion_type": "office_farewell",
+      "sessions_analyzed": 40,
+      "success_rate": 0.925,
+      "avg_spend": 2166.65,
+      "avg_headcount": 20.0,
+      "avg_budget": 2638.45,
+      "avg_rating": 4.47,
+      "top_items": [
+        {
+          "category": "cake",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "cake",
+          "price": null
+        },
+        {
+          "category": "plates",
+          "adoption_rate": 1.0,
+          "asin": "B0PARTY001",
+          "title": "Disposable Paper Plates White (Pack of 25)",
+          "price": 89
+        },
+        {
+          "category": "cups",
+          "adoption_rate": 1.0,
+          "asin": "B0PARTY005",
+          "title": "Disposable Paper Cups White (Pack of 50)",
+          "price": 99
+        },
+        {
+          "category": "decoration",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "decoration",
+          "price": null
+        }
+      ],
+      "top_city": "Kochi",
+      "city_distribution": {
+        "Jaipur": 4,
+        "Kochi": 6,
+        "Pune": 4,
+        "Chennai": 4,
+        "Kolkata": 4,
+        "Delhi": 4,
+        "Mumbai": 3,
+        "Hyderabad": 4,
+        "Ahmedabad": 4,
+        "Lucknow": 2,
+        "Bangalore": 1
+      },
+      "coverage_gaps": []
+    },
+    "office_event": {
+      "occasion_type": "office_event",
+      "sessions_analyzed": 160,
+      "success_rate": 0.975,
+      "avg_spend": 1614.36,
+      "avg_headcount": 19.4,
+      "avg_budget": 2009.71,
+      "avg_rating": 4.54,
+      "top_items": [
+        {
+          "category": "plates",
+          "adoption_rate": 1.0,
+          "asin": "B0PARTY001",
+          "title": "Disposable Paper Plates White (Pack of 25)",
+          "price": 89
+        },
+        {
+          "category": "cups",
+          "adoption_rate": 1.0,
+          "asin": "B0PARTY005",
+          "title": "Disposable Paper Cups White (Pack of 50)",
+          "price": 99
+        },
+        {
+          "category": "napkins",
+          "adoption_rate": 1.0,
+          "asin": "B0PARTY009",
+          "title": "Paper Napkins White (Pack of 100)",
+          "price": 79
+        },
+        {
+          "category": "snacks",
+          "adoption_rate": 1.0,
+          "asin": null,
+          "title": "snacks",
+          "price": null
+        }
+      ],
+      "top_city": "Kolkata",
+      "city_distribution": {
+        "Lucknow": 13,
+        "Pune": 10,
+        "Ahmedabad": 14,
+        "Chennai": 15,
+        "Mumbai": 16,
+        "Kochi": 14,
+        "Jaipur": 13,
+        "Delhi": 13,
+        "Indore": 12,
+        "Kolkata": 19,
+        "Hyderabad": 12,
+        "Bangalore": 9
+      },
+      "coverage_gaps": []
+    }
+  },
+  "city_trends": {
+    "Kolkata": {
+      "top_occasion": "kids_birthday",
+      "occasion_counts": {
+        "kids_birthday": 80,
+        "home_setup": 45,
+        "travel_prep": 28,
+        "office_event": 19,
+        "festival": 18
+      },
+      "total_active": 200
+    },
+    "Hyderabad": {
+      "top_occasion": "kids_birthday",
+      "occasion_counts": {
+        "kids_birthday": 58,
+        "home_setup": 30,
+        "annaprasanam": 29,
+        "travel_prep": 26,
+        "festival": 22
+      },
+      "total_active": 184
+    },
+    "Delhi": {
+      "top_occasion": "kids_birthday",
+      "occasion_counts": {
+        "kids_birthday": 66,
+        "home_setup": 45,
+        "travel_prep": 24,
+        "festival": 22,
+        "office_event": 13
+      },
+      "total_active": 178
+    },
+    "Pune": {
+      "top_occasion": "kids_birthday",
+      "occasion_counts": {
+        "kids_birthday": 56,
+        "home_setup": 37,
+        "travel_prep": 29,
+        "festival": 14,
+        "office_event": 10
+      },
+      "total_active": 159
+    },
+    "Ahmedabad": {
+      "top_occasion": "kids_birthday",
+      "occasion_counts": {
+        "kids_birthday": 78,
+        "home_setup": 36,
+        "travel_prep": 20,
+        "festival": 19,
+        "office_event": 14
+      },
+      "total_active": 180
+    },
+    "Indore": {
+      "top_occasion": "kids_birthday",
+      "occasion_counts": {
+        "kids_birthday": 70,
+        "home_setup": 49,
+        "travel_prep": 26,
+        "festival": 24,
+        "office_event": 12
+      },
+      "total_active": 190
+    },
+    "Jaipur": {
+      "top_occasion": "kids_birthday",
+      "occasion_counts": {
+        "kids_birthday": 60,
+        "home_setup": 29,
+        "travel_prep": 20,
+        "festival": 14,
+        "office_event": 13
+      },
+      "total_active": 144
+    },
+    "Kochi": {
+      "top_occasion": "kids_birthday",
+      "occasion_counts": {
+        "kids_birthday": 69,
+        "home_setup": 45,
+        "travel_prep": 27,
+        "annaprasanam": 25,
+        "festival": 19
+      },
+      "total_active": 213
+    },
+    "Lucknow": {
+      "top_occasion": "kids_birthday",
+      "occasion_counts": {
+        "kids_birthday": 67,
+        "home_setup": 40,
+        "travel_prep": 28,
+        "festival": 20,
+        "office_event": 13
+      },
+      "total_active": 173
+    },
+    "Bangalore": {
+      "top_occasion": "kids_birthday",
+      "occasion_counts": {
+        "kids_birthday": 66,
+        "home_setup": 39,
+        "annaprasanam": 30,
+        "travel_prep": 28,
+        "festival": 21
+      },
+      "total_active": 200
+    },
+    "Chennai": {
+      "top_occasion": "kids_birthday",
+      "occasion_counts": {
+        "kids_birthday": 64,
+        "home_setup": 38,
+        "annaprasanam": 36,
+        "travel_prep": 32,
+        "festival": 27
+      },
+      "total_active": 227
+    },
+    "Mumbai": {
+      "top_occasion": "kids_birthday",
+      "occasion_counts": {
+        "kids_birthday": 66,
+        "home_setup": 47,
+        "travel_prep": 32,
+        "festival": 20,
+        "office_event": 16
+      },
+      "total_active": 192
+    }
+  },
+  "coverage_gaps": {
+    "kids_birthday": [
+      {
+        "category": "return_gifts",
+        "coverage_rate": 0.71,
+        "miss_rate": 0.29,
+        "sessions_with": 568,
+        "sessions_total": 800,
+        "sample_asin": "B0PARTY033",
+        "sample_title": "Return Gift Bags Printed (Pack of 12)"
+      },
+      {
+        "category": "balloon_pump",
+        "coverage_rate": 0.713,
+        "miss_rate": 0.287,
+        "sessions_with": 570,
+        "sessions_total": 800,
+        "sample_asin": "B0PARTY019",
+        "sample_title": "Balloon Hand Pump Double Action"
+      }
+    ],
+    "home_setup": [
+      {
+        "category": "induction_compatible_vessel",
+        "coverage_rate": 0.725,
+        "miss_rate": 0.275,
+        "sessions_with": 348,
+        "sessions_total": 480,
+        "sample_asin": "B0HOME021",
+        "sample_title": "Hawkins Stainless Steel Pressure Cooker 3L"
+      },
+      {
+        "category": "water_purifier",
+        "coverage_rate": 0.762,
+        "miss_rate": 0.238,
+        "sessions_with": 366,
+        "sessions_total": 480,
+        "sample_asin": "MC_PURIFIER_001",
+        "sample_title": "Kent Grand Plus 8L RO+UV Water Purifier"
+      }
+    ],
+    "grihapravesh": [],
+    "travel_prep": [],
+    "festival": [],
+    "annaprasanam": [],
+    "office_farewell": [],
+    "office_event": []
+  },
+  "generated_at": "2026-06-23T00:00:00"
+}

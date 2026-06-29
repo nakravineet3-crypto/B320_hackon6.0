@@ -19,18 +19,8 @@ import ProductDetailBottomSheet from '../../components/comparison/ProductDetailB
 import PreCheckoutSheet from '../../components/PreCheckoutSheet'
 import UndoToast from '../../components/UndoToast'
 import { Colors, Radius, getLabelColor } from '../../lib/constants'
+import { FALLBACK_CART_ITEMS } from '../../lib/fallbacks'
 import { useMissionStore } from '../../store/mission'
-
-const FALLBACK_CART_ITEMS = [
-  { cart_item_id: '1', need_label: 'Plates & utensils', title: 'Disposable Paper Plates 25pc', price: 89, packs_quantity: 2, total_cost: 178, amazon_now_eligible: true, rating: 4.2, delivery_eta: 'now_20min', prime: true, explanation: '2 plates per child × 12 kids = 24 plates' },
-  { cart_item_id: '2', need_label: 'Cups & drinks', title: 'Disposable Cups 50pc', price: 79, packs_quantity: 1, total_cost: 79, amazon_now_eligible: true, rating: 4.0, delivery_eta: 'now_20min', prime: true, explanation: '2.5 cups per child × 12 kids' },
-  { cart_item_id: '3', need_label: 'Candles & cake knife', title: 'Birthday Candles Set 10pc', price: 49, packs_quantity: 1, total_cost: 49, amazon_now_eligible: true, rating: 4.3, delivery_eta: 'now_20min', prime: true, explanation: '1 pack of candles' },
-  { cart_item_id: '4', need_label: 'Balloons & decorations', title: 'Multicolor Balloons 30pc', price: 149, packs_quantity: 2, total_cost: 298, amazon_now_eligible: true, rating: 4.1, delivery_eta: 'now_20min', prime: true, explanation: '3 balloons per child × 12 kids with buffer' },
-  { cart_item_id: '5', need_label: 'Napkins & tissues', title: 'Paper Napkins 100pc', price: 59, packs_quantity: 1, total_cost: 59, amazon_now_eligible: true, rating: 4.0, delivery_eta: 'now_20min', prime: true, explanation: '3 napkins per child × 12 kids' },
-  { cart_item_id: '6', need_label: 'Entertainment', title: 'Party Games Set', price: 199, packs_quantity: 1, total_cost: 199, amazon_now_eligible: false, rating: 3.8, delivery_eta: 'tomorrow', prime: true, explanation: '1 games set for group activities' },
-  { cart_item_id: '7', need_label: 'Return gifts', title: 'Return Gift Bags 12pc', price: 199, packs_quantity: 1, total_cost: 199, amazon_now_eligible: true, rating: 4.2, delivery_eta: 'now_20min', prime: true, explanation: '1 gift per child × 12 kids' },
-  { cart_item_id: '8', need_label: 'Cleanup', title: 'Trash Bags 30pc', price: 129, packs_quantity: 1, total_cost: 129, amazon_now_eligible: true, rating: 4.1, delivery_eta: 'now_20min', prime: true, explanation: '1 pack for post-party cleanup' },
-]
 
 function formatInr(value: number) {
   return value.toLocaleString('en-IN')
@@ -177,12 +167,15 @@ export default function CartResultScreen() {
       <StatusBar style="light" backgroundColor={Colors.nowBlue} />
 
       <View style={styles.header}>
+        <Pressable onPress={() => router.back()} hitSlop={10} style={styles.backBtn}>
+          <Ionicons name="arrow-back" size={22} color={Colors.white} />
+        </Pressable>
         <Text style={styles.headerTitle}>Your mission cart</Text>
       </View>
 
       <FlatList
         data={cartItems}
-        keyExtractor={(item: any) => item.cart_item_id || String(Math.random())}
+        keyExtractor={(item: any, index: number) => item.cart_item_id || String(index)}
         renderItem={renderItem}
         style={styles.list}
         contentContainerStyle={styles.listContent}
@@ -293,7 +286,7 @@ export default function CartResultScreen() {
         style={styles.shareToHiveBtn}
       >
         <Ionicons name="people-outline" size={16} color="#007185" />
-        <Text style={styles.shareToHiveText}>Share to Hive</Text>
+        <Text style={styles.shareToHiveText}>Share to Quorum</Text>
       </TouchableOpacity>
 
       <ComparisonBottomSheet />
@@ -330,18 +323,28 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     backgroundColor: Colors.nowBlue,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  backBtn: {
+    width: 36,
+    height: 36,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 8,
   },
   headerTitle: {
     color: Colors.white,
     fontSize: 18,
     fontWeight: '700',
+    flex: 1,
   },
   list: {
     flex: 1,
     backgroundColor: Colors.background,
   },
   listContent: {
-    paddingBottom: 100,
+    paddingBottom: 220,
   },
   // Summary bar
   summaryBar: {
@@ -618,7 +621,7 @@ const styles = StyleSheet.create({
   },
   auditCartLink: {
     position: 'absolute',
-    bottom: 4,
+    bottom: 144,
     left: 0,
     right: 0,
     alignItems: 'center',
@@ -631,7 +634,7 @@ const styles = StyleSheet.create({
   },
   shareToHiveBtn: {
     position: 'absolute',
-    bottom: -20,
+    bottom: 92,
     left: 16,
     right: 16,
     flexDirection: 'row',
