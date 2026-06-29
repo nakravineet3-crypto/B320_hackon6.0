@@ -1,0 +1,59 @@
+{
+  "U001": {
+    "name": "Sneha Sharma",
+    "primary_cohort": "cohort_weekly_staples",
+    "memberships": {
+      "cohort_weekly_staples": 0.60,
+      "cohort_budget_essentials": 0.30,
+      "cohort_fitness_snack": 0.10
+    }
+  },
+  "U002": {
+    "name": "Arjun Mehta",
+    "primary_cohort": "cohort_premium_wellness",
+    "memberships": {
+      "cohort_premium_wellness": 0.70,
+      "cohort_fitness_snack": 0.20,
+      "cohort_weekly_staples": 0.10
+    }
+  },
+  "U003": {
+    "name": "Priya Nair",
+    "primary_cohort": "cohort_baby_essentials",
+    "memberships": {
+      "cohort_baby_essentials": 0.80,
+      "cohort_budget_essentials": 0.20
+    }
+  },
+  "U004": {
+    "name": "Rohit Verma",
+    "primary_cohort": "cohort_budget_essentials",
+    "memberships": {
+      "cohort_budget_essentials": 0.75,
+      "cohort_weekly_staples": 0.25
+    }
+  },
+  "U005": {
+    "name": "Kavitha Rao",
+    "primary_cohort": "cohort_party_prep",
+    "memberships": {
+      "cohort_party_prep": 0.65,
+      "cohort_budget_essentials": 0.20,
+      "cohort_weekly_staples": 0.15
+    }
+  },
+  "DEMO_BUDGET": {
+    "name": "Demo Budget User",
+    "primary_cohort": "cohort_budget_essentials",
+    "memberships": {
+      "cohort_budget_essentials": 1.0
+    }
+  },
+  "DEMO_PREMIUM": {
+    "name": "Demo Premium User",
+    "primary_cohort": "cohort_premium_wellness",
+    "memberships": {
+      "cohort_premium_wellness": 1.0
+    }
+  }
+}

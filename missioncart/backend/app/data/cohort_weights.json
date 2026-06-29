@@ -1,0 +1,72 @@
+{
+  "cohort_budget_essentials": {
+    "label": "Budget Essentials Buyer",
+    "price_sensitivity": "high",
+    "weights": {
+      "price_per_unit": 0.45,
+      "quantity": 0.25,
+      "delivery": 0.20,
+      "quality": 0.10
+    }
+  },
+  "cohort_premium_wellness": {
+    "label": "Premium Wellness Buyer",
+    "price_sensitivity": "low",
+    "weights": {
+      "price_per_unit": 0.10,
+      "quality": 0.50,
+      "delivery": 0.25,
+      "quantity": 0.15
+    }
+  },
+  "cohort_baby_essentials": {
+    "label": "Baby Essentials Buyer",
+    "price_sensitivity": "medium",
+    "weights": {
+      "quality": 0.45,
+      "delivery": 0.30,
+      "price_per_unit": 0.15,
+      "quantity": 0.10
+    }
+  },
+  "cohort_weekly_staples": {
+    "label": "Weekly Staples Buyer",
+    "price_sensitivity": "high",
+    "weights": {
+      "price_per_unit": 0.35,
+      "quantity": 0.35,
+      "delivery": 0.20,
+      "quality": 0.10
+    }
+  },
+  "cohort_fitness_snack": {
+    "label": "Fitness Snack Buyer",
+    "price_sensitivity": "low",
+    "weights": {
+      "quality": 0.45,
+      "price_per_unit": 0.25,
+      "quantity": 0.20,
+      "delivery": 0.10
+    }
+  },
+  "cohort_party_prep": {
+    "label": "Party Prep Buyer",
+    "price_sensitivity": "medium",
+    "weights": {
+      "delivery": 0.45,
+      "quantity": 0.30,
+      "price_per_unit": 0.15,
+      "quality": 0.10
+    }
+  },
+  "default": {
+    "label": "General Buyer",
+    "price_sensitivity": "medium",
+    "weights": {
+      "price_per_unit": 0.25,
+      "quantity": 0.25,
+      "delivery": 0.30,
+      "quality": 0.20
+    }
+  }
+}
