@@ -1,28 +1,28 @@
 export const Colors = {
-  primary: '#FF9900',
-  primaryDark: '#E47911',
-  nowBlue: '#1A98FF',
+  primary: '#003366',
+  primaryDark: '#002244',
+  nowBlue: '#003366',
   deliveryYellow: '#FFD814',
   background: '#FFFFFF',
   secondaryBg: '#F3F3F3',
-  trustBg: '#F0F8FF',
+  trustBg: '#E8EFF5',
   border: '#DDDDDD',
   textPrimary: '#0F1111',
   textSecondary: '#565959',
-  linkBlue: '#007185',
+  linkBlue: '#003366',
   successGreen: '#007600',
   starYellow: '#FFA41C',
-  primeBadge: '#00A8E1',
+  primeBadge: '#003366',
   errorRed: '#CC0C39',
-  sponsoredBlue: '#0066C0',
+  sponsoredBlue: '#003366',
   white: '#FFFFFF',
-  // Amazon Now native design tokens
+  // Design tokens
   divider: '#F0F2F2', // 8px section dividers
   inputBorder: '#D5D9D9', // All input borders
-  inputBorderFocus: '#FF9900',
+  inputBorderFocus: '#003366',
   placeholder: '#9AA0A6',
   cardBg: '#F7F8F8', // Evidence rows, insight boxes
-  nowBadge: '#007600', // Amazon Now badge
+  nowBadge: '#007600', // Now badge
   salePrice: '#CC0C39',
   bannerGreen: '#1A6B3C',
 }

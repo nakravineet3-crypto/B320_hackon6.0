@@ -12,7 +12,6 @@ import { Colors } from '../lib/constants'
 import {
   registerForPushNotifications,
   scheduleMorningNotification,
-  handleApproveFromNotification,
 } from '../lib/notifications'
 
 export default function RootLayout() {
@@ -30,25 +29,17 @@ export default function RootLayout() {
         const actionId = response.actionIdentifier
         const data = response.notification.request.content.data
 
-        // User tapped "Approve & Order" button directly from notification
-        if (actionId === 'approve_order') {
-          handleApproveFromNotification()
-          // Schedule a confirmation notification
-          Notifications.scheduleNotificationAsync({
-            content: {
-              title: '✓ Order approved!',
-              body: 'Your reorder is on its way via Amazon Now ⚡',
-              sound: 'default',
-              color: '#007600',
-            },
-            trigger: { seconds: 1 },
-          })
-          return
-        }
-
-        // User tapped "View Details" or the notification body itself
-        if (data?.screen === 'home') {
-          router.push('/')
+        // User tapped "Checkout Now" button or the notification body itself
+        // Navigate directly to the checkout/review page
+        if (
+          actionId === 'checkout_now' ||
+          actionId === Notifications.DEFAULT_ACTION_IDENTIFIER
+        ) {
+          if (data?.screen === 'reorder_checkout') {
+            router.push('/reorder/review')
+          } else {
+            router.push('/reorder/review')
+          }
         }
       })
 
