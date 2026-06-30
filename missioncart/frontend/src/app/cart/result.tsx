@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   FlatList,
+  Image,
   Pressable,
   StyleSheet,
   Text,
@@ -112,11 +113,15 @@ export default function CartResultScreen() {
         activeOpacity={0.7}
         style={[styles.itemRow, isHighlighted && styles.itemRowHighlighted]}
       >
-        <View style={[styles.letterTile, { backgroundColor: palette.bg }]}>
-          <Text style={[styles.letterTileText, { color: palette.text }]}>
-            {letter}
-          </Text>
-        </View>
+        {item.image_url ? (
+          <Image source={{ uri: item.image_url }} style={styles.letterTile} resizeMode="contain" />
+        ) : (
+          <View style={[styles.letterTile, { backgroundColor: palette.bg }]}>
+            <Text style={[styles.letterTileText, { color: palette.text }]}>
+              {letter}
+            </Text>
+          </View>
+        )}
 
         <View style={styles.itemContent}>
           <Text style={styles.itemNeedLabel}>

@@ -4,7 +4,7 @@ import { Platform } from 'react-native'
 
 import { API_BASE } from './constants'
 
-// Notification category ID for reorder notifications with action buttons
+// Notification category ID for reorder notifications
 const REORDER_CATEGORY = 'morning_reorder'
 
 Notifications.setNotificationHandler({
@@ -38,18 +38,11 @@ export async function registerForPushNotifications(): Promise<boolean> {
     })
   }
 
-  // Register notification category with action buttons
+  // Register notification category with action button
   await Notifications.setNotificationCategoryAsync(REORDER_CATEGORY, [
     {
-      identifier: 'approve_order',
-      buttonTitle: '✓ Approve & Order',
-      options: {
-        opensAppToForeground: false,
-      },
-    },
-    {
-      identifier: 'view_details',
-      buttonTitle: 'View Details',
+      identifier: 'checkout_now',
+      buttonTitle: '🛒 Checkout Now',
       options: {
         opensAppToForeground: true,
       },
@@ -62,9 +55,9 @@ export async function registerForPushNotifications(): Promise<boolean> {
 export async function scheduleMorningNotification(): Promise<void> {
   await Notifications.cancelAllScheduledNotificationsAsync()
 
-  let title = '🛒 Your daily reorder is ready'
+  let title = '🛒 Your reorder cart is ready for checkout'
   let body =
-    'Amul Milk, Surf Excel, Parle-G — Tap Approve to order via Amazon Now ⚡'
+    'Amul Milk, Surf Excel, Parle-G — Tap to review & place your order ⚡'
 
   try {
     const res = await axios.get(
@@ -82,7 +75,7 @@ export async function scheduleMorningNotification(): Promise<void> {
     content: {
       title,
       body,
-      data: { screen: 'home', action: 'morning_approval' },
+      data: { screen: 'reorder_checkout', action: 'open_checkout' },
       sound: 'default',
       badge: 1,
       color: '#FF9900',
@@ -98,9 +91,9 @@ export async function scheduleMorningNotification(): Promise<void> {
 }
 
 export async function scheduleTestNotification(): Promise<void> {
-  let title = '🛒 Your daily reorder is ready'
+  let title = '🛒 Your reorder cart is ready for checkout'
   let body =
-    'Amul Milk, Surf Excel, Parle-G — Tap Approve to order via Amazon Now ⚡'
+    'Amul Milk, Surf Excel, Parle-G — Tap to review & place your order ⚡'
 
   try {
     const res = await axios.get(
@@ -118,7 +111,7 @@ export async function scheduleTestNotification(): Promise<void> {
     content: {
       title,
       body,
-      data: { screen: 'home', action: 'morning_approval' },
+      data: { screen: 'reorder_checkout', action: 'open_checkout' },
       sound: 'default',
       color: '#FF9900',
       categoryIdentifier: REORDER_CATEGORY,
@@ -128,19 +121,9 @@ export async function scheduleTestNotification(): Promise<void> {
 }
 
 /**
- * Handle the "Approve & Order" action from the notification.
- * Called when user taps the approve button without opening the app.
+ * @deprecated No longer approving orders directly from notification.
+ * Users are now routed to the checkout page instead.
  */
 export async function handleApproveFromNotification(): Promise<void> {
-  try {
-    // Call the reorder approve API directly
-    await axios.post(`${API_BASE}/api/reorder/approve`, {
-      draft_id: 'morning_auto',
-      user_id: 'U001',
-      idempotency_key: `notif_${Date.now()}`,
-      items: [],
-    })
-  } catch {
-    // Silent fail — order will be confirmed when app opens
-  }
+  // No-op — kept for backward compatibility
 }

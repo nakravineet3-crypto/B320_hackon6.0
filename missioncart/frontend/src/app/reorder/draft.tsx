@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from 'react'
 import {
   ActivityIndicator,
   FlatList,
+  Image,
   Pressable,
   StyleSheet,
   Text,
@@ -145,11 +146,15 @@ export default function ReorderDraftScreen() {
     return (
       <View style={styles.itemCard}>
         <View style={styles.itemTopRow}>
-          <View style={[styles.letterTile, { backgroundColor: palette.bg }]}>
-            <Text style={[styles.letterText, { color: palette.text }]}>
-              {item.title.charAt(0).toUpperCase()}
-            </Text>
-          </View>
+          {item.image_url ? (
+            <Image source={{ uri: item.image_url }} style={styles.letterTile} resizeMode="contain" />
+          ) : (
+            <View style={[styles.letterTile, { backgroundColor: palette.bg }]}>
+              <Text style={[styles.letterText, { color: palette.text }]}>
+                {item.title.charAt(0).toUpperCase()}
+              </Text>
+            </View>
+          )}
 
           <View style={styles.itemMain}>
             <Text style={styles.itemTitle} numberOfLines={2}>
