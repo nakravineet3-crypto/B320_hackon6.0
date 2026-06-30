@@ -175,43 +175,59 @@ interface FallbackOccasion extends OccasionCard {
 
 const fallbackOccasions: FallbackOccasion[] = [
   {
-    id: 'diwali',
+    occasion_type: 'diwali',
     title: 'Diwali',
     days_until: 24,
     emoji: '🪔',
-    category: 'festival',
+    urgency_state: 'preparation',
+    urgency_label: 'In 24 days',
     estimated_budget: 2400,
-    tap_action: '/missions/diwali',
+    headcount: 20,
+    community_signal: '4,200 planners prepping now',
+    tap_goal: 'Diwali celebration for 20 people',
+    relevance_score: 0.95,
     accent: '#FF6B00',
   },
   {
-    id: 'moms-birthday',
+    occasion_type: 'moms_birthday',
     title: "Mom's Birthday",
     days_until: 6,
     emoji: '🎂',
-    category: 'birthday',
+    urgency_state: 'urgent',
+    urgency_label: 'In 6 days',
     estimated_budget: 1800,
-    tap_action: '/missions/moms-birthday',
+    headcount: 10,
+    community_signal: '1,800 planners ordered this week',
+    tap_goal: "Mom's birthday party for 10 people",
+    relevance_score: 0.90,
     accent: '#007185',
   },
   {
-    id: 'coorg-trek',
+    occasion_type: 'trek_coorg',
     title: 'Trek to Coorg',
     days_until: 12,
     emoji: '🥾',
-    category: 'travel',
+    urgency_state: 'preparation',
+    urgency_label: 'In 12 days',
     estimated_budget: 3200,
-    tap_action: '/missions/coorg-trek',
+    headcount: 5,
+    community_signal: '920 trekkers stocked up this month',
+    tap_goal: 'Trekking trip to Coorg for 5 people',
+    relevance_score: 0.85,
     accent: '#2E7D32',
   },
   {
-    id: 'office-potluck',
+    occasion_type: 'office_potluck',
     title: 'Office Potluck',
     days_until: 3,
     emoji: '🍲',
-    category: 'event',
+    urgency_state: 'urgent',
+    urgency_label: 'In 3 days',
     estimated_budget: 800,
-    tap_action: '/missions/office-potluck',
+    headcount: 15,
+    community_signal: '3,100 offices ordered last week',
+    tap_goal: 'Office potluck for 15 people',
+    relevance_score: 0.88,
     accent: '#6B3FA0',
   },
 ]
@@ -757,7 +773,7 @@ export default function HomeScreen() {
                     },
                   })
                 }
-                style={[styles.occasionCard, { borderLeftColor: '#FF9900' }]}
+                style={[styles.occasionCard, { borderLeftColor: occasion.accent ?? '#FF9900' }]}
                 accessibilityRole="button"
               >
                 <Text style={styles.occasionEmoji}>{occasion.emoji}</Text>
