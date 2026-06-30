@@ -745,15 +745,28 @@ export default function HomeScreen() {
           >
             {occasions.map((occasion) => (
               <Pressable
-                key={occasion.id}
-                onPress={() => console.log('Plan occasion:', occasion.id)}
-                style={[styles.occasionCard, { borderLeftColor: occasion.accent }]}
+                key={occasion.occasion_type}
+                onPress={() =>
+                  router.push({
+                    pathname: '/cart/building',
+                    params: {
+                      goal: occasion.tap_goal,
+                      budget: String(occasion.estimated_budget),
+                      headcount: String(occasion.headcount),
+                      occasion_type: occasion.occasion_type,
+                    },
+                  })
+                }
+                style={[styles.occasionCard, { borderLeftColor: '#FF9900' }]}
                 accessibilityRole="button"
               >
+                <Text style={styles.occasionEmoji}>{occasion.emoji}</Text>
                 <Text style={styles.occasionTitle} numberOfLines={2}>
                   {occasion.title}
                 </Text>
-                <Text style={styles.occasionDays}>In {occasion.days_until} days</Text>
+                {occasion.days_until != null && (
+                  <Text style={styles.occasionDays}>In {occasion.days_until} days</Text>
+                )}
                 <Text style={styles.occasionBudget}>
                   ~₹{formatInr(occasion.estimated_budget)}
                 </Text>
@@ -1325,6 +1338,11 @@ const styles = StyleSheet.create({
     borderColor: Colors.inputBorder,
     borderRadius: 4,
     borderLeftWidth: 3,
+  },
+  occasionEmoji: {
+    fontSize: 20,
+    lineHeight: 24,
+    marginBottom: 4,
   },
   occasionTitle: {
     color: Colors.textPrimary,
